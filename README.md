@@ -4,7 +4,6 @@
 	- [Kavli Astrostatistics and Machine Learning 2023](https://www.kicc.cam.ac.uk/events/kavli-science-themed-meetings/astrostatistics-and-astro-machine-learning)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/94d04ce71d3a1252e31371bc4d45ef76645d03b7/main.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/astrostats_machinelearning_kicc_2023)
-	- 
 2. RFI Mitigation in the REACH Pipeline
 	- [Observational and Theoretical 21-cm Cosmology, Cambridge, April 2022](https://www.kicc.cam.ac.uk/events/kavli-science-themed-meetings/observational-and-theoretical-21-cm-cosmology)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/reach_2022/sam_leeney_rfi_managent_reach_pipeline.pdf)

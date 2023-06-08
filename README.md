@@ -1,7 +1,7 @@
 # Talks by Sam Leeney
 
 - Bayesian RFI mitigation
-	- [Kavli Astrostatistics and Machine Learning 2023](https://www.kicc.cam.ac.uk/events/kavli-science-themed-meetings/astrostatistics-and-astro-machine-learning)
+	- [Kavli Astrostatistics and Machine Learning June 2023](https://www.kicc.cam.ac.uk/events/kavli-science-themed-meetings/astrostatistics-and-astro-machine-learning)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/94d04ce71d3a1252e31371bc4d45ef76645d03b7/main.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/astrostats_machinelearning_kicc_2023)
 - RFI Mitigation in the REACH Pipeline

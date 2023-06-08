@@ -1,0 +1,23 @@
+\begin{thebibliography}{}
+
+\bibitem[Baan et~al., 2004]{baan2004radio}
+Baan, W., Fridman, P., and Millenaar, R. (2004).
+\newblock Radio frequency interference mitigation at the westerbork synthesis
+  radio telescope: Algorithms, test observations, and system implementation.
+\newblock {\em The Astronomical Journal}, 128(2):933.
+
+\bibitem[Offringa et~al., 2012]{offringa2012morphological}
+Offringa, A., Van De~Gronde, J., and Roerdink, J. (2012).
+\newblock A morphological algorithm for improving radio-frequency interference
+  detection.
+\newblock {\em Astronomy \& astrophysics}, 539:A95.
+
+\bibitem[Sun et~al., 2022]{sun2022robust}
+Sun, H., Deng, H., Wang, F., Mei, Y., Xu, T., Smirnov, O., Deng, L., and Wei,
+  S. (2022).
+\newblock A robust rfi identification for radio interferometry based on a
+  convolutional neural network.
+\newblock {\em Monthly Notices of the Royal Astronomical Society},
+  512(2):2025--2033.
+
+\end{thebibliography}

@@ -1,5 +1,6 @@
 # Talks by Sam Leeney
-
+- Bayesian Anomaly Detection
+	- [Breakthrough Listen UK Technosignature Workshop 2023](**https://www.bluk.uk/**)
 - A Bayesian approach RFI mitigation
 	- [Kavli Astrostatistics and Machine Learning, Cambridge, June 2023](https://www.kicc.cam.ac.uk/events/kavli-science-themed-meetings/astrostatistics-and-astro-machine-learning)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/94d04ce71d3a1252e31371bc4d45ef76645d03b7/main.pdf)

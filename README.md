@@ -1,6 +1,6 @@
 # Contact info for Sam Leeney
 Email: sakl2@cam.ac.uk
-[Linkdin][https://www.linkedin.com/in/sam-leeney-6a0514232/]
+[Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks by Sam Leeney
 - Bayesian Anomaly Detection

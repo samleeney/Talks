@@ -1,8 +1,6 @@
 # Contact:
 - sakl2@cam.ac.uk
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
-- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/94d04ce71d3a1252e31371bc4d45ef76645d03b7/main.pdf)
-- [Source files](https://github.com/samleeney/Talks/tree/astrostats_machinelearning_kicc_2023)
 
 # Talks:
 - Bayesian Anomaly Detection

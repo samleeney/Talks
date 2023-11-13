@@ -5,9 +5,40 @@
 \title{Bayesian anomaly detection}
 \date{14 November 2023}
 \author{Samuel Alan Kossoff Leeney, Will Handley, Dominic Anstey, Eloy de Lera Acedo}
-\institute{University of Cambridge}
+\institute{Breakthrough Listen Technosignature Workshop 2023}
 \begin{document}
-  \maketitle
+\begin{frame}
+  \titlepage
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[right=4.5cm, above=-4.5cm] at (current page.center)
+    {
+    \includegraphics[width=0.3\textwidth]{eddies.png}
+    };
+    \end{tikzpicture}
+
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[right=-4.7cm, above=-4.3cm] at (current page.center)
+    {
+    \includegraphics[width=0.25\textwidth]{cam_logo.jpg}
+    };
+  \end{tikzpicture}
+
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[right=1.3cm, above=-5cm] at (current page.center)
+    {
+    \includegraphics[width=0.2\textwidth]{erc.jpg}
+    };
+  \end{tikzpicture}
+
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[right=-1.6cm, above=-4.3cm] at (current page.center)
+    {
+    \includegraphics[width=0.23\textwidth]{ukri.png}
+    };
+  \end{tikzpicture}
+\end{frame}
+
+
   \section{Bayesian statistics}
   \begin{frame}{Bayes Theorem}
     ``Steve is very shy and withdrawn, invariably helpful but with very little interest in people or in the world of reality. A meek and tidy soul, he has a need for order and structure, and a passion for detail.''
@@ -55,7 +86,7 @@
     \includegraphics[width=0.8\textwidth]{frb.png}
   \end{frame}
 
-  \begin{frame}{Methodology}
+  \begin{frame}{Defining an anomaly sensitive likelihood}
     \footnotesize
     \textbf{a) Generate new likelihood:}
     \begin{equation}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.8.30)  13 NOV 2023 07:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.8.30)  13 NOV 2023 15:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1044,26 +1044,48 @@ Dictionary: translator-numbers-dictionary, Language: English
 sh.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./main.nav)
-Overfull \vbox (15.63992pt too high) detected at line 10
+<eddies.png, id=25, 252.945pt x 68.255pt>
+File: eddies.png Graphic file (type png)
+<use eddies.png>
+Package pdftex.def Info: eddies.png  used on input line 39.
+(pdftex.def)             Requested size: 92.1879pt x 24.87589pt.
+<cam_logo.jpg, id=27, 570.90883pt x 118.67749pt>
+File: cam_logo.jpg Graphic file (type jpg)
+<use cam_logo.jpg>
+Package pdftex.def Info: cam_logo.jpg  used on input line 39.
+(pdftex.def)             Requested size: 76.82246pt x 15.96825pt.
+<erc.jpg, id=28, 285.9483pt x 285.9483pt>
+File: erc.jpg Graphic file (type jpg)
+<use erc.jpg>
+Package pdftex.def Info: erc.jpg  used on input line 39.
+(pdftex.def)             Requested size: 61.45703pt x 61.45586pt.
+<ukri.png, id=29, 1872.9975pt x 481.8pt>
+File: ukri.png Graphic file (type png)
+<use ukri.png>
+Package pdftex.def Info: ukri.png  used on input line 39.
+(pdftex.def)             Requested size: 70.67535pt x 18.17331pt.
+
+Overfull \vbox (107.90135pt too high) detected at line 39
  []
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./eddies.png> <./cam_logo.
+jpg> <./erc.jpg> <./ukri.png>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 11.
+ut line 42.
 
 (/usr/share/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1075,7 +1097,7 @@ thkerncmss.
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-23.
+54.
  (/usr/share/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 ) [4
@@ -1087,97 +1109,97 @@ File: ts1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 ] [7
 
 ]
-<frb.png, id=80, 437.38406pt x 437.38406pt>
+<frb.png, id=87, 437.38406pt x 437.38406pt>
 File: frb.png Graphic file (type png)
 <use frb.png>
-Package pdftex.def Info: frb.png  used on input line 56.
+Package pdftex.def Info: frb.png  used on input line 87.
 (pdftex.def)             Requested size: 245.83282pt x 245.83438pt.
 
-Overfull \vbox (34.08847pt too high) detected at line 56
+Overfull \vbox (34.08847pt too high) detected at line 87
  []
 
 [8
 
  <./frb.png (PNG copy)>]
-Overfull \vbox (14.5601pt too high) detected at line 88
+Overfull \vbox (14.5601pt too high) detected at line 119
  []
 
 [9
 
 ]
-<test.pdf, id=104, 462.52798pt x 346.89601pt>
+<test.pdf, id=111, 462.52798pt x 346.89601pt>
 File: test.pdf Graphic file (type pdf)
 <use test.pdf>
-Package pdftex.def Info: test.pdf  used on input line 102.
+Package pdftex.def Info: test.pdf  used on input line 133.
 (pdftex.def)             Requested size: 169.01035pt x 126.75626pt.
 
-Overfull \hbox (15.36542pt too wide) in paragraph at lines 102--102
+Overfull \hbox (15.36542pt too wide) in paragraph at lines 133--133
  [] 
  []
 
 [10
 
  <./test.pdf>]
-Overfull \hbox (34.06706pt too wide) detected at line 111
+Overfull \hbox (34.06706pt too wide) detected at line 142
 [][][]
  []
 
-<gif_anest/comb_1.png, id=151, 909.8793pt x 330.9966pt>
+<gif_anest/comb_1.png, id=158, 909.8793pt x 330.9966pt>
 File: gif_anest/comb_1.png Graphic file (type png)
 <use gif_anest/comb_1.png>
-Package pdftex.def Info: gif_anest/comb_1.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_1.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 330.99577pt.
  <./gif_anest/comb_1.png> <a0,fr0>
-<gif_anest/comb_2.png, id=156, 909.8793pt x 330.9966pt>
+<gif_anest/comb_2.png, id=162, 909.8793pt x 330.9966pt>
 File: gif_anest/comb_2.png Graphic file (type png)
 <use gif_anest/comb_2.png>
-Package pdftex.def Info: gif_anest/comb_2.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_2.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 330.99577pt.
  <./gif_anest/comb_2.png> <a0,fr1>
-<gif_anest/comb_3.png, id=160, 909.8793pt x 330.9966pt>
+<gif_anest/comb_3.png, id=166, 909.8793pt x 330.9966pt>
 File: gif_anest/comb_3.png Graphic file (type png)
 <use gif_anest/comb_3.png>
-Package pdftex.def Info: gif_anest/comb_3.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_3.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 330.99577pt.
  <./gif_anest/comb_3.png> <a0,fr2>
-<gif_anest/comb_4.png, id=164, 909.8793pt x 330.9966pt>
+<gif_anest/comb_4.png, id=170, 909.8793pt x 330.9966pt>
 File: gif_anest/comb_4.png Graphic file (type png)
 <use gif_anest/comb_4.png>
-Package pdftex.def Info: gif_anest/comb_4.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_4.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 330.99577pt.
  <./gif_anest/comb_4.png> <a0,fr3>
-<gif_anest/comb_5.png, id=168, 909.8793pt x 331.7193pt>
+<gif_anest/comb_5.png, id=174, 909.8793pt x 331.7193pt>
 File: gif_anest/comb_5.png Graphic file (type png)
 <use gif_anest/comb_5.png>
-Package pdftex.def Info: gif_anest/comb_5.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_5.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./gif_anest/comb_5.png> <a0,fr4>
-<gif_anest/comb_6.png, id=172, 909.8793pt x 331.7193pt>
+<gif_anest/comb_6.png, id=178, 909.8793pt x 331.7193pt>
 File: gif_anest/comb_6.png Graphic file (type png)
 <use gif_anest/comb_6.png>
-Package pdftex.def Info: gif_anest/comb_6.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_6.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./gif_anest/comb_6.png> <a0,fr5>
-<gif_anest/comb_7.png, id=176, 909.8793pt x 331.7193pt>
+<gif_anest/comb_7.png, id=182, 909.8793pt x 331.7193pt>
 File: gif_anest/comb_7.png Graphic file (type png)
 <use gif_anest/comb_7.png>
-Package pdftex.def Info: gif_anest/comb_7.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_7.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./gif_anest/comb_7.png>
 <a0,fr6>
-<gif_anest/comb_8.png, id=180, 909.8793pt x 331.7193pt>
+<gif_anest/comb_8.png, id=186, 909.8793pt x 331.7193pt>
 File: gif_anest/comb_8.png Graphic file (type png)
 <use gif_anest/comb_8.png>
-Package pdftex.def Info: gif_anest/comb_8.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_8.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./gif_anest/comb_8.png> <a0,fr7>
-<gif_anest/comb_9.png, id=184, 909.8793pt x 331.7193pt>
+<gif_anest/comb_9.png, id=190, 909.8793pt x 331.7193pt>
 File: gif_anest/comb_9.png Graphic file (type png)
 <use gif_anest/comb_9.png>
-Package pdftex.def Info: gif_anest/comb_9.png  used on input line 111.
+Package pdftex.def Info: gif_anest/comb_9.png  used on input line 142.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./gif_anest/comb_9.png> <a0,fr8>
-Overfull \hbox (5.68861pt too wide) in paragraph at lines 111--111
+Overfull \hbox (5.68861pt too wide) in paragraph at lines 142--142
  [][][][][][][][][][] 
  []
 
@@ -1186,31 +1208,31 @@ Overfull \hbox (5.68861pt too wide) in paragraph at lines 111--111
 ] [12
 
 ]
-<starlink2.png, id=218, 453.94594pt x 301.125pt>
+<starlink2.png, id=224, 453.94594pt x 301.125pt>
 File: starlink2.png Graphic file (type png)
 <use starlink2.png>
-Package pdftex.def Info: starlink2.png  used on input line 122.
+Package pdftex.def Info: starlink2.png  used on input line 153.
 (pdftex.def)             Requested size: 307.28987pt x 203.84332pt.
  [13
 
  <./starlink2.png (PNG copy)>]
-<logl1.png, id=226, 449.42906pt x 70.01157pt>
+<logl1.png, id=232, 449.42906pt x 70.01157pt>
 File: logl1.png Graphic file (type png)
 <use logl1.png>
-Package pdftex.def Info: logl1.png  used on input line 128.
+Package pdftex.def Info: logl1.png  used on input line 159.
 (pdftex.def)             Requested size: 307.28987pt x 47.8711pt.
-<logl2.png, id=227, 545.78906pt x 92.59593pt>
+<logl2.png, id=233, 545.78906pt x 92.59593pt>
 File: logl2.png Graphic file (type png)
 <use logl2.png>
-Package pdftex.def Info: logl2.png  used on input line 128.
+Package pdftex.def Info: logl2.png  used on input line 159.
 (pdftex.def)             Requested size: 307.28987pt x 52.1331pt.
  [14
 
  <./logl1.png (PNG copy)> <./logl2.png (PNG copy)>]
-<paper1.png, id=234, 596.2275pt x 264.23718pt>
+<paper1.png, id=240, 596.2275pt x 264.23718pt>
 File: paper1.png Graphic file (type png)
 <use paper1.png>
-Package pdftex.def Info: paper1.png  used on input line 133.
+Package pdftex.def Info: paper1.png  used on input line 164.
 (pdftex.def)             Requested size: 307.28987pt x 136.18648pt.
  [15
 
@@ -1221,63 +1243,63 @@ Package pdftex.def Info: paper1.png  used on input line 133.
 ] [18
 
 ]
-<dom_timedep_math.png, id=262, 253.69781pt x 187.45032pt>
+<dom_timedep_math.png, id=268, 253.69781pt x 187.45032pt>
 File: dom_timedep_math.png Graphic file (type png)
 <use dom_timedep_math.png>
-Package pdftex.def Info: dom_timedep_math.png  used on input line 189.
+Package pdftex.def Info: dom_timedep_math.png  used on input line 220.
 (pdftex.def)             Requested size: 153.64493pt x 113.52647pt.
-<dom_pic.jpeg, id=263, 803.0pt x 803.0pt>
+<dom_pic.jpeg, id=269, 803.0pt x 803.0pt>
 File: dom_pic.jpeg Graphic file (type jpg)
 <use dom_pic.jpeg>
-Package pdftex.def Info: dom_pic.jpeg  used on input line 189.
+Package pdftex.def Info: dom_pic.jpeg  used on input line 220.
 (pdftex.def)             Requested size: 48.36958pt x 48.36171pt.
  [19
 
  <./dom_timedep_math.png (PNG copy)> <./dom_pic.jpeg>]
-Overfull \hbox (100.8668pt too wide) in paragraph at lines 206--206
+Overfull \hbox (100.8668pt too wide) in paragraph at lines 237--237
 \OT1/cmss/m/n/10.95 by [[]] [[]].  
  []
 
 [20
 
 ]
-<lrw_runtime.png, id=282, 693.59125pt x 519.9425pt>
+<lrw_runtime.png, id=288, 693.59125pt x 519.9425pt>
 File: lrw_runtime.png Graphic file (type png)
 <use lrw_runtime.png>
-Package pdftex.def Info: lrw_runtime.png  used on input line 222.
+Package pdftex.def Info: lrw_runtime.png  used on input line 253.
 (pdftex.def)             Requested size: 153.64493pt x 115.17313pt.
  [21
 
  <./lrw_runtime.png>]
-<transient_dom.png, id=290, 722.7pt x 722.7pt>
+<transient_dom.png, id=296, 722.7pt x 722.7pt>
 File: transient_dom.png Graphic file (type png)
 <use transient_dom.png>
-Package pdftex.def Info: transient_dom.png  used on input line 229.
+Package pdftex.def Info: transient_dom.png  used on input line 260.
 (pdftex.def)             Requested size: 215.10196pt x 215.1024pt.
 
-Overfull \vbox (11.35649pt too high) detected at line 229
+Overfull \vbox (11.35649pt too high) detected at line 260
  []
 
 [22
 
  <./transient_dom.png>]
-<da_sl_paper.png, id=298, 582.67688pt x 364.36125pt>
+<da_sl_paper.png, id=304, 582.67688pt x 364.36125pt>
 File: da_sl_paper.png Graphic file (type png)
 <use da_sl_paper.png>
-Package pdftex.def Info: da_sl_paper.png  used on input line 238.
+Package pdftex.def Info: da_sl_paper.png  used on input line 269.
 (pdftex.def)             Requested size: 215.10196pt x 134.50575pt.
  [23
 
  <./da_sl_paper.png (PNG copy)>]
-<qr.png, id=306, 724.20563pt x 724.95844pt>
+<qr.png, id=312, 724.20563pt x 724.95844pt>
 File: qr.png Graphic file (type png)
 <use qr.png>
-Package pdftex.def Info: qr.png  used on input line 255.
+Package pdftex.def Info: qr.png  used on input line 286.
 (pdftex.def)             Requested size: 153.64493pt x 153.79443pt.
  [24
 
  <./qr.png (PNG copy)>] (./main.bbl)
-Overfull \vbox (123.22508pt too high) detected at line 260
+Overfull \vbox (123.22508pt too high) detected at line 291
  []
 
 [25
@@ -1300,13 +1322,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 65067B991A1966A222EF3FF15C523DA1;484.
  ) 
 Here is how much of TeX's memory you used:
- 26966 strings out of 477985
- 547020 string characters out of 5840058
- 1859388 words of memory out of 5000000
- 46525 multiletter control sequences out of 15000+600000
+ 27005 strings out of 477985
+ 547625 string characters out of 5840058
+ 1861388 words of memory out of 5000000
+ 46559 multiletter control sequences out of 15000+600000
  527666 words of font info for 86 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 128i,13n,122p,1871b,756s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,13n,122p,1871b,758s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/p
@@ -1324,10 +1346,10 @@ m/cmssi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/fonts/ty
 pe1/public/cm-super/sfss1095.pfb>
-Output written on main.pdf (25 pages, 1807200 bytes).
+Output written on main.pdf (25 pages, 2442730 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
+ 437 PDF objects out of 1000 (max. 8388607)
  273 compressed objects within 3 object streams
  60 named destinations out of 1000 (max. 500000)
- 238 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 258 words of extra memory for PDF output out of 10000 (max. 10000000)
 

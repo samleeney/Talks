@@ -3,6 +3,10 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Machine learning for radiometer calibration
+	- [European AI for Fundamental Physics Conference 2024](https://indico.nikhef.nl/event/4875/)
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/EuCAIFCon2024/Machine%20learning%20for%20radiometer%20calibration%20in%20global%2021cm%20Cosmology/template_poster.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/EuCAIFCon2024/Machine%20learning%20for%20radiometer%20calibration%20in%20global%2021cm%20Cosmology)
 - Bayesian Anomaly Detection
 	- [Breakthrough Listen UK Technosignature Workshop 2023](https://www.bluk.uk/)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/breakthrough_listen_uk_2023/main.pdf)

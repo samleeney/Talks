@@ -1,76 +1,38 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
-\bibitem{2015MNRAS.453.4384H}
-{\textbf{W.~J.}}~{\textbf{Handley}}, M.~P. {Hobson}, and A.~N. {Lasenby}.
-\newblock {POLYCHORD: next-generation nested sampling}.
-\newblock {\em \mnras}, 453(4):4384--4398, November 2015.
+\bibitem{pritchard201221}
+Jonathan~R Pritchard and Abraham Loeb.
+\newblock 21 cm cosmology in the 21st century.
+\newblock {\em Reports on Progress in Physics}, 75(8):086901, 2012.
 
-\bibitem{2014PhRvD..89f3505H}
-{\textbf{W.~J.}}~{\textbf{Handley}}, S.~D. {Brechet}, A.~N. {Lasenby}, and
-  M.~P. {Hobson}.
-\newblock {Kinetic initial conditions for inflation}.
-\newblock {\em \prd}, 89(6):063505, March 2014.
+\bibitem{haus1960representation}
+HA~Haus, WR~Atkinson, GM~Branch, WB~Davenport, WH~Fonger, WA~Harris,
+  SW~Harrison, WW~McLeod, EK~Stodola, and TE~Talpey.
+\newblock Representation of noise in linear twoports.
+\newblock {\em Proceedings of the IRE}, 48(1):69--74, 1960.
 
-\bibitem{2015MNRAS.450L..61H}
-{\textbf{W.~J.}}~{\textbf{Handley}}, M.~P. {Hobson}, and A.~N. {Lasenby}.
-\newblock {polychord: nested sampling for cosmology.}
-\newblock {\em \mnras}, 450:L61--L65, June 2015.
+\bibitem{roque2021bayesian}
+ILV Roque, WJ~Handley, and N~Razavi-Ghods.
+\newblock Bayesian noise wave calibration for 21-cm global experiments.
+\newblock {\em Monthly Notices of the Royal Astronomical Society},
+  505(2):2638--2646, 2021.
 
-\bibitem{2016A&A...594A...1P}
-{Planck 2015 results. I. Overview of products and scientific results}.
-\newblock {\em \aap}, 594:A1, September 2016.
+\bibitem{monsalve2017calibration}
+Raul~A Monsalve, Alan~EE Rogers, Judd~D Bowman, and Thomas~J Mozdzen.
+\newblock Calibration of the edges high-band receiver to observe the global 21
+  cm signature from the epoch of reionization.
+\newblock {\em The Astrophysical Journal}, 835(1):49, 2017.
 
-\bibitem{2016A&A...594A..20P}
-{Planck 2015 results. XX. Constraints on inflation}.
-\newblock {\em \aap}, 594:A20, September 2016.
+\bibitem{de2019reach}
+Eloy de~Lera~Acedo.
+\newblock Reach: Radio experiment for the analysis of cosmic hydrogen.
+\newblock In {\em 2019 International Conference on Electromagnetics in Advanced
+  Applications (ICEAA)}, pages 0626--0629. IEEE, 2019.
 
-\bibitem{2018A&A...619A..94P}
-{Planck intermediate results. LIV. The Planck multi-frequency catalogue of
-  non-thermal sources}.
-\newblock {\em \aap}, 619:A94, November 2018.
-
-\bibitem{2018BayAn..13..873H}
-Edward {Higson}, {\textbf{Will}}~{\textbf{Handley}}, Mike {Hobson}, and Anthony
-  {Lasenby}.
-\newblock {Sampling Errors in Nested Sampling Parameter Estimation}.
-\newblock {\em Bayesian Analysis}, 13(3):873--896, March 2018.
-
-\bibitem{2018JCAP...04..016F}
-{Exploring cosmic origins with CORE: Inflation}.
-\newblock {\em \jcap}, 2018(4):016, April 2018.
-
-\bibitem{2018JCAP...04..017D}
-{Exploring cosmic origins with CORE: Cosmological parameters}.
-\newblock {\em \jcap}, 2018(4):017, April 2018.
-
-\bibitem{2018JCAP...04..018C}
-{Exploring cosmic origins with CORE: Gravitational lensing of the CMB}.
-\newblock {\em \jcap}, 2018(4):018, April 2018.
-
-\bibitem{2018JCAP...04..019M}
-{Exploring cosmic origins with CORE: Cluster science}.
-\newblock {\em \jcap}, 2018(4):019, April 2018.
-
-\bibitem{2018JCAP...04..020D}
-{Exploring cosmic origins with CORE: Extragalactic sources in cosmic microwave
-  background maps}.
-\newblock {\em \jcap}, 2018(4):020, April 2018.
-
-\bibitem{2018JCAP...04..021B}
-{Exploring cosmic origins with CORE: Effects of observer peculiar motion}.
-\newblock {\em \jcap}, 2018(4):021, April 2018.
-
-\bibitem{2018JCAP...04..022N}
-{Exploring cosmic origins with CORE: Mitigation of systematic effects}.
-\newblock {\em \jcap}, 2018(4):022, April 2018.
-
-\bibitem{2018JCAP...04..023R}
-{Exploring cosmic origins with CORE: B-mode component separation}.
-\newblock {\em \jcap}, 2018(4):023, April 2018.
-
-\bibitem{2018JOSS....3..849H}
-{\textbf{Will}}~{\textbf{Handley}}.
-\newblock {fgivenx: A Python package for functional posterior plotting}.
-\newblock {\em \joss}, 3(28):849, August 2018.
+\bibitem{razavi2023receiver}
+Nima Razavi-Ghods, Ian~LV Roque, Steven~H Carey, John~A Ely, Will Handley,
+  Alessio Magro, Riccardo Chiello, Tian Huang, P~Alexander, D~Anstey, et~al.
+\newblock Receiver design for the reach global 21-cm signal experiment.
+\newblock {\em arXiv preprint arXiv:2307.00099}, 2023.
 
 \end{thebibliography}

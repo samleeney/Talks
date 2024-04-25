@@ -1,10 +1,12 @@
 (TeX-add-style-hook
  "template_poster"
  (lambda ()
+   (setq TeX-command-extra-options
+         "-shell-escape")
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("tikzposter" "25pt" "a0paper" "portrait")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("fontenc" "T1") ("cite" "compress") ("hyperref" "hidelinks")))
+                     '(("fontenc" "T1") ("cite" "compress") ("contour" "outline") ("hyperref" "hidelinks")))
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
@@ -21,6 +23,9 @@
     "amsmath"
     "lipsum"
     "cite"
+    "circuitikz"
+    "svg"
+    "contour"
     "xcolor"
     "hyperref")
    (TeX-add-symbols
@@ -40,8 +45,17 @@
     "prl"
     "arxiv"
     "oldbibliography")
+   (LaTeX-add-labels
+    "eq:noise_g")
    (LaTeX-add-bibliographies)
    (LaTeX-add-xcolor-definecolors
+    "myred"
+    "myblue"
+    "mygreen"
+    "mydarkblue"
+    "lightgray"
+    "varcolor"
+    "myorange"
     "C0"
     "C1"
     "C2"

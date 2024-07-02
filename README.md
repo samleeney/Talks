@@ -1,2 +1,2 @@
 # Abstract
-We propose a novel Bayesian anomaly detection methodology. By evaluating each datapoint compared to the belief that each data point fits some known model, we compute the probability that a data point is anomalous at the likelihood level. This modeling is done in a Bayesian fashion through a piecewise likelihood that is constrained by a Bernoulli prior distribution. The techniques described here can be implemented in just a few lines of code. 
+Radiometer calibration for global 21cm Cosmology

@@ -5,7 +5,7 @@
 # Talks:
 - Machine learning for calibration in Astronomy
 	- [Machine Learning for Astronomy 2024](https://indico.nikhef.nl/event/4875/)
-  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cd9f86ec2537bb8ab793e186abb002d95abfdad5/main.pdf)
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/ml4astro2024/main.pdf))
 	- [Source files](https://github.com/samleeney/Talks/tree/ml4astro2024)
 - Machine learning for radiometer calibration
 	- [European AI for Fundamental Physics Conference 2024](https://indico.nikhef.nl/event/4875/)

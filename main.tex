@@ -2,6 +2,7 @@
 \usepackage{animate}
 \usepackage{tikz}
 \usepackage{svg}
+\usepackage{graphicx}
 \usetheme{metropolis}
 \begin{document}
 
@@ -10,34 +11,29 @@
 \author{Samuel Alan Kossoff Leeney, Harry Bevins, Will Handley, Eloy de Lera Acedo, Jiacong Zhu, Kaan Artuc, Daniel Molnar}
 \institute{Machine Learning for Astronomy 2024}
 \begin{frame}
-  \titlepage
-  \begin{tikzpicture}[remember picture, overlay]
-    \node[right=4.5cm, above=-4.5cm] at (current page.center)
-    {
-    \includegraphics[width=0.3\textwidth]{camlogo.jpg}
-    };
-    \end{tikzpicture}
+  \begin{center}
+    % Title
+    {\LARGE Calibration with Machine Learning in Radio Cosmology\par}
+    \vspace{0.5cm}
 
-  \begin{tikzpicture}[remember picture, overlay]
-    \node[right=-4.7cm, above=-4.7cm] at (current page.center)
-    {
-    \includegraphics[width=0.25\textwidth]{reach.jpg}
-    };
-  \end{tikzpicture}
+    % First Author
+    {\large Samuel Alan Kossoff Leeney\par}
+    \vspace{0.5cm}
 
-  \begin{tikzpicture}[remember picture, overlay]
-    \node[right=1.2cm, above=-4.8cm] at (current page.center)
-    {
-    \includegraphics[width=0.15\textwidth]{erc.png}
-    };
-  \end{tikzpicture}
+    % Institute
+    {\normalsize Machine Learning for Astronomy 2024\par}
 
-  \begin{tikzpicture}[remember picture, overlay]
-    \node[right=-1.6cm, above=-4.3cm] at (current page.center)
-    {
-    \includegraphics[width=0.23\textwidth]{ukri.png}
-    };
-  \end{tikzpicture}
+    % Date
+    {\normalsize 11 July\par}
+    \vspace{1cm}
+
+    % Co-authors
+    {\footnotesize Co Authors: Harry Bevins, Will Handley, Eloy de Lera Acedo, Jiacong Zhu, Kaan Artuc, Daniel Molnar\par}
+    \vfill
+
+    % Image at the bottom
+    \includegraphics[width=0.9\textwidth]{affiliations.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}{\small{What is calibration in Astronomy?}}

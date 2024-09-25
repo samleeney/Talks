@@ -23,9 +23,9 @@
      inkscape:pageopacity="1"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.42662109"
-     inkscape:cx="1423.9802"
-     inkscape:cy="705.54411"
+     inkscape:zoom="0.60333333"
+     inkscape:cx="1590.3315"
+     inkscape:cy="520.44199"
      inkscape:window-width="1920"
      inkscape:window-height="1080"
      inkscape:window-x="0"
@@ -51,13 +51,11 @@
        height="417.23242"
        x="884.28009"
        y="66.845535" />
-    <rect
-       style="fill:none;stroke:#ff6600;stroke-width:7.65526"
+    <path
        id="rect1-1"
-       width="855.71796"
-       height="417.23242"
-       x="884.28009"
-       y="498.51761" />
+       style="display:inline;fill:none;stroke:#ff6600;stroke-width:9.43086"
+       inkscape:label="rect1-1"
+       d="M 885.16797 499.40625 L 885.16797 914.86133 L 2189.4316 914.86133 L 2189.4316 679.11914 L 1743.7578 679.11914 L 1743.7578 499.40625 L 885.16797 499.40625 z " />
     <rect
        style="fill:none;stroke:#008000;stroke-width:7.6393"
        id="rect2"
@@ -744,5 +742,20 @@
         </g>
       </g>
     </g>
+    <rect
+       style="opacity:0.99;fill:#000000;stroke-width:5.66929"
+       id="rect3"
+       width="4.6880007"
+       height="12.586842"
+       x="2124.1628"
+       y="1373.9928"
+       ry="2.3440003" />
+    <rect
+       style="opacity:0.99;fill:#000000;stroke-width:5.66929"
+       id="rect5"
+       width="116.61967"
+       height="17.415152"
+       x="2030.6172"
+       y="545.12897" />
   </g>
 </svg>

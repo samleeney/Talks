@@ -3,10 +3,10 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
-- Machine learning for calibration in Astronomy
-	- [Machine Learning for Astronomy 2024](https://indico.nikhef.nl/event/4875/)
-  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/ml4astro2024/main.pdf))
-	- [Source files](https://github.com/samleeney/Talks/tree/ml4astro2024)
+- Machine learning for radiometer calibration in REACH
+	- REACH annual meeting 2024
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/reach24/)
+	- [Source files](https://github.com/samleeney/Talks/blob/reach24/main.pdf)
 - Machine learning for radiometer calibration
 	- [European AI for Fundamental Physics Conference 2024](https://indico.nikhef.nl/event/4875/)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/EuCAIFCon2024/Machine%20learning%20for%20radiometer%20calibration%20in%20global%2021cm%20Cosmology/template_poster.pdf)

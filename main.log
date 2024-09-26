@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.7)  26 SEP 2024 07:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.7)  26 SEP 2024 07:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1286,19 +1286,39 @@ Overfull \vbox (56.0276pt too high) detected at line 454
 
 [18
 
- <./svg-inkscape/results_svg-tex.pdf>] [19
+ <./svg-inkscape/results_svg-tex.pdf>]
+<nima_best.png, id=283, 643.6547pt x 666.99188pt>
+File: nima_best.png Graphic file (type png)
+<use nima_best.png>
+Package pdftex.def Info: nima_best.png  used on input line 461.
+(pdftex.def)             Requested size: 199.1693pt x 206.38878pt.
 
-]
-<qr.png, id=292, 3011.25pt x 3831.31375pt>
-File: qr.png Graphic file (type png)
-<use qr.png>
-Package pdftex.def Info: qr.png  used on input line 473.
-(pdftex.def)             Requested size: 179.25114pt x 228.05661pt.
-
-Overfull \vbox (26.79918pt too high) detected at line 473
+Overfull \vbox (5.13135pt too high) detected at line 461
  []
 
-[20
+[19
+
+ <./nima_best.png (PNG copy)>]
+<kaan_best.png, id=293, 708.39656pt x 708.39656pt>
+File: kaan_best.png Graphic file (type png)
+<use kaan_best.png>
+Package pdftex.def Info: kaan_best.png  used on input line 468.
+(pdftex.def)             Requested size: 199.1693pt x 199.16037pt.
+ [20
+
+ <./kaan_best.png (PNG copy)>] [21
+
+]
+<qr.png, id=310, 3011.25pt x 3831.31375pt>
+File: qr.png Graphic file (type png)
+<use qr.png>
+Package pdftex.def Info: qr.png  used on input line 487.
+(pdftex.def)             Requested size: 179.25114pt x 228.05661pt.
+
+Overfull \vbox (26.79918pt too high) detected at line 487
+ []
+
+[22
 
  <./qr.png>]
 \tf@nav=\write6
@@ -1323,10 +1343,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27299 strings out of 476076
- 548336 string characters out of 5793776
+ 27321 strings out of 476076
+ 548684 string characters out of 5793776
  1954187 words of memory out of 5000000
- 48755 multiletter control sequences out of 15000+600000
+ 48773 multiletter control sequences out of 15000+600000
  577452 words of font info for 98 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  128i,19n,123p,1871b,994s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1351,10 +1371,10 @@ type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9
 .pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/shar
 e/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb>
-Output written on main.pdf (20 pages, 50328619 bytes).
+Output written on main.pdf (22 pages, 50946701 bytes).
 PDF statistics:
- 422 PDF objects out of 1000 (max. 8388607)
- 272 compressed objects within 3 object streams
- 43 named destinations out of 1000 (max. 500000)
- 148 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 440 PDF objects out of 1000 (max. 8388607)
+ 284 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
 

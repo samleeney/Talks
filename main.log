@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.7)  25 SEP 2024 06:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.7)  26 SEP 2024 07:38
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -889,37 +889,27 @@ Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 Package beamerthememetropolis Warning: You need to compile with XeLaTeX or LuaL
 aTeX to use the Fira fonts on input line 95.
 
-)) (./main.aux
-
-LaTeX Warning: Label `eq:errordicke' multiply defined.
-
-
-LaTeX Warning: Label `eq:errordicke' multiply defined.
-
-
-LaTeX Warning: Label `fig:image1' multiply defined.
-
-)
+)) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -929,12 +919,12 @@ LaTeX Font Info:    ... okay on input line 25.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: includehead includefoot 
-* h-part:(L,W,R)=(28.45274pt, 307.28987pt, 28.45274pt)
-* v-part:(T,H,B)=(0.0pt, 273.14662pt, 0.0pt)
-* \paperwidth=364.19536pt
-* \paperheight=273.14662pt
-* \textwidth=307.28987pt
-* \textheight=244.6939pt
+* h-part:(L,W,R)=(28.45274pt, 398.3386pt, 28.45274pt)
+* v-part:(T,H,B)=(0.0pt, 256.0748pt, 0.0pt)
+* \paperwidth=455.24408pt
+* \paperheight=256.0748pt
+* \textwidth=398.3386pt
+* \textheight=227.62207pt
 * \oddsidemargin=-43.81725pt
 * \evensidemargin=-43.81725pt
 * \topmargin=-72.26999pt
@@ -977,64 +967,64 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 25.
+Package hyperref Info: Link coloring OFF on input line 26.
  (./main.out)
 (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 25.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 26.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 25.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 26.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 25.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 25.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 25.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 25.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 26.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 25.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 25.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 25.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 26.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 25.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 25.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 25.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 26.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 25.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 25.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 26.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 25.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 26.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 25.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 25.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 25.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 25.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 25.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 25.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 25.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 26.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 26.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 2
-5.
+6.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 2
-5.
+6.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 25.
+ut line 26.
 
 (/usr/share/texmf-dist/tex/latex/translator/translator-basic-dictionary-English
 .dict
@@ -1063,13 +1053,13 @@ Dictionary: translator-theorem-dictionary, Language: English
 <affiliations.png, id=15, 758.835pt x 94.10156pt>
 File: affiliations.png Graphic file (type png)
 <use affiliations.png>
-Package pdftex.def Info: affiliations.png  used on input line 51.
-(pdftex.def)             Requested size: 276.559pt x 34.29579pt.
+Package pdftex.def Info: affiliations.png  used on input line 52.
+(pdftex.def)             Requested size: 358.50229pt x 44.45747pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./affiliations.png>]
 Package svg Info: Last page of `./svg-inkscape/whatiscal_svg-tex.pdf' is 1 on i
-nput line 59.
+nput line 60.
  (./svg-inkscape/whatiscal_svg-tex.pdf_tex
 <./svg-inkscape/whatiscal_svg-tex.pdf, id=33, page=1, 547.80484pt x 457.35635pt
 >
@@ -1077,12 +1067,12 @@ File: ./svg-inkscape/whatiscal_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/whatiscal_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/whatiscal_svg-tex.pdf , page1 used on i
 nput line 56.
-(pdftex.def)             Requested size: 245.83282pt x 205.24318pt.
+(pdftex.def)             Requested size: 239.00558pt x 199.54158pt.
 ) [2
 
  <./svg-inkscape/whatiscal_svg-tex.pdf>]
 Package svg Info: Last page of `./svg-inkscape/howtocal_svg-tex.pdf' is 2 on in
-put line 68.
+put line 69.
  (./svg-inkscape/howtocal_svg-tex.pdf_tex
 <./svg-inkscape/howtocal_svg-tex.pdf, id=60, page=1, 669.33069pt x 513.12569pt>
 
@@ -1090,7 +1080,7 @@ File: ./svg-inkscape/howtocal_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/howtocal_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/howtocal_svg-tex.pdf , page1 used on in
 put line 56.
-(pdftex.def)             Requested size: 276.559pt x 212.01929pt.
+(pdftex.def)             Requested size: 258.91765pt x 198.49747pt.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
 
 
@@ -1116,9 +1106,9 @@ File: ./svg-inkscape/howtocal_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/howtocal_svg-tex.pdf, page 2>
 Package pdftex.def Info: ./svg-inkscape/howtocal_svg-tex.pdf , page2 used on in
 put line 58.
-(pdftex.def)             Requested size: 276.559pt x 212.01929pt.
+(pdftex.def)             Requested size: 258.91765pt x 198.49747pt.
 )
-Overfull \vbox (13.60658pt too high) detected at line 68
+Overfull \vbox (17.15398pt too high) detected at line 69
  []
 
 [3
@@ -1131,13 +1121,13 @@ ion: multiple pdfs with page group included in a single page
 <antenna.png, id=88, 567.62062pt x 319.1925pt>
 File: antenna.png Graphic file (type png)
 <use antenna.png>
-Package pdftex.def Info: antenna.png  used on input line 99.
-(pdftex.def)             Requested size: 245.83282pt x 138.2388pt.
+Package pdftex.def Info: antenna.png  used on input line 100.
+(pdftex.def)             Requested size: 239.00558pt x 134.40086pt.
  [4
 
  <./antenna.png>]
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-130.
+131.
  (/usr/share/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1145,7 +1135,7 @@ File: ts1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 
-Package hyperref Warning: Ignoring empty anchor on input line 168.
+Package hyperref Warning: Ignoring empty anchor on input line 169.
 
 [6
 
@@ -1154,90 +1144,99 @@ Package hyperref Warning: Ignoring empty anchor on input line 168.
 ] [8
 
 ]
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 250.
-
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 250.
+Underfull \hbox (badness 10000) detected at line 265
+ []$[]  \OT1/cmss/m/n/6 (^^A\OT1/mathkerncmss/m/sl/6 T[]\OT1/cmss/m/n/6 )[] = [
+][] + [][] + [][] + [][] + [][] \OML/cmm/m/it/6 :$ []  
+ []
 
 [9
 
 ]
 
-./main.tex:272: Package amsmath Error: \tag not allowed here.
-
-See the amsmath package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.272 \end{frame}
-                 
-\tag cannot be used at this point. If you don't understand why
-you should consult the documentation.
-But don't worry: just continue, and I'll forget what happened. 
-
-
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 272.
+(Font)              using `OT1/cmss/bx/n' instead on input line 286.
 
 [10
 
 ]
-<main_scatter_plots.png, id=163, 1300.86pt x 722.7pt>
+<main_scatter_plots.png, id=161, 1300.86pt x 722.7pt>
 File: main_scatter_plots.png Graphic file (type png)
 <use main_scatter_plots.png>
-Package pdftex.def Info: main_scatter_plots.png  used on input line 281.
-(pdftex.def)             Requested size: 307.28987pt x 170.71672pt.
+Package pdftex.def Info: main_scatter_plots.png  used on input line 303.
+(pdftex.def)             Requested size: 318.67209pt x 177.03548pt.
  [11
 
  <./main_scatter_plots.png>]
-<combined_histograms.png, id=174, 1445.4pt x 1084.05pt>
+<combined_histograms.png, id=172, 1445.4pt x 1084.05pt>
 File: combined_histograms.png Graphic file (type png)
 <use combined_histograms.png>
-Package pdftex.def Info: combined_histograms.png  used on input line 291.
-(pdftex.def)             Requested size: 307.28987pt x 230.46922pt.
+Package pdftex.def Info: combined_histograms.png  used on input line 312.
+(pdftex.def)             Requested size: 318.67209pt x 239.00452pt.
 
-pdfTeX warning (ext4): destination with the same identifier (name{fig:image1}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.291 \end{frame}
-                 
-Overfull \vbox (11.24026pt too high) detected at line 291
+Overfull \vbox (5.26302pt too high) detected at line 312
  []
 
 [12
 
  <./combined_histograms.png>]
 
-Package hyperref Warning: Ignoring empty anchor on input line 320.
+Package hyperref Warning: Ignoring empty anchor on input line 341.
 
 [13
 
 ]
+Package svg Info: Last page of `./svg-inkscape/mlcal_svg-tex.pdf' is 2 on input
+ line 361.
+ (./svg-inkscape/mlcal_svg-tex.pdf_tex
+<./svg-inkscape/mlcal_svg-tex.pdf, id=194, page=1, 626.59418pt x 374.79587pt>
+File: ./svg-inkscape/mlcal_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/mlcal_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/mlcal_svg-tex.pdf , page1 used on input
+ line 56.
+(pdftex.def)             Requested size: 233.02429pt x 139.38144pt.
+<./svg-inkscape/mlcal_svg-tex.pdf, id=195, page=2, 626.59418pt x 374.79587pt>
+File: ./svg-inkscape/mlcal_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/mlcal_svg-tex.pdf, page 2>
+Package pdftex.def Info: ./svg-inkscape/mlcal_svg-tex.pdf , page2 used on input
+ line 59.
+(pdftex.def)             Requested size: 233.02429pt x 139.38144pt.
+) [14
+
+ <./svg-inkscape/mlcal_svg-tex.pdf> <./svg-inkscape/mlcal_svg-tex.pdf
+
+pdfTeX warning: pdflatex (file ./svg-inkscape/mlcal_svg-tex.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 404.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 404.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 404.
+
+ [15
+
+]
 Package svg Info: Last page of `./svg-inkscape/instrument_svg-tex.pdf' is 2 on 
-input line 328.
+input line 425.
  (./svg-inkscape/instrument_svg-tex.pdf_tex
-<./svg-inkscape/instrument_svg-tex.pdf, id=195, page=1, 635.37375pt x 370.38374
+<./svg-inkscape/instrument_svg-tex.pdf, id=231, page=1, 635.37375pt x 370.38374
 pt>
 File: ./svg-inkscape/instrument_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/instrument_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/instrument_svg-tex.pdf , page1 used on 
 input line 56.
-(pdftex.def)             Requested size: 322.65529pt x 188.09633pt.
-<./svg-inkscape/instrument_svg-tex.pdf, id=196, page=2, 635.37375pt x 370.38374
+(pdftex.def)             Requested size: 278.83578pt x 162.55112pt.
+<./svg-inkscape/instrument_svg-tex.pdf, id=232, page=2, 635.37375pt x 370.38374
 pt>
 File: ./svg-inkscape/instrument_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/instrument_svg-tex.pdf, page 2>
 Package pdftex.def Info: ./svg-inkscape/instrument_svg-tex.pdf , page2 used on 
 input line 58.
-(pdftex.def)             Requested size: 322.65529pt x 188.09633pt.
-)
-Overfull \hbox (15.36542pt too wide) in paragraph at lines 328--328
- [] 
- []
-
-[14
+(pdftex.def)             Requested size: 278.83578pt x 162.55112pt.
+) [16
 
  <./svg-inkscape/instrument_svg-tex.pdf> <./svg-inkscape/instrument_svg-tex.pdf
 
@@ -1246,21 +1245,21 @@ pdfTeX warning: pdflatex (file ./svg-inkscape/instrument_svg-tex.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
 >]
 Package svg Info: Last page of `./svg-inkscape/nn_svg-tex.pdf' is 2 on input li
-ne 336.
+ne 447.
  (./svg-inkscape/nn_svg-tex.pdf_tex
-<./svg-inkscape/nn_svg-tex.pdf, id=218, page=1, 886.0056pt x 688.42859pt>
+<./svg-inkscape/nn_svg-tex.pdf, id=254, page=1, 886.0056pt x 688.42859pt>
 File: ./svg-inkscape/nn_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/nn_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/nn_svg-tex.pdf , page1 used on input li
 ne 56.
-(pdftex.def)             Requested size: 276.559pt x 214.88129pt.
-<./svg-inkscape/nn_svg-tex.pdf, id=219, page=2, 886.0056pt x 688.42859pt>
+(pdftex.def)             Requested size: 258.91765pt x 201.17284pt.
+<./svg-inkscape/nn_svg-tex.pdf, id=255, page=2, 886.0056pt x 688.42859pt>
 File: ./svg-inkscape/nn_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/nn_svg-tex.pdf, page 2>
 Package pdftex.def Info: ./svg-inkscape/nn_svg-tex.pdf , page2 used on input li
 ne 58.
-(pdftex.def)             Requested size: 276.559pt x 214.88129pt.
-) [15
+(pdftex.def)             Requested size: 258.91765pt x 201.17284pt.
+) [17
 
  <./svg-inkscape/nn_svg-tex.pdf> <./svg-inkscape/nn_svg-tex.pdf
 
@@ -1268,41 +1267,38 @@ pdfTeX warning: pdflatex (file ./svg-inkscape/nn_svg-tex.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >]
 Package svg Info: Last page of `./svg-inkscape/results_svg-tex.pdf' is 1 on inp
-ut line 349.
+ut line 454.
  (./svg-inkscape/results_svg-tex.pdf_tex
-<./svg-inkscape/results_svg-tex.pdf, id=231, page=1, 1806.75pt x 1043.83444pt>
+<./svg-inkscape/results_svg-tex.pdf, id=267, page=1, 1806.75pt x 1043.83444pt>
 File: ./svg-inkscape/results_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/results_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/results_svg-tex.pdf , page1 used on inp
 ut line 56.
-(pdftex.def)             Requested size: 307.28987pt x 177.52914pt.
+(pdftex.def)             Requested size: 418.25673pt x 241.63777pt.
 )
-Package svg Info: Last page of `./svg-inkscape/nn_svg-tex.pdf' is 2 on input li
-ne 349.
- (./svg-inkscape/nn_svg-tex.pdf_tex
-File: ./svg-inkscape/nn_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/nn_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/nn_svg-tex.pdf , page1 used on input li
-ne 56.
-(pdftex.def)             Requested size: 92.1879pt x 71.62009pt.
-File: ./svg-inkscape/nn_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/nn_svg-tex.pdf, page 2>
-Package pdftex.def Info: ./svg-inkscape/nn_svg-tex.pdf , page2 used on input li
-ne 58.
-(pdftex.def)             Requested size: 92.1879pt x 71.62009pt.
-)
-Overfull \vbox (45.31122pt too high) detected at line 349
+Overfull \hbox (19.91814pt too wide) in paragraph at lines 454--454
+ [] 
  []
 
-[16
 
- <./svg-inkscape/results_svg-tex.pdf>]
-<qr.png, id=251, 3011.25pt x 3831.31375pt>
+Overfull \vbox (56.0276pt too high) detected at line 454
+ []
+
+[18
+
+ <./svg-inkscape/results_svg-tex.pdf>] [19
+
+]
+<qr.png, id=292, 3011.25pt x 3831.31375pt>
 File: qr.png Graphic file (type png)
 <use qr.png>
-Package pdftex.def Info: qr.png  used on input line 356.
-(pdftex.def)             Requested size: 169.01036pt x 215.01979pt.
- [17
+Package pdftex.def Info: qr.png  used on input line 473.
+(pdftex.def)             Requested size: 179.25114pt x 228.05661pt.
+
+Overfull \vbox (26.79918pt too high) detected at line 473
+ []
+
+[20
 
  <./qr.png>]
 \tf@nav=\write6
@@ -1323,40 +1319,42 @@ L3 programming layer <2024-02-20>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27274 strings out of 476076
- 548041 string characters out of 5793776
- 1942187 words of memory out of 5000000
- 48750 multiletter control sequences out of 15000+600000
- 570560 words of font info for 79 fonts, out of 8000000 for 9000
+ 27299 strings out of 476076
+ 548336 string characters out of 5793776
+ 1954187 words of memory out of 5000000
+ 48755 multiletter control sequences out of 15000+600000
+ 577452 words of font info for 98 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 128i,16n,123p,1871b,994s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,19n,123p,1871b,994s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
-r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmss17.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.p
-fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmssi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texm
-f-dist/fonts/type1/public/cm-super/sfss1095.pfb>
-Output written on main.pdf (17 pages, 50256720 bytes).
+/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.p
+fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/
+share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.
+pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/shar
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmssi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb>
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9
+.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/shar
+e/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb>
+Output written on main.pdf (20 pages, 50328439 bytes).
 PDF statistics:
- 354 PDF objects out of 1000 (max. 8388607)
- 227 compressed objects within 3 object streams
- 38 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 422 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 148 words of extra memory for PDF output out of 10000 (max. 10000000)
 

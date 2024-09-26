@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.7)  26 SEP 2024 07:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.7)  26 SEP 2024 07:41
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1351,7 +1351,7 @@ type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9
 .pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/shar
 e/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb>
-Output written on main.pdf (20 pages, 50328439 bytes).
+Output written on main.pdf (20 pages, 50328619 bytes).
 PDF statistics:
  422 PDF objects out of 1000 (max. 8388607)
  272 compressed objects within 3 object streams

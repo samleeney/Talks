@@ -5,6 +5,7 @@
 \usepackage{svg}
 \usepackage{graphicx}
 \usetheme{metropolis}
+\usepackage{tcolorbox}
 
 % Define the footer globally in the theme configuration
 \setbeamertemplate{footline}{
@@ -25,30 +26,32 @@
 
 \begin{document}
 
+% Can you reformat and stylize this title frame
 \begin{frame}
 	\begin{center}
 		% Title
-		{\LARGE Calibration with Machine Learning for REACH\par}
+		{\Huge New Data Analysis Methods for Radiometer Calibration\par}
 		\vspace{0.5cm}
+
 
 		% First Author
 		{\large Samuel Alan Kossoff Leeney\par}
+
+		{\small 1st Year PhD Candidate\par}
 		\vspace{0.5cm}
 
-		% Institute
-		{\normalsize Reach Annual Meeting 2024\par}
-
-		% Date
-		{\normalsize 26 September \par}
-		\vspace{1cm}
 
 		% Co-authors
-		{\footnotesize Co Authors: Harry Bevins, Will Handley, Eloy de Lera Acedo, Christian Kirkhan, Jiacong Zhu, Kaan Artuc, Daniel Molnar\par}
+		{\footnotesize With: Harry Bevins, Eloy de Lera Acedo, Will Handley, Christian Kirkhan, Kaan Artuc, Jiacong Zhu \par}
+
 		\vfill
 
 		% Image at the bottom
-		\includegraphics[width=0.9\textwidth]{affiliations.png}
+		\includesvg[width=1\textwidth]{affiliations.svg}
+
+
 	\end{center}
+	\vfill
 \end{frame}
 
 \begin{frame}{\small{What is calibration?}}
@@ -115,14 +118,22 @@
 		\textbf{Link Output Power to Input Temperature:}
 	\end{flushleft}
 
-	% Apply \tiny to the entire equation by wrapping it in a group
-	{
-	\begin{equation}
-		P_{\text{out}}^{\text{src}} = g M \left( T_{\text{in}}^{\text{src}} + T_{\text{rec}} \right)
-	\end{equation}
-	}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			{
+				\begin{equation}
+					P_{\text{out}}^{\text{src}} = g M \times \left( T_{\text{in}}^{\text{src}} + T_{\text{rec}} \right)
+				\end{equation}
+			}
 
-	\vfill % Pushes the following content to the bottom
+		\end{column}
+		\begin{column}{0.3\textwidth}
+
+			\small $M = \left( 1 - |\Gamma_{\text{cal}}|^2 \right) | \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{cal}} \Gamma_{\text{rec}}}|^2$
+		\end{column}
+	\end{columns}
+
+	\vfill
 
 	\begin{footnotesize}
 		\textit{Note: All parameters above are frequency-dependent, but the notation has been simplified here and thereafter for convenience.}
@@ -133,40 +144,68 @@
 \begin{frame}{\small{Dealing with reflections...}}
 
 	% Output Power Equation without title, maintaining the same equation number (1)
-	{\tiny
-		\begin{equation}
-			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{rec}}} \right)
-		\end{equation}
-	}
+	\begin{minipage}{0.75\textwidth}
+		{\tiny
+			\begin{equation}
+				P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{rec}}} \right)
+			\end{equation}
+		}
+	\end{minipage}
 
 	\vspace{0.3cm}
 	\hrule  % Horizontal line for separation
 	\vspace{0.3cm}
 
 	% Noise Parameter Equation with smaller, uniform title
-	\textbf{\small{Noise Parameter Equation:}}
-	{\tiny
-		\begin{equation}
-			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{min}}} + T_0 \frac{4\textcolor{red}{R_N}}{Z_0} \frac{|\Gamma_{\text{src}} - \textcolor{red}{\Gamma_{\text{opt}}}|^2}{(1 - |\Gamma_{\text{src}}|^2)(1 + |\Gamma_{\text{opt}}|^2)} \right)
-		\end{equation}
-	}
+	\begin{minipage}{0.75\textwidth}
+		\textbf{\small{Noise Parameter Equation:}}
+		{\tiny
+			\begin{equation}
+				P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{min}}} + T_0 \frac{4\textcolor{red}{R_N}}{Z_0} \frac{|\Gamma_{\text{src}} - \textcolor{red}{\Gamma_{\text{opt}}}|^2}{(1 - |\Gamma_{\text{src}}|^2)(1 + |\Gamma_{\text{opt}}|^2)} \right)
+			\end{equation}
+		}
+	\end{minipage}
+	\quad
+	\begin{minipage}{0.2\textwidth}
+		\tiny
+		\begin{itemize}
+			\item \( g \) - Gain
+			\item \( T_{\text{min}} \) - Minimum Noise Temperature
+			\item \( R_N \) - Noise Resistance
+			\item \( \Gamma_{\text{opt}} \) - Optimum Reflection Coefficient
+		\end{itemize}
+	\end{minipage}
 
-	\vspace{0.3cm}
+	\vspace{0.1cm}
 	\hrule  % Horizontal line for separation
-	\vspace{0.3cm}
+	\vspace{0.1cm}
 
 	% Noise Wave Equation with smaller, uniform title
-	\textbf{\small{Noise Wave Equation:}}
-
-	{\tiny
-		\begin{multline}\label{}
-			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} \left[ \textcolor{red}{T_0} + \textcolor{red}{T_{\text{unc}}} |\Gamma_{\text{s}}|^2 \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 \right. \\
-				\left. + T_{\text{s}}(1 - |\Gamma_{\text{s}}|^2) \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 + \textcolor{red}{T_{\text{cos}}} \Re \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right. \\
-				\left. + \textcolor{red}{T_{\text{sin}}} \Im \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right]
-		\end{multline}
-	}
+	\begin{minipage}{0.75\textwidth}
+		\textbf{\small{Noise Wave Equation:}}
+		{\tiny
+			\begin{multline}
+				P_{\text{out}}^{\text{src}} = \textcolor{red}{g} \left[ \textcolor{red}{T_0} + \textcolor{red}{T_{\text{unc}}} |\Gamma_{\text{s}}|^2 \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 \right. \\
+					\left. + T_{\text{s}}(1 - |\Gamma_{\text{s}}|^2) \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 + \textcolor{red}{T_{\text{cos}}} \Re \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right. \\
+					\left. + \textcolor{red}{T_{\text{sin}}} \Im \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right]
+			\end{multline}
+		}
+	\end{minipage}
+	\quad
+	\begin{minipage}{0.2\textwidth}
+		\tiny
+		\begin{itemize}
+			\item \( \Gamma_{\text{s}} \) - Source Reflection Coefficient
+			\item \( \Gamma_{\text{rec}} \) - Receiver Reflection Coefficient
+			\item \( T_{\text{s}} \) - Source Temperature
+			\item $P_{\text{out}}^{\text{src}}$ - Power out
+			\item $T_{\text{unc, cos, sin}}$ - Noise wave parameters
+			\item $T_{0}$ reference temperature
+		\end{itemize}
+	\end{minipage}
 
 \end{frame}
+
 
 \begin{frame}{\small{Calibration Equation}}
 
@@ -183,11 +222,11 @@
 		\end{equation}
 	}
 
-	\vspace{0.3cm} % Adds space between equation and next text
+	\vspace{0.1cm} % Adds space between equation and next text
 
 	\textbf{Make some matching assumptions and re arrange:}
 
-	\vspace{0.2cm} % Adds space between text and second equation
+	\vspace{0.1cm} % Adds space between text and second equation
 
 	% Multline Equation with \tiny font and manual tag (5)
 	{\tiny
@@ -295,7 +334,6 @@
 			\begin{figure}[h]
 				\centering
 				\includegraphics[width=1\textwidth]{main_scatter_plots.png}
-				\label{fig:image1}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -304,13 +342,21 @@
 
 
 \begin{frame}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.8\textwidth]{combined_histograms.png}
-		\label{fig:image2}
-	\end{figure}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=\textwidth]{combined_histograms.png}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			Noise amplified by \textbf{30\%} when using
+			\[
+				T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L
+			\]
+		\end{column}
+	\end{columns}
 \end{frame}
-
 \begin{frame}{Why not fit noise (wave) parameters directly?}
 
 	% Noise Parameter Equation with smaller, uniform title
@@ -321,9 +367,9 @@
 		\end{equation}
 	}
 
-	\vspace{0.3cm}
+	\vspace{0.1cm}
 	\hrule  % Horizontal line for separation
-	\vspace{0.3cm}
+	\vspace{0.1cm}
 
 	% Noise Wave Equation with smaller, uniform title
 	\textbf{\small{Noise Wave Equation:}}
@@ -453,36 +499,31 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Testing on real data (REACH receiver)}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.5\textwidth]{nima_best.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Testing on real data (Simple lab system)}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.5\textwidth]{kaan_best.png}
-	\end{figure}
-\end{frame}
-
-
-\begin{frame}{\small{General thoughts on REACH calibration}}
-	\begin{itemize}
-		\item We have tried 5 different 'data analysis' techniques.
-		\item There are advantages and disadvantages but results are not drastically different.
-		\item So what are we limited by?
-		\item The conclusion of Ians thesis is that we are limited by the quality of specific Physical measurments of the system (namely cable measurments and switches).
-		\item I do not think Dicke switching is needed at all - can someone convince me otherwise?
-	\end{itemize}
-
-\end{frame}
+% \begin{frame}{Testing on real data (REACH receiver)}
+% 	\begin{figure}
+% 		\centering
+% 		\includegraphics[width=0.5\textwidth]{nima_best.png}
+% 	\end{figure}
+% \end{frame}
 
 \begin{frame}{\small{Thank you!}}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.45\textwidth]{qr.png}
+		\includegraphics[width=0.4\textwidth]{qr.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{APPENDIX A: Fudge Factors}
+	\begin{figure}[h]
+		\centering
+		\begin{minipage}{0.7\textwidth}
+			\includegraphics[width=\textwidth]{ian_ff.png}
+			\caption{Credit Roque 2020}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.25\textwidth}
+			$T_{L}$ should be spectrally flat, however it has structure because we are including a fudge factor in the fit to account for other uncertain approximations in the derivation.
+		\end{minipage}
 	\end{figure}
 \end{frame}
 

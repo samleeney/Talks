@@ -4,7 +4,7 @@
 
 # Talks:
 - New Data Analysis Methods for Radiometer Calibration
-	- [Global 21cm Conference, Bengaluru, RRI, 2024][(https://sites.google.com/view/global-21-cm-workshop)
+	- [Global 21cm Conference, Bengaluru, RRI, 2024](https://sites.google.com/view/global-21-cm-workshop)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/global21cm_24/main.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/global21cm_24)
 - Machine learning for radiometer calibration in REACH

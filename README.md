@@ -3,6 +3,10 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Bayesian Anomaly Detection for RFI, Radio Transients and Supernovae SALT models
+	- [HandleyLab group meeting, 22 Jan 2025](https://github.com/samleeney/Talks/tree/wh-22jan)
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/wh-22jan/main.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/wh-22jan)
 - New Data Analysis Methods for Radiometer Calibration
 	- [Global 21cm Conference, Bengaluru, RRI, 2024](https://sites.google.com/view/global-21-cm-workshop)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/global21cm_24/main.pdf)

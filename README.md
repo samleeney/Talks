@@ -4,7 +4,7 @@
 
 # Talks:
 - Bayesian Anomaly Detection for RFI, Radio Transients and Supernovae 
-	- [HandleyLab group meeting, 22 Jan 2025](https://github.com/samleeney/Talks/tree/wh-22jan)
+	- [Handley Lab group meeting, 22 Jan 2025](https://github.com/samleeney/Talks/tree/wh-22jan)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/wh-22jan/main.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/wh-22jan)
 - New Data Analysis Methods for Radiometer Calibration

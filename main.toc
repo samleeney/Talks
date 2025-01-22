@@ -1,3 +1,2 @@
-\beamer@sectionintoc {1}{Bayesian statistics}{2}{0}{1}
-\beamer@sectionintoc {2}{Anomaly detection}{7}{0}{2}
-\beamer@sectionintoc {3}{Time sensitive anomaly detection}{16}{0}{3}
+\beamer@sectionintoc {1}{A new use case: supernovae anomaly detection}{29}{0}{1}
+\beamer@sectionintoc {2}{Time sensitive anomaly detection}{33}{0}{2}

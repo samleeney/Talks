@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1737548704.53366 "main.aux" "main.bbl" "main" 1737549965.04814 0
+["bibtex main"] 1737548704.53366 "main.aux" "main.bbl" "main" 1737550517.9011 0
   "./ref.bib" 1737549879.97992 1338 e79e67a61492c450033608b22812fd9f ""
   "/usr/share/texmf-dist/bibtex/bst/base/apalike.bst" 1736268207 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main.aux" 1737549964.86387 7511 40f85f46066876a5fdf9cce347d5ce76 "pdflatex"
+  "main.aux" 1737550517.70875 7511 40f85f46066876a5fdf9cce347d5ce76 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1737549962.06926 "/home/sam/academic/talks/whjan21/Talks/main.tex" "main.pdf" "main" 1737549965.04828 0
-  "/home/sam/academic/talks/whjan21/Talks/main.tex" 1737549961.86062 14222 5548d94d77cfa55789c857fd325e970d ""
+["pdflatex"] 1737550514.92511 "/home/sam/academic/talks/whjan21/Talks/main.tex" "main.pdf" "main" 1737550517.90125 0
+  "/home/sam/academic/talks/whjan21/Talks/main.tex" 1737550514.68546 14228 a6fde1dc37f700b2e8e94b0815ae65d9 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1736268207 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1736268207 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcss0900.tfm" 1736268207 1536 ba0169ee8bc017972775b933313cbbb0 ""
@@ -290,11 +290,11 @@
   "images/test.pdf" 1737549879.94659 15130 58c16c870ecbe6bee9aaa95917900764 ""
   "images/threshold_multiple.png" 1737549879.94992 255018 ecaf7c392139f45cefa54f4893a63fcf ""
   "images/threshold_sin_multiple.png" 1737549879.94992 235896 8167664f81514fd7c62dba641023b6d5 ""
-  "main.aux" 1737549964.86387 7511 40f85f46066876a5fdf9cce347d5ce76 "pdflatex"
+  "main.aux" 1737550517.70875 7511 40f85f46066876a5fdf9cce347d5ce76 "pdflatex"
   "main.bbl" 1737549879.96325 893 1435eeeb159ded4698f8fb40c8d33b81 "bibtex main"
-  "main.nav" 1737549964.8672 4588 b0d3638123b3f2891fe3ae81369a51f2 "pdflatex"
-  "main.out" 1737549964.8672 586 285a29adc54986e47f91fd56b0832450 "pdflatex"
-  "main.tex" 1737549961.86062 14222 5548d94d77cfa55789c857fd325e970d ""
+  "main.nav" 1737550517.71208 4588 b0d3638123b3f2891fe3ae81369a51f2 "pdflatex"
+  "main.out" 1737550517.71208 586 285a29adc54986e47f91fd56b0832450 "pdflatex"
+  "main.tex" 1737550514.68546 14228 a6fde1dc37f700b2e8e94b0815ae65d9 ""
   (generated)
   "main.aux"
   "main.log"

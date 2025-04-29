@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{A new use case: supernovae anomaly detection}{29}{0}{1}
-\beamer@sectionintoc {2}{Time sensitive anomaly detection}{33}{0}{2}

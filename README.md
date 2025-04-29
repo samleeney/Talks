@@ -3,6 +3,10 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Bayesian Anomaly Detection for Ia supernovae using JAX-bandflux
+	- [Cambridge SN group, 29 April, 2025](https://github.com/samleeney/Talks/tree/wh-22jan)
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cam-sn-group-2025/jax_bandflux_talk.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/cam-sn-group-2025)
 - Bayesian Anomaly Detection for RFI, Radio Transients and Supernovae 
 	- [Handley Lab group meeting, 22 Jan 2025](https://github.com/samleeney/Talks/tree/wh-22jan)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/wh-22jan/main.pdf)

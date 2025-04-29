@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .gpu-container {
+            width: 600px;
+            border: 3px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .operation-group {
+            margin-bottom: 20px;
+        }
+        .group-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #cc6600;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .operations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .operation {
+            background-color: #fff2e6;
+            border: 1px solid #ffcc99;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .symbol {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .vector {
+            background-color: #e6f7ff;
+            border-color: #99d6ff;
+        }
+        .branching {
+            background-color: #ffe6e6;
+            border-color: #ff9999;
+            position: relative;
+        }
+        .memory {
+            background-color: #e6ffe6;
+            border-color: #99ff99;
+        }
+        .penalty {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff3333;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .simt-constraint {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #fffbeb;
+            border: 2px dashed #ffd700;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .simt-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #cc6600;
+        }
+        .thread-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .thread {
+            background-color: #ffcc99;
+            border-radius: 3px;
+            padding: 5px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .same-instruction {
+            background-color: #ffaa66;
+        }
+    </style>
+</head>
+<body>
+    <div class="gpu-container">
+        <div class="title">GPU Operations</div>
+        
+        <div class="operation-group">
+            <div class="group-title">Basic Arithmetic</div>
+            <div class="operations">
+                <div class="operation"><span class="symbol">+</span>ADD</div>
+                <div class="operation"><span class="symbol">−</span>SUBTRACT</div>
+                <div class="operation"><span class="symbol">×</span>MULTIPLY</div>
+                <div class="operation"><span class="symbol">÷</span>DIVIDE</div>
+            </div>
+        </div>
+        
+        <div class="operation-group">
+            <div class="group-title">Vector/Matrix Operations</div>
+            <div class="operations">
+                <div class="operation vector"><span class="symbol">⊕</span>VECTOR ADD</div>
+                <div class="operation vector"><span class="symbol">⊗</span>VECTOR MULTIPLY</div>
+                <div class="operation vector"><span class="symbol">⋅</span>DOT PRODUCT</div>
+                <div class="operation vector"><span class="symbol">⨯</span>CROSS PRODUCT</div>
+            </div>
+        </div>
+        
+        <div class="operation-group">
+            <div class="group-title">Simple Branching</div>
+            <div class="operations">
+                <div class="operation branching">
+                    <span class="symbol">?</span>IF/ELSE
+                    <span class="penalty">!</span>
+                </div>
+                <div class="operation branching">
+                    <span class="symbol">↺</span>LOOP
+                    <span class="penalty">!</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="operation-group">
+            <div class="group-title">Limited Memory Operations</div>
+            <div class="operations">
+                <div class="operation memory"><span class="symbol">↓</span>LOAD</div>
+                <div class="operation memory"><span class="symbol">↑</span>STORE</div>
+                <div class="operation memory"><span class="symbol">⇄</span>SHARED MEMORY</div>
+            </div>
+        </div>
+        
+        <div class="simt-constraint">
+            <div class="simt-title">SIMT Constraint: Single Instruction, Multiple Thread</div>
+            <div>All threads in a warp must execute the same instruction at the same time</div>
+            <div class="thread-grid">
+                <div class="thread same-instruction">Thread 1<br>ADD</div>
+                <div class="thread same-instruction">Thread 2<br>ADD</div>
+                <div class="thread same-instruction">Thread 3<br>ADD</div>
+                <div class="thread same-instruction">Thread 4<br>ADD</div>
+                <div class="thread same-instruction">Thread 5<br>ADD</div>
+                <div class="thread same-instruction">Thread 6<br>ADD</div>
+                <div class="thread same-instruction">Thread 7<br>ADD</div>
+                <div class="thread same-instruction">Thread 8<br>ADD</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

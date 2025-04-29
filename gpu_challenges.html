@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Programming Challenges</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 800px;
+            border: 3px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .challenge-group {
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        .group-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #cc6600;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .challenges {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .challenge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .challenge-icon {
+            min-width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 50%;
+        }
+        .challenge-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .hardware-limitation {
+            background-color: #ff9966;
+        }
+        .algorithm-redesign {
+            background-color: #66aaff;
+        }
+        .codebase-rewrite {
+            background-color: #99cc66;
+        }
+        .debugging {
+            background-color: #cc66cc;
+        }
+        .comparison {
+            display: flex;
+            margin-top: 15px;
+            gap: 20px;
+        }
+        .code-block {
+            flex: 1;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .code-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .sequential {
+            background-color: #ffe6e6;
+        }
+        .parallel {
+            background-color: #e6ffe6;
+        }
+        .comment {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Why GPU Programming is Challenging</div>
+        
+        <div class="challenge-group">
+            <div class="group-title">GPU Hardware Limitations</div>
+            <div class="challenges">
+                <div class="challenge">
+                    <div class="challenge-icon hardware-limitation">!</div>
+                    <div class="challenge-text">Limited or no control flow (if/else, loops) - branching causes thread divergence and performance penalties</div>
+                </div>
+                <div class="challenge">
+                    <div class="challenge-icon hardware-limitation">!</div>
+                    <div class="challenge-text">Vector lengths must be pre-defined - dynamic memory allocation is limited</div>
+                </div>
+                <div class="challenge">
+                    <div class="challenge-icon hardware-limitation">!</div>
+                    <div class="challenge-text">Poor performance for sequential operations - GPUs are optimized for parallel workloads</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="challenge-group">
+            <div class="group-title">Algorithm Redesign Requirements</div>
+            <div class="challenges">
+                <div class="challenge">
+                    <div class="challenge-icon algorithm-redesign">↺</div>
+                    <div class="challenge-text">Vectorization instead of loops - operations must be expressed as vector/matrix operations</div>
+                </div>
+                <div class="challenge">
+                    <div class="challenge-icon algorithm-redesign">↺</div>
+                    <div class="challenge-text">Batch processing instead of sequential processing - data must be processed in parallel chunks</div>
+                </div>
+                <div class="comparison">
+                    <div class="code-block sequential">
+                        <div class="code-title">Sequential (CPU)</div>
+                        <pre>
+for i in range(len(data)):
+    result[i] = process(data[i])
+                        </pre>
+                    </div>
+                    <div class="code-block parallel">
+                        <div class="code-title">Parallel (GPU)</div>
+                        <pre>
+# All elements processed simultaneously
+result = process_vectorized(data)
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="challenge-group">
+            <div class="group-title">Scientific Codebase Challenges</div>
+            <div class="challenges">
+                <div class="challenge">
+                    <div class="challenge-icon codebase-rewrite">⚙</div>
+                    <div class="challenge-text">Legacy code often not designed with parallelism in mind - sequential assumptions throughout</div>
+                </div>
+                <div class="challenge">
+                    <div class="challenge-icon codebase-rewrite">⚙</div>
+                    <div class="challenge-text">Significant development effort required - complete rewrites rather than simple adaptations</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="challenge-group">
+            <div class="group-title">Debugging Difficulties</div>
+            <div class="challenges">
+                <div class="challenge">
+                    <div class="challenge-icon debugging">🔍</div>
+                    <div class="challenge-text">Limited visibility into GPU execution - harder to inspect intermediate states</div>
+                </div>
+                <div class="challenge">
+                    <div class="challenge-icon debugging">🔍</div>
+                    <div class="challenge-text">Race conditions and synchronization issues - parallel execution introduces new classes of bugs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

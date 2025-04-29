@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1745922366.00815 "/home/sam/academic/sn-group-talk-2025/jax_bandflux_talk.tex" "jax_bandflux_talk.pdf" "jax_bandflux_talk" 1745922375.17339 0
-  "/home/sam/academic/sn-group-talk-2025/jax_bandflux_talk.tex" 1745922365.81166 16091 692c3d9df526eb3e34f748c71b841ae7 ""
+["pdflatex"] 1745922795.55517 "/home/sam/academic/sn-group-talk-2025/jax_bandflux_talk.tex" "jax_bandflux_talk.pdf" "jax_bandflux_talk" 1745922804.52765 0
+  "/home/sam/academic/sn-group-talk-2025/jax_bandflux_talk.tex" 1745922795.28759 16605 23581ff8c79bc1749d40ab8234e48e78 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1741938398 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741938398 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcss0900.tfm" 1741938398 1536 ba0169ee8bc017972775b933313cbbb0 ""
@@ -288,12 +288,12 @@
   "images/test.pdf" 1745921711.99502 15130 58c16c870ecbe6bee9aaa95917900764 ""
   "images/threshold_multiple.png" 1745921711.99601 255018 ecaf7c392139f45cefa54f4893a63fcf ""
   "images/threshold_sin_multiple.png" 1745921711.99701 235896 8167664f81514fd7c62dba641023b6d5 ""
-  "jax_bandflux_talk.aux" 1745922375.09061 7818 4dc0e432e597e99c09501f2c09e1047e "pdflatex"
-  "jax_bandflux_talk.nav" 1745922375.09272 5072 017250343f2b2e406c876d3962b187a0 "pdflatex"
-  "jax_bandflux_talk.out" 1745922375.09193 490 f33cf89f328fbdcd23696d54aa3d0fdd "pdflatex"
-  "jax_bandflux_talk.tex" 1745922365.81166 16091 692c3d9df526eb3e34f748c71b841ae7 ""
-  "jax_bandflux_talk.toc" 1745922375.09272 178 84741c771b2395924394fd0740f2e4b5 "pdflatex"
-  "jax_bandflux_talk.vrb" 1745922366.86065 460 34268b97f662399d6c34f28af69f261b "pdflatex"
+  "jax_bandflux_talk.aux" 1745922804.43639 7818 4dc0e432e597e99c09501f2c09e1047e "pdflatex"
+  "jax_bandflux_talk.nav" 1745922804.43817 5072 017250343f2b2e406c876d3962b187a0 "pdflatex"
+  "jax_bandflux_talk.out" 1745922804.43639 490 f33cf89f328fbdcd23696d54aa3d0fdd "pdflatex"
+  "jax_bandflux_talk.tex" 1745922795.28759 16605 23581ff8c79bc1749d40ab8234e48e78 ""
+  "jax_bandflux_talk.toc" 1745922804.43817 178 84741c771b2395924394fd0740f2e4b5 "pdflatex"
+  "jax_bandflux_talk.vrb" 1745922796.34695 460 34268b97f662399d6c34f28af69f261b "pdflatex"
   (generated)
   "jax_bandflux_talk.aux"
   "jax_bandflux_talk.log"

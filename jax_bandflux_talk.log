@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Arch Linux) (preloaded format=pdflatex 2025.3.21)  29 APR 2025 11:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Arch Linux) (preloaded format=pdflatex 2025.3.21)  29 APR 2025 11:33
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -687,24 +687,24 @@ LaTeX Info: Redefining \cite on input line 694.
 ) (./jax_bandflux_talk.aux)
 \openout1 = `jax_bandflux_talk.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -759,60 +759,60 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 16.
+Package hyperref Info: Link coloring OFF on input line 32.
  (./jax_bandflux_talk.out) (./jax_bandflux_talk.out)
 \@outlinefile=\write5
 \openout5 = `jax_bandflux_talk.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 16.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 32.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 16.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 32.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 16.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 16.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 16.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 16.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 32.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 16.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 16.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 16.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 32.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 16.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 16.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 16.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 32.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 16.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 16.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 32.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 16.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 32.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 16.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 16.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 16.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 16.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 16.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 32.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 16.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 16.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 32.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 32.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 16.
+(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 32.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 16.
+(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 32.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 16.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 32.
  (/usr/share/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/share/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -826,7 +826,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 ) (/usr/share/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./jax_bandflux_talk.nav)
-Overfull \vbox (44.55656pt too high) detected at line 20
+Overfull \vbox (29.97322pt too high) detected at line 36
  []
 
 
@@ -838,15 +838,15 @@ Overfull \vbox (44.55656pt too high) detected at line 20
 [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 26.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 42.
  (/usr/share/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -854,23 +854,23 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 [3
 
 ]
-<images/jax_logo_250px.png, id=56, 60.225pt x 34.9305pt>
+<images/jax_logo_250px.png, id=63, 60.225pt x 34.9305pt>
 File: images/jax_logo_250px.png Graphic file (type png)
 <use images/jax_logo_250px.png>
-Package pdftex.def Info: images/jax_logo_250px.png  used on input line 47.
+Package pdftex.def Info: images/jax_logo_250px.png  used on input line 63.
 (pdftex.def)             Requested size: 143.39871pt x 83.17929pt.
 
 
 [4
 
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./images/jax_logo_250px.png>]
-<images/cpuvgpu.png, id=67, 602.08723pt x 365.7448pt>
+<images/cpuvgpu.png, id=76, 602.08723pt x 365.7448pt>
 File: images/cpuvgpu.png Graphic file (type png)
 <use images/cpuvgpu.png>
-Package pdftex.def Info: images/cpuvgpu.png  used on input line 75.
+Package pdftex.def Info: images/cpuvgpu.png  used on input line 91.
 (pdftex.def)             Requested size: 159.333pt x 96.78796pt.
 
-Overfull \vbox (28.45773pt too high) detected at line 75
+Overfull \vbox (13.87439pt too high) detected at line 91
  []
 
 
@@ -897,24 +897,24 @@ Overfull \vbox (28.45773pt too high) detected at line 75
 [9
 
 ]
-<images/sncosmobanner.png, id=100, 410.53375pt x 96.36pt>
+<images/sncosmobanner.png, id=120, 410.53375pt x 96.36pt>
 File: images/sncosmobanner.png Graphic file (type png)
 <use images/sncosmobanner.png>
-Package pdftex.def Info: images/sncosmobanner.png  used on input line 136.
+Package pdftex.def Info: images/sncosmobanner.png  used on input line 152.
 (pdftex.def)             Requested size: 242.43832pt x 56.9055pt.
 
-Overfull \hbox (43.26903pt too wide) in paragraph at lines 136--136
+Overfull \hbox (43.26903pt too wide) in paragraph at lines 152--152
  [][] 
  []
 
 File: images/jax_logo_250px.png Graphic file (type png)
 <use images/jax_logo_250px.png>
-Package pdftex.def Info: images/jax_logo_250px.png  used on input line 136.
+Package pdftex.def Info: images/jax_logo_250px.png  used on input line 152.
 (pdftex.def)             Requested size: 147.17206pt x 85.35826pt.
-<images/gpu.jpg, id=101, 973.6375pt x 548.0475pt>
+<images/gpu.jpg, id=121, 973.6375pt x 548.0475pt>
 File: images/gpu.jpg Graphic file (type jpg)
 <use images/gpu.jpg>
-Package pdftex.def Info: images/gpu.jpg  used on input line 136.
+Package pdftex.def Info: images/gpu.jpg  used on input line 152.
 (pdftex.def)             Requested size: 151.64021pt x 85.35826pt.
 
 
@@ -925,34 +925,26 @@ Package pdftex.def Info: images/gpu.jpg  used on input line 136.
 [11
 
 ]
-Overfull \vbox (2.8601pt too high) detected at line 183
- []
-
-
 
 [12
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 196.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 212.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 196.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 212.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 196.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 212.
 
 
 [13
 
 ]
-<images/sncosmo-fitter.png, id=134, 722.7pt x 433.62pt>
+<images/sncosmo-fitter.png, id=162, 722.7pt x 433.62pt>
 File: images/sncosmo-fitter.png Graphic file (type png)
 <use images/sncosmo-fitter.png>
-Package pdftex.def Info: images/sncosmo-fitter.png  used on input line 202.
+Package pdftex.def Info: images/sncosmo-fitter.png  used on input line 218.
 (pdftex.def)             Requested size: 318.67209pt x 191.20361pt.
-
-Overfull \vbox (4.52953pt too high) detected at line 202
- []
-
 
 
 [14
@@ -962,20 +954,16 @@ Overfull \vbox (4.52953pt too high) detected at line 202
 [15
 
 ]
-<images/jaxbandflux-pip.png, id=149, 858.95906pt x 213.04594pt>
+<images/jaxbandflux-pip.png, id=182, 858.95906pt x 213.04594pt>
 File: images/jaxbandflux-pip.png Graphic file (type png)
 <use images/jaxbandflux-pip.png>
-Package pdftex.def Info: images/jaxbandflux-pip.png  used on input line 230.
+Package pdftex.def Info: images/jaxbandflux-pip.png  used on input line 246.
 (pdftex.def)             Requested size: 318.67209pt x 79.04031pt.
-<images/jaxbandflux-paper.png, id=150, 439.6425pt x 136.25906pt>
+<images/jaxbandflux-paper.png, id=183, 439.6425pt x 136.25906pt>
 File: images/jaxbandflux-paper.png Graphic file (type png)
 <use images/jaxbandflux-paper.png>
-Package pdftex.def Info: images/jaxbandflux-paper.png  used on input line 230.
+Package pdftex.def Info: images/jaxbandflux-paper.png  used on input line 246.
 (pdftex.def)             Requested size: 318.67209pt x 98.76968pt.
-
-Overfull \vbox (5.61092pt too high) detected at line 230
- []
-
 
 
 [16
@@ -986,30 +974,30 @@ Overfull \vbox (5.61092pt too high) detected at line 230
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 255.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 271.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 255.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 271.
 
 
 [18
 
 ]
-<images/threshold_multiple.png, id=175, 720.291pt x 394.5942pt>
+<images/threshold_multiple.png, id=212, 720.291pt x 394.5942pt>
 File: images/threshold_multiple.png Graphic file (type png)
 <use images/threshold_multiple.png>
-Package pdftex.def Info: images/threshold_multiple.png  used on input line 266.
+Package pdftex.def Info: images/threshold_multiple.png  used on input line 282.
 (pdftex.def)             Requested size: 199.1693pt x 109.1068pt.
-<images/threshold_sin_multiple.png, id=176, 728.7225pt x 394.5942pt>
+<images/threshold_sin_multiple.png, id=213, 728.7225pt x 394.5942pt>
 File: images/threshold_sin_multiple.png Graphic file (type png)
 <use images/threshold_sin_multiple.png>
-Package pdftex.def Info: images/threshold_sin_multiple.png  used on input line 266.
+Package pdftex.def Info: images/threshold_sin_multiple.png  used on input line 282.
 (pdftex.def)             Requested size: 199.1693pt x 107.84239pt.
 
 
 [19
 
  <./images/threshold_multiple.png> <./images/threshold_sin_multiple.png>]
-Overfull \vbox (19.63193pt too high) detected at line 298
+Overfull \vbox (5.04858pt too high) detected at line 314
  []
 
 
@@ -1021,76 +1009,72 @@ Overfull \vbox (19.63193pt too high) detected at line 298
 [21
 
 ]
-<images/test.pdf, id=204, 462.52798pt x 346.89601pt>
+<images/test.pdf, id=247, 462.52798pt x 346.89601pt>
 File: images/test.pdf Graphic file (type pdf)
 <use images/test.pdf>
-Package pdftex.def Info: images/test.pdf  used on input line 321.
+Package pdftex.def Info: images/test.pdf  used on input line 337.
 (pdftex.def)             Requested size: 278.83578pt x 209.13432pt.
-
-Overfull \vbox (14.46024pt too high) detected at line 321
- []
-
 
 
 [22
 
  <./images/test.pdf>]
-<images/gif_anest/comb_1.png, id=251, 909.8793pt x 330.9966pt>
+<images/gif_anest/comb_1.png, id=296, 909.8793pt x 330.9966pt>
 File: images/gif_anest/comb_1.png Graphic file (type png)
 <use images/gif_anest/comb_1.png>
-Package pdftex.def Info: images/gif_anest/comb_1.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_1.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 330.99577pt.
  <./images/gif_anest/comb_1.png> <a0,fr0>
-<images/gif_anest/comb_2.png, id=255, 909.8793pt x 330.9966pt>
+<images/gif_anest/comb_2.png, id=300, 909.8793pt x 330.9966pt>
 File: images/gif_anest/comb_2.png Graphic file (type png)
 <use images/gif_anest/comb_2.png>
-Package pdftex.def Info: images/gif_anest/comb_2.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_2.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 330.99577pt.
  <./images/gif_anest/comb_2.png> <a0,fr1>
-<images/gif_anest/comb_3.png, id=259, 909.8793pt x 330.9966pt>
+<images/gif_anest/comb_3.png, id=304, 909.8793pt x 330.9966pt>
 File: images/gif_anest/comb_3.png Graphic file (type png)
 <use images/gif_anest/comb_3.png>
-Package pdftex.def Info: images/gif_anest/comb_3.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_3.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 330.99577pt.
  <./images/gif_anest/comb_3.png> <a0,fr2>
-<images/gif_anest/comb_4.png, id=263, 909.8793pt x 330.9966pt>
+<images/gif_anest/comb_4.png, id=308, 909.8793pt x 330.9966pt>
 File: images/gif_anest/comb_4.png Graphic file (type png)
 <use images/gif_anest/comb_4.png>
-Package pdftex.def Info: images/gif_anest/comb_4.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_4.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 330.99577pt.
  <./images/gif_anest/comb_4.png> <a0,fr3>
-<images/gif_anest/comb_5.png, id=267, 909.8793pt x 331.7193pt>
+<images/gif_anest/comb_5.png, id=312, 909.8793pt x 331.7193pt>
 File: images/gif_anest/comb_5.png Graphic file (type png)
 <use images/gif_anest/comb_5.png>
-Package pdftex.def Info: images/gif_anest/comb_5.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_5.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./images/gif_anest/comb_5.png> <a0,fr4>
-<images/gif_anest/comb_6.png, id=271, 909.8793pt x 331.7193pt>
+<images/gif_anest/comb_6.png, id=316, 909.8793pt x 331.7193pt>
 File: images/gif_anest/comb_6.png Graphic file (type png)
 <use images/gif_anest/comb_6.png>
-Package pdftex.def Info: images/gif_anest/comb_6.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_6.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./images/gif_anest/comb_6.png> <a0,fr5>
-<images/gif_anest/comb_7.png, id=275, 909.8793pt x 331.7193pt>
+<images/gif_anest/comb_7.png, id=320, 909.8793pt x 331.7193pt>
 File: images/gif_anest/comb_7.png Graphic file (type png)
 <use images/gif_anest/comb_7.png>
-Package pdftex.def Info: images/gif_anest/comb_7.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_7.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./images/gif_anest/comb_7.png> <a0,fr6>
-<images/gif_anest/comb_8.png, id=279, 909.8793pt x 331.7193pt>
+<images/gif_anest/comb_8.png, id=324, 909.8793pt x 331.7193pt>
 File: images/gif_anest/comb_8.png Graphic file (type png)
 <use images/gif_anest/comb_8.png>
-Package pdftex.def Info: images/gif_anest/comb_8.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_8.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./images/gif_anest/comb_8.png> <a0,fr7>
-<images/gif_anest/comb_9.png, id=283, 909.8793pt x 331.7193pt>
+<images/gif_anest/comb_9.png, id=328, 909.8793pt x 331.7193pt>
 File: images/gif_anest/comb_9.png Graphic file (type png)
 <use images/gif_anest/comb_9.png>
-Package pdftex.def Info: images/gif_anest/comb_9.png  used on input line 331.
+Package pdftex.def Info: images/gif_anest/comb_9.png  used on input line 347.
 (pdftex.def)             Requested size: 909.87708pt x 331.71848pt.
  <./images/gif_anest/comb_9.png> <a0,fr8>
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 331.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 347.
 
 
 [23
@@ -1098,7 +1082,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
 ]
 File: images/gif_anest/comb_2.png Graphic file (type png)
 <use images/gif_anest/comb_2.png>
-Package pdftex.def Info: images/gif_anest/comb_2.png  used on input line 336.
+Package pdftex.def Info: images/gif_anest/comb_2.png  used on input line 352.
 (pdftex.def)             Requested size: 398.3386pt x 144.9066pt.
 
 
@@ -1107,7 +1091,7 @@ Package pdftex.def Info: images/gif_anest/comb_2.png  used on input line 336.
 ]
 File: images/gif_anest/comb_3.png Graphic file (type png)
 <use images/gif_anest/comb_3.png>
-Package pdftex.def Info: images/gif_anest/comb_3.png  used on input line 341.
+Package pdftex.def Info: images/gif_anest/comb_3.png  used on input line 357.
 (pdftex.def)             Requested size: 398.3386pt x 144.9066pt.
 
 
@@ -1116,7 +1100,7 @@ Package pdftex.def Info: images/gif_anest/comb_3.png  used on input line 341.
 ]
 File: images/gif_anest/comb_4.png Graphic file (type png)
 <use images/gif_anest/comb_4.png>
-Package pdftex.def Info: images/gif_anest/comb_4.png  used on input line 346.
+Package pdftex.def Info: images/gif_anest/comb_4.png  used on input line 362.
 (pdftex.def)             Requested size: 398.3386pt x 144.9066pt.
 
 
@@ -1125,7 +1109,7 @@ Package pdftex.def Info: images/gif_anest/comb_4.png  used on input line 346.
 ]
 File: images/gif_anest/comb_5.png Graphic file (type png)
 <use images/gif_anest/comb_5.png>
-Package pdftex.def Info: images/gif_anest/comb_5.png  used on input line 351.
+Package pdftex.def Info: images/gif_anest/comb_5.png  used on input line 367.
 (pdftex.def)             Requested size: 398.3386pt x 145.22299pt.
 
 
@@ -1134,7 +1118,7 @@ Package pdftex.def Info: images/gif_anest/comb_5.png  used on input line 351.
 ]
 File: images/gif_anest/comb_6.png Graphic file (type png)
 <use images/gif_anest/comb_6.png>
-Package pdftex.def Info: images/gif_anest/comb_6.png  used on input line 356.
+Package pdftex.def Info: images/gif_anest/comb_6.png  used on input line 372.
 (pdftex.def)             Requested size: 398.3386pt x 145.22299pt.
 
 
@@ -1143,7 +1127,7 @@ Package pdftex.def Info: images/gif_anest/comb_6.png  used on input line 356.
 ]
 File: images/gif_anest/comb_7.png Graphic file (type png)
 <use images/gif_anest/comb_7.png>
-Package pdftex.def Info: images/gif_anest/comb_7.png  used on input line 361.
+Package pdftex.def Info: images/gif_anest/comb_7.png  used on input line 377.
 (pdftex.def)             Requested size: 398.3386pt x 145.22299pt.
 
 
@@ -1152,7 +1136,7 @@ Package pdftex.def Info: images/gif_anest/comb_7.png  used on input line 361.
 ]
 File: images/gif_anest/comb_8.png Graphic file (type png)
 <use images/gif_anest/comb_8.png>
-Package pdftex.def Info: images/gif_anest/comb_8.png  used on input line 366.
+Package pdftex.def Info: images/gif_anest/comb_8.png  used on input line 382.
 (pdftex.def)             Requested size: 398.3386pt x 145.22299pt.
 
 
@@ -1161,17 +1145,17 @@ Package pdftex.def Info: images/gif_anest/comb_8.png  used on input line 366.
 ]
 File: images/gif_anest/comb_9.png Graphic file (type png)
 <use images/gif_anest/comb_9.png>
-Package pdftex.def Info: images/gif_anest/comb_9.png  used on input line 371.
+Package pdftex.def Info: images/gif_anest/comb_9.png  used on input line 387.
 (pdftex.def)             Requested size: 398.3386pt x 145.22299pt.
 
 
 [31
 
 ]
-<images/f_approx_current_sig5_2.pdf, id=362, 226.38791pt x 186.8236pt>
+<images/f_approx_current_sig5_2.pdf, id=425, 226.38791pt x 186.8236pt>
 File: images/f_approx_current_sig5_2.pdf Graphic file (type pdf)
 <use images/f_approx_current_sig5_2.pdf>
-Package pdftex.def Info: images/f_approx_current_sig5_2.pdf  used on input line 384.
+Package pdftex.def Info: images/f_approx_current_sig5_2.pdf  used on input line 400.
 (pdftex.def)             Requested size: 199.1693pt x 164.36821pt.
 
 
@@ -1182,39 +1166,35 @@ Package pdftex.def Info: images/f_approx_current_sig5_2.pdf  used on input line 
 [33
 
 ]
-<images/4pane_toy_sidebar.pdf, id=426, 234.83922pt x 150.18321pt>
+<images/4pane_toy_sidebar.pdf, id=493, 234.83922pt x 150.18321pt>
 File: images/4pane_toy_sidebar.pdf Graphic file (type pdf)
 <use images/4pane_toy_sidebar.pdf>
-Package pdftex.def Info: images/4pane_toy_sidebar.pdf  used on input line 398.
+Package pdftex.def Info: images/4pane_toy_sidebar.pdf  used on input line 414.
 (pdftex.def)             Requested size: 318.67209pt x 203.81793pt.
-
-Overfull \vbox (9.14384pt too high) detected at line 398
- []
-
 
 
 [34
 
  <./images/4pane_toy_sidebar.pdf>]
-<images/logl1.png, id=490, 449.42906pt x 70.01157pt>
+<images/logl1.png, id=559, 449.42906pt x 70.01157pt>
 File: images/logl1.png Graphic file (type png)
 <use images/logl1.png>
-Package pdftex.def Info: images/logl1.png  used on input line 404.
+Package pdftex.def Info: images/logl1.png  used on input line 420.
 (pdftex.def)             Requested size: 398.3386pt x 62.05476pt.
-<images/logl2.png, id=491, 545.78906pt x 92.59593pt>
+<images/logl2.png, id=560, 545.78906pt x 92.59593pt>
 File: images/logl2.png Graphic file (type png)
 <use images/logl2.png>
-Package pdftex.def Info: images/logl2.png  used on input line 404.
+Package pdftex.def Info: images/logl2.png  used on input line 420.
 (pdftex.def)             Requested size: 398.3386pt x 67.58032pt.
 
 
 [35
 
  <./images/logl1.png (PNG copy)> <./images/logl2.png (PNG copy)>]
-<images/paper1.png, id=498, 596.2275pt x 264.23718pt>
+<images/paper1.png, id=569, 596.2275pt x 264.23718pt>
 File: images/paper1.png Graphic file (type png)
 <use images/paper1.png>
-Package pdftex.def Info: images/paper1.png  used on input line 409.
+Package pdftex.def Info: images/paper1.png  used on input line 425.
 (pdftex.def)             Requested size: 398.3386pt x 176.53802pt.
 
 
@@ -1225,7 +1205,7 @@ Package pdftex.def Info: images/paper1.png  used on input line 409.
 [37
 
 ]
-Overfull \hbox (30.89536pt too wide) detected at line 443
+Overfull \hbox (30.89536pt too wide) detected at line 459
 []
  []
 
@@ -1234,13 +1214,13 @@ Overfull \hbox (30.89536pt too wide) detected at line 443
 [38
 
 ]
-<images/light_curve_comparison_19amo.png, id=519, 896.148pt x 620.3175pt>
+<images/light_curve_comparison_19amo.png, id=595, 896.148pt x 620.3175pt>
 File: images/light_curve_comparison_19amo.png Graphic file (type png)
 <use images/light_curve_comparison_19amo.png>
-Package pdftex.def Info: images/light_curve_comparison_19amo.png  used on input line 448.
+Package pdftex.def Info: images/light_curve_comparison_19amo.png  used on input line 464.
 (pdftex.def)             Requested size: 318.67209pt x 220.58813pt.
 
-Overfull \vbox (33.91405pt too high) detected at line 448
+Overfull \vbox (19.3307pt too high) detected at line 464
  []
 
 
@@ -1250,74 +1230,58 @@ Overfull \vbox (33.91405pt too high) detected at line 448
  <./images/light_curve_comparison_19amo.png>]
 File: images/light_curve_comparison_19amo.png Graphic file (type png)
 <use images/light_curve_comparison_19amo.png>
-Package pdftex.def Info: images/light_curve_comparison_19amo.png  used on input line 459.
+Package pdftex.def Info: images/light_curve_comparison_19amo.png  used on input line 475.
 (pdftex.def)             Requested size: 199.1693pt x 137.86166pt.
-<images/corner_comparison_19amo.png, id=527, 859.0494pt x 893.9799pt>
+<images/corner_comparison_19amo.png, id=606, 859.0494pt x 893.9799pt>
 File: images/corner_comparison_19amo.png Graphic file (type png)
 <use images/corner_comparison_19amo.png>
-Package pdftex.def Info: images/corner_comparison_19amo.png  used on input line 459.
+Package pdftex.def Info: images/corner_comparison_19amo.png  used on input line 475.
 (pdftex.def)             Requested size: 199.1693pt x 207.26161pt.
-
-Overfull \vbox (7.11252pt too high) detected at line 459
- []
-
 
 
 [40
 
  <./images/corner_comparison_19amo.png>]
-<images/light_curve_comparison_19vnk.png, id=535, 902.6523pt x 620.3175pt>
+<images/light_curve_comparison_19vnk.png, id=616, 902.6523pt x 620.3175pt>
 File: images/light_curve_comparison_19vnk.png Graphic file (type png)
 <use images/light_curve_comparison_19vnk.png>
-Package pdftex.def Info: images/light_curve_comparison_19vnk.png  used on input line 468.
+Package pdftex.def Info: images/light_curve_comparison_19vnk.png  used on input line 484.
 (pdftex.def)             Requested size: 199.1693pt x 136.86781pt.
-<images/corner_comparison_19vnk.png, id=536, 859.0494pt x 893.9799pt>
+<images/corner_comparison_19vnk.png, id=617, 859.0494pt x 893.9799pt>
 File: images/corner_comparison_19vnk.png Graphic file (type png)
 <use images/corner_comparison_19vnk.png>
-Package pdftex.def Info: images/corner_comparison_19vnk.png  used on input line 468.
+Package pdftex.def Info: images/corner_comparison_19vnk.png  used on input line 484.
 (pdftex.def)             Requested size: 199.1693pt x 207.26161pt.
-
-Overfull \vbox (7.11252pt too high) detected at line 468
- []
-
 
 
 [41
 
  <./images/light_curve_comparison_19vnk.png> <./images/corner_comparison_19vnk.png>]
-<images/light_curve_comparison_19kai.png, id=545, 902.6523pt x 620.3175pt>
+<images/light_curve_comparison_19kai.png, id=628, 902.6523pt x 620.3175pt>
 File: images/light_curve_comparison_19kai.png Graphic file (type png)
 <use images/light_curve_comparison_19kai.png>
-Package pdftex.def Info: images/light_curve_comparison_19kai.png  used on input line 477.
+Package pdftex.def Info: images/light_curve_comparison_19kai.png  used on input line 493.
 (pdftex.def)             Requested size: 199.1693pt x 136.86781pt.
-<images/corner_comparison_19kai.png, id=546, 859.0494pt x 893.9799pt>
+<images/corner_comparison_19kai.png, id=629, 859.0494pt x 893.9799pt>
 File: images/corner_comparison_19kai.png Graphic file (type png)
 <use images/corner_comparison_19kai.png>
-Package pdftex.def Info: images/corner_comparison_19kai.png  used on input line 477.
+Package pdftex.def Info: images/corner_comparison_19kai.png  used on input line 493.
 (pdftex.def)             Requested size: 199.1693pt x 207.26161pt.
-
-Overfull \vbox (7.11252pt too high) detected at line 477
- []
-
 
 
 [42
 
  <./images/light_curve_comparison_19kai.png> <./images/corner_comparison_19kai.png>]
-<images/light_curve_comparison_20aczg.png, id=555, 906.7476pt x 620.3175pt>
+<images/light_curve_comparison_20aczg.png, id=640, 906.7476pt x 620.3175pt>
 File: images/light_curve_comparison_20aczg.png Graphic file (type png)
 <use images/light_curve_comparison_20aczg.png>
-Package pdftex.def Info: images/light_curve_comparison_20aczg.png  used on input line 487.
+Package pdftex.def Info: images/light_curve_comparison_20aczg.png  used on input line 503.
 (pdftex.def)             Requested size: 199.1693pt x 136.25256pt.
-<images/corner_comparison_20aczg.png, id=556, 859.0494pt x 893.9799pt>
+<images/corner_comparison_20aczg.png, id=641, 859.0494pt x 893.9799pt>
 File: images/corner_comparison_20aczg.png Graphic file (type png)
 <use images/corner_comparison_20aczg.png>
-Package pdftex.def Info: images/corner_comparison_20aczg.png  used on input line 487.
+Package pdftex.def Info: images/corner_comparison_20aczg.png  used on input line 503.
 (pdftex.def)             Requested size: 199.1693pt x 207.26161pt.
-
-Overfull \vbox (7.11252pt too high) detected at line 487
- []
-
 
 
 [43
@@ -1357,18 +1321,18 @@ Package rerunfilecheck Info: File `jax_bandflux_talk.out' has not changed.
 (rerunfilecheck)             Checksum: F33CF89F328FBDCD23696D54AA3D0FDD;490.
  ) 
 Here is how much of TeX's memory you used:
- 27336 strings out of 475171
- 546905 string characters out of 5767103
- 912917 words of memory out of 5000000
- 49672 multiletter control sequences out of 15000+600000
+ 27328 strings out of 475171
+ 546651 string characters out of 5767103
+ 914163 words of memory out of 5000000
+ 49664 multiletter control sequences out of 15000+600000
  577910 words of font info for 104 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  128i,21n,123p,1922b,759s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb>
-Output written on jax_bandflux_talk.pdf (47 pages, 7577965 bytes).
+Output written on jax_bandflux_talk.pdf (47 pages, 7584349 bytes).
 PDF statistics:
- 722 PDF objects out of 1000 (max. 8388607)
- 428 compressed objects within 5 object streams
+ 815 PDF objects out of 1000 (max. 8388607)
+ 472 compressed objects within 5 object streams
  100 named destinations out of 1000 (max. 500000)
  305 words of extra memory for PDF output out of 10000 (max. 10000000)
 

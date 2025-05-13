@@ -293,7 +293,7 @@
 
   \textbf{b) Ascribe Bernoulli prior:}
   \begin{equation}
-      P(\varepsilon_i) = p_i^{(1-\varepsilon_i)}(1-p_i)^{\varepsilon_i}.
+      P(\varepsilon_i) = p^{(1-\varepsilon_i)}(1-p)^{\varepsilon_i}.
   \end{equation}
 
   \textbf{c) Marginalise over epsilon:}
@@ -309,7 +309,7 @@
 
   \textbf{e) Loglikelihood:}
   \begin{equation}
-      \log{P(\mathcal{D}|\theta)} = \sum_{i}[{\log{\mathcal{L}_i}+\log({1-p_i})]\varepsilon^{\mathrm{max}}_i + [\log{p}_i - \log{\Delta}](1 - \varepsilon^\mathrm{max}_i})
+      \log{P(\mathcal{D}|\theta)} = \sum_{i}[{\log{\mathcal{L}_i}+\log({1-p})]\varepsilon^{\mathrm{max}}_i + [\log{p} - \log{\Delta}](1 - \varepsilon^\mathrm{max}_i})
   \end{equation}
 \end{frame}
 
@@ -317,7 +317,7 @@
     \footnotesize
     \textbf{e) Loglikelihood:}
   \begin{equation}\tag{6}
-      \log{P(\mathcal{D}|\theta)} = \sum_{i}[{\log{\mathcal{L}_i}+\log({1-p_i})]\varepsilon^{\mathrm{max}}_i + [\log{p}_i - \log{\Delta}](1 - \varepsilon^\mathrm{max}_i})
+      \log{P(\mathcal{D}|\theta)} = \sum_{i}[{\log{\mathcal{L}_i}+\log({1-p})]\varepsilon^{\mathrm{max}}_i + [\log{p} - \log{\Delta}](1 - \varepsilon^\mathrm{max}_i})
   \end{equation}
 
     \footnotesize
@@ -325,8 +325,8 @@
     \begin{equation}\tag{7}
     \log P(\mathcal{D}|\theta) =
     \begin{cases}
-    \log \mathcal{L}_i + \log(1 - p_i), & \text{if } [\log \mathcal{L}_i + \log(1 - p_i) > \log p_i - \log \Delta] \\
-    \log p_i - \log \Delta, & \text{otherwise}
+    \log \mathcal{L}_i + \log(1 - p), & \text{if } [\log \mathcal{L}_i + \log(1 - p) > \log p - \log \Delta] \\
+    \log p - \log \Delta, & \text{otherwise}
     \end{cases}
     \end{equation}
 \end{frame}
@@ -339,7 +339,7 @@
 \begin{frame}{Likelihood thresholding condition $p$}
     \begin{equation}
     \begin{aligned}
-    \log{P(\mathcal{D}|\theta)} &= \sum_{i}[{\log{\mathcal{L}_i}+\log({1-p_i})]\varepsilon^{\mathrm{max}} + [\log{p}_i - \log{\Delta}](1 - \varepsilon^\mathrm{max}_i})\label{eq:loglikelihood}
+    \log{P(\mathcal{D}|\theta)} &= \sum_{i}[{\log{\mathcal{L}_i}+\log({1-p})]\varepsilon^{\mathrm{max}} + [\log{p} - \log{\Delta}](1 - \varepsilon^\mathrm{max}_i})\label{eq:loglikelihood}
     \end{aligned}
     \end{equation}
     \centering

@@ -1,3 +1,4 @@
-\beamer@sectionintoc {1}{JAX and JAX-bandflux}{3}{0}{1}
-\beamer@sectionintoc {2}{Bayesian anomaly detection}{17}{0}{2}
-\beamer@sectionintoc {3}{Apply on Ia supernovae}{37}{0}{3}
+\beamer@sectionintoc {1}{Bayesian anomaly detection}{3}{0}{1}
+\beamer@sectionintoc {2}{Apply to 21cm Cosmology}{29}{0}{2}
+\beamer@sectionintoc {3}{Apply on Ia supernovae}{36}{0}{3}
+\beamer@sectionintoc {4}{What next}{54}{0}{4}

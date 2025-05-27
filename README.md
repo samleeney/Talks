@@ -3,6 +3,10 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Bayesian anomaly detection for Cosmology - 21cm, Supernovae, and beyond
+	- [Hills Lecture, 27 May, 2025](https://talks.cam.ac.uk/talk/index/229936)
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/hillstalk/jax_bandflux_talk.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/hillstalk)
 - Bayesian Anomaly Detection for Ia supernovae using JAX-bandflux
 	- [Handley Lab Group meeting, 13 May, 2025](https://handley-lab.co.uk/)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/handley-lab-may2025/jax_bandflux_talk.pdf)

@@ -7,10 +7,10 @@
 \usepackage{natbib}
 \bibliographystyle{apalike}
 
-\title{Bayesian anomaly detection for Cosmology - 21cm, Supernovae, and beyond}
+\title{A Differentiable Bayesian Anomaly Detection Framework for Robust SALT3 Parameter Estimation Using JAX}
 \subtitle{Sam Leeney}
-\date{May 27, 2025}
-\author{With: Will Handley, Eloy de Lera Acedo, Harry Bevins}
+\date{June 17, 2025}
+\author{With: Will Handley, Harry Bevins, Eloy de Lera Acedo}
 \institute{} % Can be filled in later if needed
 \setbeamertemplate{footline}{
 \leavevmode%
@@ -43,35 +43,12 @@
 \section{Bayesian anomaly detection}
 
 \begin{frame}{Over simplified example of anomaly detection method (thresholding)}
-  \footnotesize
-  \textbf{Simple statistical approach:}
-  \begin{itemize}
-    \item Calculate mean ($\mu$) and standard deviation ($\sigma$) of the data
-    \item Define threshold $T = \mu + k\sigma$ where $k$ is a sensitivity parameter
-    \item Flag data point $x_i$ as anomalous if:
-  \end{itemize}
-  \begin{equation}
-    \text{anomaly}_i = \begin{cases}
-      1 & \text{if } x_i > T \\
-      0 & \text{otherwise}
-    \end{cases}
-  \end{equation}
-  \textbf{Limitations:}
-  \begin{itemize}
-    \item Choice of $k$ is arbitrary
-    \item Assumes Gaussian statistics
-    \item No consideration of temporal correlations
-    \item Cannot distinguish between RFI and real signals
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Thresholding results}
   \begin{columns}
     \column{0.5\textwidth}
-    \textbf{Constant signal with RFI:}
+    \textbf{Constant signal with anomalies:}
     \includegraphics[width=1\textwidth]{images/threshold_multiple.png}
     \column{0.5\textwidth}
-    \textbf{Sine wave with RFI:}
+    \textbf{Sine wave with anomalies:}
     \includegraphics[width=1\textwidth]{images/threshold_sin_multiple.png}
   \end{columns}
   \begin{itemize}
@@ -81,11 +58,40 @@
 \end{frame}
 
 \begin{frame}{Model anomalies in via a method that is:}
+  We want a method that is...
   \begin{itemize}
     \item Model aware
     \item Works simultaneously with model fitting
     \item Not binary, ie encodes 'belief' datum are anomalous
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes' Theorem}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \textbf{Bayes' Theorem:}
+    \begin{equation}
+        P(\theta | \mathcal{D}) = \frac{P(\mathcal{D} | \theta) P(\theta)}{P(\mathcal{D})}
+    \end{equation}
+    Where:
+    \begin{itemize}
+        \item $P(\theta | \mathcal{D})$: Posterior (updated belief)
+        \item $P(\mathcal{D} | \theta)$: Likelihood (model prediction)
+        \item $P(\theta)$: Prior (initial belief)
+        \item $P(\mathcal{D})$: Evidence (model comparison)
+    \end{itemize}
+    
+    \column{0.4\textwidth}
+    \begin{center}
+    \textbf{The Challenge:}
+    \vspace{0.5cm}
+    
+    \textit{We need some way of incorporating anomalous data points natively into our likelihood.}
+    \vspace{0.5cm}
+    
+    Standard likelihoods cannot account for this.
+    \end{center}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Define anomaly mask $\varepsilon$}
@@ -115,7 +121,7 @@
 \end{frame}
 
 
-\begin{frame}{Peicewise likelihood with $\varepsilon$}
+\begin{frame}{Piecewise likelihood with $\varepsilon$}
     \centering
     The likelihood function before marginalizing over $\epsilon$ is given by:
     $$P(\vec{D}, \vec{\epsilon} | \theta) = \prod_{i=1}^{N} \left(L_i(\theta) (1-p)\right)^{(1-\epsilon_i)} \left(\frac{p}{\Delta}\right)^{\epsilon_i}$$
@@ -164,23 +170,19 @@
 \begin{frame}{Loglikelihood and Maximisation}
   \footnotesize
   \textbf{e) Loglikelihood:}
-  \begin{equation}
-      \log{P(\mathcal{D}|\theta)} = \sum_{i}[{\log{\mathcal{L}_i}+\log({1-p})]\varepsilon^{\mathrm{max}}_i + [\log{p} - \log{\Delta}](1 - \varepsilon^\mathrm{max}_i})
-  \end{equation}
+  \begin{align}
+      \log{P(\mathcal{D}|\theta)} &= \sum_{i}[\log{\mathcal{L}_i}+\log(1-p)]\varepsilon^{\mathrm{max}}_i \nonumber\\
+      &\quad + [\log{p} - \log{\Delta}](1 - \varepsilon^\mathrm{max}_i)
+  \end{align}
 
-  \textbf{f) Find the mask that $\varepsilon^{max}$ that maximises the likelihood by comparing the terms:}
+  \textbf{f) Find the mask $\varepsilon^{max}$ that maximises the likelihood:}
   \begin{equation}
   \log P(\mathcal{D}|\theta) =
   \begin{cases}
-  \log \mathcal{L}_i + \log(1 - p), & \text{if } [\log \mathcal{L}_i + \log(1 - p) > \log p - \log \Delta] \\
+  \log \mathcal{L}_i + \log(1 - p), & \text{if } \log \mathcal{L}_i + \log(1 - p) > \log p - \log \Delta \\
   \log p - \log \Delta, & \text{otherwise}
   \end{cases}
   \end{equation}
-\end{frame}
-
-\begin{frame}{Fit on a simple toy model}
-    \centering
-    \includegraphics[width=0.56\textwidth]{images/test.pdf}
 \end{frame}
 
 \begin{frame}{We are imposing a 'floor' on our likelihood}
@@ -192,6 +194,72 @@
             \centering
             \includegraphics[width=0.7\textwidth]{images/generated_plot.png}
     \end{columns}
+\end{frame}
+
+\begin{frame}{Connection to the Logit Function}
+  \footnotesize
+  The condition for selecting between expected and anomalous data:
+  \begin{equation}
+    \log \mathcal{L}_i + \log(1-p) > \log p - \log \Delta
+  \end{equation}
+  
+  Rearranging:
+  \begin{equation}
+    \log \mathcal{L}_i + \log \Delta > \log p - \log(1-p) = \log\left(\frac{p}{1-p}\right)
+  \end{equation}
+  
+  The right-hand side is the \textbf{logit function}:
+  \begin{equation}
+    \text{logit}(p) = \log\left(\frac{p}{1-p}\right)
+  \end{equation}
+  
+  \begin{itemize}
+    \item Logit is the inverse of the sigmoid function
+    \item Maps probability $p \in (0,1)$ to $(-\infty, +\infty)$
+    \item Common activation function in machine learning for binary classification
+    \item Naturally encodes our degree of belief in each datum's integrity
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Derivation Summary}
+  \footnotesize
+  \textbf{1. Define anomaly mask:} $\varepsilon_i \in \{0, 1\}$ for each data point
+  
+  \textbf{2. Bernoulli prior:} $P(\varepsilon_i) = p^{\varepsilon_i}(1-p)^{(1-\varepsilon_i)}$
+  
+  \textbf{3. Piecewise likelihood:} $P(\vec{D}, \vec{\epsilon} | \theta) = \prod_{i=1}^{N} \left(L_i(\theta) (1-p)\right)^{(1-\epsilon_i)} \left(\frac{p}{\Delta}\right)^{\epsilon_i}$
+  
+  \textbf{4. Marginalize over $\epsilon$:} $P(\mathcal{D} | \theta) = \sum_{\varepsilon \in \{ 0, 1 \} ^N}P(\mathcal{D},\varepsilon|\theta)$
+  
+  \textbf{5. Dominant mask approximation:} $P(\mathcal{D}|\theta, \varepsilon_{\mathrm{max}}) \gg \mathrm{max}_j P(\mathcal{D}|\theta,\varepsilon^{(j)})$
+  
+  \textbf{6. Final likelihood}
+  \begin{equation*}
+  \log P(\mathcal{D}|\theta) =
+  \begin{cases}
+  \log \mathcal{L}_i + \log(1 - p), & \text{if } \log \mathcal{L}_i + \log(1 - p) > \log p - \log \Delta \\
+  \log p - \log \Delta, & \text{otherwise}
+  \end{cases}
+  \end{equation*}
+  
+  \vfill
+  \centering
+  \textbf{Any questions on the derivation before we proceed?}
+\end{frame}
+
+\begin{frame}{Fit on a simple toy model}
+  \begin{columns}
+    \column{0.7\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/test.pdf}
+    \column{0.3\textwidth}
+    \footnotesize
+    \textbf{Posterior fraction:}
+    \begin{equation}
+        f_i = P(\varepsilon_i = 1 | \mathcal{D}, \theta)
+    \end{equation}
+    Posterior probability that data point $i$ is anomalous. Non-contaminated points have $f_i \approx 0.04$ (baseline level for 25 data points).
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Varying $p$}
@@ -273,126 +341,141 @@
   \href{https://arxiv.org/abs/2211.15448}{arxiv: 2211.15448}
 \end{frame}
 
-\section{Apply to 21cm Cosmology}
 
-\begin{frame}{What is REACH?}
+\section{Bayesian anomaly detection for Ia Supernovae}
+
+\begin{frame}{Supernovae Cosmology: Two Key Requirements}
+  \begin{itemize}
+    \item \textbf{Standardisation Method:} Need a way to standardise and compare other supernovae
+      \begin{itemize}
+        \item Corrects for intrinsic variations between SNe
+        \item Makes them useful as standard candles
+      \end{itemize}
+    \item \textbf{Distance Anchor:} Need absolute distance calibration for some supernovae
+      \begin{itemize}
+        \item Provides the absolute magnitude scale
+        \item Converts apparent magnitudes to distances
+      \end{itemize}
+  \end{itemize}
+  \vfill
+  \centering
+  \textbf{Both components are essential for cosmological measurements}
+\end{frame}
+
+\begin{frame}{Distance Anchor Methods}
   \begin{columns}
-    \column{0.6\textwidth}
+    \column{0.5\textwidth}
+    \textbf{Distance Ladder:}
+    \begin{itemize}
+      \item Cepheid variables
+      \item Tip of Red Giant Branch (TRGB)
+      \item Surface brightness fluctuations
+      \item Direct geometric distances
+    \end{itemize}
+    
+    \column{0.5\textwidth}
+    \textbf{Assumes Some Cosmology:}
+    \begin{itemize}
+      \item Cosmic Microwave Background (CMB)
+      \item Baryon Acoustic Oscillations (BAO)
+      \item Early universe physics
+      \item Sound horizon scale
+    \end{itemize}
+  \end{columns}
+  \vfill
+  \centering
+  \textbf{H$_0$ tension: These methods give different results!}
+\end{frame}
+
+\begin{frame}{Standardising Supernovae}
+  \begin{center}
+  \fbox{
+    \begin{minipage}{0.9\linewidth}
       \centering
-      \includegraphics[width=1\textwidth]{images/antenna.png} % Image placeholder
+      \footnotesize
+      \textbf{Key idea:} If we can anchor one supernova's distance, we can standardise and compare it to all others
+    \end{minipage}
+  }
+  \end{center}
+  \vfill
+  \begin{columns}
     \column{0.4\textwidth}
-      \begin{itemize}
-        \item The redshifted sky-averaged 21cm line of neutral hydrogen carries the imprint of the first stars and galaxies formed during the Cosmic Dawn and Epoch of Reionisation
-        \item $10^-5$ times dimmer than foregrounds.
-        \item Detection enables inference of fundamental physics and cosmology.
-      \end{itemize}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Heavily contaminated}
-  \centering \includegraphics[width=0.5\textwidth]{images/antenna_data_all.pdf}
-\end{frame}
-
-\begin{frame}{Fitting a contaminated global 21cm signal}
-
-  \footnotesize
-  \begin{columns}
-    \column{0.5\textwidth}
-    \textbf{Standard Likelihood:}
-    \begin{align*}
-      \log \mathcal{L} &= \sum_i -\frac{1}{2}\log \left(2\pi\sigma_n^2\right) \\
-      &\quad - \frac{1}{2} \left(\frac{T_{\text{data}}(\nu_i) - (T_{\text{model}}(\nu_i) + T_{21}(\nu_i))}{\sigma_n}\right)^2.
-    \end{align*}
+    \scriptsize
+    \textbf{The Problem:}
     \begin{itemize}
-      \item $T_{\text{data}}(\nu_i)$: Observed data at frequency $\nu_i$
-      \item $T_{\text{model}}(\nu_i)$: Model for foregrounds and nuisance parameters
-      \item $T_{21}(\nu_i)$: Global 21cm signal (signal of interest)
-      \item $\sigma_n$: Noise uncertainty
+      \item Brighter SNe fade more slowly
+      \item Redder SNe appear dimmer (dust)
+      \item Prevents direct distance comparisons
     \end{itemize}
-
-    \column{0.5\textwidth}
-    \textbf{Anomaly Detection Likelihood:}
-    \begin{align*}
-      \log \mathcal{L}_{\text{anom}} &= \sum_i \begin{cases}
-        \log \mathcal{L}_i + \log(1-p), & \text{if } e_i^{\max} \\
-        \log p - \log \Delta, & \text{otherwise}
-      \end{cases}
-    \end{align*}
+    \vspace{0.3cm}
+    \textbf{The Solution:}
     \begin{itemize}
-      \item $\log \mathcal{L}_i$: Point-wise standard likelihood
-      \item $p$: Anomaly probability (model parameter)
-      \item $e_i^{\max}$: Boolean indicating normal data
-      \item $\Delta$: Maximum value of the data range
+      \item Measure stretch ($x_1$) and color ($c$)
+      \item Apply SALT corrections
+      \item Reveal common peak luminosity
     \end{itemize}
+    \column{0.6\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/stretch_color_effects_plot.png}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Fitting a contaminated global 21cm signal}
-  \centering \includegraphics[width=0.8\textwidth]{images/4pane_reach_sidebar.pdf}
-\end{frame}
-
-\begin{frame}{Speeding up...}
+\begin{frame}{Standardisation Methods}
   \begin{columns}
     \column{0.5\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{images/antenna_data_all.pdf} % Adjusted width for column
+    \textbf{SALT Model (Spectral Adaptive Light curve Template):}
+    \begin{itemize}
+      \item State-of-the-art standardisation method
+      \item Parameters:
+        \begin{itemize}
+          \item $x_0$: amplitude/brightness
+          \item $x_1$: stretch factor
+          \item $c$: color parameter
+        \end{itemize}
+      \item Tripp formula: $\mu = m_B - M_B + \alpha x_1 - \beta c$
+    \end{itemize}
+    
     \column{0.5\textwidth}
-      \begin{itemize}
-        \item We fit many observations simultaneously.
-        \item This gets very slow, so we need to speed up.
-      \end{itemize}
+    \textbf{Other Methods:}
+    \begin{itemize}
+      \item SNooPy (Carnegie Supernova Project)
+      \item MLCS2k2 (Multi-Color Light Curve Shape)
+      \item SiFTO (SN Ia Fitter using Templates)
+      \item BayeSN (Bayesian approach)
+    \end{itemize}
+    \vspace{0.5cm}
+    \centering
+    \fbox{
+      \begin{minipage}{0.9\linewidth}
+        \centering
+        \textbf{All methods aim to reveal:}
+        
+        $M_B \approx -19.3$ at peak
+      \end{minipage}
+    }
   \end{columns}
 \end{frame}
 
-\begin{frame}{Speeding up...}
-  \centering \includegraphics[width=1\textwidth]{images/speedingup.png}
-\end{frame}
-
-\section{Apply on Ia supernovae}
-
-\begin{frame}{JAX-bandflux: A Tool for Supernovae Analysis}
-  \vfill
-  \begin{center}
-    \includegraphics[width=0.64\textwidth]{images/jaxbandflux-pip.png}
-  \end{center}
-  \vfill
-  \begin{center}
-    \includegraphics[width=0.64\textwidth]{images/jaxbandflux-paper.png}
-  \end{center}
-  \vfill
-\end{frame}
-\begin{frame}{JAX-bandflux: A Tool for Supernovae Analysis}
-  \centering \includegraphics[width=0.8\textwidth]{images/josjaxbflux.png}
-\end{frame}
-\begin{frame}{Fitting Supernovae Light Curves with \texttt{JAX-bandflux}}
+\begin{frame}{The SALT3 Model for Supernovae}
   \begin{columns}
     \column{0.5\textwidth}
       \begin{itemize}
-        \item Supernovae light curves measure the brightness of a supernova over time across different wavelengths.
-        \item \texttt{JAX-bandflux} is a Python package for fitting supernova light curves.
-        \item It provides tools for model definition, fitting, and simulation.
-        \item GPU acceleration significantly speeds up the fitting process for large datasets.
+        \item \textbf{The Inverse Problem:} We observe flux measurements $F_{\text{obs}}(\lambda, t)$ and want to estimate SALT parameters
+        \item Given observations, infer:
+          \begin{itemize}
+            \item $x_0$: brightness scaling
+            \item $x_1$: stretch (width)
+            \item $c$: colour
+          \end{itemize}
+        \item Use SALT3 model as our forward model to relate parameters to observations
       \end{itemize}
     \column{0.5\textwidth}
       \centering
       \includegraphics[width=0.9\textwidth]{images/sncosmo-fitter.png}
   \end{columns}
-\end{frame}
-
-\begin{frame}{The SALT Model for Supernovae}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \begin{itemize}
-        \item Widely used empirical model for Type Ia supernovae light curves.
-        \item Describes supernova flux as a function of wavelength and time.
-      \end{itemize}
-    \column{0.5\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{images/sncosmo-fitter.png}
-  \end{columns}
-  \vfill % Add vertical fill to push content downwards
-  \centering % Center the subsequent content
-  Model flux:
+  \vfill
+  \centering
+  Forward model:
   \begin{equation*}
     F(p, \lambda) = x_0 \left[M_0(p, \lambda) + x_1M_1(p, \lambda) + \dots\right] \times \exp \left[c \times CL(\lambda)\right]
   \end{equation*}
@@ -402,11 +485,11 @@
   \begin{columns}
     \column{0.5\textwidth}
       \begin{itemize}
-        \item Observed flux integrated over a specific photometric bandpass.
-        \item Calculated by convolving SED with instrument's bandpass transmission.
-        \item Formula:
+        \item \textbf{What we observe:} Bandflux measurements $F_{\text{obs}}$ from telescope instruments
+        \item \textbf{The challenge:} Estimate SALT parameters $(x_0, x_1, c)$ from these integrated flux measurements
+        \item \textbf{Forward model:} Predict bandflux from SALT parameters
           \begin{equation*}
-            \text{bandflux} = \int_{\lambda_{\text{min}}}^{\lambda_{\text{max}}} F(\lambda) \cdot T(\lambda) \cdot \frac{\lambda}{hc} d\lambda
+            F_{\text{model}} = \int_{\lambda_{\text{min}}}^{\lambda_{\text{max}}} F(\lambda; x_0, x_1, c) \cdot T(\lambda) \cdot \frac{\lambda}{hc} d\lambda
           \end{equation*}
       \end{itemize}
     \column{0.5\textwidth}
@@ -415,37 +498,106 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Cosmology from SALT parameters}
-  \begin{itemize}
-    \item SALT parameters ($x_0, x_1, c$) are fitted to Type Ia supernovae light curves.
-    \item These parameters standardize SNe Ia into standard candles by correcting for luminosity, shape ($x_1$), and color ($c$).
-    \item This standardization allows for precise calculation of distance moduli, linking to luminosity distance.
-    \item By fitting cosmological models to a large sample of these calibrated supernova distances, cosmological parameters, such as the Hubble constant ($H_0$), can be determined.
-  \end{itemize}
+
+\section{Fitting SALT models with JAX-bandflux}
+
+\begin{frame}{GPU vs CPU}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{images/cpuvgpu.png}
+    \column{0.5\textwidth}
+      \begin{itemize}
+        \item Highly parallelisable
+        \item Fast communication between operations
+        \item GPU 'cores' do less, so no control flow
+      \end{itemize}
+  \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{JAX numpy vs numpy}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{verbatim}
+    import numpy as np
+    x = np.arange(10)
+    y = np.zeros_like(x)
+    for i in range(len(x)):
+        y[i] = x[i] * 2
+    \end{verbatim}
+    \column{0.5\textwidth}
+    \begin{verbatim}
+    import jax.numpy as jnp
+    from jax import vmap
+    x = jnp.arange(10)
+    def double(v):
+        return v * 2
+    y = vmap(double)(x)
+    \end{verbatim}
+  \end{columns}
+\end{frame}
 
-\begin{frame}{Likelihood Function for Supernovae Fitting}
+\begin{frame}{JAX-bandflux}
+  \begin{center}
+    \begin{tikzpicture}
+      % Draw oval
+      \draw[thick] (0,0) ellipse (3.5cm and 2.5cm);
+      
+      % Place images in corners of oval
+      \node at (-1.8, 1.2) {\includegraphics[width=3cm]{images/sncosmo-fitter.png}};
+      \node at (1.8, 1.2) {\includegraphics[width=3cm]{images/sncosmobanner.png}};
+      \node at (-1.8, -1.2) {\includegraphics[width=3cm]{images/gpu.jpg}};
+      \node at (1.8, -1.2) {\includegraphics[width=3cm]{images/jax_logo_250px.png}};
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{JAX-bandflux: A Tool for Supernovae Analysis}
+  \centering 
+  \includegraphics[width=0.8\textwidth]{images/josjaxbflux.png}
+  \vspace{0.5cm}
+  
+  \includegraphics[width=0.6\textwidth]{images/pip-jax-bandflux.png}
+\end{frame}
+
+\begin{frame}{JAX-based Nested Sampling Integration}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{images/nested_sampling_paper.png}
+    \column{0.5\textwidth}
+      \begin{itemize}
+        \item BlackJAX integration
+        \item GPU-accelerated sampling
+        \item Efficient posterior exploration
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+\section{Fitting SNIa}
+
+\begin{frame}{Standard Likelihood for Supernovae}
+  \centering
+  For photometric observations with Gaussian uncertainties:
+  \begin{equation*}
+    \mathcal{L}(\theta) = \prod_{i=1}^{N} \frac{1}{\sqrt{2\pi\sigma_i^2}} \exp\left(-\frac{(f_i^{\text{obs}} - f_i^{\text{model}}(\theta))^2}{2\sigma_i^2}\right)
+  \end{equation*}
   \begin{itemize}
-    \item The likelihood function quantifies how well a given model (e.g., SALT) explains the observed data.
-    \item For photometric observations, assuming Gaussian uncertainties, the likelihood is typically defined as:
-      \begin{equation*}
-        \mathcal{L}(\theta) = \prod_{i=1}^{N} \frac{1}{\sqrt{2\pi\sigma_i^2}} \exp\left(-\frac{(f_i^{\text{obs}} - f_i^{\text{model}}(\theta))^2}{2\sigma_i^2}\right)
-      \end{equation*}
-      where $f_i^{\text{obs}}$ are observed fluxes, $f_i^{\text{model}}(\theta)$ are model fluxes, and $\sigma_i$ are uncertainties.
-    \item In a Bayesian context, this likelihood is combined with priors on the model parameters to form the posterior distribution.
-    \item GPU compatibility allows for rapid evaluation of the likelihood across a large parameter space, enabling efficient sampling and inference.
+    \item $f_i^{\text{obs}}$: observed fluxes
+    \item $f_i^{\text{model}}(\theta)$: SALT model fluxes 
+    \item $\sigma_i$: flux uncertainties
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Standard vs. Anomaly Detection Likelihoods}
+  \footnotesize
   \begin{columns}
     \column{0.5\textwidth}
     \textbf{Standard Likelihood:}
     \begin{align}
       \log \mathcal{L}_{\text{std}} &= -\frac{1}{2}\sum_i \left(\frac{f_i - m_i}{\sigma_i}\right)^2 \nonumber \\
-      &- \frac{1}{2}\sum_i \log(2\pi\sigma_i^2)
+      &\quad - \frac{1}{2}\sum_i \log(2\pi\sigma_i^2)
     \end{align}
     \begin{itemize}
       \item $f_i$: Observed flux
@@ -457,26 +609,36 @@
     \textbf{Anomaly Detection Likelihood:}
     \begin{align}
       \log \mathcal{L}_{\text{anom}} &= \sum_i \begin{cases}
-        \log \mathcal{L}_i + \log(1-p), & \text{if } e_i^{\max} \\
-        \log p - \log \Delta, & \text{otherwise}
+        \log \mathcal{L}_i + \log(1-p), & e_i^{\max} \\
+        \log p - \log \Delta, & \text{else}
       \end{cases}
     \end{align}
     \begin{itemize}
-      \item $\log \mathcal{L}_i$: Point-wise standard likelihood
-      \item $p$: Anomaly probability (fitted parameter)
-      \item $e_i^{\max}$: Boolean indicating normal data
+      \item $\log \mathcal{L}_i$: Point-wise likelihood
+      \item $p$: Anomaly probability 
+      \item $e_i^{\max}$: Boolean for normal data
       \item $\Delta$: Maximum flux range
     \end{itemize}
   \end{columns}
   
 \end{frame}
-\begin{frame}{Applying to Ia supernovae}
-\begin{center}
-  \includegraphics[width=0.64\textwidth]{images/light_curve_comparison_19amo.png}
-\end{center}
+
+
+\section{Fully automated bandpass selection}
+
+\begin{frame}{Automated Bandpass Selection Results}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \includegraphics[width=1\textwidth]{images/light_curve_comparison_19amo.png}
+    \column{0.5\textwidth}
+      \textbf{Our method demonstrates:}
+      \begin{enumerate}
+        \item Standard flagging
+        \item Automatic filter selection
+        \item Data preservation
+      \end{enumerate}
+  \end{columns}
 \end{frame}
-
-
 
 \begin{frame}{SN 19amo: Classic 'anomaly detection' example}
   \begin{columns}
@@ -506,68 +668,61 @@
 \end{frame}
 
 
-\begin{frame}{SN 20aczg: Light Curve and Corner Plot Comparison}
-  \begin{columns}
-    \column{0.5\textwidth}
-    \includegraphics[width=1\textwidth]{images/light_curve_comparison_20aczg.png}
-    \column{0.5\textwidth}
-    \includegraphics[width=1\textwidth]{images/corner_comparison_20aczg.png}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Key points}
-  \begin{enumerate}
-    \item Standard flagging.
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Key points}
-  \begin{enumerate}
-    \item Standard flagging.
-    \item Automated filter selection.
-  \end{enumerate}
-\end{frame}
 
 \begin{frame}{Key points}
   \begin{enumerate}
     \item Standard flagging.
     \item Automated filter selection.
     \item Data preservation from previously discarded filters.
-    \item Potentially can flag non Ia automatically?
   \end{enumerate}
 \end{frame}
 
 \begin{frame}{Next steps}
-  \begin{itemize}
-    \item Assess Hubble diagrams 
+  \begin{enumerate}
+    \item \textbf{Distance calibration}
       \begin{itemize}
-        \item Quantify impact on cosmological parameter estimation
-        \item Compare with traditional outlier rejection methods
-        \item Evaluate systematic error reduction
+        \item Improve calibration accuracy using anomaly-aware methods
+        \item Better handling of systematic uncertainties in distance measurements
       \end{itemize}
-    \item Try on other datasets?
+    \item \textbf{H$_0$ measurements}
       \begin{itemize}
-        \item Apply to different supernova surveys (ZTF, LSST)
-        \item Test with different photometric systems
-        \item Evaluate performance across redshift ranges
+        \item Apply to resolve H$_0$ tension between different measurement methods
+        \item More robust parameter estimation for cosmological inference
       \end{itemize}
-  \end{itemize}
+    \item \textbf{More datasets}
+      \begin{itemize}
+        \item Extend to larger supernova surveys (LSST, Roman Space Telescope)
+        \item Apply to different astronomical transients and surveys
+      \end{itemize}
+  \end{enumerate}
 \end{frame}
 
-\section{What next}
+\section{Conclusions}
 
-\begin{frame}{What do(nt) we look for?}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{images/frb.png}
-    \column{0.5\textwidth}
+\begin{frame}{Conclusions}
+  \begin{itemize}
+    \item \textbf{Bayesian anomaly detection framework:}
       \begin{itemize}
-        \item New science often found when looking for something else.
-        \item How to search for something unknown?
-        \item How much new science was missed in old data?
+        \item Model-aware anomaly detection during fitting
+        \item Robust parameter estimation with contaminated data
+        \item Fully automated bandpass selection
       \end{itemize}
-  \end{columns}
+    \item \textbf{JAX-bandflux implementation:}
+      \begin{itemize}
+        \item GPU-accelerated SALT3 fitting
+        \item Differentiable nested sampling
+        \item Scalable to large supernova surveys
+      \end{itemize}
+    \item \textbf{Impact on Type Ia supernova cosmology:}
+      \begin{itemize}
+        \item Preserves data previously discarded
+        \item Reduces systematic uncertainties in H$_0$ measurements
+        \item Enables automated quality control for future surveys
+      \end{itemize}
+  \end{itemize}
+  \vfill
+  \centering
+  \textbf{Moving towards precision cosmology with robust, automated methods}
 \end{frame}
 
 \end{document}

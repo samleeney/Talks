@@ -3,6 +3,10 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- A Differentiable Bayesian Anomaly Detection Framework for Robust SALT3 Parameter Estimation Using JAX
+	- [EUCAIFCON 2025, 17 June, 2025](https://eucaifcon.eu/)
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/eucaifcon2025/jax_bandflux_talk.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/eucaifcon2025)
 - Bayesian anomaly detection for Cosmology - 21cm, Supernovae, and beyond
 	- [Hills Lecture, 27 May, 2025](https://talks.cam.ac.uk/talk/index/229936)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/hillstalk/jax_bandflux_talk.pdf)

@@ -253,7 +253,7 @@
   
   \textbf{5. Dominant mask approximation:} $P(\mathcal{D}|\theta, \varepsilon_{\mathrm{max}}) \gg \mathrm{max}_j P(\mathcal{D}|\theta,\varepsilon^{(j)})$
   
-  \textbf{6. Final likelihood}
+  \textbf{6. Final loglikelihood}
   \begin{equation*}
   \log P(\mathcal{D}|\theta) =
   \begin{cases}
@@ -589,7 +589,6 @@
       \begin{itemize}
         \item BlackJAX integration
         \item GPU-accelerated sampling
-        \item Efficient posterior exploration
       \end{itemize}
   \end{columns}
 \end{frame}
@@ -642,9 +641,6 @@
   \end{columns}
   
 \end{frame}
-
-
-\section{Fully automated bandpass selection}
 
 \begin{frame}{Automated Bandpass Selection Results}
   \begin{columns}
@@ -706,7 +702,7 @@
       \end{itemize}
     \item \textbf{H$_0$ measurements}
       \begin{itemize}
-        \item Apply to resolve H$_0$ tension between different measurement methods
+        \item Apply to infer H$_0$ 
         \item More robust parameter estimation for cosmological inference
       \end{itemize}
     \item \textbf{More datasets}
@@ -717,7 +713,7 @@
   \end{enumerate}
 \end{frame}
 
-\begin{frame}{Thanks for listening}
+\begin{frame}{Thanks for listening!}
   \vfill
   \begin{center}
     \includegraphics[width=0.5\textwidth]{images/qr.png}

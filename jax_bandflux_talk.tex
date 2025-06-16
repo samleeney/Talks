@@ -386,21 +386,13 @@
   \begin{columns}
     \column{0.5\textwidth}
     \textbf{Distance Ladder:}
-    \begin{itemize}
-      \item Cepheid variables
-      \item Tip of Red Giant Branch (TRGB)
-      \item Surface brightness fluctuations
-      \item Direct geometric distances
-    \end{itemize}
+    
+    Builds up from nearby geometric distances to farther objects using overlapping standard candles. Each rung calibrates the next, propagating uncertainties upward.
     
     \column{0.5\textwidth}
     \textbf{Assumes Some Cosmology:}
-    \begin{itemize}
-      \item Cosmic Microwave Background (CMB)
-      \item Baryon Acoustic Oscillations (BAO)
-      \item Early universe physics
-      \item Sound horizon scale
-    \end{itemize}
+    
+    Uses early universe physics and standard cosmological model to predict distances. Independent of local measurements but requires assumptions about dark energy and matter.
   \end{columns}
   \vfill
   \centering
@@ -423,7 +415,7 @@
     \scriptsize
     \textbf{The Problem:}
     \begin{itemize}
-      \item Brighter SNe fade more slowly
+      \item SNe with higher stretch fade more slowly
       \item Redder SNe appear dimmer (dust)
       \item Prevents direct distance comparisons
     \end{itemize}
@@ -478,7 +470,8 @@
 
 \begin{frame}{The SALT3 Model for Supernovae}
   \begin{columns}
-    \column{0.5\textwidth}
+    \column{0.6\textwidth}
+      \small
       \begin{itemize}
         \item \textbf{The Inverse Problem:} We observe flux measurements $F_{\text{obs}}(\lambda, t)$ and want to estimate SALT parameters
         \item Given observations, infer:
@@ -489,37 +482,49 @@
           \end{itemize}
         \item Use SALT3 model as our forward model to relate parameters to observations
       \end{itemize}
-    \column{0.5\textwidth}
+    \column{0.4\textwidth}
       \centering
       \includegraphics[width=0.9\textwidth]{images/sncosmo-fitter.png}
   \end{columns}
   \vfill
   \centering
-  Forward model:
+  \footnotesize
+  Forward model (SALT):
   \begin{equation*}
     F(p, \lambda) = x_0 \left[M_0(p, \lambda) + x_1M_1(p, \lambda) + \dots\right] \times \exp \left[c \times CL(\lambda)\right]
   \end{equation*}
+  Bandflux:
+  \begin{equation*}
+    F_{\text{band}} = \int_{\lambda_{\text{min}}}^{\lambda_{\text{max}}} F(p, \lambda) \cdot T(\lambda) \cdot \frac{\lambda}{hc} d\lambda
+  \end{equation*}
 \end{frame}
 
-\begin{frame}{Bandflux Computation}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \begin{itemize}
-        \item \textbf{What we observe:} Bandflux measurements $F_{\text{obs}}$ from telescope instruments
-        \item \textbf{The challenge:} Estimate SALT parameters $(x_0, x_1, c)$ from these integrated flux measurements
-        \item \textbf{Forward model:} Predict bandflux from SALT parameters
-          \begin{equation*}
-            F_{\text{model}} = \int_{\lambda_{\text{min}}}^{\lambda_{\text{max}}} F(\lambda; x_0, x_1, c) \cdot T(\lambda) \cdot \frac{\lambda}{hc} d\lambda
-          \end{equation*}
-      \end{itemize}
-    \column{0.5\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{images/sncosmo-fitter.png}
-  \end{columns}
-\end{frame}
 
 
 \section{Fitting SALT models with JAX-bandflux}
+
+\begin{frame}{JAX-bandflux}
+  \begin{center}
+    \begin{tikzpicture}
+      % Draw oval
+      \draw[thick] (0,0) ellipse (3.5cm and 2.5cm);
+      
+      % Place images in corners of oval
+      \node at (-1.8, 1.2) {\includegraphics[width=3cm]{images/sncosmo-fitter.png}};
+      \node at (1.8, 1.2) {\includegraphics[width=3cm]{images/sncosmobanner.png}};
+      \node at (-1.8, -1.2) {\includegraphics[width=3cm]{images/gpu.jpg}};
+      \node at (1.8, -1.2) {\includegraphics[width=3cm]{images/jax_logo_250px.png}};
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{JAX-bandflux: A Tool for Supernovae Analysis}
+  \centering 
+  \includegraphics[width=0.8\textwidth]{images/josjaxbflux.png}
+  \vspace{0.5cm}
+  
+  \includegraphics[width=0.6\textwidth]{images/pip-jax-bandflux.png}
+\end{frame}
 
 \begin{frame}{GPU vs CPU}
   \begin{columns}
@@ -555,29 +560,6 @@
     y = vmap(double)(x)
     \end{verbatim}
   \end{columns}
-\end{frame}
-
-\begin{frame}{JAX-bandflux}
-  \begin{center}
-    \begin{tikzpicture}
-      % Draw oval
-      \draw[thick] (0,0) ellipse (3.5cm and 2.5cm);
-      
-      % Place images in corners of oval
-      \node at (-1.8, 1.2) {\includegraphics[width=3cm]{images/sncosmo-fitter.png}};
-      \node at (1.8, 1.2) {\includegraphics[width=3cm]{images/sncosmobanner.png}};
-      \node at (-1.8, -1.2) {\includegraphics[width=3cm]{images/gpu.jpg}};
-      \node at (1.8, -1.2) {\includegraphics[width=3cm]{images/jax_logo_250px.png}};
-    \end{tikzpicture}
-  \end{center}
-\end{frame}
-
-\begin{frame}{JAX-bandflux: A Tool for Supernovae Analysis}
-  \centering 
-  \includegraphics[width=0.8\textwidth]{images/josjaxbflux.png}
-  \vspace{0.5cm}
-  
-  \includegraphics[width=0.6\textwidth]{images/pip-jax-bandflux.png}
 \end{frame}
 
 \begin{frame}{JAX-based Nested Sampling Integration}
@@ -683,8 +665,6 @@
   \end{columns}
 \end{frame}
 
-
-
 \begin{frame}{Key points}
   \begin{enumerate}
     \item Standard flagging.
@@ -711,6 +691,25 @@
         \item Apply to different astronomical transients and surveys
       \end{itemize}
   \end{enumerate}
+\end{frame}
+
+\begin{frame}{SALT vs SALT + anomaly detection}
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/salt_vs_anomaly_map_comparison_Ia_all.png}
+\end{frame}
+
+\begin{frame}{Bayesian anomaly detection in other fields}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/21cm.png}
+    \vspace{0.3cm}
+    
+    \includegraphics[width=\textwidth]{images/reach.png}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/pulsar.jpeg}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Thanks for listening!}

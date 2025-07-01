@@ -4,7 +4,7 @@
 
 # Talks:
 - A Differentiable Bayesian Anomaly Detection Framework for Robust SALT3 Parameter Estimation Using JAX
-	- [Nuclear Multimessenger Astronomy Group, Rotterdam, 1 July 2025](https://github.com/nuclear-multimessenger-astronomy/)
+	- [Nuclear Multimessenger Astronomy Group, Utrecht, 1 July 2025](https://github.com/nuclear-multimessenger-astronomy/)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/nuclear-multimessenger-july2025/jax_bandflux_talk.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/nuclear-multimessenger-july2025)
 - Bayesian Anomaly Detection for Ia Supernovae using JAX-bandflux

@@ -3,6 +3,11 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Bayesian Anomaly Detection for Ia Supernovae using JAX-bandflux
+	- [Cosmic Lighthouses: Astrophysical and Cosmological Challenges with Type Ia Supernovae, 30 June - 3 July 2025](https://www.kicc.cam.ac.uk/)
+  	- [Poster (.pdf)](https://github.com/samleeney/Talks/blob/cosmic-lighthouses/poster/jax_bandflux_poster.pdf)
+  	- [Single slide (.pdf)](https://github.com/samleeney/Talks/blob/cosmic-lighthouses/single_slide.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/cosmic-lighthouses)
 - A Differentiable Bayesian Anomaly Detection Framework for Robust SALT3 Parameter Estimation Using JAX
 	- [EUCAIFCON 2025, 17 June, 2025](https://eucaifcon.eu/)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/eucaifcon2025/jax_bandflux_talk.pdf)

@@ -30,19 +30,19 @@
 \begin{frame}
 	\begin{center}
 		% Title
-		{\Huge Machine Learning for Radiometer Calibration\par}
+		{\huge Machine Learning for Radiometer Calibration\par}
 		\vspace{0.5cm}
 
 
 		% First Author
 		{\large Samuel Alan Kossoff Leeney\par}
 
-		{\small 1st Year PhD Candidate\par}
+		{\small 2nd Year PhD Candidate\par}
 		\vspace{0.5cm}
 
 
 		% Co-authors
-		{\footnotesize With: Harry Bevins, Eloy de Lera Acedo, Will Handley, Christian Kirkhan, Kaan Artuc, Jiacong Zhu \par}
+		{\footnotesize With: Harry Bevins, Eloy de Lera Acedo, Kaan Artuc, Jiacong Zhu, Will Handley \par}
 
 		\vfill
 
@@ -53,7 +53,7 @@
 	\end{center}
 	\vfill
 \end{frame}
-
+\section{Radiometer calibration overview}
 \begin{frame}{\small{What is calibration?}}
 	\begin{figure}[h]
 		\centering
@@ -65,11 +65,12 @@
 \begin{frame}{\small{How to calibrate?}}
 	\begin{figure}[h]
 		\centering
-		\includesvg[width=0.65\textwidth]{images/howtocal.svg}
+		\includesvg[width=0.55\textwidth]{images/howtocal.svg}
 	\end{figure}
 	\vspace{0.7cm}
 	\vfill
 \end{frame}
+
 
 \begin{frame}{\small{Why is calibration in Global 21cm Cosmology difficult?}}
 	\begin{figure}[h]
@@ -100,6 +101,27 @@
 		\end{tikzpicture}
 	\end{center}
 
+\end{frame}
+
+\begin{frame}{\small{The physical system}}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\textbf{Process:}
+			\begin{itemize}
+				\item Switch between sources to generate training data.
+				\item Calibration sources with known temperature train neural net.
+				\item Predict $T_{\text{src}}$ of antenna.
+			\end{itemize}
+		\end{column}
+
+		\begin{column}{0.7\textwidth}
+			\begin{figure}
+				\centering
+				\includesvg[width=\textwidth]{images/instrument.svg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\vfill
 \end{frame}
 
 \begin{frame}{\small{How to calibrate (in a bit more detail...)?}}
@@ -141,6 +163,14 @@
 
 \end{frame}
 
+\begin{frame}{\small{Receiver/source mismatch}}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/intro_receiver.pdf}
+		\caption{Schematic of the receiver system showing the signal path from antenna to digitizer}
+	\end{figure}
+\end{frame}
+
 \begin{frame}{\small{Dealing with reflections...}}
 
 	% Output Power Equation without title, maintaining the same equation number (1)
@@ -152,9 +182,9 @@
 		}
 	\end{minipage}
 
-	\vspace{0.3cm}
+	\vspace{0.1cm}
 	\hrule  % Horizontal line for separation
-	\vspace{0.3cm}
+	\vspace{0.1cm}
 
 	% Noise Parameter Equation with smaller, uniform title
 	\begin{minipage}{0.75\textwidth}
@@ -176,9 +206,9 @@
 		\end{itemize}
 	\end{minipage}
 
-	\vspace{0.1cm}
+	\vspace{0.05cm}
 	\hrule  % Horizontal line for separation
-	\vspace{0.1cm}
+	\vspace{0.05cm}
 
 	% Noise Wave Equation with smaller, uniform title
 	\begin{minipage}{0.75\textwidth}
@@ -241,7 +271,7 @@
 	\vfill % Pushes the note to the bottom
 \end{frame}
 
-\begin{frame}{Calculating the error}
+\begin{frame}{\small{Calculating the error}}
 
 	% Adding a block
 	\textbf{By partial derivatives}
@@ -254,7 +284,7 @@
 
 \end{frame}
 
-\begin{frame}{Calculating the error}
+\begin{frame}{\small{Calculating the error}}
 	\vfill
 	{\tiny
 		\begin{multline}
@@ -303,7 +333,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Calculating the error}
+\begin{frame}{\small{Calculating the error}}
 
 	% Adding a block
 	\textbf{Using $T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L$}
@@ -346,7 +376,7 @@
 		\begin{column}{0.8\textwidth}
 			\begin{figure}[h]
 				\centering
-				\includegraphics[width=\textwidth]{images/combined_histograms.png}
+				\includegraphics[width=0.9\textwidth]{images/combined_histograms.png}
 			\end{figure}
 		\end{column}
 		\begin{column}{0.2\textwidth}
@@ -357,7 +387,7 @@
 		\end{column}
 	\end{columns}
 \end{frame}
-\begin{frame}{Why not fit noise (wave) parameters directly?}
+\begin{frame}{\small{Why not fit noise (wave) parameters directly?}}
 
 	% Noise Parameter Equation with smaller, uniform title
 	\textbf{\small{Noise Parameter Equation:}}
@@ -367,9 +397,9 @@
 		\end{equation}
 	}
 
-	\vspace{0.1cm}
+	\vspace{0.05cm}
 	\hrule  % Horizontal line for separation
-	\vspace{0.1cm}
+	\vspace{0.05cm}
 
 	% Noise Wave Equation with smaller, uniform title
 	\textbf{\small{Noise Wave Equation:}}
@@ -386,8 +416,8 @@
 
 \end{frame}
 
-
-\begin{frame}{Machine learning}\footnotesize
+\section{Radiometer calibration with machine learning}
+\begin{frame}{\small{Machine learning}}
 	\begin{columns}
 		\begin{column}{0.35\textwidth}
 			\textbf{How/why?}
@@ -406,7 +436,16 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{How to Calibrate with Machine Learning?}\footnotesize
+\begin{frame}{\small{How to calibrate with machine learning}}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.6\textwidth]{images/ml_overview.pdf}
+		\caption{High-level overview of the machine learning-based calibration framework}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Machine learning calibration steps}}
+	\footnotesize
 	\begin{columns}
 		% Left Column: Steps 1 and 2
 		\begin{column}{0.5\textwidth}
@@ -449,28 +488,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{The physical system}
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			\textbf{Process:}
-			\begin{itemize}
-				\item Switch between sources to generate training data.
-				\item Calibration sources with known temperature train neural net.
-				\item Predict $T_{\text{src}}$ of antenna.
-			\end{itemize}
-		\end{column}
-
-		\begin{column}{0.7\textwidth}
-			\begin{figure}
-				\centering
-				\includesvg[width=\textwidth]{images/instrument.svg}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\vfill
-\end{frame}
-
-\begin{frame}{Network Architecture}
+\begin{frame}{\small{Network Architecture}}
 	\begin{columns}
 		\begin{column}{0.35\textwidth}
 			\textbf{Structure:}
@@ -485,18 +503,175 @@
 		\begin{column}{0.65\textwidth}
 			\begin{figure}
 				\centering
-				\includesvg[width=\textwidth]{images/nn.svg}
+				\includegraphics[width=0.75\textwidth]{images/nn.png}
 			\end{figure}
 		\end{column}
 	\end{columns}
 	\vfill
 \end{frame}
 
-\begin{frame}{Testing on simulated data with realistic antenna}
+\begin{frame}{\small{Testing on internal validation source}}
 	\begin{figure}
 		\centering
-		\includesvg[width=1.05\textwidth]{images/results.svg}
+		\includegraphics[width=0.55\textwidth]{images/temps.pdf}
+		\caption{Temperature calibration using internal sources on the REACH receiver}
 	\end{figure}
+\end{frame}
+
+\section{End to end 21cm experiment simulation}
+\begin{frame}{\small{End to end simulation}}
+	\vspace{-0.3cm}
+	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
+		We have shown we can calibrate an internal source, we now test the
+        method on as part of the broader system (simulated).
+	\end{tcolorbox}
+	\vspace{-0.3cm}
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[scale=0.65, transform shape]
+			% Define styles
+			\tikzstyle{process} = [rectangle, rounded corners, minimum width=4.5cm, minimum height=0.8cm, text centered, draw=black, fill=blue!20, font=\footnotesize]
+			\tikzstyle{arrow} = [thick,->,>=stealth]
+			
+			% Nodes
+			\node (step1) [process] at (0,0) {1) Simulate full receiver chain};
+			\node (step2) [process] at (0,-1.5) {2) Simulate realistic antenna with 21cm signal};
+			\node (step3) [process] at (0,-3) {3) Fit noise parameters to simulated receiver chain};
+			\node (step4) [process] at (0,-4.5) {4) Calibrate 'simulated' antenna};
+			\node (step5) [process] at (0,-6) {5) Fit 21cm signal using REACH pipeline};
+			
+			% Arrows
+			\draw [arrow] (step1) -- (step2);
+			\draw [arrow] (step2) -- (step3);
+			\draw [arrow] (step3) -- (step4);
+			\draw [arrow] (step4) -- (step5);
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Predicted vs True Antenna Temperature}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\textwidth]{images/validation_calibrator.pdf}
+		\caption{The top panel shows the predicted antenna temperature in orange, with the true temperature overlaid in black dashes}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Inferred 21cm Signal}}
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/signal_comparison.pdf}
+				\caption{\tiny Left: Reconstructed 21cm signal with posterior (orange) and true signal (green)}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/signal_triangle_plot.pdf}
+				\caption{\tiny Right: Posterior plots of recovered 21cm signal parameters}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Learning non-linear time-dependent system drift}
+
+\begin{frame}{\small{Neural Network Time Evolution}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/nn_time.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Simulation pipeline for radiometer calibration}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{images/githubrepo.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Inject system drift}}
+	\centering
+	\includegraphics[width=\textwidth]{images/temps_combined_2d.pdf}
+	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
+		Inject a time varying sinusoid into $T_{\text{min}}$ and predict the noise parameters $\rightarrow$ the network recovers this 'system drift'
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\small{Single night, many observations}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/pasted_image_20250403112230.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Many nights, many observations}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/pasted_image_20250410111857.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Read the paper...}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{images/paper_front.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Calibration Performance}}
+	\begin{columns}[c]
+		\begin{column}{0.6\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/pasted_image_20250515095127.png}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{itemize}
+				\item Significant improvement when combining many nights
+				\item Calibration down to 0.18K
+				\item Getting close to theoretical noise
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Modeling system drift from other complex system effects}
+
+\begin{frame}{\small{Modeling environmental features}}
+	\begin{columns}[c]
+		\begin{column}{0.55\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{images/nn_time_tpm.pdf}
+				\caption{\tiny Neural network evolution with temperature dependencies}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
+				We can train on features that cannot be modeled analytically
+			\end{tcolorbox}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{\small{Fitting environmental features against fitted noise parameters}}
+	\begin{columns}[c]
+		\begin{column}{0.45\textwidth}
+			\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
+				Correlate noise parameters with environmental data
+			\end{tcolorbox}
+		\end{column}
+		\begin{column}{0.55\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{images/pasted_image_20250605135110.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 % \begin{frame}{Testing on real data (REACH receiver)}
@@ -509,7 +684,7 @@
 \begin{frame}{\small{Thank you!}}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.4\textwidth]{images/qr.png}
+		\includegraphics[width=0.35\textwidth]{images/qr.png}
 	\end{figure}
 \end{frame}
 

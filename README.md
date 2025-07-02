@@ -3,6 +3,10 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Machine Learning for Radiometer Calibration
+	- [21cm Workshop Cambridge 2025, 2 July 2025](https://www.kicc.cam.ac.uk/events/kavli-science-themed-meetings/21cm-workshop-cambridge-2025)
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/21cm-workshop-cam-2025/main.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/21cm-workshop-cam-2025)
 - A Differentiable Bayesian Anomaly Detection Framework for Robust SALT3 Parameter Estimation Using JAX
 	- [Nuclear Multimessenger Astronomy Group, Utrecht, 1 July 2025](https://github.com/nuclear-multimessenger-astronomy/)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/nuclear-multimessenger-july2025/jax_bandflux_talk.pdf)

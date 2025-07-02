@@ -42,7 +42,7 @@
 
 
 		% Co-authors
-		{\footnotesize With: Harry Bevins, Eloy de Lera Acedo, Kaan Artuc, Jiacong Zhu, Will Handley \par}
+		{\footnotesize With: Harry Bevins, Eloy de Lera Acedo, Will Handley, Rohan Patel, Kaan Artuc, Jiacong Zhu \par}
 
 		\vfill
 
@@ -103,27 +103,6 @@
 
 \end{frame}
 
-\begin{frame}{\small{The physical system}}
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			\textbf{Process:}
-			\begin{itemize}
-				\item Switch between sources to generate training data.
-				\item Calibration sources with known temperature train neural net.
-				\item Predict $T_{\text{src}}$ of antenna.
-			\end{itemize}
-		\end{column}
-
-		\begin{column}{0.7\textwidth}
-			\begin{figure}
-				\centering
-				\includesvg[width=\textwidth]{images/instrument.svg}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\vfill
-\end{frame}
-
 \begin{frame}{\small{How to calibrate (in a bit more detail...)?}}
 	\vspace{-0.5cm}
 	\begin{flushleft}
@@ -169,6 +148,27 @@
 		\includegraphics[width=0.6\textwidth]{images/ml_overview.pdf}
 		\caption{High-level overview of the machine learning-based calibration framework}
 	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{The physical system}}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\textbf{Process:}
+			\begin{itemize}
+				\item Switch between sources to generate training data.
+				\item Calibration sources with known temperature train neural net.
+				\item Predict $T_{\text{src}}$ of antenna.
+			\end{itemize}
+		\end{column}
+
+		\begin{column}{0.7\textwidth}
+			\begin{figure}
+				\centering
+				\includesvg[width=\textwidth]{images/instrument.svg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\vfill
 \end{frame}
 
 \begin{frame}{\small{Dealing with reflections...}}
@@ -519,6 +519,14 @@
 \end{frame}
 
 \section{End to end 21cm experiment simulation}
+
+\begin{frame}{\small{Simulation pipeline for radiometer calibration}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{images/githubrepo.png}
+	\end{figure}
+\end{frame}
+
 \begin{frame}{\small{End to end simulation}}
 	\vspace{-0.3cm}
 	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
@@ -582,13 +590,6 @@
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.5\textwidth]{images/nn_time.pdf}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\small{Simulation pipeline for radiometer calibration}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\textwidth]{images/githubrepo.png}
 	\end{figure}
 \end{frame}
 

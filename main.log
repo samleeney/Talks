@@ -1,85 +1,84 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.7)  30 SEP 2024 04:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Arch Linux) (preloaded format=pdflatex 2025.3.21)  2 JUL 2025 09:43
 entering extended mode
  \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
 (/usr/share/texmf-dist/tex/latex/beamer/beamer.cls
-Document Class: beamer 2024/01/06 v3.71 A class for typesetting presentations
+Document Class: beamer 2025/02/04 v3.72 A class for typesetting presentations
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
 (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count188
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count196
 )
-\beamer@tempbox=\box51
-\beamer@tempcount=\count189
-\c@beamerpauses=\count190
+\beamer@tempbox=\box52
+\beamer@tempcount=\count197
+\c@beamerpauses=\count198
 
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasedecode.sty
-\beamer@slideinframe=\count191
-\beamer@minimum=\count192
-\beamer@decode@box=\box52
+\beamer@slideinframe=\count199
+\beamer@minimum=\count266
+\beamer@decode@box=\box53
 )
-\beamer@commentbox=\box53
-\beamer@modecount=\count193
+\beamer@commentbox=\box54
+\beamer@modecount=\count267
 )
 (/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
-\headdp=\dimen140
-\footheight=\dimen141
-\sidebarheight=\dimen142
-\beamer@tempdim=\dimen143
-\beamer@finalheight=\dimen144
-\beamer@animht=\dimen145
-\beamer@animdp=\dimen146
-\beamer@animwd=\dimen147
-\beamer@leftmargin=\dimen148
-\beamer@rightmargin=\dimen149
-\beamer@leftsidebar=\dimen150
-\beamer@rightsidebar=\dimen151
-\beamer@boxsize=\dimen152
-\beamer@vboxoffset=\dimen153
-\beamer@descdefault=\dimen154
-\beamer@descriptionwidth=\dimen155
-\beamer@lastskip=\skip48
-\beamer@areabox=\box54
-\beamer@animcurrent=\box55
-\beamer@animshowbox=\box56
-\beamer@sectionbox=\box57
-\beamer@logobox=\box58
-\beamer@linebox=\box59
-\beamer@sectioncount=\count194
-\beamer@subsubsectionmax=\count195
-\beamer@subsectionmax=\count196
-\beamer@sectionmax=\count197
-\beamer@totalheads=\count198
-\beamer@headcounter=\count199
-\beamer@partstartpage=\count266
-\beamer@sectionstartpage=\count267
-\beamer@subsectionstartpage=\count268
-\beamer@animationtempa=\count269
-\beamer@animationtempb=\count270
-\beamer@xpos=\count271
-\beamer@ypos=\count272
-\beamer@ypos@offset=\count273
-\beamer@showpartnumber=\count274
-\beamer@currentsubsection=\count275
-\beamer@coveringdepth=\count276
-\beamer@sectionadjust=\count277
-\beamer@toclastsection=\count278
-\beamer@tocsectionnumber=\count279
+\headdp=\dimen141
+\footheight=\dimen142
+\sidebarheight=\dimen143
+\beamer@tempdim=\dimen144
+\beamer@finalheight=\dimen145
+\beamer@animht=\dimen146
+\beamer@animdp=\dimen147
+\beamer@animwd=\dimen148
+\beamer@leftmargin=\dimen149
+\beamer@rightmargin=\dimen150
+\beamer@leftsidebar=\dimen151
+\beamer@rightsidebar=\dimen152
+\beamer@boxsize=\dimen153
+\beamer@vboxoffset=\dimen154
+\beamer@descdefault=\dimen155
+\beamer@descriptionwidth=\dimen156
+\beamer@lastskip=\skip49
+\beamer@areabox=\box55
+\beamer@animcurrent=\box56
+\beamer@animshowbox=\box57
+\beamer@sectionbox=\box58
+\beamer@logobox=\box59
+\beamer@linebox=\box60
+\beamer@sectioncount=\count268
+\beamer@subsubsectionmax=\count269
+\beamer@subsectionmax=\count270
+\beamer@sectionmax=\count271
+\beamer@totalheads=\count272
+\beamer@headcounter=\count273
+\beamer@partstartpage=\count274
+\beamer@sectionstartpage=\count275
+\beamer@subsectionstartpage=\count276
+\beamer@animationtempa=\count277
+\beamer@animationtempb=\count278
+\beamer@xpos=\count279
+\beamer@ypos=\count280
+\beamer@ypos@offset=\count281
+\beamer@showpartnumber=\count282
+\beamer@currentsubsection=\count283
+\beamer@coveringdepth=\count284
+\beamer@sectionadjust=\count285
+\beamer@toclastsection=\count286
+\beamer@tocsectionnumber=\count287
 
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty
 (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 ))
-\beamer@paperwidth=\skip49
-\beamer@paperheight=\skip50
+\beamer@paperwidth=\skip50
+\beamer@paperheight=\skip51
 
 (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -87,28 +86,28 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count280
-\Gm@cntv=\count281
-\c@Gm@tempcnt=\count282
-\Gm@bindingoffset=\dimen156
-\Gm@wd@mp=\dimen157
-\Gm@odd@mp=\dimen158
-\Gm@even@mp=\dimen159
-\Gm@layoutwidth=\dimen160
-\Gm@layoutheight=\dimen161
-\Gm@layouthoffset=\dimen162
-\Gm@layoutvoffset=\dimen163
+\Gm@cnth=\count288
+\Gm@cntv=\count289
+\c@Gm@tempcnt=\count290
+\Gm@bindingoffset=\dimen157
+\Gm@wd@mp=\dimen158
+\Gm@odd@mp=\dimen159
+\Gm@even@mp=\dimen160
+\Gm@layoutwidth=\dimen161
+\Gm@layoutheight=\dimen162
+\Gm@layouthoffset=\dimen163
+\Gm@layoutvoffset=\dimen164
 \Gm@dimlist=\toks18
 )
 (/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks19
-\pgfutil@tempdima=\dimen164
-\pgfutil@tempdimb=\dimen165
+\pgfutil@tempdima=\dimen165
+\pgfutil@tempdimb=\dimen166
 )
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box60
+\pgfutil@abb=\box61
 )
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
@@ -124,23 +123,23 @@ x
 \pgfkeys@tmptoks=\toks22
 ))) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
-\pgf@x=\dimen166
-\pgf@xa=\dimen167
-\pgf@xb=\dimen168
-\pgf@xc=\dimen169
-\pgf@y=\dimen170
-\pgf@ya=\dimen171
-\pgf@yb=\dimen172
-\pgf@yc=\dimen173
-\c@pgf@counta=\count283
-\c@pgf@countb=\count284
-\c@pgf@countc=\count285
-\c@pgf@countd=\count286
+\pgf@x=\dimen167
+\pgf@xa=\dimen168
+\pgf@xb=\dimen169
+\pgf@xc=\dimen170
+\pgf@y=\dimen171
+\pgf@ya=\dimen172
+\pgf@yb=\dimen173
+\pgf@yc=\dimen174
+\c@pgf@counta=\count291
+\c@pgf@countb=\count292
+\c@pgf@countc=\count293
+\c@pgf@countd=\count294
 )
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen174
-\pgfmath@count=\count287
-\pgfmath@box=\box61
+\pgfmath@dimen=\dimen175
+\pgfmath@count=\count295
+\pgfmath@box=\box62
 \pgfmath@toks=\toks23
 \pgfmath@stack@operand=\toks24
 \pgfmath@stack@operation=\toks25
@@ -157,55 +156,55 @@ x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
 .code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count288
+\c@pgfmathroundto@lastzeros=\count296
 )))
 (/usr/share/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+File: size11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
 (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: pdftex.def on input line 106.
 
 (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen175
-\Gin@req@width=\dimen176
+\Gin@req@height=\dimen176
+\Gin@req@width=\dimen177
 )
 (/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
-\pgf@x=\dimen177
-\pgf@y=\dimen178
-\pgf@xa=\dimen179
-\pgf@ya=\dimen180
-\pgf@xb=\dimen181
-\pgf@yb=\dimen182
-\pgf@xc=\dimen183
-\pgf@yc=\dimen184
-\pgf@xd=\dimen185
-\pgf@yd=\dimen186
+\pgf@x=\dimen178
+\pgf@y=\dimen179
+\pgf@xa=\dimen180
+\pgf@ya=\dimen181
+\pgf@xb=\dimen182
+\pgf@yb=\dimen183
+\pgf@xc=\dimen184
+\pgf@yc=\dimen185
+\pgf@xd=\dimen186
+\pgf@yd=\dimen187
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count289
-\c@pgf@countb=\count290
-\c@pgf@countc=\count291
-\c@pgf@countd=\count292
+\c@pgf@counta=\count297
+\c@pgf@countb=\count298
+\c@pgf@countc=\count299
+\c@pgf@countd=\count300
 \t@pgf@toka=\toks26
 \t@pgf@tokb=\toks27
 \t@pgf@tokc=\toks28
-\pgf@sys@id@count=\count293
+\pgf@sys@id@count=\count301
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
@@ -220,14 +219,14 @@ File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count294
-\pgfsyssoftpath@bigbuffer@items=\count295
+\pgfsyssoftpath@smallbuffer@items=\count302
+\pgfsyssoftpath@bigbuffer@items=\count303
 )
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))
 (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
 (/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
@@ -235,15 +234,15 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package xcolor Info: Driver file: pdftex.def on input line 274.
 
 (/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
-Package xcolor Info: Model `RGB' extended on input line 1366.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
@@ -251,47 +250,47 @@ Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen187
-\pgf@picmaxx=\dimen188
-\pgf@picminy=\dimen189
-\pgf@picmaxy=\dimen190
-\pgf@pathminx=\dimen191
-\pgf@pathmaxx=\dimen192
-\pgf@pathminy=\dimen193
-\pgf@pathmaxy=\dimen194
-\pgf@xx=\dimen195
-\pgf@xy=\dimen196
-\pgf@yx=\dimen197
-\pgf@yy=\dimen198
-\pgf@zx=\dimen199
-\pgf@zy=\dimen256
+\pgf@picminx=\dimen188
+\pgf@picmaxx=\dimen189
+\pgf@picminy=\dimen190
+\pgf@picmaxy=\dimen191
+\pgf@pathminx=\dimen192
+\pgf@pathmaxx=\dimen193
+\pgf@pathminy=\dimen194
+\pgf@pathmaxy=\dimen195
+\pgf@xx=\dimen196
+\pgf@xy=\dimen197
+\pgf@yx=\dimen198
+\pgf@yy=\dimen199
+\pgf@zx=\dimen256
+\pgf@zy=\dimen257
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen257
-\pgf@path@lasty=\dimen258
+\pgf@path@lastx=\dimen258
+\pgf@path@lasty=\dimen259
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen259
-\pgf@shorten@start@additional=\dimen260
+\pgf@shorten@end@additional=\dimen260
+\pgf@shorten@start@additional=\dimen261
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box62
-\pgf@hbox=\box63
-\pgf@layerbox@main=\box64
-\pgf@picture@serial@count=\count296
+\pgfpic=\box63
+\pgf@hbox=\box64
+\pgf@layerbox@main=\box65
+\pgf@picture@serial@count=\count304
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen261
+\pgflinewidth=\dimen262
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
 ex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen262
-\pgf@pt@y=\dimen263
-\pgf@pt@temp=\dimen264
+\pgf@pt@x=\dimen263
+\pgf@pt@y=\dimen264
+\pgf@pt@temp=\dimen265
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -303,20 +302,20 @@ x
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen265
+\pgfarrowsep=\dimen266
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen266
-\pgf@sys@shading@range@num=\count297
-\pgf@shadingcount=\count298
+\pgf@max=\dimen267
+\pgf@sys@shading@range@num=\count305
+\pgf@shadingcount=\count306
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box65
+\pgfexternal@startupbox=\box66
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -331,15 +330,15 @@ File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/xxcolor.sty
 Package: xxcolor 2003/10/24 ver 0.1
-\XC@nummixins=\count299
-\XC@countmixins=\count300
+\XC@nummixins=\count307
+\XC@countmixins=\count308
 )
 (/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
 (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
 
 (/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
@@ -367,9 +366,6 @@ Package pdftexcmds Info: \pdfdraftmode found.
 (/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
-Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-)
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
 
@@ -382,45 +378,49 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count301
+\c@section@level=\count309
 )
-\@linkdim=\dimen267
-\Hy@linkcounter=\count302
-\Hy@pagecounter=\count303
+(/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen268
+\Hy@linkcounter=\count310
+\Hy@pagecounter=\count311
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 (/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count304
+\Hy@SavedSpaceFactor=\count312
 
 (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `bookmarks' set `true' on input line 4062.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 4062.
-Package hyperref Info: Option `implicit' set `false' on input line 4062.
-Package hyperref Info: Hyper figures OFF on input line 4179.
-Package hyperref Info: Link nesting OFF on input line 4184.
-Package hyperref Info: Hyper index ON on input line 4187.
-Package hyperref Info: Plain pages OFF on input line 4194.
-Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Option `bookmarks' set `true' on input line 4040.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4040.
+Package hyperref Info: Option `implicit' set `false' on input line 4040.
+Package hyperref Info: Hyper figures OFF on input line 4157.
+Package hyperref Info: Link nesting OFF on input line 4162.
+Package hyperref Info: Hyper index ON on input line 4165.
+Package hyperref Info: Plain pages OFF on input line 4172.
+Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode OFF; no redefinition of LaTeX internals.
-Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count305
+Package hyperref Info: Bookmarks ON on input line 4424.
+\c@Hy@tempcnt=\count313
 
 (/usr/share/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip16
+\Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen268
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen269
 
 (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -429,17 +429,17 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count306
-\Field@Width=\dimen269
-\Fld@charsize=\dimen270
-Package hyperref Info: Hyper figures OFF on input line 6063.
-Package hyperref Info: Link nesting OFF on input line 6068.
-Package hyperref Info: Hyper index ON on input line 6071.
-Package hyperref Info: backreferencing OFF on input line 6078.
-Package hyperref Info: Link coloring OFF on input line 6083.
-Package hyperref Info: Link coloring with OCG OFF on input line 6088.
-Package hyperref Info: PDF/A mode OFF on input line 6093.
-\Hy@abspage=\count307
+\Fld@menulength=\count314
+\Field@Width=\dimen270
+\Fld@charsize=\dimen271
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring OFF on input line 6062.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+\Hy@abspage=\count315
 
 
 Package hyperref Message: Stopped early.
@@ -447,15 +447,15 @@ Package hyperref Message: Stopped early.
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
+File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
 
 (/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count308
-\c@bookmark@seq@number=\count309
+\Fld@listcount=\count316
+\c@bookmark@seq@number=\count317
 
 (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
@@ -485,14 +485,14 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: sansmathaccent 2020/01/31
 
 (/usr/share/texmf-dist/tex/latex/koma-script/scrlfile.sty
-Package: scrlfile 2023/07/07 v3.41 KOMA-Script package (file load hooks)
+Package: scrlfile 2024/10/24 v3.43 KOMA-Script package (file load hooks)
 
 (/usr/share/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
-Package: scrlfile-hook 2023/07/07 v3.41 KOMA-Script package (using LaTeX hooks)
+Package: scrlfile-hook 2024/10/24 v3.43 KOMA-Script package (using LaTeX hooks)
 
 
 (/usr/share/texmf-dist/tex/latex/koma-script/scrlogo.sty
-Package: scrlogo 2023/07/07 v3.41 KOMA-Script package (logo)
+Package: scrlogo 2024/10/24 v3.43 KOMA-Script package (logo)
 )))))
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty
 (/usr/share/texmf-dist/tex/latex/translator/translator.sty
@@ -501,50 +501,50 @@ Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasemisc.sty)
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetwoscreens.sty)
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseoverlay.sty
-\beamer@argscount=\count310
-\beamer@lastskipcover=\skip51
-\beamer@trivlistdepth=\count311
+\beamer@argscount=\count318
+\beamer@lastskipcover=\skip52
+\beamer@trivlistdepth=\count319
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetitle.sty)
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasesection.sty
-\c@lecture=\count312
-\c@part=\count313
-\c@section=\count314
-\c@subsection=\count315
-\c@subsubsection=\count316
+\c@lecture=\count320
+\c@part=\count321
+\c@section=\count322
+\c@subsection=\count323
+\c@subsubsection=\count324
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseframe.sty
-\beamer@framebox=\box66
-\beamer@frametitlebox=\box67
-\beamer@zoombox=\box68
-\beamer@zoomcount=\count317
-\beamer@zoomframecount=\count318
-\beamer@frametextheight=\dimen271
-\c@subsectionslide=\count319
-\beamer@frametopskip=\skip52
-\beamer@framebottomskip=\skip53
-\beamer@frametopskipautobreak=\skip54
-\beamer@framebottomskipautobreak=\skip55
+\beamer@framebox=\box67
+\beamer@frametitlebox=\box68
+\beamer@zoombox=\box69
+\beamer@zoomcount=\count325
+\beamer@zoomframecount=\count326
+\beamer@frametextheight=\dimen272
+\c@subsectionslide=\count327
+\beamer@frametopskip=\skip53
+\beamer@framebottomskip=\skip54
+\beamer@frametopskipautobreak=\skip55
+\beamer@framebottomskipautobreak=\skip56
 \beamer@envbody=\toks30
-\framewidth=\dimen272
-\c@framenumber=\count320
+\framewidth=\dimen273
+\c@framenumber=\count328
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty
 \beamer@verbatimfileout=\write4
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
-\beamer@splitbox=\box69
-\beamer@autobreakcount=\count321
-\beamer@autobreaklastheight=\dimen273
+\beamer@splitbox=\box70
+\beamer@autobreakcount=\count329
+\beamer@autobreaklastheight=\dimen274
 \beamer@frametitletoks=\toks31
 \beamer@framesubtitletoks=\toks32
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseframecomponents.sty
-\beamer@footins=\box70
+\beamer@footins=\box71
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasecolor.sty)
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasenotes.sty
-\beamer@frameboxcopy=\box71
+\beamer@frameboxcopy=\box72
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetoc.sty)
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
@@ -552,37 +552,37 @@ Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
 
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
-\bmb@box=\box72
-\bmb@colorbox=\box73
-\bmb@boxwidth=\dimen274
-\bmb@boxheight=\dimen275
-\bmb@prevheight=\dimen276
-\bmb@temp=\dimen277
-\bmb@dima=\dimen278
-\bmb@dimb=\dimen279
-\bmb@prevheight=\dimen280
+\bmb@box=\box73
+\bmb@colorbox=\box74
+\bmb@boxwidth=\dimen275
+\bmb@boxheight=\dimen276
+\bmb@prevheight=\dimen277
+\bmb@temp=\dimen278
+\bmb@dima=\dimen279
+\bmb@dimb=\dimen280
+\bmb@prevheight=\dimen281
 )
-\beamer@blockheadheight=\dimen281
+\beamer@blockheadheight=\dimen282
 ))
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.sty
 (/usr/share/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
 \@enLab=\toks34
 )
-\beamer@bibiconwidth=\skip56
-\c@figure=\count322
-\c@table=\count323
-\abovecaptionskip=\skip57
-\belowcaptionskip=\skip58
+\beamer@bibiconwidth=\skip57
+\c@figure=\count330
+\c@table=\count331
+\abovecaptionskip=\skip58
+\belowcaptionskip=\skip59
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasenavigation.sty
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasenavigationsymbols.tex)
-\beamer@section@min@dim=\dimen282
+\beamer@section@min@dim=\dimen283
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty
 (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2023/05/13 v2.17o AMS math features
-\@mathmargin=\skip59
+Package: amsmath 2024/11/05 v2.17t AMS math features
+\@mathmargin=\skip60
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -591,59 +591,59 @@ Package: amstext 2021/08/26 v2.01 AMS text
 (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks35
-\ex@=\dimen283
+\ex@=\dimen284
 ))
 (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen284
+\pmbraise@=\dimen285
 )
 (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count324
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count325
-\leftroot@=\count326
-LaTeX Info: Redefining \overline on input line 399.
-LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count327
-\DOTSCASE@=\count328
-LaTeX Info: Redefining \ldots on input line 496.
-LaTeX Info: Redefining \dots on input line 499.
-LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box74
-\strutbox@=\box75
-LaTeX Info: Redefining \big on input line 722.
-LaTeX Info: Redefining \Big on input line 723.
-LaTeX Info: Redefining \bigg on input line 724.
-LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen285
-LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count329
-LaTeX Info: Redefining \bmod on input line 905.
-LaTeX Info: Redefining \pmod on input line 910.
-LaTeX Info: Redefining \smash on input line 940.
-LaTeX Info: Redefining \relbar on input line 970.
-LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count330
-\dotsspace@=\muskip17
-\c@parentequation=\count331
-\dspbrk@lvl=\count332
+\inf@bad=\count332
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count333
+\leftroot@=\count334
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count335
+\DOTSCASE@=\count336
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box75
+\strutbox@=\box76
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen286
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count337
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count338
+\dotsspace@=\muskip18
+\c@parentequation=\count339
+\dspbrk@lvl=\count340
 \tag@help=\toks36
-\row@=\count333
-\column@=\count334
-\maxfields@=\count335
+\row@=\count341
+\column@=\count342
+\maxfields@=\count343
 \andhelp@=\toks37
-\eqnshift@=\dimen286
-\alignsep@=\dimen287
-\tagshift@=\dimen288
-\tagwidth@=\dimen289
-\totwidth@=\dimen290
-\lineht@=\dimen291
+\eqnshift@=\dimen287
+\alignsep@=\dimen288
+\tagshift@=\dimen289
+\tagwidth@=\dimen290
+\totwidth@=\dimen291
+\lineht@=\dimen292
 \@envbody=\toks38
-\multlinegap=\skip60
-\multlinetaggap=\skip61
+\multlinegap=\skip61
+\multlinetaggap=\skip62
 \mathdisplay@stack=\toks39
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
@@ -655,56 +655,56 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headfont=\toks42
 \thm@notefont=\toks43
 \thm@headpunct=\toks44
-\thm@preskip=\skip62
-\thm@postskip=\skip63
-\thm@headsep=\skip64
+\thm@preskip=\skip63
+\thm@postskip=\skip64
+\thm@headsep=\skip65
 \dth@everypar=\toks45
 )
-\c@theorem=\count336
+\c@theorem=\count344
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasethemes.sty))
 (/usr/share/texmf-dist/tex/latex/beamer/beamerthemedefault.sty
 (/usr/share/texmf-dist/tex/latex/beamer/beamerfontthemedefault.sty)
 (/usr/share/texmf-dist/tex/latex/beamer/beamercolorthemedefault.sty)
 (/usr/share/texmf-dist/tex/latex/beamer/beamerinnerthemedefault.sty
-\beamer@dima=\dimen292
-\beamer@dimb=\dimen293
+\beamer@dima=\dimen293
+\beamer@dimb=\dimen294
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerouterthemedefault.sty)))
 (/usr/share/texmf-dist/tex/latex/animate/animate.sty
-Package: animate 2023/06/18 PDF & SVG animations from files and inline graphics
+Package: animate 2024/10/14 PDF & SVG animations from files and inline graphics
 
 
 (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texmf-dist/tex/latex/oberdiek/ifdraft.sty
 Package: ifdraft 2016/05/16 v1.4 Detect class options draft and final (HO)
 )
 (/usr/share/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count337
-\calc@Bcount=\count338
-\calc@Adimen=\dimen294
-\calc@Bdimen=\dimen295
-\calc@Askip=\skip65
-\calc@Bskip=\skip66
+\calc@Acount=\count345
+\calc@Bcount=\count346
+\calc@Adimen=\dimen295
+\calc@Bdimen=\dimen296
+\calc@Askip=\skip66
+\calc@Bskip=\skip67
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count339
-\calc@Cskip=\skip67
+\calc@Ccount=\count347
+\calc@Cskip=\skip68
 )
 (/usr/share/texmf-dist/tex/latex/media9/pdfbase.sty
-Package: pdfbase 2022/08/04 v0.55 driver independent access to low-level PDF fe
+Package: pdfbase 2024/09/16 v0.59 driver independent access to low-level PDF fe
 atures
 
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count340
-\l__pdf_internal_box=\box76
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count348
+\l__pdf_internal_box=\box77
 )
-\g_pbs_page_int=\count341
-\g_pbs_oc_int=\count342
+\g_pbs_page_int=\count349
+\g_pbs_oc_int=\count350
 )
 (/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty
 Package: zref-abspage 2023-09-14 v2.35 Module abspage for zref (HO)
@@ -715,34 +715,36 @@ Package: zref-base 2023-09-14 v2.35 Module base for zref (HO)
 (/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
+(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
 Package zref Info: New property list: main on input line 767.
 Package zref Info: New property: default on input line 768.
 Package zref Info: New property: page on input line 769.
 )
-\c@abspage=\count343
+\c@abspage=\count351
 Package zref Info: New property: abspage on input line 67.
 )
 (/usr/share/texmf-dist/tex/latex/ocgx2/ocgbase.sty
-Package: ocgbase 2022/08/04 v0.22 support package for ocgx2.sty
-\g_ocgbase_nd_int=\count344
+Package: ocgbase 2024/09/15 v0.24 support package for ocgx2.sty
 )
-\@anim@box=\box77
-\@anim@measbox=\box78
-\@anim@tmpdima=\dimen296
-\@anim@tmpdimb=\dimen297
-\@anim@num=\count345
-\@anim@curframe=\count346
-\@anim@curframe@zb=\count347
-\@anim@resizeflags=\count348
-\@anim@skipfram=\count349
-\@anim@mulframecnt=\count350
+\@anim@box=\box78
+\@anim@measbox=\box79
+\@anim@tmpdima=\dimen297
+\@anim@tmpdimb=\dimen298
+\@anim@num=\count352
+\@anim@curframe=\count353
+\@anim@curframe@zb=\count354
+\@anim@resizeflags=\count355
+\@anim@skipfram=\count356
+\@anim@mulframecnt=\count357
 \@anim@@tmlnfile=\read3
-\@anim@tmpcnt=\count351
-\c@@anim@ltxcnt=\count352
-\@anim@curlayer=\count353
-\@anim@lineno=\count354
-\@anim@curfield=\count355
-\@anim@@resizeflags=\count356
+\@anim@tmpcnt=\count358
+\c@@anim@ltxcnt=\count359
+\@anim@curlayer=\count360
+\@anim@lineno=\count361
+\@anim@curfield=\count362
+\@anim@@resizeflags=\count363
 )
 (/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
@@ -750,15 +752,15 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box79
+\pgfnodeparttextbox=\box80
 )
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen298
-\pgf@nodesepend=\dimen299
+\pgf@nodesepstart=\dimen299
+\pgf@nodesepend=\dimen300
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
@@ -766,8 +768,8 @@ Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen300
-\pgffor@skip=\dimen301
+\pgffor@iter=\dimen301
+\pgffor@skip=\dimen302
 \pgffor@stack=\toks46
 \pgffor@toks=\toks47
 ))
@@ -777,32 +779,32 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
 x
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count357
-\pgfplotmarksize=\dimen302
+\pgf@plot@mark@count=\count364
+\pgfplotmarksize=\dimen303
 )
-\tikz@lastx=\dimen303
-\tikz@lasty=\dimen304
-\tikz@lastxsaved=\dimen305
-\tikz@lastysaved=\dimen306
-\tikz@lastmovetox=\dimen307
-\tikz@lastmovetoy=\dimen308
-\tikzleveldistance=\dimen309
-\tikzsiblingdistance=\dimen310
-\tikz@figbox=\box80
-\tikz@figbox@bg=\box81
-\tikz@tempbox=\box82
-\tikz@tempbox@bg=\box83
-\tikztreelevel=\count358
-\tikznumberofchildren=\count359
-\tikznumberofcurrentchild=\count360
-\tikz@fig@count=\count361
+\tikz@lastx=\dimen304
+\tikz@lasty=\dimen305
+\tikz@lastxsaved=\dimen306
+\tikz@lastysaved=\dimen307
+\tikz@lastmovetox=\dimen308
+\tikz@lastmovetoy=\dimen309
+\tikzleveldistance=\dimen310
+\tikzsiblingdistance=\dimen311
+\tikz@figbox=\box81
+\tikz@figbox@bg=\box82
+\tikz@tempbox=\box83
+\tikz@tempbox@bg=\box84
+\tikztreelevel=\count365
+\tikznumberofchildren=\count366
+\tikznumberofcurrentchild=\count367
+\tikz@fig@count=\count368
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count362
-\pgfmatrixcurrentcolumn=\count363
-\pgf@matrix@numberofcolumns=\count364
+\pgfmatrixcurrentrow=\count369
+\pgfmatrixcurrentcolumn=\count370
+\pgf@matrix@numberofcolumns=\count371
 )
-\tikz@expandcount=\count365
+\tikz@expandcount=\count372
 
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 topaths.code.tex
@@ -811,11 +813,11 @@ File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 Package: svg 2020/11/26 v2.02k (include SVG pictures)
 
 (/usr/share/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2023/07/07 v3.41 KOMA-Script package (KOMA-Script-independent 
+Package: scrbase 2024/10/24 v3.43 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
-Applying: [2021/05/01] Usage of raw or classic option list on input line 252.
+Applying: [2021/05/01] Usage of raw or classic option list on input line 254.
 Already applied: [0000/00/00] Usage of raw or classic option list on input line
- 368.
+ 370.
 )
 (/usr/share/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
@@ -839,9 +841,9 @@ runsystem(uname -s > "main.w18")...executed.
 runsystem(rm -- "main.w18")...executed.
 
 )
-\c@svg@param@lastpage=\count366
-\svg@box=\box84
-\c@svg@param@currpage=\count367
+\c@svg@param@lastpage=\count373
+\svg@box=\box85
+\c@svg@param@currpage=\count374
 )
 (/usr/share/texmf-dist/tex/latex/transparent/transparent.sty
 Package: transparent 2022-10-27 v1.5 Transparency with color stacks
@@ -861,19 +863,19 @@ Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
 (/usr/share/texmf-dist/tex/latex/beamertheme-metropolis/beamerinnerthememetropo
 lis.sty
 Package: beamerinnerthememetropolis 2017/01/23 Metropolis inner theme
-\metropolis@titleseparator@linewidth=\skip68
-\metropolis@progressonsectionpage=\skip69
-\metropolis@progressonsectionpage@linewidth=\skip70
-\metropolis@blocksep=\skip71
-\metropolis@blockadjust=\skip72
-\metropolis@parskip=\skip73
+\metropolis@titleseparator@linewidth=\skip69
+\metropolis@progressonsectionpage=\skip70
+\metropolis@progressonsectionpage@linewidth=\skip71
+\metropolis@blocksep=\skip72
+\metropolis@blockadjust=\skip73
+\metropolis@parskip=\skip74
 )
 (/usr/share/texmf-dist/tex/latex/beamertheme-metropolis/beamerouterthememetropo
 lis.sty
 Package: beamerouterthememetropolis 2017/01/23 Metropolis outer theme
-\metropolis@frametitle@padding=\skip74
-\metropolis@progressinheadfoot=\skip75
-\metropolis@progressinheadfoot@linewidth=\skip76
+\metropolis@frametitle@padding=\skip75
+\metropolis@progressinheadfoot=\skip76
+\metropolis@progressinheadfoot@linewidth=\skip77
 )
 (/usr/share/texmf-dist/tex/latex/beamertheme-metropolis/beamercolorthememetropo
 lis.sty
@@ -890,10 +892,10 @@ Package beamerthememetropolis Warning: You need to compile with XeLaTeX or LuaL
 aTeX to use the Fira fonts on input line 95.
 
 )) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
+Package: tcolorbox 2024/10/22 version 6.4.1 text color boxes
 
 (/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks50
 \verbatim@line=\toks51
 \verbatim@in@stream=\read4
@@ -901,19 +903,19 @@ Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
 (/usr/share/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 )
-\tcb@titlebox=\box85
-\tcb@upperbox=\box86
-\tcb@lowerbox=\box87
-\tcb@phantombox=\box88
-\c@tcbbreakpart=\count368
-\c@tcblayer=\count369
-\c@tcolorbox@number=\count370
-\l__tcobox_tmpa_box=\box89
-\l__tcobox_tmpa_dim=\dimen311
-\tcb@temp=\box90
+\tcb@titlebox=\box86
+\tcb@upperbox=\box87
+\tcb@lowerbox=\box88
+\tcb@phantombox=\box89
+\c@tcbbreakpart=\count375
+\c@tcblayer=\count376
+\c@tcolorbox@number=\count377
+\l__tcobox_tmpa_box=\box90
+\l__tcobox_tmpa_dim=\dimen312
 \tcb@temp=\box91
 \tcb@temp=\box92
 \tcb@temp=\box93
+\tcb@temp=\box94
 ) (./main.aux)
 \openout1 = `main.aux'.
 
@@ -972,16 +974,16 @@ LaTeX Font Info:    ... okay on input line 27.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count371
-\scratchdimen=\dimen312
-\scratchbox=\box94
-\nofMPsegments=\count372
-\nofMParguments=\count373
+\scratchcounter=\count378
+\scratchdimen=\dimen313
+\scratchbox=\box95
+\nofMPsegments=\count379
+\nofMParguments=\count380
 \everyMPshowfont=\toks52
-\MPscratchCnt=\count374
-\MPscratchDim=\dimen313
-\MPnumerator=\count375
-\makeMPintoPDFobject=\count376
+\MPscratchCnt=\count381
+\MPscratchDim=\dimen314
+\MPnumerator=\count382
+\makeMPintoPDFobject=\count383
 \everyMPtoPDFconversion=\toks53
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1085,27 +1087,32 @@ File: ./svg-inkscape/affiliations_svg-tex.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./svg-inkscape/affiliations_svg-tex.pdf , page1 used o
 n input line 56.
 (pdftex.def)             Requested size: 398.3386pt x 41.45967pt.
-) [1
+)
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./svg-inkscape/affiliation
 s_svg-tex.pdf>]
 Package svg Info: Last page of `./svg-inkscape/whatiscal_svg-tex.pdf' is 1 on i
 nput line 63.
  (./svg-inkscape/whatiscal_svg-tex.pdf_tex
-<./svg-inkscape/whatiscal_svg-tex.pdf, id=50, page=1, 547.80484pt x 457.35635pt
+<./svg-inkscape/whatiscal_svg-tex.pdf, id=52, page=1, 547.80484pt x 457.35638pt
 >
 File: ./svg-inkscape/whatiscal_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/whatiscal_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/whatiscal_svg-tex.pdf , page1 used on i
 nput line 56.
-(pdftex.def)             Requested size: 239.00558pt x 199.54158pt.
-) [2
+(pdftex.def)             Requested size: 239.00558pt x 199.5416pt.
+)
+
+[2
 
  <./svg-inkscape/whatiscal_svg-tex.pdf>]
 Package svg Info: Last page of `./svg-inkscape/howtocal_svg-tex.pdf' is 2 on in
 put line 72.
- (./svg-inkscape/howtocal_svg-tex.pdf_tex
-<./svg-inkscape/howtocal_svg-tex.pdf, id=77, page=1, 669.33069pt x 513.12569pt>
+
+(./svg-inkscape/howtocal_svg-tex.pdf_tex
+<./svg-inkscape/howtocal_svg-tex.pdf, id=79, page=1, 669.33069pt x 513.12569pt>
 
 File: ./svg-inkscape/howtocal_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/howtocal_svg-tex.pdf, page 1>
@@ -1131,7 +1138,7 @@ ut line 57.
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-<./svg-inkscape/howtocal_svg-tex.pdf, id=78, page=2, 669.33069pt x 513.12569pt>
+<./svg-inkscape/howtocal_svg-tex.pdf, id=80, page=2, 669.33069pt x 513.12569pt>
 
 File: ./svg-inkscape/howtocal_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/howtocal_svg-tex.pdf, page 2>
@@ -1142,6 +1149,8 @@ put line 58.
 Overfull \vbox (17.15398pt too high) detected at line 72
  []
 
+
+
 [3
 
  <./svg-inkscape/howtocal_svg-tex.pdf> <./svg-inkscape/howtocal_svg-tex.pdf
@@ -1149,36 +1158,42 @@ Overfull \vbox (17.15398pt too high) detected at line 72
 pdfTeX warning: pdflatex (file ./svg-inkscape/howtocal_svg-tex.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
 >]
-<antenna.png, id=105, 567.62062pt x 319.1925pt>
-File: antenna.png Graphic file (type png)
-<use antenna.png>
-Package pdftex.def Info: antenna.png  used on input line 103.
+<images/antenna.png, id=107, 567.62062pt x 319.1925pt>
+File: images/antenna.png Graphic file (type png)
+<use images/antenna.png>
+Package pdftex.def Info: images/antenna.png  used on input line 103.
 (pdftex.def)             Requested size: 239.00558pt x 134.40086pt.
- [4
 
- <./antenna.png>]
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-142.
- (/usr/share/texmf-dist/tex/latex/base/ts1cmss.fd
-File: ts1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
+
+[4
+
+ <./images/antenna.png>]
+
 [5
 
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Overfull \vbox (4.53198pt too high) detected at line 207
  []
 
+
+
 [6
 
-] [7
+]
 
-] [8
+[7
+
+]
+
+[8
 
 ]
 Underfull \hbox (badness 10000) detected at line 304
  []$[]  \OT1/cmss/m/n/6 (^^A\OT1/mathkerncmss/m/sl/6 T[]\OT1/cmss/m/n/6 )[] = [
 ][] + [][] + [][] + [][] + [][] \OML/cmm/m/it/6 :$ []  
  []
+
+
 
 [9
 
@@ -1187,21 +1202,27 @@ Underfull \hbox (badness 10000) detected at line 304
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
 (Font)              using `OT1/cmss/bx/n' instead on input line 325.
 
+
+
 [10
 
 ]
-<main_scatter_plots.png, id=182, 1300.86pt x 722.7pt>
-File: main_scatter_plots.png Graphic file (type png)
-<use main_scatter_plots.png>
-Package pdftex.def Info: main_scatter_plots.png  used on input line 341.
-(pdftex.def)             Requested size: 318.67209pt x 177.03548pt.
- [11
+<images/main_scatter_plots.png, id=184, 1300.86pt x 722.7pt>
+File: images/main_scatter_plots.png Graphic file (type png)
+<use images/main_scatter_plots.png>
+Package pdftex.def Info: images/main_scatter_plots.png  used on input line 341.
 
- <./main_scatter_plots.png>]
-<combined_histograms.png, id=193, 1445.4pt x 1084.05pt>
-File: combined_histograms.png Graphic file (type png)
-<use combined_histograms.png>
-Package pdftex.def Info: combined_histograms.png  used on input line 359.
+(pdftex.def)             Requested size: 318.67209pt x 177.03548pt.
+
+
+[11
+
+ <./images/main_scatter_plots.png>]
+<images/combined_histograms.png, id=195, 1445.4pt x 1084.05pt>
+File: images/combined_histograms.png Graphic file (type png)
+<use images/combined_histograms.png>
+Package pdftex.def Info: images/combined_histograms.png  used on input line 359
+.
 (pdftex.def)             Requested size: 318.67209pt x 239.00452pt.
 
 Overfull \hbox (6.22423pt too wide) detected at line 359
@@ -1213,11 +1234,15 @@ Overfull \hbox (6.22423pt too wide) detected at line 359
 Overfull \vbox (1.78801pt too high) detected at line 359
  []
 
+
+
 [12
 
- <./combined_histograms.png>]
+ <./images/combined_histograms.png>]
 
 Package hyperref Warning: Ignoring empty anchor on input line 387.
+
+
 
 [13
 
@@ -1225,19 +1250,21 @@ Package hyperref Warning: Ignoring empty anchor on input line 387.
 Package svg Info: Last page of `./svg-inkscape/mlcal_svg-tex.pdf' is 2 on input
  line 407.
  (./svg-inkscape/mlcal_svg-tex.pdf_tex
-<./svg-inkscape/mlcal_svg-tex.pdf, id=213, page=1, 626.59418pt x 374.79587pt>
+<./svg-inkscape/mlcal_svg-tex.pdf, id=215, page=1, 626.59418pt x 374.79587pt>
 File: ./svg-inkscape/mlcal_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/mlcal_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/mlcal_svg-tex.pdf , page1 used on input
  line 56.
 (pdftex.def)             Requested size: 233.02429pt x 139.38144pt.
-<./svg-inkscape/mlcal_svg-tex.pdf, id=214, page=2, 626.59418pt x 374.79587pt>
+<./svg-inkscape/mlcal_svg-tex.pdf, id=216, page=2, 626.59418pt x 374.79587pt>
 File: ./svg-inkscape/mlcal_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/mlcal_svg-tex.pdf, page 2>
 Package pdftex.def Info: ./svg-inkscape/mlcal_svg-tex.pdf , page2 used on input
  line 59.
 (pdftex.def)             Requested size: 233.02429pt x 139.38144pt.
-) [14
+)
+
+[14
 
  <./svg-inkscape/mlcal_svg-tex.pdf> <./svg-inkscape/mlcal_svg-tex.pdf
 
@@ -1253,27 +1280,29 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 (Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 450.
 
- [15
+
+
+[15
 
 ]
 Package svg Info: Last page of `./svg-inkscape/instrument_svg-tex.pdf' is 2 on 
 input line 471.
  (./svg-inkscape/instrument_svg-tex.pdf_tex
-<./svg-inkscape/instrument_svg-tex.pdf, id=250, page=1, 635.37375pt x 370.38374
-pt>
+<./svg-inkscape/instrument_svg-tex.pdf, id=252, page=1, 634.37pt x 369.38pt>
 File: ./svg-inkscape/instrument_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/instrument_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/instrument_svg-tex.pdf , page1 used on 
 input line 56.
-(pdftex.def)             Requested size: 278.83578pt x 162.55112pt.
-<./svg-inkscape/instrument_svg-tex.pdf, id=251, page=2, 635.37375pt x 370.38374
-pt>
+(pdftex.def)             Requested size: 278.83578pt x 162.36424pt.
+<./svg-inkscape/instrument_svg-tex.pdf, id=253, page=2, 634.37pt x 369.38pt>
 File: ./svg-inkscape/instrument_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/instrument_svg-tex.pdf, page 2>
 Package pdftex.def Info: ./svg-inkscape/instrument_svg-tex.pdf , page2 used on 
 input line 58.
-(pdftex.def)             Requested size: 278.83578pt x 162.55112pt.
-) [16
+(pdftex.def)             Requested size: 278.83578pt x 162.36424pt.
+)
+
+[16
 
  <./svg-inkscape/instrument_svg-tex.pdf> <./svg-inkscape/instrument_svg-tex.pdf
 
@@ -1284,19 +1313,21 @@ usion: multiple pdfs with page group included in a single page
 Package svg Info: Last page of `./svg-inkscape/nn_svg-tex.pdf' is 2 on input li
 ne 493.
  (./svg-inkscape/nn_svg-tex.pdf_tex
-<./svg-inkscape/nn_svg-tex.pdf, id=273, page=1, 886.0056pt x 688.42859pt>
+<./svg-inkscape/nn_svg-tex.pdf, id=275, page=1, 886.0056pt x 688.42859pt>
 File: ./svg-inkscape/nn_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/nn_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/nn_svg-tex.pdf , page1 used on input li
 ne 56.
 (pdftex.def)             Requested size: 258.91765pt x 201.17284pt.
-<./svg-inkscape/nn_svg-tex.pdf, id=274, page=2, 886.0056pt x 688.42859pt>
+<./svg-inkscape/nn_svg-tex.pdf, id=276, page=2, 886.0056pt x 688.42859pt>
 File: ./svg-inkscape/nn_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/nn_svg-tex.pdf, page 2>
 Package pdftex.def Info: ./svg-inkscape/nn_svg-tex.pdf , page2 used on input li
 ne 58.
 (pdftex.def)             Requested size: 258.91765pt x 201.17284pt.
-) [17
+)
+
+[17
 
  <./svg-inkscape/nn_svg-tex.pdf> <./svg-inkscape/nn_svg-tex.pdf
 
@@ -1306,7 +1337,7 @@ ultiple pdfs with page group included in a single page
 Package svg Info: Last page of `./svg-inkscape/results_svg-tex.pdf' is 1 on inp
 ut line 500.
  (./svg-inkscape/results_svg-tex.pdf_tex
-<./svg-inkscape/results_svg-tex.pdf, id=286, page=1, 1806.75pt x 1043.83444pt>
+<./svg-inkscape/results_svg-tex.pdf, id=288, page=1, 1806.75pt x 1043.83444pt>
 File: ./svg-inkscape/results_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/results_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/results_svg-tex.pdf , page1 used on inp
@@ -1321,48 +1352,25 @@ Overfull \hbox (19.91814pt too wide) in paragraph at lines 500--500
 Overfull \vbox (56.0276pt too high) detected at line 500
  []
 
+
+
 [18
 
  <./svg-inkscape/results_svg-tex.pdf>]
-<qr.png, id=302, 3011.25pt x 3831.31375pt>
-File: qr.png Graphic file (type png)
-<use qr.png>
-Package pdftex.def Info: qr.png  used on input line 514.
+<images/qr.png, id=304, 3011.25pt x 3831.31375pt>
+File: images/qr.png Graphic file (type png)
+<use images/qr.png>
+Package pdftex.def Info: images/qr.png  used on input line 514.
 (pdftex.def)             Requested size: 159.333pt x 202.68451pt.
 
 Overfull \vbox (1.42708pt too high) detected at line 514
  []
 
+
+
 [19
 
- <./qr.png>]
-<ian_ff.png, id=313, 864.22874pt x 649.67719pt>
-File: ian_ff.png Graphic file (type png)
-<use ian_ff.png>
-Package pdftex.def Info: ian_ff.png  used on input line 528.
-(pdftex.def)             Requested size: 278.83578pt x 209.60602pt.
-
-Underfull \hbox (badness 1168) in paragraph at lines 528--528
-[]$\OT1/mathkerncmss/m/sl/10.95 T[]$ \OT1/cmss/m/n/10.95 should be spec-
- []
-
-
-Underfull \hbox (badness 2961) in paragraph at lines 528--528
-\OT1/cmss/m/n/10.95 we are in-clud-ing a
- []
-
-
-Underfull \hbox (badness 1377) in paragraph at lines 528--528
-\OT1/cmss/m/n/10.95 tions in the deriva-
- []
-
-
-Overfull \vbox (39.93295pt too high) detected at line 528
- []
-
-[20
-
- <./ian_ff.png (PNG copy)>]
+ <./images/qr.png>]
 \tf@nav=\write6
 \openout6 = `main.nav'.
 
@@ -1372,26 +1380,29 @@ Overfull \vbox (39.93295pt too high) detected at line 528
 \tf@snm=\write8
 \openout8 = `main.snm'.
 
- (./main.aux)
+ [20] (./main.aux)
  ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
  ***********
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Temporary extra page added at the end. Rerun to get it removed.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 29343 strings out of 476076
- 601757 string characters out of 5793776
- 1954187 words of memory out of 5000000
- 50787 multiletter control sequences out of 15000+600000
- 579945 words of font info for 107 fonts, out of 8000000 for 9000
+ 29470 strings out of 475171
+ 604411 string characters out of 5767103
+ 1012877 words of memory out of 5000000
+ 51805 multiletter control sequences out of 15000+600000
+ 580713 words of font info for 107 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 128i,19n,123p,1871b,993s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,19n,123p,1871b,992s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist
 /fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-dist/fonts/typ
@@ -1416,10 +1427,10 @@ re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/f
 onts/type1/public/cm-super/sfss0600.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/cm-super/sfss0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfs
 s1095.pfb>
-Output written on main.pdf (20 pages, 52288905 bytes).
+Output written on main.pdf (20 pages, 52088104 bytes).
 PDF statistics:
- 453 PDF objects out of 1000 (max. 8388607)
- 288 compressed objects within 3 object streams
- 41 named destinations out of 1000 (max. 500000)
- 158 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 449 PDF objects out of 1000 (max. 8388607)
+ 285 compressed objects within 3 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 159 words of extra memory for PDF output out of 10000 (max. 10000000)
 

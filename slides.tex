@@ -171,6 +171,14 @@
 	\vfill
 \end{frame}
 
+\begin{frame}{\small{Receiver/source mismatch}}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/intro_receiver.pdf}
+		\caption{Schematic of the receiver system showing the signal path from antenna to digitizer}
+	\end{figure}
+\end{frame}
+
 \begin{frame}{\small{Dealing with reflections...}}
 
 	% Output Power Equation without title, maintaining the same equation number (1)
@@ -235,187 +243,6 @@
 	\end{minipage}
 
 \end{frame}
-
-
-\begin{frame}{\small{Calibration Equation}}
-
-	\vspace{0.2cm} % Adds a small vertical space at the top
-
-	\textbf{Typically, substitute in the noise wave parameter equation here (gains cancel)}
-
-	\vspace{0.2cm} % Adds space between text and first equation
-
-	% Calibration Equation with \tiny font and manual tag (4)
-	{\tiny
-		\begin{equation}
-			T_{\text{cal}}^* = T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L \tag{4}
-		\end{equation}
-	}
-
-	\vspace{0.1cm} % Adds space between equation and next text
-
-	\textbf{Make some matching assumptions and re arrange:}
-
-	\vspace{0.1cm} % Adds space between text and second equation
-
-	% Multline Equation with \tiny font and manual tag (5)
-	{\tiny
-		\begin{multline}
-			T_\mathrm{s} = \textcolor{red}{T_\mathrm{NS}}\left(\frac{P_\mathrm{s} - P_\mathrm{L}}{P_\mathrm{NS} - P_\mathrm{L}}\right)\frac{\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} + \textcolor{red}{T_\mathrm{L}}\frac{\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} - \textcolor{red}{T_\mathrm{unc}} \frac{|\Gamma_\mathrm{s}|^2}{1 - |\Gamma_\mathrm{s}|^2} +  \\
-			-\textcolor{red}{T_\mathrm{cos}} \frac{\Re \left( \frac{\Gamma_\mathrm{s}}{1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}} \right)\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{(1 - |\Gamma_\mathrm{s}|^2) \sqrt{1 - |\Gamma_\mathrm{rec}|^2}}  -\textcolor{red}{T_\mathrm{sin}} \frac{\Im \left( \frac{\Gamma_\mathrm{s}}{1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}} \right)\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{(1 - |\Gamma_\mathrm{s}|^2) \sqrt{1 - |\Gamma_\mathrm{rec}|^2}} \tag{5}
-		\end{multline}
-	}
-
-	\textit{Note: We end up with 5 parameters that need to be estimated to calibrate the system.}
-
-	\vfill % Pushes the note to the bottom
-\end{frame}
-
-\begin{frame}{\small{Calculating the error}}
-
-	% Adding a block
-	\textbf{By partial derivatives}
-	To find the error in \( T_s \), we propagate the errors in \( \Gamma_s \), \( \Gamma_{rec} \), \( P_L \), \( P_{NS} \), and \( P_s \):
-	%
-	\begin{multline}
-		(\Delta T_s)^2 = \left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 + \left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2 \\ + \left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 + \left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 + \left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2.
-	\end{multline}
-	%
-
-\end{frame}
-
-\begin{frame}{\small{Calculating the error}}
-	\vfill
-	{\tiny
-		\begin{multline}
-			(\Delta T_s)^2 =
-			\left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 +
-			\left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2 +
-			\left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 +
-			\left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 +
-			\left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2.
-		\end{multline}
-	}
-
-	\hrule
-
-	\begin{columns}[c] % Align columns centrally inside the box
-		\begin{column}{0.4\textwidth}
-			\centering
-			{\tiny
-				\begin{align}
-					\frac{\partial T_s}{\partial P_L}    & = T_\mathrm{NS} \frac{\left|1 - \Gamma_\mathrm{s} \Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} \cdot \frac{P_\mathrm{s} - P_\mathrm{NS}}{(P_\mathrm{NS} - P_\mathrm{L})^2}, \\
-					\frac{\partial T_s}{\partial P_{NS}} & = -T_\mathrm{NS} \frac{\left|1 - \Gamma_\mathrm{s} \Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} \cdot \frac{P_\mathrm{s} - P_\mathrm{L}}{(P_\mathrm{NS} - P_\mathrm{L})^2}, \\
-					\frac{\partial T_s}{\partial P_s}    & = T_\mathrm{NS} \left(\frac{1}{P_\mathrm{NS}-P_\mathrm{L}}\right) \frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2}.
-				\end{align}
-
-				\begin{equation}
-					\frac{\partial T_s}{\partial \Gamma_{rec}} = \frac{\partial A}{\partial \Gamma_{rec}} + \frac{\partial B}{\partial \Gamma_{rec}} + \frac{\partial D}{\partial \Gamma_{rec}} + \frac{\partial E}{\partial \Gamma_{rec}}.
-				\end{equation}
-
-				\begin{equation}
-					\frac{\partial T_s}{\partial \Gamma_s} = \frac{\partial A}{\partial \Gamma_s} + \frac{\partial B}{\partial \Gamma_s} + \frac{\partial C}{\partial \Gamma_s} + \frac{\partial D}{\partial \Gamma_s} + \frac{\partial E}{\partial \Gamma_s}.
-				\end{equation}
-			}
-		\end{column}
-
-		\begin{column}{0.6\textwidth}
-			{\tiny
-				\begin{align}
-					A & = T_\mathrm{NS}\left(\frac{P_\mathrm{s} - P_\mathrm{L}}{P_\mathrm{NS}-P_\mathrm{L}}\right)\frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2},                                               \\
-					B & = T_\mathrm{L}\frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2},                                                                                                                           \\
-					C & = - T_\mathrm{unc} \frac{ |\Gamma_\mathrm{s}|^2}{1-\left|\Gamma_\mathrm{s}\right|^2},                                                                                                                                           \\
-					D & = -T_\mathrm{cos} \frac{\Re \left( \frac{ \Gamma_\mathrm{s}}{1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}}\right)\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{( 1-|\Gamma_\mathrm{s}|^2) \sqrt{1-|\Gamma_\mathrm{rec}|^2}}, \\
-					E & = -T_\mathrm{sin} \frac{\Im \left( \frac{ \Gamma_\mathrm{s}}{1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}}\right)\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{( 1-|\Gamma_\mathrm{s}|^2) \sqrt{1-|\Gamma_\mathrm{rec}|^2}}.
-				\end{align}
-			}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{\small{Calculating the error}}
-
-	% Adding a block
-	\textbf{Using $T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L$}
-	%
-	\begin{align}
-		(\Delta T_s)^2 & = \left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2 + \left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 + \left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 \\ &+ \left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 + \left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2.
-	\end{align}
-	%
-
-	\hrule
-	\textbf{Using noise wave parameters \textit{only}}
-	%
-	\begin{align}
-		(\Delta T_\mathrm{s})^2 & = \left(\frac{\partial T_\mathrm{s}}{\partial P_\mathrm{s}} \Delta P_\mathrm{s}\right)^2 \\ &+ \left(\frac{\partial T_\mathrm{s}}{\partial \Gamma_\mathrm{s}} \Delta \Gamma_\mathrm{s}\right)^2 + \left(\frac{\partial T_\mathrm{s}}{\partial \Gamma_\mathrm{rec}} \Delta \Gamma_\mathrm{rec}\right)^2.
-	\end{align}
-	%
-	\textit{Note that this argument applies for both noise parameters and noise wave parameters.}
-
-\end{frame}
-
-\begin{frame}
-
-	\begin{columns}
-		\begin{column}{0.2\textwidth}
-			There is more noise when using $T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L$
-		\end{column}
-		\begin{column}{0.8\textwidth}
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width=1\textwidth]{images/main_scatter_plots.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-
-\end{frame}
-
-
-\begin{frame}
-	\begin{columns}
-		\begin{column}{0.8\textwidth}
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width=0.9\textwidth]{images/combined_histograms.png}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.2\textwidth}
-			Noise amplified by \textbf{30\%} when using
-			\[
-				T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L
-			\]
-		\end{column}
-	\end{columns}
-\end{frame}
-\begin{frame}{\small{Why not fit noise (wave) parameters directly?}}
-
-	% Noise Parameter Equation with smaller, uniform title
-	\textbf{\small{Noise Parameter Equation:}}
-	{\tiny
-		\begin{equation}
-			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{min}}} + T_0 \frac{4\textcolor{red}{R_N}}{Z_0} \frac{|\Gamma_{\text{src}} - \textcolor{red}{\Gamma_{\text{opt}}}|^2}{(1 - |\Gamma_{\text{src}}|^2)(1 + |\Gamma_{\text{opt}}|^2)} \right)
-		\end{equation}
-	}
-
-	\vspace{0.05cm}
-	\hrule  % Horizontal line for separation
-	\vspace{0.05cm}
-
-	% Noise Wave Equation with smaller, uniform title
-	\textbf{\small{Noise Wave Equation:}}
-
-	{\tiny
-		\begin{multline}\label{}
-			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} \left[ \textcolor{red}{T_0} + \textcolor{red}{T_{\text{unc}}} |\Gamma_{\text{s}}|^2 \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 \right. \\
-				\left. + T_{\text{s}}(1 - |\Gamma_{\text{s}}|^2) \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 + \textcolor{red}{T_{\text{cos}}} \Re \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right. \\
-				\left. + \textcolor{red}{T_{\text{sin}}} \Im \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right]
-		\end{multline}
-	}
-
-	\textit{We still end up with 5 unknowns, as before.}
-
-\end{frame}
-
 \section{Radiometer calibration with machine learning}
 \begin{frame}{\small{Machine learning}}
 	\begin{columns}
@@ -436,13 +263,6 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{\small{Receiver/source mismatch}}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.9\textwidth]{images/intro_receiver.pdf}
-		\caption{Schematic of the receiver system showing the signal path from antenna to digitizer}
-	\end{figure}
-\end{frame}
 
 \begin{frame}{\small{Machine learning calibration steps}}
 	\footnotesize
@@ -687,6 +507,188 @@
 		\centering
 		\includegraphics[width=0.35\textwidth]{images/qr.png}
 	\end{figure}
+\end{frame}
+
+\appendix
+\section{Appendix}
+
+\begin{frame}{\small{Calibration Equation}}
+
+	\vspace{0.2cm} % Adds a small vertical space at the top
+
+	\textbf{Typically, substitute in the noise wave parameter equation here (gains cancel)}
+
+	\vspace{0.2cm} % Adds space between text and first equation
+
+	% Calibration Equation with \tiny font and manual tag (4)
+	{\tiny
+		\begin{equation}
+			T_{\text{cal}}^* = T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L \tag{4}
+		\end{equation}
+	}
+
+	\vspace{0.1cm} % Adds space between equation and next text
+
+	\textbf{Make some matching assumptions and re arrange:}
+
+	\vspace{0.1cm} % Adds space between text and second equation
+
+	% Multline Equation with \tiny font and manual tag (5)
+	{\tiny
+		\begin{multline}
+			T_\mathrm{s} = \textcolor{red}{T_\mathrm{NS}}\left(\frac{P_\mathrm{s} - P_\mathrm{L}}{P_\mathrm{NS} - P_\mathrm{L}}\right)\frac{\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} + \textcolor{red}{T_\mathrm{L}}\frac{\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} - \textcolor{red}{T_\mathrm{unc}} \frac{|\Gamma_\mathrm{s}|^2}{1 - |\Gamma_\mathrm{s}|^2} +  \\
+			-\textcolor{red}{T_\mathrm{cos}} \frac{\Re \left( \frac{\Gamma_\mathrm{s}}{1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}} \right)\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{(1 - |\Gamma_\mathrm{s}|^2) \sqrt{1 - |\Gamma_\mathrm{rec}|^2}}  -\textcolor{red}{T_\mathrm{sin}} \frac{\Im \left( \frac{\Gamma_\mathrm{s}}{1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}} \right)\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{(1 - |\Gamma_\mathrm{s}|^2) \sqrt{1 - |\Gamma_\mathrm{rec}|^2}} \tag{5}
+		\end{multline}
+	}
+
+	\textit{Note: We end up with 5 parameters that need to be estimated to calibrate the system.}
+
+	\vfill % Pushes the note to the bottom
+\end{frame}
+
+\begin{frame}{\small{Calculating the error}}
+
+	% Adding a block
+	\textbf{By partial derivatives}
+	To find the error in \( T_s \), we propagate the errors in \( \Gamma_s \), \( \Gamma_{rec} \), \( P_L \), \( P_{NS} \), and \( P_s \):
+	%
+	\begin{multline}
+		(\Delta T_s)^2 = \left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 + \left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2 \\ + \left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 + \left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 + \left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2.
+	\end{multline}
+	%
+
+\end{frame}
+
+\begin{frame}{\small{Calculating the error}}
+	\vfill
+	{\tiny
+		\begin{multline}
+			(\Delta T_s)^2 =
+			\left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 +
+			\left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2 +
+			\left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 +
+			\left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 +
+			\left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2.
+		\end{multline}
+	}
+
+	\hrule
+
+	\begin{columns}[c] % Align columns centrally inside the box
+		\begin{column}{0.4\textwidth}
+			\centering
+			{\tiny
+				\begin{align}
+					\frac{\partial T_s}{\partial P_L}    & = T_\mathrm{NS} \frac{\left|1 - \Gamma_\mathrm{s} \Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} \cdot \frac{P_\mathrm{s} - P_\mathrm{NS}}{(P_\mathrm{NS} - P_\mathrm{L})^2}, \\
+					\frac{\partial T_s}{\partial P_{NS}} & = -T_\mathrm{NS} \frac{\left|1 - \Gamma_\mathrm{s} \Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} \cdot \frac{P_\mathrm{s} - P_\mathrm{L}}{(P_\mathrm{NS} - P_\mathrm{L})^2}, \\
+					\frac{\partial T_s}{\partial P_s}    & = T_\mathrm{NS} \left(\frac{1}{P_\mathrm{NS}-P_\mathrm{L}}\right) \frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2}.
+				\end{align}
+
+				\begin{equation}
+					\frac{\partial T_s}{\partial \Gamma_{rec}} = \frac{\partial A}{\partial \Gamma_{rec}} + \frac{\partial B}{\partial \Gamma_{rec}} + \frac{\partial D}{\partial \Gamma_{rec}} + \frac{\partial E}{\partial \Gamma_{rec}}.
+				\end{equation}
+
+				\begin{equation}
+					\frac{\partial T_s}{\partial \Gamma_s} = \frac{\partial A}{\partial \Gamma_s} + \frac{\partial B}{\partial \Gamma_s} + \frac{\partial C}{\partial \Gamma_s} + \frac{\partial D}{\partial \Gamma_s} + \frac{\partial E}{\partial \Gamma_s}.
+				\end{equation}
+			}
+		\end{column}
+
+		\begin{column}{0.6\textwidth}
+			{\tiny
+				\begin{align}
+					A & = T_\mathrm{NS}\left(\frac{P_\mathrm{s} - P_\mathrm{L}}{P_\mathrm{NS}-P_\mathrm{L}}\right)\frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2},                                               \\
+					B & = T_\mathrm{L}\frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2},                                                                                                                           \\
+					C & = - T_\mathrm{unc} \frac{ |\Gamma_\mathrm{s}|^2}{1-\left|\Gamma_\mathrm{s}\right|^2},                                                                                                                                           \\
+					D & = -T_\mathrm{cos} \frac{\Re \left( \frac{ \Gamma_\mathrm{s}}{1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}}\right)\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{( 1-|\Gamma_\mathrm{s}|^2) \sqrt{1-|\Gamma_\mathrm{rec}|^2}}, \\
+					E & = -T_\mathrm{sin} \frac{\Im \left( \frac{ \Gamma_\mathrm{s}}{1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}}\right)\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{( 1-|\Gamma_\mathrm{s}|^2) \sqrt{1-|\Gamma_\mathrm{rec}|^2}}.
+				\end{align}
+			}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{\small{Calculating the error}}
+
+	% Adding a block
+	\textbf{Using $T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L$}
+	%
+	\begin{align}
+		(\Delta T_s)^2 & = \left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2 + \left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 + \left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 \\ &+ \left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 + \left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2.
+	\end{align}
+	%
+
+	\hrule
+	\textbf{Using noise wave parameters \textit{only}}
+	%
+	\begin{align}
+		(\Delta T_\mathrm{s})^2 & = \left(\frac{\partial T_\mathrm{s}}{\partial P_\mathrm{s}} \Delta P_\mathrm{s}\right)^2 \\ &+ \left(\frac{\partial T_\mathrm{s}}{\partial \Gamma_\mathrm{s}} \Delta \Gamma_\mathrm{s}\right)^2 + \left(\frac{\partial T_\mathrm{s}}{\partial \Gamma_\mathrm{rec}} \Delta \Gamma_\mathrm{rec}\right)^2.
+	\end{align}
+	%
+	\textit{Note that this argument applies for both noise parameters and noise wave parameters.}
+
+\end{frame}
+
+\begin{frame}
+
+	\begin{columns}
+		\begin{column}{0.2\textwidth}
+			There is more noise when using $T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L$
+		\end{column}
+		\begin{column}{0.8\textwidth}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=1\textwidth]{images/main_scatter_plots.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/combined_histograms.png}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			Noise amplified by \textbf{30\%} when using
+			\[
+				T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L
+			\]
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}{\small{Why not fit noise (wave) parameters directly?}}
+
+	% Noise Parameter Equation with smaller, uniform title
+	\textbf{\small{Noise Parameter Equation:}}
+	{\tiny
+		\begin{equation}
+			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{min}}} + T_0 \frac{4\textcolor{red}{R_N}}{Z_0} \frac{|\Gamma_{\text{src}} - \textcolor{red}{\Gamma_{\text{opt}}}|^2}{(1 - |\Gamma_{\text{src}}|^2)(1 + |\Gamma_{\text{opt}}|^2)} \right)
+		\end{equation}
+	}
+
+	\vspace{0.05cm}
+	\hrule  % Horizontal line for separation
+	\vspace{0.05cm}
+
+	% Noise Wave Equation with smaller, uniform title
+	\textbf{\small{Noise Wave Equation:}}
+
+	{\tiny
+		\begin{multline}\label{}
+			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} \left[ \textcolor{red}{T_0} + \textcolor{red}{T_{\text{unc}}} |\Gamma_{\text{s}}|^2 \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 \right. \\
+				\left. + T_{\text{s}}(1 - |\Gamma_{\text{s}}|^2) \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 + \textcolor{red}{T_{\text{cos}}} \Re \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right. \\
+				\left. + \textcolor{red}{T_{\text{sin}}} \Im \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right]
+		\end{multline}
+	}
+
+	\textit{We still end up with 5 unknowns, as before.}
+
 \end{frame}
 
 

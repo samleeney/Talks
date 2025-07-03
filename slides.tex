@@ -142,34 +142,6 @@
 
 \end{frame}
 
-\begin{frame}{\small{How to calibrate with machine learning}}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.6\textwidth]{images/ml_overview.pdf}
-		\caption{High-level overview of the machine learning-based calibration framework}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\small{The physical system}}
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			\textbf{Process:}
-			\begin{itemize}
-				\item Switch between sources to generate training data.
-				\item Calibration sources with known temperature train neural net.
-				\item Predict $T_{\text{src}}$ of antenna.
-			\end{itemize}
-		\end{column}
-
-		\begin{column}{0.7\textwidth}
-			\begin{figure}
-				\centering
-				\includesvg[width=\textwidth]{images/instrument.svg}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\vfill
-\end{frame}
 
 \begin{frame}{\small{Receiver/source mismatch}}
 	\begin{figure}[h]
@@ -308,6 +280,35 @@
 	\end{columns}
 \end{frame}
 
+\begin{frame}{\small{ML calibration overview}}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.6\textwidth]{images/ml_overview.pdf}
+		\caption{High-level overview of the machine learning-based calibration framework}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{The physical system}}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\textbf{Process:}
+			\begin{itemize}
+				\item Switch between sources to generate training data.
+				\item Calibration sources with known temperature train neural net.
+				\item Predict $T_{\text{src}}$ of antenna.
+			\end{itemize}
+		\end{column}
+
+		\begin{column}{0.7\textwidth}
+			\begin{figure}
+				\centering
+				\includesvg[width=\textwidth]{images/instrument.svg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\vfill
+\end{frame}
+
 \begin{frame}{\small{Network Architecture}}
 	\begin{columns}
 		\begin{column}{0.35\textwidth}
@@ -330,12 +331,30 @@
 	\vfill
 \end{frame}
 
+
 \begin{frame}{\small{Testing on internal validation source}}
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.55\textwidth]{images/temps.pdf}
 		\caption{Temperature calibration using internal sources on the REACH receiver}
 	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Does not require cable/switch corrections?}}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/temps.pdf}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includesvg[width=0.9\textwidth]{images/instrument.svg}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{End to end 21cm experiment simulation}

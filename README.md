@@ -3,6 +3,10 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- GPU Accelerated Nested Sampling for 21-cm Cosmology (Given on behalf of Will Handley)
+	- [8th Global 21cm Workshop, ASU](https://sites.google.com/asu.edu/8g21cmworkshop/home)
+  	- [Slides (.pdf)](https://github.com/samleeney/talks-handley/blob/caltech_2025/will_handley.pdf)
+	- [Source files](https://github.com/samleeney/talks-handley/tree/caltech_2025)
 - Machine Learning for Radiometer Calibration
 	- [21cm Workshop Cambridge 2025, 2 July 2025](https://www.kicc.cam.ac.uk/events/kavli-science-themed-meetings/21cm-workshop-cambridge-2025)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/21cm-workshop-cam-2025/slides.pdf)

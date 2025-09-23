@@ -8,6 +8,10 @@
   	- [Slides (.pdf)](https://github.com/samleeney/talks-handley/blob/caltech_2025/will_handley.pdf)
 	- [Source files](https://github.com/samleeney/talks-handley/tree/caltech_2025)
 - Machine Learning for Radiometer Calibration
+	- [8th Global 21cm Workshop, ASU](https://sites.google.com/asu.edu/8g21cmworkshop/home)
+  	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/caltech_2/slides_rasterized.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/caltech_2)
+- Machine Learning for Radiometer Calibration
 	- [21cm Workshop Cambridge 2025, 2 July 2025](https://www.kicc.cam.ac.uk/events/kavli-science-themed-meetings/21cm-workshop-cambridge-2025)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/21cm-workshop-cam-2025/slides.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/21cm-workshop-cam-2025)

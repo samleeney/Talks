@@ -37,7 +37,7 @@
 		% First Author
 		{\large Samuel Alan Kossoff Leeney\par}
 
-		{\small 2nd Year PhD Candidate\par}
+		{\small 3rd Year PhD Candidate\par}
 		\vspace{0.5cm}
 
 
@@ -146,7 +146,7 @@
 \begin{frame}{\small{Receiver/source mismatch}}
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.9\textwidth]{images/intro_receiver.pdf}
+		\includegraphics[width=0.9\textwidth]{images/intro_receiver.png}
 		\caption{Schematic of the receiver system showing the signal path from antenna to digitizer}
 	\end{figure}
 \end{frame}
@@ -216,25 +216,13 @@
 
 \end{frame}
 \section{Radiometer calibration with machine learning}
-\begin{frame}{\small{Machine learning}}
-	\begin{columns}
-		\begin{column}{0.35\textwidth}
-			\textbf{How/why?}
-			\begin{itemize}
-				\item Can predict noise wave parameters using machine learning.
-				\item Could apply method to noise parameters.
-				\item Predict \textbf{directly} on noise parameters on frequency by frequency basis.
-				\item Maleable to environmental changes.
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.65\textwidth}
-			\begin{figure}[h]
-				\includesvg[width=0.9\textwidth]{images/mlcal.svg}
-			\end{figure}
-		\end{column}
-	\end{columns}
+\begin{frame}{\small{ML calibration overview}}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.6\textwidth]{images/ml_overview.png}
+		\caption{High-level overview of the machine learning-based calibration framework}
+	\end{figure}
 \end{frame}
-
 
 \begin{frame}{\small{Machine learning calibration steps}}
 	\footnotesize
@@ -280,91 +268,210 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{\small{ML calibration overview}}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.6\textwidth]{images/ml_overview.pdf}
-		\caption{High-level overview of the machine learning-based calibration framework}
-	\end{figure}
-\end{frame}
+\section{Learning non-linear time-dependent system drift}
 
-\begin{frame}{\small{The physical system}}
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			\textbf{Process:}
-			\begin{itemize}
-				\item Switch between sources to generate training data.
-				\item Calibration sources with known temperature train neural net.
-				\item Predict $T_{\text{src}}$ of antenna.
-			\end{itemize}
-		\end{column}
-
-		\begin{column}{0.7\textwidth}
-			\begin{figure}
-				\centering
-				\includesvg[width=\textwidth]{images/instrument.svg}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\vfill
-\end{frame}
-
-\begin{frame}{\small{Network Architecture}}
-	\begin{columns}
-		\begin{column}{0.35\textwidth}
-			\textbf{Structure:}
-			\begin{itemize}
-				\item Input thermistor and VNA measurments.
-				\item Also input frequency.
-				\item Predict noise parameters.
-				\item Regress over loss function.
-			\end{itemize}
-		\end{column}
-
-		\begin{column}{0.65\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.75\textwidth]{images/nn.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\vfill
-\end{frame}
-
-
-\begin{frame}{\small{Testing on internal validation source}}
+\begin{frame}{\small{Neural Network Time Evolution}}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.55\textwidth]{images/temps.pdf}
-		\caption{Temperature calibration using internal sources on the REACH receiver}
+		\includegraphics[width=0.5\textwidth]{images/nn_time.png}
 	\end{figure}
 \end{frame}
 
-\begin{frame}{\small{Does not require cable/switch corrections?}}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
+\begin{frame}{\small{Inject system drift}}
+	\centering
+\includegraphics[width=\textwidth]{images/temps_combined_2d.png}
+	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
+		Inject a time varying sinusoid into $T_{\text{min}}$ and predict the noise parameters $\rightarrow$ the network recovers this 'system drift'
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\small{Single night, many observations}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/pasted_image_20250403112230.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Many nights, many observations}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/pasted_image_20250410111857.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Calibration Performance}}
+	\begin{columns}[c]
+		\begin{column}{0.6\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[width=0.9\textwidth]{images/temps.pdf}
+				\includegraphics[width=0.9\textwidth]{images/pasted_image_20250515095127.png}
 			\end{figure}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.4\textwidth}
+			\begin{itemize}
+				\item Significant improvement when combining many nights
+				\item Calibration down to 0.18K
+				\item Getting close to theoretical noise
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{\small{Read the paper...}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{images/paper_front.png}
+	\end{figure}
+\end{frame}
+
+\section{Neural corrections}
+\begin{frame}{\small{Neural LSQ residual diagnostics}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/lsq_validation_residuals.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Neural pre-corrected LSQ pipeline}}
+	\begin{enumerate}
+		\item Neural network predicts additive corrections: $\Delta T = \mathrm{NN}(f, \Gamma)$.
+		\item Apply the correction to the measured spectrum: $T_{\text{corrected}} = T_{\text{measured}} + \Delta T$.
+		\item Run a least-squares solve inside the loss: $\theta = \arg\min_\theta \|X\theta - T_{\text{corrected}}\|^2$.
+		\item Predict the calibrated temperature: $T_{\text{pred}} = X\theta$.
+		\item Define the loss: $\mathcal{L} = \|T_{\text{pred}} - T_{\text{corrected}}\|^2$.
+	\end{enumerate}
+	\vspace{0.5cm}
+	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+		The LSQ solver is executed \textit{inside} the training loop, so JAX backpropagates through the closed-form solve.
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\small{Neural pre-corrected LSQ mathematics}}
+	\small
+	The LSQ design matrix for frequency $f$ and calibrator $c$ is
+	\[
+		X_c = \begin{bmatrix} x_u & x_c & x_s & x_{NS} & x_L \end{bmatrix},
+	\]
+	where the noise-wave formulation provides $X$ from the calibrator and receiver $S_{11}$.
+
+	\vspace{0.2cm}
+	For each frequency we solve
+	\[
+		\theta(f) = \arg\min_\theta \left\|X(f)\theta - \big(T_{\text{measured}} + \mathrm{NN}(f, \Gamma; w)\big)\right\|^2,
+	\]
+	and the training loss becomes
+	\[
+		\mathcal{L}(w) = \sum_{f,c} \left[T_{\text{measured}}(c) - \left(X_c(f)\cdot\theta(f) - \mathrm{NN}(f, \Gamma_c; w)\right)\right]^2.
+	\]
+	Optimising $w$ therefore yields the neural correction weights that minimise the residual between corrected measurements and LSQ predictions.
+\end{frame}
+
+\begin{frame}{\small{Aggregated calibrator temperatures}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/aggregated_temperatures.png}
+	\end{figure}
+\end{frame}
+
+\section{Neural anomaly detection}
+\begin{frame}{\small{Bayesian anomaly detection problem}}
+	\begin{itemize}
+		\item Each data point carries an anomaly mask $\varepsilon_i \in \{0, 1\}$ with Bernoulli prior $P(\varepsilon_i) = p_i^{\varepsilon_i}(1-p_i)^{1-\varepsilon_i}$.
+		\item Likelihood blends the normal model $\mathcal{L}_i(\theta)$ and a uniform anomaly floor $\frac{1}{\Delta}$:
+		      \[
+			      P(\mathcal{D}, \vec{\varepsilon}|\theta) = \prod_{i=1}^{N} \left[\mathcal{L}_i(\theta)(1-p_i)\right]^{1-\varepsilon_i} \left[\frac{p_i}{\Delta}\right]^{\varepsilon_i}.
+		      \]
+		\item Dominant mask approximation yields the rule $\log \mathcal{L}_i + \log \Delta \lessgtr \text{logit}(p_i)$ for deciding whether a point is anomalous.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\small{Hard vs.\ soft mixture models}}
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\scriptsize
+			\textbf{Hard mixture:}
+			\[
+				\log P(\mathcal{D}|\theta) = \sum_i \max\left\{\log \mathcal{L}_i + \log(1-p_i), \log p_i - \log \Delta\right\}
+			\]
+			\begin{itemize}
+				\item Fast but clips between hypotheses.
+				\item Sensitive when $p_i$ varies with environment.
+			\end{itemize}
+			\textbf{Soft mixture:}
+			\[
+				\log P(\mathcal{D}|\theta) = \sum_i \log\left[(1-p_i)\mathcal{L}_i + \frac{p_i}{\Delta}\right]
+			\]
+			\begin{itemize}
+				\item Smoothly marginalises corruption states.
+				\item Posterior anomaly probability drops below 0.5 when $(1-p_i)\mathcal{L}_i < \frac{p_i}{\Delta}$.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.52\textwidth}
 			\begin{figure}
 				\centering
-				\includesvg[width=0.9\textwidth]{images/instrument.svg}
+				\includegraphics[width=0.9\textwidth]{neural_anomaly_demo/hard_mixture_model.png}
+				\includegraphics[width=0.9\textwidth]{neural_anomaly_demo/soft_mixture_model.png}
 			\end{figure}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+\begin{frame}{\small{Neural anomaly architecture and loss}}
+	\begin{itemize}
+		\item Neural network outputs both regression prediction $\hat{y} = f_\theta(x)$ and anomaly prior logit$(p_i) = g_\theta(x)$.
+		\item Hard-loss training maximises $\sum \max(\log \mathcal{L}_i + \log(1-p_i), \log p_i - \log \Delta)$, producing binary masks similar to earlier Bayesian RFI mitigation methods.
+		\item Soft-loss training uses a \texttt{logsumexp} implementation for numerical stability:
+		      \[
+			      \mathcal{L}(\theta) = \sum_{i=1}^N \text{logsumexp}\left(\log \mathcal{L}_i + \log(1-p_i), \log p_i - \log \Delta\right).
+		      \]
+		\item Posterior anomaly probability follows
+		      \[
+			      P(\varepsilon_i = 0 | x_i, y_i, \theta) = \frac{(1-p_i)\mathcal{L}_i(\theta)}{(1-p_i)\mathcal{L}_i(\theta) + \tfrac{p_i}{\Delta}},
+		      \]
+		      giving interpretable anomaly maps for the receiver chain.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\small{Toy anomaly detection results}}
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item Synthetic linear regression with Gaussian noise plus injected RFI-like anomalies.
+				\item Network jointly fits $\hat{y}$ and spatial logit$(p)$, achieving perfect 3/3 anomaly recall with zero false positives.
+				\item Posterior $P(\varepsilon=0|x,y)$ cleanly separates corrupted spectra before calibration.
+			\end{itemize}
+		\end{column}
+			\begin{column}{0.55\textwidth}
+				\begin{figure}
+					\includegraphics[width=0.8\textwidth]{neural_anomaly_demo/network_outputs_vs_x.png}
+					\caption{Neural anomaly demo outputs.}
+				\end{figure}
+			\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{\small{Calibrator-level anomaly statistics}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/anomaly_mean_probability.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Daily anomaly probability distributions}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\textwidth]{images/anomaly_distribution_by_date.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Observation-level anomaly tracking}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/anomaly_mean_by_observation.png}
+	\end{figure}
 \end{frame}
 
 \section{End to end 21cm experiment simulation}
-
-\begin{frame}{\small{Simulation pipeline for radiometer calibration}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\textwidth]{images/githubrepo.png}
-	\end{figure}
-\end{frame}
 
 \begin{frame}{\small{End to end simulation}}
 	\vspace{-0.3cm}
@@ -396,87 +503,11 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}{\small{Predicted vs True Antenna Temperature}}
+\begin{frame}{\small{Simulation pipeline for radiometer calibration}}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.6\textwidth]{images/validation_calibrator.pdf}
-		\caption{The top panel shows the predicted antenna temperature in orange, with the true temperature overlaid in black dashes}
+		\includegraphics[width=0.7\textwidth]{images/githubrepo.png}
 	\end{figure}
-\end{frame}
-
-\begin{frame}{\small{Inferred 21cm Signal}}
-	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.9\textwidth]{images/signal_comparison.pdf}
-				\caption{\tiny Left: Reconstructed 21cm signal with posterior (orange) and true signal (green)}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.9\textwidth]{images/signal_triangle_plot.pdf}
-				\caption{\tiny Right: Posterior plots of recovered 21cm signal parameters}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\section{Learning non-linear time-dependent system drift}
-
-\begin{frame}{\small{Neural Network Time Evolution}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.5\textwidth]{images/nn_time.pdf}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\small{Inject system drift}}
-	\centering
-	\includegraphics[width=\textwidth]{images/temps_combined_2d.pdf}
-	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
-		Inject a time varying sinusoid into $T_{\text{min}}$ and predict the noise parameters $\rightarrow$ the network recovers this 'system drift'
-	\end{tcolorbox}
-\end{frame}
-
-\begin{frame}{\small{Single night, many observations}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.8\textwidth]{images/pasted_image_20250403112230.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\small{Many nights, many observations}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.8\textwidth]{images/pasted_image_20250410111857.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\small{Read the paper...}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\textwidth]{images/paper_front.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\small{Calibration Performance}}
-	\begin{columns}[c]
-		\begin{column}{0.6\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.9\textwidth]{images/pasted_image_20250515095127.png}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{itemize}
-				\item Significant improvement when combining many nights
-				\item Calibration down to 0.18K
-				\item Getting close to theoretical noise
-			\end{itemize}
-		\end{column}
-	\end{columns}
 \end{frame}
 
 \section{Modeling system drift from other complex system effects}
@@ -486,7 +517,7 @@
 		\begin{column}{0.55\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[width=\textwidth]{images/nn_time_tpm.pdf}
+				\includegraphics[width=\textwidth]{images/nn_time_tpm.png}
 				\caption{\tiny Neural network evolution with temperature dependencies}
 			\end{figure}
 		\end{column}
@@ -509,6 +540,35 @@
 			\begin{figure}
 				\centering
 				\includegraphics[width=\textwidth]{images/pasted_image_20250605135110.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{End to end simulations}
+
+\begin{frame}{\small{Predicted vs True Antenna Temperature}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\textwidth]{images/validation_calibrator.png}
+		\caption{The top panel shows the predicted antenna temperature in orange, with the true temperature overlaid in black dashes}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\small{Inferred 21cm Signal}}
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/signal_comparison.png}
+				\caption{\tiny Left: Reconstructed 21cm signal with posterior (orange) and true signal (green)}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/signal_triangle_plot.png}
+				\caption{\tiny Right: Posterior plots of recovered 21cm signal parameters}
 			\end{figure}
 		\end{column}
 	\end{columns}

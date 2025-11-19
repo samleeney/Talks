@@ -53,57 +53,17 @@
 	\end{center}
 	\vfill
 \end{frame}
-\section{Radiometer calibration overview}
-\begin{frame}{\small{What is calibration?}}
-	\begin{figure}[h]
-		\centering
-		\includesvg[width=0.6\textwidth]{images/whatiscal.svg}
-	\end{figure}
-	\vfill
-\end{frame}
 
-\begin{frame}{\small{How to calibrate?}}
+\begin{frame}{\small{Receiver/source mismatch}}
 	\begin{figure}[h]
 		\centering
-		\includesvg[width=0.55\textwidth]{images/howtocal.svg}
+		\includegraphics[width=0.9\textwidth]{images/intro_receiver.png}
+		\caption{Schematic of the receiver system showing the signal path from antenna to digitizer}
 	\end{figure}
-	\vspace{0.7cm}
-	\vfill
 \end{frame}
 
 
-\begin{frame}{\small{Why is calibration in Global 21cm Cosmology difficult?}}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.6\textwidth]{images/antenna.png}
-	\end{figure}
-
-	\begin{center}
-		\begin{tikzpicture}
-			\node[draw, rounded corners, inner sep=10pt] (box) {%
-				\begin{minipage}{0.9\textwidth} % Width of the box
-					\begin{columns}[c] % Align columns centrally inside the box
-						\begin{column}{0.33\textwidth}
-							\centering
-							{\small We measure \textit{sky averaged} signal.}
-						\end{column}
-						\begin{column}{0.33\textwidth}
-							\centering
-							{\small Antenna  LNA impedance mismatch}
-						\end{column}
-						\begin{column}{0.33\textwidth}
-							\centering
-							{\small Very faint signal.}
-						\end{column}
-					\end{columns}
-				\end{minipage}
-			};
-		\end{tikzpicture}
-	\end{center}
-
-\end{frame}
-
-\begin{frame}{\small{How to calibrate (in a bit more detail...)?}}
+\begin{frame}{\small{How to calibrate}}
 	\vspace{-0.5cm}
 	\begin{flushleft}
 		\textbf{Objective:} Map input temperature to output power.
@@ -142,14 +102,6 @@
 
 \end{frame}
 
-
-\begin{frame}{\small{Receiver/source mismatch}}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.9\textwidth]{images/intro_receiver.png}
-		\caption{Schematic of the receiver system showing the signal path from antenna to digitizer}
-	\end{figure}
-\end{frame}
 
 \begin{frame}{\small{Dealing with reflections...}}
 
@@ -455,15 +407,6 @@
 	\end{figure}
 \end{frame}
 
- \section{End to end 21cm experiment simulation}
-
-\begin{frame}{\small{Simulation pipeline for radiometer calibration}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\textwidth]{images/githubrepo.png}
-	\end{figure}
-\end{frame}
-
 \section{Modeling system drift from other complex system effects}
 
 \begin{frame}{\small{Modeling environmental features}}
@@ -531,6 +474,14 @@
 	\end{figure}
 \end{frame}
 
+
+\begin{frame}{\small{Simulation pipeline for radiometer calibration}}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{images/githubrepo.png}
+	\end{figure}
+\end{frame}
+
 \begin{frame}{\small{Predicted vs True Antenna Temperature}}
 	\begin{figure}
 		\centering
@@ -568,7 +519,7 @@
 \begin{frame}{\small{Thank you!}}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.35\textwidth]{images/qr.png}
+		\includegraphics[width=0.35\textwidth]{images/qrnew.png}
 	\end{figure}
 \end{frame}
 

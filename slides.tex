@@ -416,22 +416,6 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{\small{Neural anomaly architecture and loss}}
-	\begin{itemize}
-		\item Neural network outputs both regression prediction $\hat{y} = f_\theta(x)$ and anomaly prior logit$(p_i) = g_\theta(x)$.
-		\item Hard-loss training maximises $\sum \max(\log \mathcal{L}_i + \log(1-p_i), \log p_i - \log \Delta)$, producing binary masks similar to earlier Bayesian RFI mitigation methods.
-		\item Soft-loss training uses a \texttt{logsumexp} implementation for numerical stability:
-		      \[
-			      \mathcal{L}(\theta) = \sum_{i=1}^N \text{logsumexp}\left(\log \mathcal{L}_i + \log(1-p_i), \log p_i - \log \Delta\right).
-		      \]
-		\item Posterior anomaly probability follows
-		      \[
-			      P(\varepsilon_i = 0 | x_i, y_i, \theta) = \frac{(1-p_i)\mathcal{L}_i(\theta)}{(1-p_i)\mathcal{L}_i(\theta) + \tfrac{p_i}{\Delta}},
-		      \]
-		      giving interpretable anomaly maps for the receiver chain.
-	\end{itemize}
-\end{frame}
-
 \begin{frame}{\small{Toy anomaly detection results}}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
@@ -471,37 +455,7 @@
 	\end{figure}
 \end{frame}
 
-\section{End to end 21cm experiment simulation}
-
-\begin{frame}{\small{End to end simulation}}
-	\vspace{-0.3cm}
-	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
-		We have shown we can calibrate an internal source, we now test the
-        method on as part of the broader system (simulated).
-	\end{tcolorbox}
-	\vspace{-0.3cm}
-	\begin{figure}[h]
-		\centering
-		\begin{tikzpicture}[scale=0.65, transform shape]
-			% Define styles
-			\tikzstyle{process} = [rectangle, rounded corners, minimum width=4.5cm, minimum height=0.8cm, text centered, draw=black, fill=blue!20, font=\footnotesize]
-			\tikzstyle{arrow} = [thick,->,>=stealth]
-			
-			% Nodes
-			\node (step1) [process] at (0,0) {1) Simulate full receiver chain};
-			\node (step2) [process] at (0,-1.5) {2) Simulate realistic antenna with 21cm signal};
-			\node (step3) [process] at (0,-3) {3) Fit noise parameters to simulated receiver chain};
-			\node (step4) [process] at (0,-4.5) {4) Calibrate 'simulated' antenna};
-			\node (step5) [process] at (0,-6) {5) Fit 21cm signal using REACH pipeline};
-			
-			% Arrows
-			\draw [arrow] (step1) -- (step2);
-			\draw [arrow] (step2) -- (step3);
-			\draw [arrow] (step3) -- (step4);
-			\draw [arrow] (step4) -- (step5);
-		\end{tikzpicture}
-	\end{figure}
-\end{frame}
+ \section{End to end 21cm experiment simulation}
 
 \begin{frame}{\small{Simulation pipeline for radiometer calibration}}
 	\begin{figure}
@@ -546,6 +500,36 @@
 \end{frame}
 
 \section{End to end simulations}
+
+\begin{frame}{\small{End to end simulation}}
+	\vspace{-0.3cm}
+	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
+		We have shown we can calibrate an internal source, we now test the
+        method on as part of the broader system (simulated).
+	\end{tcolorbox}
+	\vspace{-0.3cm}
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[scale=0.65, transform shape]
+			% Define styles
+			\tikzstyle{process} = [rectangle, rounded corners, minimum width=4.5cm, minimum height=0.8cm, text centered, draw=black, fill=blue!20, font=\footnotesize]
+			\tikzstyle{arrow} = [thick,->,>=stealth]
+			
+			% Nodes
+			\node (step1) [process] at (0,0) {1) Simulate full receiver chain};
+			\node (step2) [process] at (0,-1.5) {2) Simulate realistic antenna with 21cm signal};
+			\node (step3) [process] at (0,-3) {3) Fit noise parameters to simulated receiver chain};
+			\node (step4) [process] at (0,-4.5) {4) Calibrate 'simulated' antenna};
+			\node (step5) [process] at (0,-6) {5) Fit 21cm signal using REACH pipeline};
+			
+			% Arrows
+			\draw [arrow] (step1) -- (step2);
+			\draw [arrow] (step2) -- (step3);
+			\draw [arrow] (step3) -- (step4);
+			\draw [arrow] (step4) -- (step5);
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
 
 \begin{frame}{\small{Predicted vs True Antenna Temperature}}
 	\begin{figure}

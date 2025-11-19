@@ -3,6 +3,11 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Neural Corrections and Neural Anomaly Detection for REACH
+	- REACH annual meeting, 19 November 2025
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/reach-annual-meeting-slides/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/reach-annual-meeting-slides)
+
 - GPU Accelerated Nested Sampling for 21-cm Cosmology (Given on behalf of Will Handley)
 	- [8th Global 21cm Workshop, ASU](https://sites.google.com/asu.edu/8g21cmworkshop/home)
   	- [Slides (.pdf)](https://github.com/samleeney/talks-handley/blob/caltech_2025/will_handley.pdf)

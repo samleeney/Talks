@@ -4,7 +4,7 @@
 
 # Talks:
 - Neural Corrections and Neural Anomaly Detection for REACH
-	- REACH annual meeting, 19 November 2025
+	- [REACH annual meeting, 19 November 2025](https://www.reachtelescope.org/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/reach-annual-meeting-slides/slides.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/reach-annual-meeting-slides)
 

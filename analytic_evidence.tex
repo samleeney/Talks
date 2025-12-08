@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\begin{document}
+
+For detection we only care about the \emph{Bayes factor} between a
+signal model $M_1$ and a noise-only model $M_0$,
+\[
+  K = \frac{Z_1}{Z_0},
+  \qquad
+  Z_m = p(I \mid M_m)
+      = \int p(I \mid \theta, M_m)\,p(\theta \mid M_m)\,d\theta.
+\]
+All elements of the parameter vector $\theta$ are therefore treated as
+\emph{nuisance parameters}: we integrate them out to obtain the
+evidence $Z_1$ for the signal model.
+
+\bigskip
+
+\section*{Parameter-wise Treatment}
+
+\subsection*{FRB template and amplitude $A$}
+
+\[
+I_{ij}
+=
+\frac{A}{\sqrt{2\pi}\,\sigma_{\mathrm{frb}}'}
+\exp\!\left(
+  -\frac{\big[t_j - t_0' - K\,\mathrm{DM}'/f_i^2\big]^2}{2\,{\sigma_{\mathrm{frb}}'}^2}
+\right)
++ \epsilon_{ij},
+\]
+
+\noindent
+where $t_0'$, $\mathrm{DM}'$ and $\sigma_{\mathrm{frb}}'$ are the parameters
+that are fitted.  The amplitude $A$ enters the model linearly and can
+be treated as a nuisance parameter: for fixed track parameters
+$(t_0',\mathrm{DM}',\sigma_{\mathrm{frb}}')$ we either optimise $A$
+analytically (least squares) or, with a Gaussian prior on $A$, integrate
+it out in closed form.
+
+\subsection*{Noise variance $\sigma_{\mathrm{noise}}^2$}
+
+\bigskip
+
+We assume independent Gaussian noise
+\[
+\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{\mathrm{noise}}^2),
+\]
+with a conjugate Inverse-Gamma prior on the variance,
+\[
+\sigma_{\mathrm{noise}}^2 \sim \mathrm{Inv\text{-}Gamma}(\alpha_0, \beta_0).
+\]
+
+For a fixed template (i.e.\ fixed $t_0'$, $\mathrm{DM}'$, $\sigma_{\mathrm{frb}}'$)
+and amplitude $A$, define the residuals
+\[
+r_{ij} = I_{ij} - \mu_{ij}, \qquad
+\mu_{ij} = \frac{A}{\sqrt{2\pi}\,\sigma_{\mathrm{frb}}'}
+\exp\!\left(
+  -\frac{\big[t_j - t_0' - K\,\mathrm{DM}'/f_i^2\big]^2}{2\,{\sigma_{\mathrm{frb}}'}^2}
+\right),
+\]
+and the sum of squared residuals
+\[
+S = \sum_{i,j} r_{ij}^2.
+\]
+
+The Gaussian likelihood for $\sigma_{\mathrm{noise}}^2$ is
+\[
+p(I \mid t_0', \mathrm{DM}', \sigma_{\mathrm{frb}}', A, \sigma_{\mathrm{noise}}^2)
+\propto
+(\sigma_{\mathrm{noise}}^2)^{-N_{\mathrm{pix}}/2}
+\exp\!\left(-\frac{S}{2\sigma_{\mathrm{noise}}^2}\right),
+\]
+with $N_{\mathrm{pix}}$ the total number of pixels.  Combining this with
+the Inverse-Gamma prior and integrating out $\sigma_{\mathrm{noise}}^2$ gives
+the marginal likelihood
+\[
+p(I \mid t_0', \mathrm{DM}', \sigma_{\mathrm{frb}}', A)
+\;\propto\;
+\big(\beta_0 + \tfrac{1}{2} S\big)^{-\left(\alpha_0 + \tfrac{1}{2}N_{\mathrm{pix}}\right)},
+\]
+which is a Student--$t$-type dependence on the residuals $r_{ij}$.
+
+\bigskip
+
+\subsection*{Time index $t_0'$}
+
+For detection we do not need a posterior over $t_0'$; we treat it as a
+discrete nuisance parameter.  Given a waterfall with $N_t$ time bins,
+we place a prior $p(t_0')$ over the corresponding bin centres (often
+uniform) and later sum the evidence contributions over all $t_0'$.
+
+\subsection*{Dispersion and width $(\mathrm{DM}',\sigma_{\mathrm{frb}}')$}
+
+After marginalising over $A$ and $\sigma_{\mathrm{noise}}^2$, the
+remaining continuous ``track shape'' parameters are
+\[
+  \phi = (\mathrm{DM}', \sigma_{\mathrm{frb}}').
+\]
+For each discrete time-bin index $t_0'$ the contribution to the signal
+evidence is the integral
+\[
+  Z_1(t_0') = \iint p(I \mid t_0', \phi)\,p(\phi)\,d\phi,
+\]
+where $p(\phi)$ encodes the priors on $\mathrm{DM}'$ and
+$\sigma_{\mathrm{frb}}'$.  Writing the log-posterior (up to a constant)
+as
+\[
+  \ell(\phi) = \log p(I \mid t_0', \phi) + \log p(\phi),
+\]
+the Laplace approximation about its maximiser
+\[
+  \hat{\phi} = \arg\max_{\phi} \,\ell(\phi)
+\]
+with Hessian
+\[
+  H = -\nabla^2_{\phi}\,\ell(\phi)\big|_{\phi = \hat{\phi}}
+\]
+gives
+\[
+  \log Z_1(t_0')
+  \approx
+  \ell(\hat{\phi})
+  + \frac{d}{2}\log(2\pi)
+  - \frac{1}{2}\log|H|,
+  \qquad d = 2.
+\]
+The full signal evidence then follows by summing over the discrete
+time bins,
+\[
+  Z_1 = \sum_{t_0'} p(t_0')\,Z_1(t_0'),
+\]
+with $p(t_0')$ a prior over the time-bin index (e.g.\ uniform).
+
+\end{document}

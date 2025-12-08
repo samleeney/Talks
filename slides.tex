@@ -1,4 +1,3 @@
-
 \documentclass[aspectratio=169]{beamer}
 \usepackage{animate}
 \usepackage{tikz}
@@ -7,7 +6,7 @@
 \usetheme{metropolis}
 \usepackage{tcolorbox}
 
-% Define the footer globally in the theme configuration
+% Footer template
 \setbeamertemplate{footline}{
     \leavevmode%
     \hbox{%
@@ -18,7 +17,7 @@
             \tiny sakl2@cam.ac.uk
         \end{beamercolorbox}%
         \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,rightskip=3mm]{date in head/foot}%
-            \tiny \href{https://github.com/samleeney}{github.com/samleeney/Talks}
+            \tiny \href{https://github.com/samleeney}{github.com/samleeney/Talks} \hfill \insertframenumber/\inserttotalframenumber
         \end{beamercolorbox}%
     }%
     \vskip0pt%
@@ -26,684 +25,384 @@
 
 \begin{document}
 
-% Can you reformat and stylize this title frame
 \begin{frame}
-	\begin{center}
-		% Title
-		{\huge Machine Learning for Radiometer Calibration\par}
-		\vspace{0.5cm}
+    \begin{center}
+        {\huge Fast, Marginalised Bayesian Transient Searching\par}
+        \vspace{0.4cm}
 
+        {\large Sam Leeney\par}
+        {\small Handley Lab, University of Cambridge\par}
+        \vspace{0.3cm}
 
-		% First Author
-		{\large Samuel Alan Kossoff Leeney\par}
+        {\footnotesize Collaborators and discussion partners across SKA/CHIME\par}
 
-		{\small 3rd Year PhD Candidate\par}
-		\vspace{0.5cm}
-
-
-		% Co-authors
-		{\footnotesize With: Harry Bevins, Eloy de Lera Acedo, Will Handley, Rohan Patel, Kaan Artuc, Jiacong Zhu \par}
-
-		\vfill
-
-		% Image at the bottom
-		\includesvg[width=1\textwidth]{images/affiliations.svg}
-
-
-	\end{center}
-	\vfill
+        \vfill
+        \includesvg[width=0.9\textwidth]{images/affiliations.svg}
+    \end{center}
+    \vfill
 \end{frame}
 
-\begin{frame}{\small{Receiver/source mismatch}}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.9\textwidth]{images/intro_receiver.png}
-		\caption{Schematic of the receiver system showing the signal path from antenna to digitizer}
-	\end{figure}
+\begin{frame}{\small{Key message}}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key message]
+        Searching directly on raw time–frequency data with a marginalised Bayesian model lets us keep information, model anomalies jointly, and stay physics-aware.
+    \end{tcolorbox}
+    \vspace{0.35cm}
+    \begin{itemize}
+        \item Compression loses power; search on raw cubes to avoid throwing signals away.
+        \item Fit and flag together: anomaly probability lives inside the likelihood, not after the fact.
+        \item Use physics-informed priors (DM, width, arrival time) to steer the search space.
+        \item The math parallelises; GPU acceleration makes this practical.
+    \end{itemize}
 \end{frame}
 
-
-\begin{frame}{\small{How to calibrate}}
-	\vspace{-0.5cm}
-	\begin{flushleft}
-		\textbf{Objective:} Map input temperature to output power.
-		\vspace{0.2cm}
-
-		\textbf{Key Factors:}
-		\begin{itemize}
-			\item LNA introduces time-dependent gain, $g(t)$.
-			\item Impedance mismatch adds noise ($T_{\text{rec}}$) to the system.
-		\end{itemize}
-
-		\vspace{0.2cm}
-		\textbf{Link Output Power to Input Temperature:}
-	\end{flushleft}
-
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			{
-				\begin{equation}
-					P_{\text{out}}^{\text{src}} = g M \times \left( T_{\text{in}}^{\text{src}} + T_{\text{rec}} \right)
-				\end{equation}
-			}
-
-		\end{column}
-		\begin{column}{0.3\textwidth}
-
-			\small $M = \left( 1 - |\Gamma_{\text{cal}}|^2 \right) | \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{cal}} \Gamma_{\text{rec}}}|^2$
-		\end{column}
-	\end{columns}
-
-	\vfill
-
-	\begin{footnotesize}
-		\textit{Note: All parameters above are frequency-dependent, but the notation has been simplified here and thereafter for convenience.}
-	\end{footnotesize}
-
+\section{What are radio transients?}
+\begin{frame}{\small{Fast radio bursts}}
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.8\textheight,keepaspectratio]{frb_example.png}
 \end{frame}
 
-
-\begin{frame}{\small{Dealing with reflections...}}
-
-	% Output Power Equation without title, maintaining the same equation number (1)
-	\begin{minipage}{0.75\textwidth}
-		{\tiny
-			\begin{equation}
-				P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{rec}}} \right)
-			\end{equation}
-		}
-	\end{minipage}
-
-	\vspace{0.1cm}
-	\hrule  % Horizontal line for separation
-	\vspace{0.1cm}
-
-	% Noise Parameter Equation with smaller, uniform title
-	\begin{minipage}{0.75\textwidth}
-		\textbf{\small{Noise Parameter Equation:}}
-		{\tiny
-			\begin{equation}
-				P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{min}}} + T_0 \frac{4\textcolor{red}{R_N}}{Z_0} \frac{|\Gamma_{\text{src}} - \textcolor{red}{\Gamma_{\text{opt}}}|^2}{(1 - |\Gamma_{\text{src}}|^2)(1 + |\Gamma_{\text{opt}}|^2)} \right)
-			\end{equation}
-		}
-	\end{minipage}
-	\quad
-	\begin{minipage}{0.2\textwidth}
-		\tiny
-		\begin{itemize}
-			\item \( g \) - Gain
-			\item \( T_{\text{min}} \) - Minimum Noise Temperature
-			\item \( R_N \) - Noise Resistance
-			\item \( \Gamma_{\text{opt}} \) - Optimum Reflection Coefficient
-		\end{itemize}
-	\end{minipage}
-
-	\vspace{0.05cm}
-	\hrule  % Horizontal line for separation
-	\vspace{0.05cm}
-
-	% Noise Wave Equation with smaller, uniform title
-	\begin{minipage}{0.75\textwidth}
-		\textbf{\small{Noise Wave Equation:}}
-		{\tiny
-			\begin{multline}
-				P_{\text{out}}^{\text{src}} = \textcolor{red}{g} \left[ \textcolor{red}{T_0} + \textcolor{red}{T_{\text{unc}}} |\Gamma_{\text{s}}|^2 \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 \right. \\
-					\left. + T_{\text{s}}(1 - |\Gamma_{\text{s}}|^2) \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 + \textcolor{red}{T_{\text{cos}}} \Re \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right. \\
-					\left. + \textcolor{red}{T_{\text{sin}}} \Im \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right]
-			\end{multline}
-		}
-	\end{minipage}
-	\quad
-	\begin{minipage}{0.2\textwidth}
-		\tiny
-		\begin{itemize}
-			\item \( \Gamma_{\text{s}} \) - Source Reflection Coefficient
-			\item \( \Gamma_{\text{rec}} \) - Receiver Reflection Coefficient
-			\item \( T_{\text{s}} \) - Source Temperature
-			\item $P_{\text{out}}^{\text{src}}$ - Power out
-			\item $T_{\text{unc, cos, sin}}$ - Noise wave parameters
-			\item $T_{0}$ reference temperature
-		\end{itemize}
-	\end{minipage}
-
-\end{frame}
-\section{Radiometer calibration with machine learning}
-\begin{frame}{\small{ML calibration overview}}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.6\textwidth]{images/ml_overview.png}
-		\caption{High-level overview of the machine learning-based calibration framework}
-	\end{figure}
+\begin{frame}{\small{Pulsars and repeating bursts}}
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.8\textheight,keepaspectratio]{pulsar_example.png}
 \end{frame}
 
-\begin{frame}{\small{Machine learning calibration steps}}
-	\footnotesize
-	\begin{columns}
-		% Left Column: Steps 1 and 2
-		\begin{column}{0.5\textwidth}
-			\textbf{1. Define the Loss Function}\\
-			Regress over measured power and predicted power.\\
-			\begin{equation}
-				\mathcal{L} = \frac{1}{n}\sum_{i=1}^{n} \left( \mathcal{P}_{\text{measured},i} - \mathcal{P}_{\text{pred},i} \right)^{2}
-			\end{equation}
-
-			\vspace{0.5cm} % Adds vertical space between steps
-
-			\textbf{2. Write Down the Equation for \(\mathcal{P}_{\text{pred}}\)}\\
-			Using the noise wave formalism, relate \(\mathcal{P}_{\text{pred}}\) to \(T_{\text{src}}\).
-			\begin{align}
-				 & \mathcal{P}_{\text{pred}} = \textcolor{red}{g} \cdot M \left( T_{\text{in}}^{\text{src}} \right. \nonumber                                                                                                               \\
-				 & \quad + \textcolor{red}{T_{\text{min}}} + T_0 \frac{4\textcolor{red}{R_N}}{Z_0} \frac{|\Gamma_{\text{src}} - \textcolor{red}{\Gamma_{\text{opt}}}|^2}{(1 - |\Gamma_{\text{src}}|^2)(1 + |\Gamma_{\text{opt}}|^2)} \Bigg)
-			\end{align}
-			\vfill
-		\end{column}
-
-		% Right Column: Step 3 with Definitions of Theta
-		\begin{column}{0.5\textwidth}
-			\textbf{3. Minimise the Loss Function}
-			\begin{equation}
-				\boldsymbol{\theta}^* = \arg\min_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta})
-			\end{equation}
-			parameter vector \(\boldsymbol{\theta}\) includes all tunable parameters in the model:
-			\begin{equation}
-				\boldsymbol{\theta} = \{ \textcolor{red}{g}, \textcolor{red}{T_{\text{min}}}, \textcolor{red}{R_N}, \textcolor{red}{\Gamma_{\text{opt}}^{\phi}}, \textcolor{red}{|\Gamma_{\text{opt}}|)}
-			\end{equation}
-
-			\textbf{4. Rearrange and Predict $(T_{\text{src}}$) using $\boldsymbol{\theta}^{*}$}
-			\begin{align}
-				T_{\text{src}} & = \frac{\mathcal{P}_{\text{pred}}}{\textcolor{red}{g^*} \cdot M} \nonumber \\
-				               & \quad - \left( \textcolor{red}{T_{\text{min}}^*}
-				+ T_0 \frac{4\textcolor{red}{R_N^*}}{Z_0} \frac{|\Gamma_{\text{src}} - \textcolor{red}{\Gamma_{\text{opt}}^*}|^2}{(1 - |\Gamma_{\text{src}}|^2)(1 + |\Gamma_{\text{opt}}^*|^2)} \right)
-			\end{align}
-			\vfill
-		\end{column}
-	\end{columns}
+\section{What do they look like in data?}
+\begin{frame}{\small{Dynamic spectrum before dedispersion}}
+    \begin{columns}[T]
+        \begin{column}{0.58\textwidth}
+            \includegraphics[width=\textwidth]{real_pulsar.png}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \begin{itemize}
+                \item Typically we see transients like in the previous images.
+                \item At the telescope they look like this: dispersed across frequency.
+                \item Also mixed with interference.
+                \item Typical pipelines compress this data before fitting; we want to operate in this space entirely.
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\section{Learning non-linear time-dependent system drift}
+\section{Standard search algorithms}
+\begin{frame}[plain]
+    \begin{center}
+        \vfill
+        {\Large How do standard search algorithms work?}
 
-\begin{frame}{\small{Neural Network Time Evolution}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.5\textwidth]{images/nn_time.png}
-	\end{figure}
+        \vspace{0.35cm}
+        {\small Next: RFI flagging, dedispersion sweeps, and S/N thresholding in practice}
+        \vfill
+    \end{center}
 \end{frame}
 
-\begin{frame}{\small{Inject system drift}}
-	\centering
-\includegraphics[width=\textwidth]{images/temps_combined_2d.png}
-	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
-		Inject a time varying sinusoid into $T_{\text{min}}$ and predict the noise parameters $\rightarrow$ the network recovers this 'system drift'
-	\end{tcolorbox}
+\begin{frame}{\small{Simulated FRB observation (raw)}}
+    \begin{columns}[T]
+        \begin{column}{0.58\textwidth}
+            \includegraphics[width=\textwidth]{images/standard_search_raw.png}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \textbf{What you see}
+            \begin{itemize}
+                \item Dispersed sky pulse buried under thermal noise.
+                \item Broadband glitch and narrowband line RFI dominate the collapsed S/N.
+                \item No dedispersion yet: pulse power is smeared out in time.
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{\small{Single night, many observations}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.8\textwidth]{images/pasted_image_20250403112230.png}
-	\end{figure}
+\begin{frame}{\small{Step 1: manual RFI flagging}}
+    \begin{columns}[T]
+        \begin{column}{0.58\textwidth}
+            \includegraphics[width=\textwidth]{images/standard_search_flagged.png}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \textbf{Effect on the data}
+            \begin{itemize}
+                \item Mask out the obvious broadband burst and persistent narrowband line.
+                \item Residual dynamic spectrum still contains the dispersed pulse + noise.
+                \item Collapsed S/N improves slightly but is still below threshold.
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{\small{Many nights, many observations}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.8\textwidth]{images/pasted_image_20250410111857.png}
-	\end{figure}
+\begin{frame}{\small{Step 2: dedispersion sweep (low DM)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm050.png}
 \end{frame}
 
-\begin{frame}{\small{Calibration Performance}}
-	\begin{columns}[c]
-		\begin{column}{0.6\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.9\textwidth]{images/pasted_image_20250515095127.png}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{itemize}
-				\item Significant improvement when combining many nights
-				\item Calibration down to 0.18K
-				\item Getting close to theoretical noise
-			\end{itemize}
-		\end{column}
-	\end{columns}
+\begin{frame}{\small{Dedispersion sweep (DM 100)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm100.png}
 \end{frame}
 
-\begin{frame}{\small{Read the paper...}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\textwidth]{images/paper_front.png}
-	\end{figure}
+\begin{frame}{\small{Dedispersion sweep (still low DM)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm150.png}
 \end{frame}
 
-\section{Neural corrections}
-\begin{frame}{\small{Neural LSQ residual diagnostics}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\textwidth]{images/lsq_validation_residuals.png}
-	\end{figure}
+\begin{frame}{\small{Dedispersion sweep (DM 200)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm200.png}
 \end{frame}
 
-\begin{frame}{\small{Neural pre-corrected LSQ pipeline}}
-	\begin{enumerate}
-		\item Neural network predicts additive corrections: $\Delta T = \mathrm{NN}(f, \Gamma)$.
-		\item Apply the correction to the measured spectrum: $T_{\text{corrected}} = T_{\text{measured}} + \Delta T$.
-		\item Run a least-squares solve inside the loss: $\theta = \arg\min_\theta \|X\theta - T_{\text{corrected}}\|^2$.
-		\item Predict the calibrated temperature: $T_{\text{pred}} = X\theta$.
-		\item Define the loss: $\mathcal{L} = \|T_{\text{pred}} - T_{\text{corrected}}\|^2$.
-	\end{enumerate}
-	\vspace{0.5cm}
-	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
-		The LSQ solver is executed \textit{inside} the training loop, so JAX backpropagates through the closed-form solve.
-	\end{tcolorbox}
+\begin{frame}{\small{Dedispersion sweep (DM 250)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm250.png}
 \end{frame}
 
-\begin{frame}{\small{Neural pre-corrected LSQ mathematics}}
-	\small
-	The LSQ design matrix for frequency $f$ and calibrator $c$ is
-	\[
-		X_c = \begin{bmatrix} x_u & x_c & x_s & x_{NS} & x_L \end{bmatrix},
-	\]
-	where the noise-wave formulation provides $X$ from the calibrator and receiver $S_{11}$.
-
-	\vspace{0.2cm}
-	For each frequency we solve
-	\[
-		\theta(f) = \arg\min_\theta \left\|X(f)\theta - \big(T_{\text{measured}} + \mathrm{NN}(f, \Gamma; w)\big)\right\|^2,
-	\]
-	and the training loss becomes
-	\[
-		\mathcal{L}(w) = \sum_{f,c} \left[T_{\text{measured}}(c) - \left(X_c(f)\cdot\theta(f) - \mathrm{NN}(f, \Gamma_c; w)\right)\right]^2.
-	\]
-	Optimising $w$ therefore yields the neural correction weights that minimise the residual between corrected measurements and LSQ predictions.
+\begin{frame}{\small{Dedispersion sweep (closer DM)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm300.png}
 \end{frame}
 
-\begin{frame}{\small{Aggregated calibrator temperatures}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\textwidth]{images/aggregated_temperatures.png}
-	\end{figure}
+\begin{frame}{\small{Dedispersion sweep (DM 380)}} 
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm380.png}
 \end{frame}
 
-\section{Neural anomaly detection}
-\begin{frame}{\small{Bayesian anomaly detection problem}}
-	\begin{itemize}
-		\item Each data point carries an anomaly mask $\varepsilon_i \in \{0, 1\}$ with Bernoulli prior $P(\varepsilon_i) = p_i^{\varepsilon_i}(1-p_i)^{1-\varepsilon_i}$.
-		\item Likelihood blends the normal model $\mathcal{L}_i(\theta)$ and a uniform anomaly floor $\frac{1}{\Delta}$:
-		      \[
-			      P(\mathcal{D}, \vec{\varepsilon}|\theta) = \prod_{i=1}^{N} \left[\mathcal{L}_i(\theta)(1-p_i)\right]^{1-\varepsilon_i} \left[\frac{p_i}{\Delta}\right]^{\varepsilon_i}.
-		      \]
-		\item Dominant mask approximation yields the rule $\log \mathcal{L}_i + \log \Delta \lessgtr \text{logit}(p_i)$ for deciding whether a point is anomalous.
-	\end{itemize}
+\begin{frame}{\small{Dedispersion sweep (DM 440)}} 
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm440.png}
 \end{frame}
 
-\begin{frame}{\small{Hard vs.\ soft mixture models}}
-	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\scriptsize
-			\textbf{Hard mixture:}
-			\[
-				\log P(\mathcal{D}|\theta) = \sum_i \max\left\{\log \mathcal{L}_i + \log(1-p_i), \log p_i - \log \Delta\right\}
-			\]
-			\begin{itemize}
-				\item Fast but clips between hypotheses.
-				\item Sensitive when $p_i$ varies with environment.
-			\end{itemize}
-			\textbf{Soft mixture:}
-			\[
-				\log P(\mathcal{D}|\theta) = \sum_i \log\left[(1-p_i)\mathcal{L}_i + \frac{p_i}{\Delta}\right]
-			\]
-			\begin{itemize}
-				\item Smoothly marginalises corruption states.
-				\item Posterior anomaly probability drops below 0.5 when $(1-p_i)\mathcal{L}_i < \frac{p_i}{\Delta}$.
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.52\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.9\textwidth]{neural_anomaly_demo/hard_mixture_model.png}
-				\includegraphics[width=0.9\textwidth]{neural_anomaly_demo/soft_mixture_model.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
+\begin{frame}{\small{Dedispersion sweep (approaching DM)}} 
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm520.png}
 \end{frame}
 
-\begin{frame}{\small{Toy anomaly detection results}}
-	\begin{columns}
-		\begin{column}{0.45\textwidth}
-			\begin{itemize}
-				\item Synthetic linear regression with Gaussian noise plus injected RFI-like anomalies.
-				\item Network jointly fits $\hat{y}$ and spatial logit$(p)$, achieving perfect 3/3 anomaly recall with zero false positives.
-				\item Posterior $P(\varepsilon=0|x,y)$ cleanly separates corrupted spectra before calibration.
-			\end{itemize}
-		\end{column}
-			\begin{column}{0.55\textwidth}
-				\begin{figure}
-					\includegraphics[width=0.8\textwidth]{neural_anomaly_demo/network_outputs_vs_x.png}
-					\caption{Neural anomaly demo outputs.}
-				\end{figure}
-			\end{column}
-	\end{columns}
+\begin{frame}{\small{Dedispersion sweep (over-corrected)}} 
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm700.png}
 \end{frame}
 
-\begin{frame}{\small{Calibrator-level anomaly statistics}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\textwidth]{images/anomaly_mean_probability.png}
-	\end{figure}
+\section{Bayesian alternative}
+\begin{frame}{\small{Idea: keep the raw information}}
+    \begin{itemize}
+        \item Choose search parameters from physics-informed priors (DM, width, arrival window).
+        \item Fit and flag simultaneously so no information is discarded to pre-filtering.
+        \item Stay in the native time–frequency cube—no irreversible compression first.
+        \item Make it GPU-fast by keeping the marginalisations analytic and parallel.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Daily anomaly probability distributions}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.95\textwidth]{images/anomaly_distribution_by_date.png}
-	\end{figure}
+\begin{frame}{\small{Step 1: generative model}}
+    \[
+    I_{ij}
+    =
+    \frac{A}{\sqrt{2\pi}\,\sigma_{\mathrm{frb}}'}
+    \exp\!\left(
+      -\frac{\big[t_j - t_0' - K\,\mathrm{DM}'/f_i^2\big]^2}{2\,{\sigma_{\mathrm{frb}}'}^2}
+    \right)
+    + \epsilon_{ij},
+    \]
+    \begin{itemize}
+        \item Likelihood: $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{\text{noise}}^2)$; evaluate on the full cube.
+        \item Sample with nested sampling to obtain posteriors and evidence for model comparison.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Observation-level anomaly tracking}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\textwidth]{images/anomaly_mean_by_observation.png}
-	\end{figure}
+\begin{frame}{\small{Step 1: simple vs. RFI-contaminated pulse}}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{images/step1_simulated_pulse.png}
+            \\[-0.1cm]
+            {\scriptsize Clean simulated pulse}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{images/step1_simulated_pulse_rfi.png}
+            \\[-0.1cm]
+            {\scriptsize Same pulse with strong RFI (not yet modelled)}
+        \end{column}
+    \end{columns}
+\end{frame}
+\section{Bayesian anomaly detection}
+\begin{frame}{\small{Bayesian anomaly detection (Bernoulli mask)}}
+    \begin{itemize}
+        \item Each pixel carries a latent mask $\epsilon_{ij}\!\in\!\{0,1\}$: $\epsilon\!=\!1$ marks an anomaly (RFI), $\epsilon\!=\!0$ is nominal.
+        \item Prior on the mask: $P(\epsilon_{ij}) = p^{\epsilon_{ij}} (1-p)^{1-\epsilon_{ij}}$ with $p$ as the anomaly rate.
+        \item Full likelihood (before marginalisation):
+        \[
+        P(\mathbf{I},\epsilon\mid\theta,p) = \prod_{ij} \big[(1-p)L_{ij}(\theta)\big]^{1-\epsilon_{ij}}\!\left(\frac{p}{\Delta}\right)^{\epsilon_{ij}},
+        \]
+        where $L_{ij}(\theta)$ is the nominal Gaussian likelihood and $\Delta$ is a broad anomaly scale.
+    \end{itemize}
 \end{frame}
 
-\section{Modeling system drift from other complex system effects}
-
-\begin{frame}{\small{Modeling environmental features}}
-	\begin{columns}[c]
-		\begin{column}{0.55\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=\textwidth]{images/nn_time_tpm.png}
-				\caption{\tiny Neural network evolution with temperature dependencies}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.45\textwidth}
-			\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
-				We can train on features that cannot be modeled analytically
-			\end{tcolorbox}
-		\end{column}
-	\end{columns}
+\begin{frame}{\small{Marginalising anomalies without $2^{N}$ masks}}
+    \begin{itemize}
+        \item Exact marginal in log-space (only expression we keep):
+        \[
+        \log P(\mathbf{I}\mid\theta,p)=\sum_{ij}\log\!\left((1-p)L_{ij}(\theta)+\frac{p}{\Delta}\right).
+        \]
+        \item Expanding shows the Occam term that downweights extra mask freedom:
+        \[
+        \log P=\underbrace{\sum_{ij}\log\!\big((1-p)L_{ij}\big)}_{\text{fit term}}+\underbrace{\sum_{ij}\log\!\left(1+\frac{p/\Delta}{(1-p)L_{ij}}\right)}_{\text{Occam penalty}}.
+        \]
+        \item Maximising over $\epsilon$ for intuition gives
+        \[
+        \log P(\mathbf{I}\mid\theta,\epsilon^{\max})=\sum_{ij}\log\!\Big(\max\!\big((1-p)L_{ij},\,p/\Delta\big)\Big),
+        \]
+        and the marginal log-evidence sits below this by the penalty term above.
+        \item Result: a tractable likelihood that jointly fits the pulse and flags RFI probabilistically, yielding evidence $\mathcal{Z}_{\text{signal+anomaly}}$ for detection.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Fitting environmental features against fitted noise parameters}}
-	\begin{columns}[c]
-		\begin{column}{0.45\textwidth}
-			\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
-				Correlate noise parameters with environmental data
-			\end{tcolorbox}
-		\end{column}
-		\begin{column}{0.55\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=\textwidth]{images/pasted_image_20250605135110.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
+\section{Real data fits}
+\begin{frame}{\small{Run on real data (flagged anomalies)}}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{real_pulsar.png}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{real_pulsar_flagged.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\section{End to end simulations}
-
-\begin{frame}{\small{End to end simulation}}
-	\vspace{-0.3cm}
-	\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=]
-		We have shown we can calibrate an internal source, we now test the
-        method on as part of the broader system (simulated).
-	\end{tcolorbox}
-	\vspace{-0.3cm}
-	\begin{figure}[h]
-		\centering
-		\begin{tikzpicture}[scale=0.65, transform shape]
-			% Define styles
-			\tikzstyle{process} = [rectangle, rounded corners, minimum width=4.5cm, minimum height=0.8cm, text centered, draw=black, fill=blue!20, font=\footnotesize]
-			\tikzstyle{arrow} = [thick,->,>=stealth]
-			
-			% Nodes
-			\node (step1) [process] at (0,0) {1) Simulate full receiver chain};
-			\node (step2) [process] at (0,-1.5) {2) Simulate realistic antenna with 21cm signal};
-			\node (step3) [process] at (0,-3) {3) Fit noise parameters to simulated receiver chain};
-			\node (step4) [process] at (0,-4.5) {4) Calibrate 'simulated' antenna};
-			\node (step5) [process] at (0,-6) {5) Fit 21cm signal using REACH pipeline};
-			
-			% Arrows
-			\draw [arrow] (step1) -- (step2);
-			\draw [arrow] (step2) -- (step3);
-			\draw [arrow] (step3) -- (step4);
-			\draw [arrow] (step4) -- (step5);
-		\end{tikzpicture}
-	\end{figure}
+\begin{frame}{\small{Run on real data (fit)}}
+    \centering
+    \includegraphics[width=0.88\textwidth,height=0.8\textheight,keepaspectratio]{real_pulsar_fitted.png}
 \end{frame}
 
-
-\begin{frame}{\small{Simulation pipeline for radiometer calibration}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\textwidth]{images/githubrepo.png}
-	\end{figure}
+\begin{frame}{\small{Flagging detections}}
+    \begin{itemize}
+        \item We flag when the Bayes factor exceeds 1:
+        \[
+        \mathcal{B} = \frac{\mathcal{Z}_{\text{signal+anomaly}}}{\mathcal{Z}_{\text{noise-only}}} > 1.
+        \]
+        \item Posterior on $p$ shows how much of the cube was treated as interference.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Predicted vs True Antenna Temperature}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.6\textwidth]{images/validation_calibrator.png}
-		\caption{The top panel shows the predicted antenna temperature in orange, with the true temperature overlaid in black dashes}
-	\end{figure}
+\begin{frame}{\small{Problem… too slow}}
+    \begin{itemize}
+        \item Even with JAX/Numpyro-style acceleration, full inference takes minutes per candidate.
+        \item At common resolutions, evaluating the Bayes factor can take minutes per ms of data.
+        \item We need an analytic marginalisation for the evidence to keep up with survey rates.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Inferred 21cm Signal}}
-	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.9\textwidth]{images/signal_comparison.png}
-				\caption{\tiny Left: Reconstructed 21cm signal with posterior (orange) and true signal (green)}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.9\textwidth]{images/signal_triangle_plot.png}
-				\caption{\tiny Right: Posterior plots of recovered 21cm signal parameters}
-			\end{figure}
-		\end{column}
-	\end{columns}
+\section{Analytic Bayes factor}
+\begin{frame}{\small{Goal: closed-form Bayes factor}}
+    \[
+    K = \frac{Z_1}{Z_0}, \qquad Z_m = \int p(I\mid\theta, M_m)\,p(\theta\mid M_m)\,d\theta
+    \]
+    \begin{itemize}
+        \item Treat all template parameters as nuisance; integrate them out analytically where possible.
+        \item Keep only a small numerical search over $(\mathrm{DM}', \sigma_{\mathrm{frb}}')$ and discrete $t_0'$.
+        \item Result: fast, calibrated evidence for detection.
+    \end{itemize}
 \end{frame}
 
-% \begin{frame}{Testing on real data (REACH receiver)}
-% 	\begin{figure}
-% 		\centering
-% 		\includegraphics[width=0.5\textwidth]{nima_best.png}
-% 	\end{figure}
-% \end{frame}
-
-\begin{frame}{\small{Thank you!}}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.35\textwidth]{images/qrnew.png}
-	\end{figure}
+\begin{frame}{\small{Signal model (from Step 1)}}
+    \[
+    I_{ij}
+    =
+    \frac{A}{\sqrt{2\pi}\,\textcolor{red}{\sigma_{\mathrm{frb}}'}}
+    \exp\!\left(
+      -\frac{\big[t_j - \textcolor{red}{t_0'} - K\,\textcolor{red}{\mathrm{DM}'}/f_i^2\big]^2}{2\,\textcolor{red}{{\sigma_{\mathrm{frb}}'}^2}}
+    \right)
+    + \epsilon_{ij}, \quad \epsilon_{ij}\sim\mathcal{N}(0,\sigma^2)
+    \]
+    \begin{itemize}
+        \item Parameters to marginalise: $t_0'$ (discrete), amplitude $A$, noise $\sigma$, track shape $(\mathrm{DM}',\sigma_{\mathrm{frb}}')$.
+    \end{itemize}
 \end{frame}
 
-\appendix
-\section{Appendix}
-
-\begin{frame}{\small{Calibration Equation}}
-
-	\vspace{0.2cm} % Adds a small vertical space at the top
-
-	\textbf{Typically, substitute in the noise wave parameter equation here (gains cancel)}
-
-	\vspace{0.2cm} % Adds space between text and first equation
-
-	% Calibration Equation with \tiny font and manual tag (4)
-	{\tiny
-		\begin{equation}
-			T_{\text{cal}}^* = T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L \tag{4}
-		\end{equation}
-	}
-
-	\vspace{0.1cm} % Adds space between equation and next text
-
-	\textbf{Make some matching assumptions and re arrange:}
-
-	\vspace{0.1cm} % Adds space between text and second equation
-
-	% Multline Equation with \tiny font and manual tag (5)
-	{\tiny
-		\begin{multline}
-			T_\mathrm{s} = \textcolor{red}{T_\mathrm{NS}}\left(\frac{P_\mathrm{s} - P_\mathrm{L}}{P_\mathrm{NS} - P_\mathrm{L}}\right)\frac{\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} + \textcolor{red}{T_\mathrm{L}}\frac{\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} - \textcolor{red}{T_\mathrm{unc}} \frac{|\Gamma_\mathrm{s}|^2}{1 - |\Gamma_\mathrm{s}|^2} +  \\
-			-\textcolor{red}{T_\mathrm{cos}} \frac{\Re \left( \frac{\Gamma_\mathrm{s}}{1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}} \right)\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{(1 - |\Gamma_\mathrm{s}|^2) \sqrt{1 - |\Gamma_\mathrm{rec}|^2}}  -\textcolor{red}{T_\mathrm{sin}} \frac{\Im \left( \frac{\Gamma_\mathrm{s}}{1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}} \right)\left|1 - \Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{(1 - |\Gamma_\mathrm{s}|^2) \sqrt{1 - |\Gamma_\mathrm{rec}|^2}} \tag{5}
-		\end{multline}
-	}
-
-	\textit{Note: We end up with 5 parameters that need to be estimated to calibrate the system.}
-
-	\vfill % Pushes the note to the bottom
+\begin{frame}{\small{Visualising $t_0'$ (arrival asymptote)}}
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.78\textheight,keepaspectratio]{images/t0_visual.png}
 \end{frame}
 
-\begin{frame}{\small{Calculating the error}}
-
-	% Adding a block
-	\textbf{By partial derivatives}
-	To find the error in \( T_s \), we propagate the errors in \( \Gamma_s \), \( \Gamma_{rec} \), \( P_L \), \( P_{NS} \), and \( P_s \):
-	%
-	\begin{multline}
-		(\Delta T_s)^2 = \left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 + \left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2 \\ + \left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 + \left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 + \left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2.
-	\end{multline}
-	%
-
+\begin{frame}{\small{Marginalising $t_0'$ (discrete time index)}}
+    \[
+    I_{ij}
+    =
+    \frac{A}{\sqrt{2\pi}\,\sigma_{\mathrm{frb}}'}
+    \exp\!\left(
+      -\frac{\big[t_j - \textcolor{red}{t_0'} - K\,\mathrm{DM}'/f_i^2\big]^2}{2\,{\sigma_{\mathrm{frb}}'}^2}
+    \right)
+    + \epsilon_{ij}, \quad \epsilon_{ij}\sim\mathcal{N}(0,\sigma^2)
+    \]
+    \begin{itemize}
+        \item Treat $t_0'$ as a discrete prior over time bins (often uniform).
+        \item Condition on $t_0'$ and evaluate in parallel across time bins:
+        \[
+        Z_1(t_0') = \iint p(I\mid t_0',A,\sigma,\mathrm{DM}',\sigma_{\mathrm{frb}}')\,p(A,\sigma,\mathrm{DM}',\sigma_{\mathrm{frb}}')\,dA\,d\sigma\,d\phi
+        \]
+        with $\phi=(\mathrm{DM}',\sigma_{\mathrm{frb}}')$.
+        \item Full evidence: $Z_1 = \sum_{t_0'} p(t_0')\,Z_1(t_0')$; embarrassingly parallel over $t_0'$.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Calculating the error}}
-	\vfill
-	{\tiny
-		\begin{multline}
-			(\Delta T_s)^2 =
-			\left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 +
-			\left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2 +
-			\left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 +
-			\left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 +
-			\left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2.
-		\end{multline}
-	}
-
-	\hrule
-
-	\begin{columns}[c] % Align columns centrally inside the box
-		\begin{column}{0.4\textwidth}
-			\centering
-			{\tiny
-				\begin{align}
-					\frac{\partial T_s}{\partial P_L}    & = T_\mathrm{NS} \frac{\left|1 - \Gamma_\mathrm{s} \Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} \cdot \frac{P_\mathrm{s} - P_\mathrm{NS}}{(P_\mathrm{NS} - P_\mathrm{L})^2}, \\
-					\frac{\partial T_s}{\partial P_{NS}} & = -T_\mathrm{NS} \frac{\left|1 - \Gamma_\mathrm{s} \Gamma_\mathrm{rec}\right|^2}{1 - |\Gamma_\mathrm{s}|^2} \cdot \frac{P_\mathrm{s} - P_\mathrm{L}}{(P_\mathrm{NS} - P_\mathrm{L})^2}, \\
-					\frac{\partial T_s}{\partial P_s}    & = T_\mathrm{NS} \left(\frac{1}{P_\mathrm{NS}-P_\mathrm{L}}\right) \frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2}.
-				\end{align}
-
-				\begin{equation}
-					\frac{\partial T_s}{\partial \Gamma_{rec}} = \frac{\partial A}{\partial \Gamma_{rec}} + \frac{\partial B}{\partial \Gamma_{rec}} + \frac{\partial D}{\partial \Gamma_{rec}} + \frac{\partial E}{\partial \Gamma_{rec}}.
-				\end{equation}
-
-				\begin{equation}
-					\frac{\partial T_s}{\partial \Gamma_s} = \frac{\partial A}{\partial \Gamma_s} + \frac{\partial B}{\partial \Gamma_s} + \frac{\partial C}{\partial \Gamma_s} + \frac{\partial D}{\partial \Gamma_s} + \frac{\partial E}{\partial \Gamma_s}.
-				\end{equation}
-			}
-		\end{column}
-
-		\begin{column}{0.6\textwidth}
-			{\tiny
-				\begin{align}
-					A & = T_\mathrm{NS}\left(\frac{P_\mathrm{s} - P_\mathrm{L}}{P_\mathrm{NS}-P_\mathrm{L}}\right)\frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2},                                               \\
-					B & = T_\mathrm{L}\frac{\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{ 1-|\Gamma_\mathrm{s}|^2},                                                                                                                           \\
-					C & = - T_\mathrm{unc} \frac{ |\Gamma_\mathrm{s}|^2}{1-\left|\Gamma_\mathrm{s}\right|^2},                                                                                                                                           \\
-					D & = -T_\mathrm{cos} \frac{\Re \left( \frac{ \Gamma_\mathrm{s}}{1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}}\right)\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{( 1-|\Gamma_\mathrm{s}|^2) \sqrt{1-|\Gamma_\mathrm{rec}|^2}}, \\
-					E & = -T_\mathrm{sin} \frac{\Im \left( \frac{ \Gamma_\mathrm{s}}{1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}}\right)\left|1-\Gamma_\mathrm{s}\Gamma_\mathrm{rec}\right|^2}{( 1-|\Gamma_\mathrm{s}|^2) \sqrt{1-|\Gamma_\mathrm{rec}|^2}}.
-				\end{align}
-			}
-		\end{column}
-	\end{columns}
+\begin{frame}{\small{Marginalising amplitude $A$}}
+    \[
+    I_{ij}
+    =
+    \frac{\textcolor{red}{A}}{\sqrt{2\pi}\,\sigma_{\mathrm{frb}}'}
+    \exp\!\left(
+      -\frac{\big[t_j - t_0' - K\,\mathrm{DM}'/f_i^2\big]^2}{2\,{\sigma_{\mathrm{frb}}'}^2}
+    \right)
+    + \epsilon_{ij}, \quad \epsilon_{ij}\sim\mathcal{N}(0,\sigma^2)
+    \]
+    \begin{itemize}
+        \item Write $\mu_{ij} = A\,\psi_{ij}(t_0',\mathrm{DM}',\sigma_{\mathrm{frb}}')$.
+        \item Gaussian prior on $A$ $\Rightarrow$ complete the square and integrate:
+        \[
+        A\mid \psi,I,\sigma^2 \sim \mathcal{N}(\hat{A},\,\Lambda_A^{-1}), \quad \hat{A} = \frac{\psi^\top I}{\psi^\top\psi+\sigma_A^{-2}\sigma^2}.
+        \]
+        \item Plugging back yields a marginal likelihood depending only on $\sigma^2$ and $\phi$.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Calculating the error}}
-
-	% Adding a block
-	\textbf{Using $T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L$}
-	%
-	\begin{align}
-		(\Delta T_s)^2 & = \left(\frac{\partial T_s}{\partial P_s} \Delta P_s\right)^2 + \left(\frac{\partial T_s}{\partial P_L} \Delta P_L\right)^2 + \left(\frac{\partial T_s}{\partial P_{NS}} \Delta P_{NS}\right)^2 \\ &+ \left(\frac{\partial T_s}{\partial \Gamma_s} \Delta \Gamma_s\right)^2 + \left(\frac{\partial T_s}{\partial \Gamma_{rec}} \Delta \Gamma_{rec}\right)^2.
-	\end{align}
-	%
-
-	\hrule
-	\textbf{Using noise wave parameters \textit{only}}
-	%
-	\begin{align}
-		(\Delta T_\mathrm{s})^2 & = \left(\frac{\partial T_\mathrm{s}}{\partial P_\mathrm{s}} \Delta P_\mathrm{s}\right)^2 \\ &+ \left(\frac{\partial T_\mathrm{s}}{\partial \Gamma_\mathrm{s}} \Delta \Gamma_\mathrm{s}\right)^2 + \left(\frac{\partial T_\mathrm{s}}{\partial \Gamma_\mathrm{rec}} \Delta \Gamma_\mathrm{rec}\right)^2.
-	\end{align}
-	%
-	\textit{Note that this argument applies for both noise parameters and noise wave parameters.}
-
+\begin{frame}{\small{Marginalising noise $\sigma^2$}}
+    \[
+    I_{ij}
+    =
+    \frac{A}{\sqrt{2\pi}\,\sigma_{\mathrm{frb}}'}
+    \exp\!\left(
+      -\frac{\big[t_j - t_0' - K\,\mathrm{DM}'/f_i^2\big]^2}{2\,{\sigma_{\mathrm{frb}}'}^2}
+    \right)
+    + \epsilon_{ij}, \quad \epsilon_{ij}\sim\mathcal{N}(0,\textcolor{red}{\sigma^2})
+    \]
+    \begin{itemize}
+        \item Prior $\sigma^2 \sim \mathrm{Inv}\text{-}\Gamma(\alpha_0,\beta_0)$, likelihood Gaussian on residuals.
+        \item After integrating out $A$, residual sum of squares $S$ gives:
+        \[
+        p(I\mid t_0',\phi) \propto \big(\beta_0 + \tfrac{1}{2}S\big)^{-(\alpha_0 + N_{\mathrm{pix}}/2)}.
+        \]
+        \item Noise variance disappears analytically; no sampler needed.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}
-
-	\begin{columns}
-		\begin{column}{0.2\textwidth}
-			There is more noise when using $T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L$
-		\end{column}
-		\begin{column}{0.8\textwidth}
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width=1\textwidth]{images/main_scatter_plots.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-
+\begin{frame}{\small{Laplace for $(\mathrm{DM}',\sigma_{\mathrm{frb}}')$}}
+    \[
+    I_{ij}
+    =
+    \frac{A}{\sqrt{2\pi}\,\textcolor{red}{\sigma_{\mathrm{frb}}'}}
+    \exp\!\left(
+      -\frac{\big[t_j - t_0' - K\,\textcolor{red}{\mathrm{DM}'}/f_i^2\big]^2}{2\,{\textcolor{red}{\sigma_{\mathrm{frb}}'}}^2}
+    \right)
+    + \epsilon_{ij}, \quad \epsilon_{ij}\sim\mathcal{N}(0,\sigma^2)
+    \]
+    \begin{itemize}
+        \item Remaining continuous track parameters $\phi = (\mathrm{DM}', \sigma_{\mathrm{frb}}')$.
+        \item Laplace about $\hat{\phi}$ with Hessian $H$:
+        \[
+        \log Z_1(t_0') \approx \ell(\hat{\phi}) + \frac{d}{2}\log(2\pi) - \tfrac{1}{2}\log|H|,\quad d=2.
+        \]
+        \item Sum over $t_0'$ and form $K = Z_1/Z_0$ for a fast Bayes factor per candidate.
+        \item Cuts evidence time from minutes to ${\sim}$10s of ms per candidate; still need to fold in RFI handling.
+    \end{itemize}
 \end{frame}
 
-
-\begin{frame}
-	\begin{columns}
-		\begin{column}{0.8\textwidth}
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width=0.9\textwidth]{images/combined_histograms.png}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.2\textwidth}
-			Noise amplified by \textbf{30\%} when using
-			\[
-				T_{\text{NS}} \frac{P_{\text{cal}} - P_L}{P_{\text{NS}} - P_L} + T_L
-			\]
-		\end{column}
-	\end{columns}
+\begin{frame}{\small{Speed-up from analytic evidence}}
+    \centering
+    \includegraphics[width=0.8\textwidth,height=0.78\textheight,keepaspectratio]{obs_time_per_gpu_second.png}
 \end{frame}
-\begin{frame}{\small{Why not fit noise (wave) parameters directly?}}
-
-	% Noise Parameter Equation with smaller, uniform title
-	\textbf{\small{Noise Parameter Equation:}}
-	{\tiny
-		\begin{equation}
-			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} M \left( T_{\text{in}}^{\text{src}} + \textcolor{red}{T_{\text{min}}} + T_0 \frac{4\textcolor{red}{R_N}}{Z_0} \frac{|\Gamma_{\text{src}} - \textcolor{red}{\Gamma_{\text{opt}}}|^2}{(1 - |\Gamma_{\text{src}}|^2)(1 + |\Gamma_{\text{opt}}|^2)} \right)
-		\end{equation}
-	}
-
-	\vspace{0.05cm}
-	\hrule  % Horizontal line for separation
-	\vspace{0.05cm}
-
-	% Noise Wave Equation with smaller, uniform title
-	\textbf{\small{Noise Wave Equation:}}
-
-	{\tiny
-		\begin{multline}\label{}
-			P_{\text{out}}^{\text{src}} = \textcolor{red}{g} \left[ \textcolor{red}{T_0} + \textcolor{red}{T_{\text{unc}}} |\Gamma_{\text{s}}|^2 \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 \right. \\
-				\left. + T_{\text{s}}(1 - |\Gamma_{\text{s}}|^2) \left|\frac{ \sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}}\Gamma_{\text{rec}}} \right|^2 + \textcolor{red}{T_{\text{cos}}} \Re \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right. \\
-				\left. + \textcolor{red}{T_{\text{sin}}} \Im \left( \Gamma_{\text{s}} \frac{\sqrt{1 - |\Gamma_{\text{rec}}|^2}}{1 - \Gamma_{\text{s}} \Gamma_{\text{rec}}} \right) \right]
-		\end{multline}
-	}
-
-	\textit{We still end up with 5 unknowns, as before.}
-
-\end{frame}
-
 
 \end{document}

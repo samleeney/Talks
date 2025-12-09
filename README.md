@@ -3,7 +3,7 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
-- A Marginalised GPU optimised Bayesian Fast Radio Burst Searcher
+- A Marginalised GPU Optimised Bayesian Fast Radio Burst Searcher
 	- [Handley Lab Group Meeting, 09 December 2025](https://handley-lab.co.uk/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/handleylab_talk_xmas/slides.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/handleylab_talk_xmas)

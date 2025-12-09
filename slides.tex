@@ -31,28 +31,15 @@
         \vspace{0.4cm}
 
         {\large Sam Leeney\par}
-        {\small Handley Lab, University of Cambridge\par}
+        {\small University of Cambridge\par}
         \vspace{0.3cm}
 
-        {\footnotesize Collaborators and discussion partners across SKA/CHIME\par}
+        {\footnotesize Collaborators: Charlie Walker, Dominic Anstey\par}
 
         \vfill
         \includesvg[width=0.9\textwidth]{images/affiliations.svg}
     \end{center}
     \vfill
-\end{frame}
-
-\begin{frame}{\small{Key message}}
-    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key message]
-        Searching directly on raw time–frequency data with a marginalised Bayesian model lets us keep information, model anomalies jointly, and stay physics-aware.
-    \end{tcolorbox}
-    \vspace{0.35cm}
-    \begin{itemize}
-        \item Compression loses power; search on raw cubes to avoid throwing signals away.
-        \item Fit and flag together: anomaly probability lives inside the likelihood, not after the fact.
-        \item Use physics-informed priors (DM, width, arrival time) to steer the search space.
-        \item The math parallelises; GPU acceleration makes this practical.
-    \end{itemize}
 \end{frame}
 
 \section{What are radio transients?}
@@ -81,6 +68,19 @@
             \end{itemize}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}{\small{Key message}}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key message]
+        Searching directly on raw time–frequency data with a marginalised Bayesian model lets us keep information, model anomalies jointly, and stay physics-aware.
+    \end{tcolorbox}
+    \vspace{0.35cm}
+    \begin{itemize}
+        \item Compression loses power; search on raw cubes to avoid throwing signals away.
+        \item Fit and flag together: anomaly probability lives inside the likelihood, not after the fact.
+        \item Use physics-informed priors (DM, width, arrival time) to steer the search space.
+        \item The math parallelises; GPU acceleration makes this practical.
+    \end{itemize}
 \end{frame}
 
 \section{Standard search algorithms}
@@ -233,6 +233,7 @@
 \end{frame}
 
 \begin{frame}{\small{Marginalising anomalies without $2^{N}$ masks}}
+    {\footnotesize
     \begin{itemize}
         \item Exact marginal in log-space (only expression we keep):
         \[
@@ -249,6 +250,7 @@
         and the marginal log-evidence sits below this by the penalty term above.
         \item Result: a tractable likelihood that jointly fits the pulse and flags RFI probabilistically, yielding evidence $\mathcal{Z}_{\text{signal+anomaly}}$ for detection.
     \end{itemize}
+    }
 \end{frame}
 
 \section{Real data fits}
@@ -351,6 +353,7 @@
     \]
     \begin{itemize}
         \item Write $\mu_{ij} = A\,\psi_{ij}(t_0',\mathrm{DM}',\sigma_{\mathrm{frb}}')$.
+        \item Select a Gaussian prior on $A$, conjugate to the Gaussian likelihood.
         \item Gaussian prior on $A$ $\Rightarrow$ complete the square and integrate:
         \[
         A\mid \psi,I,\sigma^2 \sim \mathcal{N}(\hat{A},\,\Lambda_A^{-1}), \quad \hat{A} = \frac{\psi^\top I}{\psi^\top\psi+\sigma_A^{-2}\sigma^2}.
@@ -403,6 +406,19 @@
 \begin{frame}{\small{Speed-up from analytic evidence}}
     \centering
     \includegraphics[width=0.8\textwidth,height=0.78\textheight,keepaspectratio]{obs_time_per_gpu_second.png}
+\end{frame}
+
+\begin{frame}{\small{Key message}}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key message]
+        Searching directly on raw time–frequency data with a marginalised Bayesian model lets us keep information, model anomalies jointly, and stay physics-aware.
+    \end{tcolorbox}
+    \vspace{0.35cm}
+    \begin{itemize}
+        \item Compression loses power; search on raw cubes to avoid throwing signals away.
+        \item Fit and flag together: anomaly probability lives inside the likelihood, not after the fact.
+        \item Use physics-informed priors (DM, width, arrival time) to steer the search space.
+        \item The math parallelises; GPU acceleration makes this practical.
+    \end{itemize}
 \end{frame}
 
 \end{document}

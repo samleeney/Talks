@@ -38,3 +38,5 @@ svg-inkscape/*.pdf_tex
 
 # Log files in subdirectories
 images/texput.log
+
+dispersion_searcher

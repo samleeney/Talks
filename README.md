@@ -3,17 +3,22 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- A Marginalised GPU optimised Bayesian Fast Radio Burst Searcher
+	- [Handley Lab Group Meeting, 09 December 2025](https://handley-lab.co.uk/)
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/handleylab_talk_xmas/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/handleylab_talk_xmas)
+
 - Neural Corrections and Neural Anomaly Detection for REACH
 	- [REACH annual meeting, 19 November 2025](https://www.reachtelescope.org/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/reach-annual-meeting-slides/slides.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/reach-annual-meeting-slides)
 
 - GPU Accelerated Nested Sampling for 21-cm Cosmology (Given on behalf of Will Handley)
-	- [8th Global 21cm Workshop, ASU](https://sites.google.com/asu.edu/8g21cmworkshop/home)
+	- [8th Global 21cm Workshop, CalTech](https://sites.google.com/asu.edu/8g21cmworkshop/home)
   	- [Slides (.pdf)](https://github.com/samleeney/talks-handley/blob/caltech_2025/will_handley.pdf)
 	- [Source files](https://github.com/samleeney/talks-handley/tree/caltech_2025)
 - Machine Learning for Radiometer Calibration
-	- [8th Global 21cm Workshop, ASU](https://sites.google.com/asu.edu/8g21cmworkshop/home)
+	- [8th Global 21cm Workshop, CalTech](https://sites.google.com/asu.edu/8g21cmworkshop/home)
   	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/caltech_2/slides_rasterized.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/caltech_2)
 - Machine Learning for Radiometer Calibration

@@ -3,6 +3,11 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Conditional Neural Bayes Ratio Estimation (cNBRE)
+	- [Wednesday 11th February 2026]
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cnbre_2026/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/cnbre_2026)
+
 - A Marginalised GPU Optimised Bayesian Fast Radio Burst Searcher
 	- [Handley Lab Group Meeting, 09 December 2025](https://handley-lab.co.uk/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/handleylab_talk_xmas/slides.pdf)

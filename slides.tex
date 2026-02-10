@@ -1,0 +1,314 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{metropolis}
+
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, decorations.pathmorphing}
+
+% Minimal footer: no frame numbers
+\setbeamertemplate{frame numbering}[none]
+
+% Metadata
+\title{\Large Conditional Neural Bayes Ratio Estimation (cNBRE)}
+\author{}
+\date{}
+\institute{}
+
+\begin{document}
+
+% Slide 1: Title
+{
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\begin{frame}[noframenumbering]
+\vfill
+\begin{center}
+{\Large \textbf{Conditional Neural Bayes Ratio Estimation (cNBRE)}}
+
+\vspace{12pt}
+{\normalsize Sam Leeney}
+
+\vspace{4pt}
+{\small Wednesday 11th February 2026}
+
+\vspace{12pt}
+\includegraphics[width=0.6\textwidth]{images/affiliations.png}
+\end{center}
+\vfill
+\end{frame}
+}
+
+% Slide 2: Method
+\begin{frame}{cNBRE: a classifier that outputs $\log K(\mathbf d\mid \alpha)$}
+\small
+\begin{columns}[T]
+\begin{column}{0.42\textwidth}
+\begin{itemize}\itemsep2pt
+\item Simulate training data under $M_1$ and $M_0$ across design space $\alpha$.
+\item Train $f_\phi(\mathbf d,\alpha)$ with exponential loss
+\[
+\ell = \mathbb E_{M_1}\!\left[e^{-f_\phi/2}\right]+\mathbb E_{M_0}\!\left[e^{+f_\phi/2}\right].
+\]
+\item Optimum: $f_\phi^*(\mathbf d,\alpha)=\log K(\mathbf d\mid \alpha)$ (with balanced classes).
+\item Cost: train once (4--10 A100 GPU-hours), then evaluate in ms for any $\alpha$.
+\end{itemize}
+\end{column}
+\begin{column}{0.55\textwidth}
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+    node distance=0.6cm and 1.0cm,
+    every node/.style={font=\footnotesize},
+    input/.style={circle, draw, minimum size=0.8cm, thick},
+    nn/.style={rectangle, rounded corners=6pt, draw, minimum width=2.2cm, minimum height=1.6cm, thick},
+    output/.style={circle, draw, minimum size=0.8cm, thick},
+    arr/.style={-{Stealth[length=2.5mm]}, thick},
+]
+    \node[input, fill=green!25, draw=green!60!black] (d) {$\mathbf{d}$};
+    \node[below=0.01cm of d, font=\scriptsize, green!60!black] {$M_0$ or $M_1$};
+
+    \node[input, fill=orange!30, draw=orange!70!black, below=1.0cm of d] (alpha) {$\alpha$};
+    \node[below=0.01cm of alpha, font=\scriptsize, orange!70!black] {design};
+
+    \node[nn, fill=blue!10, draw=blue!60!black, right=1.5cm of d, yshift=-0.5cm] (net) {$f_\phi$};
+    \node[above=0.01cm of net, font=\scriptsize, blue!60!black] {neural network};
+
+    \node[output, fill=red!20, draw=red!60!black, right=1.5cm of net] (out) {$\log K$};
+    \node[below=0.01cm of out, font=\scriptsize, red!60!black] {Bayes factor};
+
+    \draw[arr] (d) -- (net);
+    \draw[arr] (alpha) -- (net);
+    \draw[arr] (net) -- (out);
+\end{tikzpicture}}
+
+\vspace{4pt}
+{\scriptsize Data $\mathbf{d}$ (simulated under $M_0$ or $M_1$) and design parameters $\alpha$\\fed into neural network; optimised $f_\phi^*$ predicts $\log K$.}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 4: REACH setup + tau plot
+\begin{frame}{REACH: detection vs observation time}
+\small
+\begin{columns}[T]
+\begin{column}{0.47\textwidth}
+\textbf{Forward models}
+\begin{align*}
+M_1:\ \mathbf d &= \mathbf d_{\mathrm{fg}} + \mathbf d_{21} + \mathbf n\\
+M_0:\ \mathbf d &= \mathbf d_{\mathrm{fg}} + \mathbf n
+\end{align*}
+
+\textbf{Design parameters} $\alpha=(\tau,\psi)$.
+
+\vspace{2pt}
+\textbf{Detection probability}
+\[
+P_{\mathrm{det}}(\alpha) = \Pr_{M_1,\alpha}\!\big[\log K(\mathbf d\mid\alpha)>\log K_{\mathrm{crit}}\big].
+\]
+
+\begin{itemize}\itemsep1pt
+\item $\log K_{\mathrm{crit}}$: $\sigma$-equivalent FPR under $M_0$.
+\item $P_{\mathrm{det}}$ plateaus after ${\sim}10\,\mathrm{min}$ due to a \textbf{systematics noise floor}.
+\end{itemize}
+\end{column}
+\begin{column}{0.51\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/tau_vs_detection_probs.png}
+
+\vspace{2pt}
+{\scriptsize $P_{\mathrm{det}}$ vs.\ observation time $\tau$ at $\sigma$-equivalent thresholds ($1\sigma$, $3\sigma$, $5\sigma$).}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 5: Detection landscapes
+\begin{frame}{Detection landscapes}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+\centering
+\includegraphics[width=\textwidth, height=0.69\textheight, keepaspectratio]{images/amp_tau_detection_panels.png}
+
+\vspace{2pt}
+{\scriptsize $P_{\mathrm{det}}$ over signal amplitude and observation time.}
+\end{column}
+\begin{column}{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth, height=0.69\textheight, keepaspectratio]{images/orientation_vs_sigma_polar_heatmap.png}
+
+\vspace{2pt}
+{\scriptsize $\sim$20pp variation in $P_{\mathrm{det}}$ with orientation ($3\sigma$, $\tau{=}10\,$h).\\Four-fold symmetry from dipole beam geometry.}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide: A note on cost
+\begin{frame}{A note on cost}
+\small
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\begin{itemize}\itemsep4pt
+\item GPUs are not free --- but physical experiments cost \textit{far} more for comparable sensitivity gains.
+\item cNBRE training: \textbf{4--10 A100 GPU-hours} (one-time).
+\item Physical alternatives for similar $\Delta P_{\mathrm{det}}$:
+\begin{itemize}\itemsep1pt
+    \item New antenna design \& fabrication
+    \item Lower-loss cables \& connectors
+    \item Additional calibration hardware
+    \item Extended observation campaigns
+\end{itemize}
+\item SKA: ${\sim}$\texteuro2\,B. LHC: ${\sim}$\$9\,B.
+\item $\sim$20pp gain from antenna orientation costs \textbf{nothing} once identified.
+\end{itemize}
+\end{column}
+\begin{column}{0.40\textwidth}
+\centering
+\vspace{6pt}
+\begin{tikzpicture}[
+    every node/.style={font=\footnotesize},
+    box/.style={draw, rounded corners=4pt, minimum width=2.8cm, minimum height=0.7cm, align=center, thick},
+]
+    \node[box, fill=green!20, draw=green!60!black] (gpu) at (0,3) {cNBRE training\\[1pt]\scriptsize 4--10 GPU-hours};
+    \node[box, fill=orange!20, draw=orange!60!black] (hw) at (0,1.5) {New hardware\\[1pt]\scriptsize \$10k--\$1M+};
+    \node[box, fill=red!20, draw=red!60!black] (exp) at (0,0) {Major facility\\[1pt]\scriptsize \$1B+};
+
+    \draw[-{Stealth[length=2mm]}, thick, gray!60] (0,3.55) -- (0,4.0) node[above, font=\scriptsize, gray!60!black] {cost-effectiveness};
+    \draw[-{Stealth[length=2mm]}, thick, gray!60] (0,-0.55) -- (0,-1.0) node[below, font=\scriptsize, gray!60!black] {};
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Next steps}
+
+% Slide 6: Instrument optimisation
+\begin{frame}{Instrument optimisation}
+\begin{columns}[T]
+\begin{column}{0.30\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.85]
+    \draw[->, thick] (-0.2,0) -- (2.5,0) node[right] {\tiny $x$};
+    \draw[->, thick] (0,-0.2) -- (0,2.5) node[above] {\tiny $y$};
+    \fill[red!70!black] (1.4,1.6) circle (3pt);
+    \draw[dashed, gray!60] (1.4,0) -- (1.4,1.6);
+    \draw[dashed, gray!60] (0,1.6) -- (1.4,1.6);
+    \draw[thick, red!70!black] (1.2,2.1) -- (1.4,1.6) -- (1.6,2.1);
+\end{tikzpicture}
+
+\vspace{2pt}
+{\footnotesize \textbf{Antenna location}\\$\alpha = (x,y)$}
+\end{column}
+\begin{column}{0.30\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.85]
+    \draw[thick, gray] (-1.2,0) -- (1.2,0);
+    \draw[thick] (0,0) -- (0,0.6);
+    \fill (0,0.6) circle (2pt);
+    \draw[thick, blue!60] (0,0.6) .. controls (-0.7,1.5) and (-0.2,2.2) .. (0,2.5)
+                           (0,0.6) .. controls (0.7,1.5) and (0.2,2.2) .. (0,2.5);
+    \draw[dashed, orange!70] (0,0.6) .. controls (-1.1,1.3) and (-0.4,2.0) .. (0,2.3)
+                              (0,0.6) .. controls (1.1,1.3) and (0.4,2.0) .. (0,2.3);
+\end{tikzpicture}
+
+\vspace{2pt}
+{\footnotesize \textbf{Antenna geometry}\\$\alpha = $ beam params}
+\end{column}
+\begin{column}{0.30\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.85]
+    \node[draw, fill=gray!20, minimum width=0.7cm, minimum height=0.5cm, font=\tiny, rounded corners] (rx) at (0,0) {Rx};
+    \node[draw, fill=gray!20, minimum width=0.7cm, minimum height=0.5cm, font=\tiny, rounded corners] (ant) at (3.2,0) {Ant};
+    \draw[thick, decorate, decoration={zigzag, amplitude=2pt, segment length=5pt}] (0.55,0) -- (2.65,0);
+    \draw[<->, thick] (0.55,-0.6) -- (2.65,-0.6) node[midway, below, font=\tiny] {$\ell$};
+\end{tikzpicture}
+
+\vspace{2pt}
+{\footnotesize \textbf{Calibration hardware}\\$\alpha = \ell$ (cable length)}
+\end{column}
+\end{columns}
+
+\vspace{8pt}
+
+\begin{columns}[T]
+\begin{column}{0.15\textwidth}\end{column}
+\begin{column}{0.30\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.85]
+    \node[draw, rounded corners, fill=gray!20, font=\tiny, minimum width=1cm, minimum height=0.5cm] (vna) at (0,0) {VNA};
+    \node[font=\scriptsize, gray!60!black] at (0,-0.5) {$\pm\delta$};
+    \draw[-{Stealth[length=2mm]}, thick] (0.7,0) -- (2.0,0);
+    \node[draw, rounded corners, fill=red!15, font=\scriptsize, minimum width=1cm, minimum height=0.5cm] at (2.8,0) {$P_{\mathrm{det}}$};
+\end{tikzpicture}
+
+\vspace{2pt}
+{\footnotesize \textbf{Uncertainty propagation}\\$\alpha = \delta_{\mathrm{VNA}}, \delta_{\mathrm{LNA}}, \ldots$}
+\end{column}
+\begin{column}{0.30\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.85]
+    \fill[gray!25] (0,0) circle (0.7);
+    \node[font=\tiny, gray!60!black] at (0,0) {Moon};
+    \draw[dashed, thick, gray!50] (0,0) ellipse (1.5 and 1.0);
+    \fill[blue!60] (1.45,-0.15) rectangle (1.65,0.05);
+    \draw[<->, thin, orange!70!black] (0,0) -- (1.5,0) node[midway, above, font=\tiny] {$a$};
+    \draw[<->, thin, orange!70!black] (0,0) -- (0,1.0) node[midway, left, font=\tiny] {$b$};
+\end{tikzpicture}
+
+\vspace{2pt}
+{\footnotesize \textbf{Lunar orbit location}\\$\alpha = (a,b,i,\ldots)$}
+\end{column}
+\begin{column}{0.15\textwidth}\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 7: Null testing
+\begin{frame}{Null testing}
+\small
+\begin{columns}[c]
+\begin{column}{0.56\textwidth}
+\centering
+\includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{images/cnbre_ns.png}
+
+\vspace{2pt}
+{\scriptsize cNBRE vs.\ nested sampling $\log K$ on held-out simulations.}
+\end{column}
+\begin{column}{0.40\textwidth}
+\begin{itemize}\itemsep2pt
+\item $f_\phi$ broadly tracks NS $\log K$ for $M_1$ (signal) data
+\item For $M_0$ (null), $f_\phi$ is strongly negative, conservative null tests
+\item With our NS settings, cNBRE produced fewer false positives
+\item Train once (4--10 A100 GPU-h); inference: ms vs.\ hours per NS run
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Slide 8: Discussion
+\begin{frame}{Discussion}
+\begin{columns}[T]
+\begin{column}{0.47\textwidth}
+\textbf{Null testing}
+\small
+\begin{itemize}\itemsep3pt
+\item $f_\phi$ broadly tracks NS $\log K$ for $M_1$ data
+\item For $M_0$, $f_\phi$ strongly negative, conservative null tests
+\item Fewer false positives than NS at comparable compute
+\item Train once (4--10 GPU-h); inference in ms
+\end{itemize}
+\end{column}
+\begin{column}{0.47\textwidth}
+\textbf{Instrument optimisation}
+\small
+\begin{itemize}\itemsep3pt
+\item $f_\phi$ smooth in $\alpha$ $\Rightarrow$ gradient-based optimisation
+\item Antenna location ($\alpha = x,y$), geometry, orientation
+\item Calibration hardware ($\alpha = \ell$)
+\item Component tolerance ($\alpha = \delta_{\mathrm{VNA}}, \ldots$) $\to P_{\mathrm{det}}$
+\item Lunar orbit location ($\alpha = a,b,i,\ldots$)
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\end{document}

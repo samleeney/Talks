@@ -5,6 +5,13 @@
 \usepackage{graphicx}
 \usetheme{metropolis}
 \usepackage{tcolorbox}
+\usepackage{appendixnumberbeamer}
+
+\title{Fast, Marginalised Bayesian Transient Searching}
+\subtitle{Sam Leeney}
+\date{2026}
+\author{With: Charlie Walker, Dominic Anstey}
+\institute{MPIFR Transients Group}
 
 % Footer template
 \setbeamertemplate{footline}{
@@ -42,76 +49,12 @@
     \vfill
 \end{frame}
 
-\section{What are radio transients?}
-\begin{frame}{\small{Fast radio bursts}}
-    \centering
-    \includegraphics[width=0.9\textwidth,height=0.8\textheight,keepaspectratio]{frb_example.png}
+\begin{frame}{\small{Outline}}
+    \tableofcontents[hideallsubsections]
 \end{frame}
 
-\begin{frame}{\small{Pulsars and repeating bursts}}
-    \centering
-    \includegraphics[width=0.9\textwidth,height=0.8\textheight,keepaspectratio]{pulsar_example.png}
-\end{frame}
-
-\section{What do they look like in data?}
-\begin{frame}{\small{Dynamic spectrum before dedispersion}}
-    \begin{columns}[T]
-        \begin{column}{0.58\textwidth}
-            \includegraphics[width=\textwidth]{real_pulsar.png}
-        \end{column}
-        \begin{column}{0.38\textwidth}
-            \begin{itemize}
-                \item Typically we see transients like in the previous images.
-                \item At the telescope they look like this: dispersed across frequency.
-                \item Also mixed with interference.
-                \item Typical pipelines compress this data before fitting; we want to operate in this space entirely.
-            \end{itemize}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{\small{Key message}}
-    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key message]
-        Searching directly on raw time–frequency data with a marginalised Bayesian model lets us keep information, model anomalies jointly, and stay physics-aware.
-    \end{tcolorbox}
-    \vspace{0.35cm}
-    \begin{itemize}
-        \item Compression loses power; search on raw cubes to avoid throwing signals away.
-        \item Fit and flag together: anomaly probability lives inside the likelihood, not after the fact.
-        \item Use physics-informed priors (DM, width, arrival time) to steer the search space.
-        \item The math parallelises; GPU acceleration makes this practical.
-    \end{itemize}
-\end{frame}
-
-\section{Standard search algorithms}
-\begin{frame}[plain]
-    \begin{center}
-        \vfill
-        {\Large How do standard search algorithms work?}
-
-        \vspace{0.35cm}
-        {\small Next: RFI flagging, dedispersion sweeps, and S/N thresholding in practice}
-        \vfill
-    \end{center}
-\end{frame}
-
-\begin{frame}{\small{Simulated FRB observation (raw)}}
-    \begin{columns}[T]
-        \begin{column}{0.58\textwidth}
-            \includegraphics[width=\textwidth]{images/standard_search_raw.png}
-        \end{column}
-        \begin{column}{0.38\textwidth}
-            \textbf{What you see}
-            \begin{itemize}
-                \item Dispersed sky pulse buried under thermal noise.
-                \item Broadband glitch and narrowband line RFI dominate the collapsed S/N.
-                \item No dedispersion yet: pulse power is smeared out in time.
-            \end{itemize}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{\small{Step 1: manual RFI flagging}}
+\section{The standard search pipeline}
+\begin{frame}{\small{Step 1: flag RFI}}
     \begin{columns}[T]
         \begin{column}{0.58\textwidth}
             \includegraphics[width=\textwidth]{images/standard_search_flagged.png}
@@ -121,73 +64,129 @@
             \begin{itemize}
                 \item Mask out the obvious broadband burst and persistent narrowband line.
                 \item Residual dynamic spectrum still contains the dispersed pulse + noise.
-                \item Collapsed S/N improves slightly but is still below threshold.
+                \item This is done \emph{before} any signal search, often with manual tuning. Flagging and searching are independent.
             \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{\small{Step 2: dedispersion sweep (low DM)}}
+\begin{frame}{\small{Step 2: dedisperse and sweep (low DM)}}
     \centering
     \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm050.png}
 \end{frame}
 
-\begin{frame}{\small{Dedispersion sweep (DM 100)}}
-    \centering
-    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm100.png}
-\end{frame}
-
-\begin{frame}{\small{Dedispersion sweep (still low DM)}}
-    \centering
-    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm150.png}
-\end{frame}
-
-\begin{frame}{\small{Dedispersion sweep (DM 200)}}
-    \centering
-    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm200.png}
-\end{frame}
-
-\begin{frame}{\small{Dedispersion sweep (DM 250)}}
-    \centering
-    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm250.png}
-\end{frame}
-
-\begin{frame}{\small{Dedispersion sweep (closer DM)}}
-    \centering
-    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm300.png}
-\end{frame}
-
-\begin{frame}{\small{Dedispersion sweep (DM 380)}} 
-    \centering
-    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm380.png}
-\end{frame}
-
-\begin{frame}{\small{Dedispersion sweep (DM 440)}} 
-    \centering
-    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm440.png}
-\end{frame}
-
-\begin{frame}{\small{Dedispersion sweep (approaching DM)}} 
+\begin{frame}{\small{Dedispersion sweep (approaching DM)}}
     \centering
     \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm520.png}
 \end{frame}
 
-\begin{frame}{\small{Dedispersion sweep (over-corrected)}} 
-    \centering
-    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm700.png}
+\begin{frame}{\small{Step 3: threshold on compressed S/N}}
+    \begin{itemize}
+        \item At each trial DM, the 2D dynamic spectrum is collapsed to a 1D S/N time series.
+        \item A candidate is flagged if S/N exceeds a fixed threshold.
+        \item The full time--frequency structure, the thing that distinguishes a real pulse from RFI, is gone.
+    \end{itemize}
+    \vspace{0.3cm}
+    \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=The problem]
+        Anomaly detection and signal searching are completely decoupled, and the data is compressed before you ever ask ``is there a signal here?''
+    \end{tcolorbox}
 \end{frame}
 
-\section{Bayesian alternative}
-\begin{frame}{\small{Idea: keep the raw information}}
+\begin{frame}{\small{What does the standard pipeline throw away?}}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Standard approach}
+            \begin{enumerate}
+                \item Flag RFI (independent step).
+                \item Dedisperse $\rightarrow$ compress to 1D S/N time series.
+                \item Threshold on S/N.
+            \end{enumerate}
+            \vspace{0.2cm}
+            Anomaly detection and searching are \textbf{decoupled}; the 2D time--frequency structure is discarded before you ever ask ``is there a signal?''
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{What we propose}
+            \begin{enumerate}
+                \item Work directly on the raw 2D dynamic spectrum.
+                \item Fit signal and flag anomalies \textbf{jointly} in one likelihood.
+                \item Detection via Bayesian model comparison.
+            \end{enumerate}
+            \vspace{0.2cm}
+            No compression, no information loss, and RFI handling is \textbf{fully automated} inside the model rather than a separate manual pre-processing step.
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Why Bayesian?}
+\begin{frame}{\small{How does Bayesian inference work?}}
+    \[
+    \underbrace{P(\theta \mid D)}_{\text{posterior}} = \frac{\overbrace{P(D \mid \theta)}^{\text{likelihood}} \;\; \overbrace{P(\theta)}^{\text{prior}}}{\underbrace{\mathcal{Z}}_{\text{evidence}}}
+    \]
+    \vspace{0.3cm}
     \begin{itemize}
-        \item Choose search parameters from physics-informed priors (DM, width, arrival window).
-        \item Fit and flag simultaneously so no information is discarded to pre-filtering.
-        \item Stay in the native time–frequency cube—no irreversible compression first.
-        \item Make it GPU-fast by keeping the marginalisations analytic and parallel.
+        \item \textbf{Likelihood} $P(D\mid\theta)$: how well does the data fit some parameterised model?
+        \item \textbf{Prior} $P(\theta)$: encodes prior belief in model parameters, e.g.\ ``the pulse lies within some DM range.''
+        \item \textbf{Evidence} $\mathcal{Z} = \int P(D\mid\theta)\,P(\theta)\,d\theta$: how well does the \emph{model} fit the observed data.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Step 1: generative model}}
+\begin{frame}{\small{Why is the evidence useful?}}
+    \begin{itemize}
+        \item The evidence lets us compare models, not just fit parameters inside one model.
+        \item A model with too many free parameters is penalised automatically (Occam's razor).
+        \item Formally, the Bayes factor between two models is
+        \[
+        \mathcal{B} = \frac{\mathcal{Z}_1}{\mathcal{Z}_0}.
+        \]
+        \item $\mathcal{B}>1$ favours model 1; $\mathcal{B}<1$ favours model 0.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\small{Bayes factor for detection}}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Detection criterion]
+        Compare two models: $M_1$ (signal + noise) vs $M_0$ (noise only).
+    \end{tcolorbox}
+    \vspace{0.3cm}
+    \[
+    \mathcal{B} = \frac{\mathcal{Z}_{\text{signal+noise}}}{\mathcal{Z}_{\text{noise-only}}} \gtrless 1
+    \]
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item $\mathcal{B}=1$ is the break-even point between models.
+        \item In practice we use $\mathcal{B}>\mathcal{B}_{\mathrm{thr}}$, with $\mathcal{B}_{\mathrm{thr}}$ calibrated by injection--recovery at a target false-alarm rate.
+        \item The key practical question: can we compute these evidences fast enough for survey data rates?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\small{What can we encode as prior knowledge?}}
+    \begin{itemize}
+        \item We know things about transients before looking at a given chunk of data.
+        \item Encode this as priors on the search parameters:
+        \begin{itemize}
+            \item DM range from expected source population or sky direction.
+            \item Pulse width from instrumental resolution and physical limits.
+            \item Arrival time: uniform across the observation window.
+        \end{itemize}
+        \item The prior concentrates the search where signals are physically plausible.
+        \item This is the key advantage over matched filtering: the prior does useful work.
+    \end{itemize}
+\end{frame}
+
+\section{Bayesian transient model}
+\begin{frame}{\small{Key message}}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key message]
+        Search on the raw time--frequency cube, not on a compressed S/N time series. Fit the signal and flag anomalies jointly in one model.
+    \end{tcolorbox}
+    \vspace{0.35cm}
+    \begin{itemize}
+        \item \textbf{Prior} $\rightarrow$ DM range, pulse width, arrival window from physics.
+        \item \textbf{Likelihood} $\rightarrow$ generative model on the full 2D dynamic spectrum (no dedisperse-then-threshold).
+        \item \textbf{Evidence} $\mathcal{Z}$ $\rightarrow$ Bayes factor flags ``signal present'' vs ``noise only''.
+        \item The math parallelises; GPU acceleration makes this practical.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\small{Generative model}}
     \[
     I_{ij}
     =
@@ -198,12 +197,13 @@
     + \epsilon_{ij},
     \]
     \begin{itemize}
-        \item Likelihood: $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{\text{noise}}^2)$; evaluate on the full cube.
-        \item Sample with nested sampling to obtain posteriors and evidence for model comparison.
+        \item Likelihood: $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_{\text{noise}}^2)$ evaluated on the full cube.
+        \item Parameters: amplitude $A$, arrival time $t_0'$, dispersion measure $\mathrm{DM}'$, pulse width $\sigma_{\mathrm{frb}}'$.
+        \item Inference target: posteriors on all parameters, plus evidence $\mathcal{Z}$ for detection.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Step 1: simple vs. RFI-contaminated pulse}}
+\begin{frame}{\small{How do we handle RFI?}}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \centering
@@ -219,88 +219,77 @@
         \end{column}
     \end{columns}
 \end{frame}
-\section{Bayesian anomaly detection}
-\begin{frame}{\small{Bayesian anomaly detection (Bernoulli mask)}}
-    \begin{itemize}
-        \item Each pixel carries a latent mask $\epsilon_{ij}\!\in\!\{0,1\}$: $\epsilon\!=\!1$ marks an anomaly (RFI), $\epsilon\!=\!0$ is nominal.
-        \item Prior on the mask: $P(\epsilon_{ij}) = p^{\epsilon_{ij}} (1-p)^{1-\epsilon_{ij}}$ with $p$ as the anomaly rate.
-        \item Full likelihood (before marginalisation):
-        \[
-        P(\mathbf{I},\epsilon\mid\theta,p) = \prod_{ij} \big[(1-p)L_{ij}(\theta)\big]^{1-\epsilon_{ij}}\!\left(\frac{p}{\Delta}\right)^{\epsilon_{ij}},
-        \]
-        where $L_{ij}(\theta)$ is the nominal Gaussian likelihood and $\Delta$ is a broad anomaly scale.
-    \end{itemize}
-\end{frame}
 
-\begin{frame}{\small{Marginalising anomalies without $2^{N}$ masks}}
-    {\footnotesize
+\section{Bayesian anomaly detection}
+\begin{frame}{\small{Anomaly model: Bernoulli mask}}
     \begin{itemize}
-        \item Exact marginal in log-space (only expression we keep):
+        \item Each pixel carries a latent mask $m_{ij}\!\in\!\{0,1\}$: anomaly or nominal.
+        \item Prior anomaly rate $p$; broad anomaly scale $\Delta$.
+        \item Full likelihood:
+        \[
+        P(\mathbf{I},m\mid\theta,p) = \prod_{ij} \big[(1-p)L_{ij}(\theta)\big]^{1-m_{ij}}\!\left(\frac{p}{\Delta}\right)^{m_{ij}}.
+        \]
+        \item Pixels are independent, so the $2^{N_{\mathrm{pix}}}$ mask sum factorises. Exact marginal:
         \[
         \log P(\mathbf{I}\mid\theta,p)=\sum_{ij}\log\!\left((1-p)L_{ij}(\theta)+\frac{p}{\Delta}\right).
         \]
-        \item Expanding shows the Occam term that downweights extra mask freedom:
-        \[
-        \log P=\underbrace{\sum_{ij}\log\!\big((1-p)L_{ij}\big)}_{\text{fit term}}+\underbrace{\sum_{ij}\log\!\left(1+\frac{p/\Delta}{(1-p)L_{ij}}\right)}_{\text{Occam penalty}}.
-        \]
-        \item Maximising over $\epsilon$ for intuition gives
-        \[
-        \log P(\mathbf{I}\mid\theta,\epsilon^{\max})=\sum_{ij}\log\!\Big(\max\!\big((1-p)L_{ij},\,p/\Delta\big)\Big),
-        \]
-        and the marginal log-evidence sits below this by the penalty term above.
-        \item Result: a tractable likelihood that jointly fits the pulse and flags RFI probabilistically, yielding evidence $\mathcal{Z}_{\text{signal+anomaly}}$ for detection.
+        \item Tractable likelihood that jointly fits the pulse and flags RFI, fully automatically.
     \end{itemize}
-    }
 \end{frame}
 
-\section{Real data fits}
 \begin{frame}{\small{Run on real data (flagged anomalies)}}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{real_pulsar.png}
+            \includegraphics[width=\textwidth,height=0.76\textheight,keepaspectratio]{real_pulsar.png}
+            \centering
+            {\scriptsize Raw}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{real_pulsar_flagged.png}
+            \includegraphics[width=\textwidth,height=0.76\textheight,keepaspectratio]{real_pulsar_flagged.png}
+            \centering
+            {\scriptsize Posterior anomaly mask}
         \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}{\small{Run on real data (fit)}}
     \centering
-    \includegraphics[width=0.88\textwidth,height=0.8\textheight,keepaspectratio]{real_pulsar_fitted.png}
+    \includegraphics[width=0.88\textwidth,height=0.75\textheight,keepaspectratio]{real_pulsar_fitted.png}
 \end{frame}
 
 \begin{frame}{\small{Flagging detections}}
     \begin{itemize}
-        \item We flag when the Bayes factor exceeds 1:
+        \item Operationally we flag when the Bayes factor exceeds a calibrated threshold:
         \[
-        \mathcal{B} = \frac{\mathcal{Z}_{\text{signal+anomaly}}}{\mathcal{Z}_{\text{noise-only}}} > 1.
+        \mathcal{B} = \frac{\mathcal{Z}_{\text{signal+anomaly}}}{\mathcal{Z}_{\text{noise-only}}} > \mathcal{B}_{\mathrm{thr}}.
         \]
-        \item Posterior on $p$ shows how much of the cube was treated as interference.
+        \item $\mathcal{B}_{\mathrm{thr}}$ is set by injection--recovery for a chosen false-alarm rate.
+        \item Posterior on $p$ quantifies how much of the cube was treated as interference.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Problem… too slow}}
+\begin{frame}{\small{Problem\ldots\ too slow}}
     \begin{itemize}
-        \item Even with JAX/Numpyro-style acceleration, full inference takes minutes per candidate.
-        \item At common resolutions, evaluating the Bayes factor can take minutes per ms of data.
-        \item We need an analytic marginalisation for the evidence to keep up with survey rates.
+        \item Current full nested-sampling inference is typically $\sim$1--3 minutes per candidate window.
+        \item A real-time trigger pipeline needs $\lesssim$50 ms per candidate decision.
+        \item We are therefore roughly $10^3$ too slow without analytic marginalisation.
     \end{itemize}
 \end{frame}
 
-\section{Analytic Bayes factor}
+\section{Fast analytic evidence}
 \begin{frame}{\small{Goal: closed-form Bayes factor}}
     \[
-    K = \frac{Z_1}{Z_0}, \qquad Z_m = \int p(I\mid\theta, M_m)\,p(\theta\mid M_m)\,d\theta
+    \mathcal{B} \equiv \frac{\mathcal{Z}_1}{\mathcal{Z}_0}, \qquad
+    \mathcal{Z}_m = \int p(I\mid\theta, M_m)\,p(\theta\mid M_m)\,d\theta
     \]
     \begin{itemize}
-        \item Treat all template parameters as nuisance; integrate them out analytically where possible.
+        \item Treat template parameters as nuisance; integrate them out analytically where possible.
         \item Keep only a small numerical search over $(\mathrm{DM}', \sigma_{\mathrm{frb}}')$ and discrete $t_0'$.
         \item Result: fast, calibrated evidence for detection.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{\small{Signal model (from Step 1)}}
+\begin{frame}{\small{Signal model}}
     \[
     I_{ij}
     =
@@ -334,10 +323,10 @@
         \item Treat $t_0'$ as a discrete prior over time bins (often uniform).
         \item Condition on $t_0'$ and evaluate in parallel across time bins:
         \[
-        Z_1(t_0') = \iint p(I\mid t_0',A,\sigma,\mathrm{DM}',\sigma_{\mathrm{frb}}')\,p(A,\sigma,\mathrm{DM}',\sigma_{\mathrm{frb}}')\,dA\,d\sigma\,d\phi
+        \mathcal{Z}_1(t_0') = \int p(I\mid t_0',A,\sigma,\phi)\,p(A,\sigma,\phi)\,dA\,d\sigma\,d\phi
         \]
         with $\phi=(\mathrm{DM}',\sigma_{\mathrm{frb}}')$.
-        \item Full evidence: $Z_1 = \sum_{t_0'} p(t_0')\,Z_1(t_0')$; embarrassingly parallel over $t_0'$.
+        \item Full evidence: $\mathcal{Z}_1 = \sum_{t_0'} p(t_0')\,\mathcal{Z}_1(t_0')$; embarrassingly parallel over $t_0'$.
     \end{itemize}
 \end{frame}
 
@@ -353,8 +342,7 @@
     \]
     \begin{itemize}
         \item Write $\mu_{ij} = A\,\psi_{ij}(t_0',\mathrm{DM}',\sigma_{\mathrm{frb}}')$.
-        \item Select a Gaussian prior on $A$, conjugate to the Gaussian likelihood.
-        \item Gaussian prior on $A$ $\Rightarrow$ complete the square and integrate:
+        \item Conjugate Gaussian prior on $A$ (chosen so the integral is closed form):
         \[
         A\mid \psi,I,\sigma^2 \sim \mathcal{N}(\hat{A},\,\Lambda_A^{-1}), \quad \hat{A} = \frac{\psi^\top I}{\psi^\top\psi+\sigma_A^{-2}\sigma^2}.
         \]
@@ -373,7 +361,7 @@
     + \epsilon_{ij}, \quad \epsilon_{ij}\sim\mathcal{N}(0,\textcolor{red}{\sigma^2})
     \]
     \begin{itemize}
-        \item Prior $\sigma^2 \sim \mathrm{Inv}\text{-}\Gamma(\alpha_0,\beta_0)$, likelihood Gaussian on residuals.
+        \item Inverse-gamma prior on $\sigma^2$ (same idea: analytic integral).
         \item After integrating out $A$, residual sum of squares $S$ gives:
         \[
         p(I\mid t_0',\phi) \propto \big(\beta_0 + \tfrac{1}{2}S\big)^{-(\alpha_0 + N_{\mathrm{pix}}/2)}.
@@ -394,31 +382,104 @@
     \]
     \begin{itemize}
         \item Remaining continuous track parameters $\phi = (\mathrm{DM}', \sigma_{\mathrm{frb}}')$.
-        \item Laplace about $\hat{\phi}$ with Hessian $H$:
+        \item Laplace approximation (local Gaussian near the best-fit point):
         \[
-        \log Z_1(t_0') \approx \ell(\hat{\phi}) + \frac{d}{2}\log(2\pi) - \tfrac{1}{2}\log|H|,\quad d=2.
+        \log \mathcal{Z}_1(t_0') \approx \ell(\hat{\phi}) + \frac{d}{2}\log(2\pi) - \tfrac{1}{2}\log|H|,\quad d=2.
         \]
-        \item Sum over $t_0'$ and form $K = Z_1/Z_0$ for a fast Bayes factor per candidate.
-        \item Cuts evidence time from minutes to ${\sim}$10s of ms per candidate; still need to fold in RFI handling.
+        \item Sum over $t_0'$ and form $\mathcal{B} = \mathcal{Z}_1/\mathcal{Z}_0$ for a fast Bayes factor per candidate.
     \end{itemize}
+\end{frame}
+
+\begin{frame}{\small{What goes in}}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{enumerate}
+                \item Priors on signal parameters (DM, width, $t_0$).
+                \item Generative signal model.
+                \item A chunk of raw dynamic spectrum.
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{anomaly_panel_data.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\small{What comes out}}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[width=\linewidth,height=0.65\textheight,keepaspectratio]{anomaly_panel_mask.png}
+            \\[-0.1cm]
+            {\scriptsize Per-pixel anomaly probability}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[width=\linewidth,height=0.65\textheight,keepaspectratio]{anomaly_parameter_corner.png}
+            \\[-0.1cm]
+            {\scriptsize Posterior on signal parameters + $\log p_{\mathrm{anom}}$}
+        \end{column}
+    \end{columns}
+    \vspace{0.15cm}
+    \centering
+    Plus a Bayes factor $\mathcal{B}$: a single number answering ``is there a signal in this data?''
 \end{frame}
 
 \begin{frame}{\small{Speed-up from analytic evidence}}
     \centering
-    \includegraphics[width=0.8\textwidth,height=0.78\textheight,keepaspectratio]{obs_time_per_gpu_second.png}
+    \includegraphics[width=0.8\textwidth,height=0.7\textheight,keepaspectratio]{obs_time_per_gpu_second.png}
+    \vspace{0.15cm}
+
+    {\small At 0.5\,MHz frequency resolution and 0.4\,ms time resolution.}
 \end{frame}
 
-\begin{frame}{\small{Key message}}
-    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key message]
-        Searching directly on raw time–frequency data with a marginalised Bayesian model lets us keep information, model anomalies jointly, and stay physics-aware.
+\begin{frame}{\small{Summary}}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Summary]
+        A fully Bayesian transient search on raw dynamic spectra, with analytic marginalisation fast enough for real-time use.
     \end{tcolorbox}
     \vspace{0.35cm}
     \begin{itemize}
-        \item Compression loses power; search on raw cubes to avoid throwing signals away.
-        \item Fit and flag together: anomaly probability lives inside the likelihood, not after the fact.
-        \item Use physics-informed priors (DM, width, arrival time) to steer the search space.
-        \item The math parallelises; GPU acceleration makes this practical.
+        \item Physics-informed priors concentrate the search where signals are plausible.
+        \item Joint signal + anomaly model handles RFI fully automatically, with no separate flagging step.
+        \item Analytic marginalisation over nuisance parameters gives a fast Bayes factor.
+        \item Thresholds are calibrated via injections, not fixed at the break-even $\mathcal{B}=1$ point.
     \end{itemize}
+\end{frame}
+
+\begin{frame}{\small{Questions for the group}}
+    \begin{enumerate}
+        \item What would be good data to test this on?
+        \item Speed or sensitivity: what should we optimise for?
+        \item In a paper on this, what metrics would you want to see to evaluate the method?
+        \item Suggested datasets to run on?
+        \item What benchmarks should we compare against?
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{\small{Thanks for listening!}}
+    \vfill
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{images/qr.png}
+    \end{center}
+    \vfill
+\end{frame}
+
+\appendix
+
+\begin{frame}{\small{Extra: dedispersion sweep (low DM)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm050.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (DM 250)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm250.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (over-corrected)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm700.png}
 \end{frame}
 
 \end{document}

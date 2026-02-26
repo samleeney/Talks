@@ -3,6 +3,11 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Fast, Marginalised Bayesian Transient Searching
+	- [MPIFR Transients Group, 27 February 2026](https://www.mpifr-bonn.mpg.de/)
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/transient-searching/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/transient-searching)
+
 - Conditional Neural Bayes Ratio Estimation (cNBRE)
 	- [Wednesday 11th February 2026]
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cnbre_2026/slides.pdf)

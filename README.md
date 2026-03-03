@@ -4,6 +4,11 @@
 
 # Talks:
 - Fast, Marginalised Bayesian Transient Searching
+	- [Handley Lab Group Meeting, March 2026](https://handley-lab.co.uk/)
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/handleylab_talk_2026/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/handleylab_talk_2026)
+
+- Fast, Marginalised Bayesian Transient Searching
 	- [MPIFR Transients Group, 27 February 2026](https://www.mpifr-bonn.mpg.de/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/transient-searching/slides.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/transient-searching)

@@ -190,8 +190,8 @@ def main():
     snr_flagged = dedisperse_snr(cleaned, freqs_mhz, dm_trial=0.0, mask=mask)
     outputs.append(
         (
-            cleaned,
-            None,  # visual: show noise-filled data without gray holes
+            raw,
+            mask,  # visual: show flagged regions as gray
             snr_flagged,
             "0 (after flagging only)",
             "Flagged RFI before dedispersion",

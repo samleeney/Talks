@@ -11,7 +11,7 @@
 \subtitle{Sam Leeney}
 \date{2026}
 \author{With: Charlie Walker, Dominic Anstey}
-\institute{MPIFR Transients Group}
+\institute{Handley Lab Group Meeting}
 
 % Footer template
 \setbeamertemplate{footline}{
@@ -55,24 +55,48 @@
 
 \section{The standard search pipeline}
 \begin{frame}{\small{Step 1: flag RFI}}
-    \begin{columns}[T]
-        \begin{column}{0.58\textwidth}
-            \includegraphics[width=\textwidth]{images/standard_search_flagged.png}
-        \end{column}
-        \begin{column}{0.38\textwidth}
-            \textbf{Effect on the data}
-            \begin{itemize}
-                \item Mask out the obvious broadband burst and persistent narrowband line.
-                \item Residual dynamic spectrum still contains the dispersed pulse + noise.
-                \item This is done \emph{before} any signal search, often with manual tuning. Flagging and searching are independent.
-            \end{itemize}
-        \end{column}
-    \end{columns}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_flagged.png}
 \end{frame}
 
-\begin{frame}{\small{Step 2: dedisperse and sweep (low DM)}}
+\begin{frame}{\small{Step 2: dedispersion sweep (low DM)}}
     \centering
     \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm050.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (DM 100)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm100.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (still low DM)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm150.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (DM 200)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm200.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (DM 250)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm250.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (closer DM)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm300.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (DM 380)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm380.png}
+\end{frame}
+
+\begin{frame}{\small{Dedispersion sweep (DM 440)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm440.png}
 \end{frame}
 
 \begin{frame}{\small{Dedispersion sweep (approaching DM)}}
@@ -80,11 +104,16 @@
     \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm520.png}
 \end{frame}
 
+\begin{frame}{\small{Dedispersion sweep (over-corrected)}}
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.82\textheight,keepaspectratio]{images/standard_search_dm700.png}
+\end{frame}
+
 \begin{frame}{\small{Step 3: threshold on compressed S/N}}
     \begin{itemize}
         \item At each trial DM, the 2D dynamic spectrum is collapsed to a 1D S/N time series.
         \item A candidate is flagged if S/N exceeds a fixed threshold.
-        \item The full time--frequency structure, the thing that distinguishes a real pulse from RFI, is gone.
+        \item The full time-frequency structure, the thing that distinguishes a real pulse from RFI, is gone.
     \end{itemize}
     \vspace{0.3cm}
     \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=The problem]
@@ -102,7 +131,7 @@
                 \item Threshold on S/N.
             \end{enumerate}
             \vspace{0.2cm}
-            Anomaly detection and searching are \textbf{decoupled}; the 2D time--frequency structure is discarded before you ever ask ``is there a signal?''
+            Anomaly detection and searching are \textbf{decoupled}; the 2D time-frequency structure is discarded before you ever ask ``is there a signal?''
         \end{column}
         \begin{column}{0.48\textwidth}
             \textbf{What we propose}
@@ -118,18 +147,6 @@
 \end{frame}
 
 \section{Why Bayesian?}
-\begin{frame}{\small{How does Bayesian inference work?}}
-    \[
-    \underbrace{P(\theta \mid D)}_{\text{posterior}} = \frac{\overbrace{P(D \mid \theta)}^{\text{likelihood}} \;\; \overbrace{P(\theta)}^{\text{prior}}}{\underbrace{\mathcal{Z}}_{\text{evidence}}}
-    \]
-    \vspace{0.3cm}
-    \begin{itemize}
-        \item \textbf{Likelihood} $P(D\mid\theta)$: how well does the data fit some parameterised model?
-        \item \textbf{Prior} $P(\theta)$: encodes prior belief in model parameters, e.g.\ ``the pulse lies within some DM range.''
-        \item \textbf{Evidence} $\mathcal{Z} = \int P(D\mid\theta)\,P(\theta)\,d\theta$: how well does the \emph{model} fit the observed data.
-    \end{itemize}
-\end{frame}
-
 \begin{frame}{\small{Why is the evidence useful?}}
     \begin{itemize}
         \item The evidence lets us compare models, not just fit parameters inside one model.
@@ -153,7 +170,7 @@
     \vspace{0.2cm}
     \begin{itemize}
         \item $\mathcal{B}=1$ is the break-even point between models.
-        \item In practice we use $\mathcal{B}>\mathcal{B}_{\mathrm{thr}}$, with $\mathcal{B}_{\mathrm{thr}}$ calibrated by injection--recovery at a target false-alarm rate.
+        \item In practice we use $\mathcal{B}>\mathcal{B}_{\mathrm{thr}}$, with $\mathcal{B}_{\mathrm{thr}}$ calibrated by injection-recovery at a target false-alarm rate.
         \item The key practical question: can we compute these evidences fast enough for survey data rates?
     \end{itemize}
 \end{frame}
@@ -175,7 +192,7 @@
 \section{Bayesian transient model}
 \begin{frame}{\small{Key message}}
     \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key message]
-        Search on the raw time--frequency cube, not on a compressed S/N time series. Fit the signal and flag anomalies jointly in one model.
+        Search on the raw time-frequency cube, not on a compressed S/N time series. Fit the signal and flag anomalies jointly in one model.
     \end{tcolorbox}
     \vspace{0.35cm}
     \begin{itemize}
@@ -223,17 +240,13 @@
 \section{Bayesian anomaly detection}
 \begin{frame}{\small{Anomaly model: Bernoulli mask}}
     \begin{itemize}
-        \item Each pixel carries a latent mask $m_{ij}\!\in\!\{0,1\}$: anomaly or nominal.
-        \item Prior anomaly rate $p$; broad anomaly scale $\Delta$.
-        \item Full likelihood:
-        \[
-        P(\mathbf{I},m\mid\theta,p) = \prod_{ij} \big[(1-p)L_{ij}(\theta)\big]^{1-m_{ij}}\!\left(\frac{p}{\Delta}\right)^{m_{ij}}.
-        \]
-        \item Pixels are independent, so the $2^{N_{\mathrm{pix}}}$ mask sum factorises. Exact marginal:
+        \item We don't know which pixels are RFI, so we let the model decide. Each pixel gets a hidden label: nominal or anomalous.
+        \item If nominal, the pixel is evaluated under the signal model. If anomalous, we say ``this pixel could be anything'' (flat likelihood over a broad scale $\Delta$).
+        \item Na\"ively this means summing over $2^{N_{\mathrm{pix}}}$ possible masks, but because pixels are independent the sum factorises into one term per pixel:
         \[
         \log P(\mathbf{I}\mid\theta,p)=\sum_{ij}\log\!\left((1-p)L_{ij}(\theta)+\frac{p}{\Delta}\right).
         \]
-        \item Tractable likelihood that jointly fits the pulse and flags RFI, fully automatically.
+        \item One likelihood that simultaneously fits the pulse and identifies RFI. The posterior on $p$ tells you how much of the data was contaminated.
     \end{itemize}
 \end{frame}
 
@@ -263,14 +276,14 @@
         \[
         \mathcal{B} = \frac{\mathcal{Z}_{\text{signal+anomaly}}}{\mathcal{Z}_{\text{noise-only}}} > \mathcal{B}_{\mathrm{thr}}.
         \]
-        \item $\mathcal{B}_{\mathrm{thr}}$ is set by injection--recovery for a chosen false-alarm rate.
+        \item $\mathcal{B}_{\mathrm{thr}}$ is set by injection-recovery for a chosen false-alarm rate.
         \item Posterior on $p$ quantifies how much of the cube was treated as interference.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{\small{Problem\ldots\ too slow}}
     \begin{itemize}
-        \item Current full nested-sampling inference is typically $\sim$1--3 minutes per candidate window.
+        \item Current full nested-sampling inference is typically $\sim$1-3 minutes per candidate window.
         \item A real-time trigger pipeline needs $\lesssim$50 ms per candidate decision.
         \item We are therefore roughly $10^3$ too slow without analytic marginalisation.
     \end{itemize}
@@ -341,12 +354,9 @@
     + \epsilon_{ij}, \quad \epsilon_{ij}\sim\mathcal{N}(0,\sigma^2)
     \]
     \begin{itemize}
-        \item Write $\mu_{ij} = A\,\psi_{ij}(t_0',\mathrm{DM}',\sigma_{\mathrm{frb}}')$.
-        \item Conjugate Gaussian prior on $A$ (chosen so the integral is closed form):
-        \[
-        A\mid \psi,I,\sigma^2 \sim \mathcal{N}(\hat{A},\,\Lambda_A^{-1}), \quad \hat{A} = \frac{\psi^\top I}{\psi^\top\psi+\sigma_A^{-2}\sigma^2}.
-        \]
-        \item Plugging back yields a marginal likelihood depending only on $\sigma^2$ and $\phi$.
+        \item The amplitude $A$ just scales the template, so it appears linearly in the model.
+        \item This means we can choose a Gaussian prior on $A$ and integrate it out exactly. No sampling needed.
+        \item After integrating, the likelihood no longer depends on $A$ at all. One parameter gone, no approximation.
     \end{itemize}
 \end{frame}
 
@@ -361,12 +371,12 @@
     + \epsilon_{ij}, \quad \epsilon_{ij}\sim\mathcal{N}(0,\textcolor{red}{\sigma^2})
     \]
     \begin{itemize}
-        \item Inverse-gamma prior on $\sigma^2$ (same idea: analytic integral).
-        \item After integrating out $A$, residual sum of squares $S$ gives:
+        \item Same idea again: choose an inverse-gamma prior on $\sigma^2$ so the integral has a closed-form solution.
+        \item After integrating out both $A$ and $\sigma^2$, we are left with:
         \[
         p(I\mid t_0',\phi) \propto \big(\beta_0 + \tfrac{1}{2}S\big)^{-(\alpha_0 + N_{\mathrm{pix}}/2)}.
         \]
-        \item Noise variance disappears analytically; no sampler needed.
+        \item Two nuisance parameters gone, no sampler needed. All that remains is the track shape: DM and pulse width.
     \end{itemize}
 \end{frame}
 

@@ -140,33 +140,30 @@ In sensitivity-limited experiments, these choices can determine whether the sign
 \begin{columns}[T,onlytextwidth]
 \begin{column}{0.58\textwidth}
 \small
-These are all \textbf{design parameters} --- parameters relating to the design and configuration of our system that impact its effectiveness:
+These are all \textbf{design parameters} --- they impact the effectiveness of our system:
 
-\vspace{0.08cm}
-\begin{itemize}
-\item Observation time: \hspace{0.2em}$\tau$
-\item Antenna orientation: \hspace{0.2em}$\psi$
+\vspace{0.06cm}
+\begin{itemize}\itemsep1pt
+\item Observation time: $\tau$
+\item Antenna orientation: $\psi$
 \item Antenna geometry and placement
 \item Cable lengths and calibration hardware
-\item Component tolerances and uncertainty budgets
+\item Component tolerances
 \end{itemize}
 
-\vspace{0.10cm}
+\vspace{0.06cm}
 \begin{tcolorbox}[resultbox,title=Main teaser]
 \small
-\textbf{Antenna orientation alone} changes forecast detection probability by about \textbf{20 percentage points}.
-
-\vspace{0.05cm}
-That costs \textbf{nothing} to implement if you know it before construction.
+\textbf{Antenna orientation alone} changes forecast detection probability by about \textbf{20 percentage points} --- and costs \textbf{nothing} to implement.
 \end{tcolorbox}
 \end{column}
 \begin{column}{0.38\textwidth}
 \centering
 \resizebox{0.98\linewidth}{!}{\costcomparisongraphic}
 
-\vspace{0.18cm}
+\vspace{0.12cm}
 \small
-We demonstrate a method that can increase sensitivity for a fraction of the cost of new hardware.
+Increase sensitivity for a fraction of the cost of new hardware.
 \end{column}
 \end{columns}
 \end{frame}
@@ -217,7 +214,7 @@ Add one more parameter and it becomes \textbf{1,000,000}.
 
 \begin{frame}{\small{How do evidence networks avoid that bottleneck?}}
 \begin{columns}[T,onlytextwidth]
-\begin{column}{0.52\textwidth}
+\begin{column}{0.50\textwidth}
 \footnotesize
 If we have a simulator for $M_1$ and $M_0$, we can train a classifier $f_\phi(\mathbf d)$ to distinguish them.
 
@@ -242,9 +239,9 @@ f_\phi^\star(\mathbf d)=\log K(\mathbf d).
 \item Train once, evaluate in milliseconds.
 \end{itemize}
 \end{column}
-\begin{column}{0.55\textwidth}
+\begin{column}{0.46\textwidth}
 \centering
-\resizebox{0.88\linewidth}{!}{%
+\resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
     node distance=0.6cm and 1.0cm,
     every node/.style={font=\footnotesize},
@@ -256,18 +253,18 @@ f_\phi^\star(\mathbf d)=\log K(\mathbf d).
     \node[input, fill=green!25, draw=green!60!black] (d) {$\mathbf d$};
     \node[below=0.01cm of d, font=\scriptsize, green!60!black] {$M_0$ or $M_1$};
 
-    \node[nn, fill=blue!10, draw=blue!60!black, right=2.0cm of d] (net) {$f_\phi$};
+    \node[nn, fill=blue!10, draw=blue!60!black, right=1.5cm of d] (net) {$f_\phi$};
     \node[above=0.01cm of net, font=\scriptsize, blue!60!black] {neural network};
 
-    \node[output, fill=red!20, draw=red!60!black, right=1.55cm of net] (out) {$\log K$};
+    \node[output, fill=red!20, draw=red!60!black, right=1.2cm of net] (out) {$\log K$};
     \node[below=0.01cm of out, font=\scriptsize, red!60!black] {Bayes factor};
 
     \draw[arr] (d) -- (net);
     \draw[arr] (net) -- (out);
 \end{tikzpicture}}
 
-\vspace{0.3cm}
-{\scriptsize Data $\mathbf{d}$ (simulated under $M_0$ or $M_1$)\\fed into neural network; optimised $f_\phi^*$ predicts $\log K$.}
+\vspace{0.1cm}
+{\scriptsize Optimised $f_\phi^*$ predicts $\log K$ from data $\mathbf{d}$.}
 \end{column}
 \end{columns}
 \end{frame}
@@ -322,24 +319,24 @@ Gessey-Jones et al.'s key insight was to use the Bayes factor as a forecasting u
 \footnotesize
 \begin{columns}[T,onlytextwidth]
 \begin{column}{0.41\textwidth}
-For the conditional extension, we extend the classifier to predict which model the data came from \textbf{given some design parameter}:
+Extend the classifier: predict which model the data came from \textbf{given some design parameter}:
 \[
 f_\phi(\mathbf d,\alpha)
 \approx
 \log K(\mathbf d \mid \alpha).
 \]
 
-\vspace{-0.15cm}
-\begin{itemize}
-\item e.g.\ ``predict if this data came from the signal model, \textbf{given some cable length}''.
+\vspace{-0.18cm}
+\begin{itemize}\itemsep1pt
+\item e.g.\ ``did this data come from the signal model, \textbf{given some cable length}?''
 \item Train once across the full design space.
-\item Query \textbf{any} $\alpha$ afterwards in milliseconds.
+\item Query \textbf{any} $\alpha$ in milliseconds.
 \end{itemize}
 
-\vspace{0.06cm}
+\vspace{0.02cm}
 \begin{tcolorbox}[resultbox,title=Key idea]
 \footnotesize
-\textbf{Amortised:} once trained, check how ANY design choice within the training range impacts detection odds.
+\textbf{Amortised:} check how ANY design choice impacts detection odds.
 \end{tcolorbox}
 \end{column}
 \begin{column}{0.55\textwidth}
@@ -492,7 +489,7 @@ Signals at 100--140 MHz are easier to detect; sensitivity drops at band edges.
 \begin{frame}{\small{How should we orient our antenna?}}
 \centering
 \vfill
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.88]
     % Ground screen (circle, viewed from above)
     \fill[brown!8] (0,0) circle (3.2);
     \draw[thick, gray!50] (0,0) circle (3.2);
@@ -538,16 +535,16 @@ Signals at 100--140 MHz are easier to detect; sensitivity drops at band edges.
 \end{column}
 \begin{column}{0.46\textwidth}
 \small
-One night of observation on the REACH telescope:
+One night of observation on REACH:
 
-\vspace{0.08cm}
-\begin{itemize}
+\vspace{0.06cm}
+\begin{itemize}\itemsep1pt
 \item We vary only antenna orientation.
 \item Detection probability changes by about \textbf{20 percentage points}.
-\item The four-fold symmetry comes from the dipole beam geometry.
+\item Four-fold symmetry from dipole beam geometry.
 \end{itemize}
 
-\vspace{0.12cm}
+\vspace{0.08cm}
 \begin{tcolorbox}[resultbox,title=Why this matters]
 \small
 This costs \textbf{nothing}. How much would the funders of any state-of-the-art experiment pay for a 20\% increase in sensitivity?

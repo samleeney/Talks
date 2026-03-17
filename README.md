@@ -3,6 +3,11 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Machine Learning for Experimental Design Optimisation
+	- [AI in Radio Astronomy Workshop, Royal Observatory Edinburgh, 19 March 2026](https://www.roe.ac.uk/)
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cnbre_edi_2026/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/cnbre_edi_2026)
+
 - Fast, Marginalised Bayesian Transient Searching
 	- [Handley Lab Group Meeting, March 2026](https://handley-lab.co.uk/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/handleylab_talk_2026/slides.pdf)

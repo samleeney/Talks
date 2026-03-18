@@ -133,16 +133,11 @@ In sensitivity-limited experiments, these choices can determine whether the sign
 \vfill
 \end{frame}
 
-% Outline -- after the hook
-\begin{frame}{Outline}
-\tableofcontents[hideallsubsections]
-\end{frame}
-
 \begin{frame}{\small{What actually needs optimising?}}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{0.58\textwidth}
 \small
-These are all \textbf{design parameters} --- they impact the effectiveness of our system:
+These are all \textbf{design parameters} -- they impact the effectiveness of our system:
 
 \vspace{0.06cm}
 \begin{itemize}\itemsep1pt
@@ -168,6 +163,11 @@ These are all \textbf{design parameters} --- they impact the effectiveness of ou
 Increase sensitivity for a fraction of the cost of new hardware.
 \end{column}
 \end{columns}
+\end{frame}
+
+% Outline
+\begin{frame}{Outline}
+\tableofcontents[hideallsubsections]
 \end{frame}
 
 \section{Method}
@@ -455,7 +455,7 @@ Given some range of \textbf{physical signal parameters}, what is our \pdet given
 \begin{itemize}
 \item Each pixel would have required a separate nested sampling run.
 \item The joint map shows how instrument choices and the underlying physics interact.
-\item Ask about amplitudes today, signal \textit{locations} tomorrow --- just re-slice.
+\item Ask about amplitudes today, signal \textit{locations} tomorrow -- just re-slice.
 \end{itemize}
 \end{column}
 \end{columns}
@@ -791,7 +791,7 @@ Array layout, orbit parameters, and survey strategy all involve high-dimensional
 \vfill
 \begin{tcolorbox}[keybox]
 \small
-Operational parameters can be re-optimised throughout the lifetime of the experiment --- cNBRE amortises the cost of exploring new strategies.
+Operational parameters can be re-optimised throughout the lifetime of the experiment -- cNBRE amortises the cost of exploring new strategies.
 \end{tcolorbox}
 \end{frame}
 
@@ -920,6 +920,13 @@ Rearranging:
 e^{f^*(\mathbf{d})} = \frac{p(\mathbf{d}|M_1)}{p(\mathbf{d}|M_0)} = K(\mathbf{d})
 \qquad \Longrightarrow \qquad
 \boxed{f^*(\mathbf{d}) = \log K(\mathbf{d})}.
+\]
+
+\vspace{0.08cm}
+\textbf{Conditioning on a design parameter $\alpha$:} replace $p(\mathbf{d}|M_i) \to p(\mathbf{d}|M_i, \alpha)$ throughout. The same derivation gives
+\[
+\boxed{f^*(\mathbf{d}, \alpha) = \log K(\mathbf{d} \mid \alpha)
+= \log \frac{p(\mathbf{d}|M_1,\alpha)}{p(\mathbf{d}|M_0,\alpha)}}.
 \]
 \end{frame}
 

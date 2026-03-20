@@ -1,314 +1,745 @@
 \documentclass[aspectratio=169]{beamer}
+
 \usetheme{metropolis}
 
-\usepackage{amsmath, amssymb}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{animate}
 \usepackage{graphicx}
-
 \usepackage{tikz}
-\usetikzlibrary{positioning, arrows.meta, decorations.pathmorphing}
+\usepackage{tcolorbox}
+\usepackage{qrcode}
 
-% Minimal footer: no frame numbers
-\setbeamertemplate{frame numbering}[none]
+\usetikzlibrary{arrows.meta,calc,positioning}
 
-% Metadata
-\title{\Large Conditional Neural Bayes Ratio Estimation (cNBRE)}
-\author{}
-\date{}
-\institute{}
+\setbeamertemplate{footline}{
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,leftskip=3mm]{author in head/foot}%
+            \tiny Sam Leeney
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}%
+            \tiny sakl2@cam.ac.uk
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,rightskip=3mm]{date in head/foot}%
+            \tiny \href{https://github.com/samleeney}{github.com/samleeney/Talks}
+        \end{beamercolorbox}%
+    }%
+    \vskip0pt%
+}
+
+\title{Automatic Data Curation for the Next Generation of Radio Science Experiments}
+\subtitle{Sam Leeney}
+\author{With: Will Handley, Harry Bevins, Eloy de Lera Acedo}
+\institute{University of Cambridge}
+\date{2026}
+
+\newcommand{\BaseDataPlot}{%
+    \begin{tikzpicture}[x=0.76cm,y=0.76cm]
+        \draw[->,thick] (0,0) -- (9.8,0) node[right] {$x$};
+        \draw[->,thick] (0,0) -- (0,5.3) node[above] {$y$};
+        \draw[blue!75!black,very thick] (0.55,0.80) -- (9.20,4.45);
+        \node[anchor=west] at (6.1,4.55) {\scriptsize model $f(x;\theta)$};
+
+        \fill[black!65]         (0.90,1.05) circle (2.6pt);
+        \fill[black!65]         (1.80,1.45) circle (2.6pt);
+        \fill[red!75!black]     (2.70,4.05) circle (3.2pt);
+        \fill[orange!85!black]  (3.55,2.35) circle (2.9pt);
+        \fill[black!65]         (4.30,2.42) circle (2.6pt);
+        \fill[black!65]         (5.20,2.82) circle (2.6pt);
+        \fill[black!65]         (6.10,3.12) circle (2.6pt);
+        \fill[red!75!black]     (7.20,1.08) circle (3.2pt);
+        \fill[black!65]         (8.20,4.02) circle (2.6pt);
+        \fill[black!65]         (9.00,4.33) circle (2.6pt);
+    \end{tikzpicture}%
+}
+
+\newcommand{\MaskedDataPlot}{%
+    \begin{tikzpicture}[x=0.58cm,y=0.58cm]
+        \draw[->,thick] (0,0) -- (9.8,0) node[right] {$x$};
+        \draw[->,thick] (0,0) -- (0,5.3) node[above] {$y$};
+        \draw[blue!75!black,very thick] (0.55,0.80) -- (9.20,4.45);
+        \node[anchor=west] at (6.1,4.55) {\scriptsize model $f(x;\theta)$};
+
+        \fill[black!65]         (0.90,1.05) circle (2.6pt);
+        \fill[black!65]         (1.80,1.45) circle (2.6pt);
+        \fill[red!75!black]     (2.70,4.05) circle (3.2pt);
+        \fill[orange!85!black]  (3.55,2.35) circle (2.9pt);
+        \fill[black!65]         (4.30,2.42) circle (2.6pt);
+        \fill[black!65]         (5.20,2.82) circle (2.6pt);
+        \fill[black!65]         (6.10,3.12) circle (2.6pt);
+        \fill[red!75!black]     (7.20,1.08) circle (3.2pt);
+        \fill[black!65]         (8.20,4.02) circle (2.6pt);
+        \fill[black!65]         (9.00,4.33) circle (2.6pt);
+
+        \foreach \x/\v in {
+            0.90/0,
+            1.80/0,
+            2.70/1,
+            3.55/0,
+            4.30/0,
+            5.20/0,
+            6.10/0,
+            7.20/1,
+            8.20/0,
+            9.00/0
+        }{
+            \node[
+                draw=black!55,
+                rounded corners=1pt,
+                minimum width=0.46cm,
+                minimum height=0.46cm,
+                fill=white
+            ] at (\x,-1.05) {\tiny \v};
+        }
+
+        \draw[densely dotted] (0.90,0.82) -- (0.90,-0.78);
+        \draw[densely dotted] (2.70,3.82) -- (2.70,-0.78);
+        \draw[densely dotted] (7.20,0.85) -- (7.20,-0.78);
+
+        \node[anchor=west,text=blue!75!black] at (0.35,-1.85) {\tiny latent mask entries $\varepsilon_i \in \{0,1\}$};
+    \end{tikzpicture}%
+}
+
+\newcommand{\ProbabilityDataPlot}{%
+    \begin{tikzpicture}[x=0.48cm,y=0.48cm]
+        \draw[->,thick] (0,0) -- (9.8,0) node[right] {$x$};
+        \draw[->,thick] (0,0) -- (0,5.3) node[above] {$y$};
+        \draw[blue!75!black,very thick] (0.55,0.80) -- (9.20,4.45);
+
+        \fill[black!65]         (0.90,1.05) circle (2.6pt);
+        \fill[black!65]         (1.80,1.45) circle (2.6pt);
+        \fill[red!75!black]     (2.70,4.05) circle (3.4pt);
+        \fill[orange!85!black]  (3.55,2.35) circle (3.1pt);
+        \fill[black!65]         (4.30,2.42) circle (2.6pt);
+        \fill[black!65]         (5.20,2.82) circle (2.6pt);
+        \fill[black!65]         (6.10,3.12) circle (2.6pt);
+        \fill[red!75!black]     (7.20,1.08) circle (3.4pt);
+        \fill[black!65]         (8.20,4.02) circle (2.6pt);
+        \fill[black!65]         (9.00,4.33) circle (2.6pt);
+
+        \node[fill=white,inner sep=0.8pt,text=red!75!black] at (1.95,4.85) {\tiny $P_{\mathrm{anom}} \approx 1$};
+        \draw[-{Latex[length=2mm]},red!75!black,thick] (2.10,4.55) -- (2.63,4.15);
+
+        \node[fill=white,inner sep=0.8pt,text=red!75!black] at (8.28,0.55) {\tiny $P_{\mathrm{anom}} \approx 1$};
+        \draw[-{Latex[length=2mm]},red!75!black,thick] (8.02,0.72) -- (7.32,1.16);
+
+        \node[fill=white,inner sep=0.8pt,text=orange!85!black] at (5.55,1.85) {\tiny $P_{\mathrm{anom}} \approx 0.3$};
+        \draw[-{Latex[length=2mm]},orange!85!black,thick] (5.02,1.98) -- (3.72,2.33);
+
+        \node[fill=white,inner sep=0.8pt,text=black!65] at (1.95,0.48) {\tiny $P_{\mathrm{anom}} \approx 0$};
+        \draw[-{Latex[length=2mm]},black!65,thick] (2.18,0.68) -- (1.88,1.34);
+    \end{tikzpicture}%
+}
 
 \begin{document}
 
-% Slide 1: Title
-{
-\setbeamertemplate{headline}{}
-\setbeamertemplate{footline}{}
-\begin{frame}[noframenumbering]
-\vfill
-\begin{center}
-{\Large \textbf{Conditional Neural Bayes Ratio Estimation (cNBRE)}}
+\begin{frame}
+    \vfill
+    \begin{center}
+        {\Large \inserttitle\par}
 
-\vspace{12pt}
-{\normalsize Sam Leeney}
+        \vspace{0.35cm}
 
-\vspace{4pt}
-{\small Wednesday 11th February 2026}
+        {\large \insertsubtitle\par}
 
-\vspace{12pt}
-\includegraphics[width=0.6\textwidth]{images/affiliations.png}
-\end{center}
-\vfill
+        \vspace{0.25cm}
+
+        {\small \insertinstitute\par}
+        {\scriptsize \insertauthor\par}
+
+        \vfill
+
+        \includegraphics[width=0.7\textwidth]{images/affiliations.png}\hfill\includegraphics[height=1.05cm]{images/ukri.png}
+    \end{center}
+    \vfill
+\end{frame}
+
+\begin{frame}{\small{The first pulsar: found by eye}}
+    \begin{columns}[c,onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/first_pulsar.jpg}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \scriptsize
+            \begin{itemize}
+                \item Jocelyn Bell Burnell, 1967: the first pulsar detected by a human anomaly flagger.
+                \item Humans are still partially involved in data curation and cleaning today.
+                \item Data rates now reach TB to PB scales.
+                \item This talk: fully automated data curation. No human in the loop. No hyperparameters to tune.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\small{Outline}}
+    \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Method}
+
+\begin{frame}{\small{Why not just flag first and fit later?}}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.49\textwidth}
+            \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Standard workflow]
+                \footnotesize
+                Run anomaly detection before inference.\\[0.25em]
+                Tune thresholds or hyperparameters.\\[0.25em]
+                Manually inspect edge cases.\\[0.25em]
+                Throw the flagged data away.
+            \end{tcolorbox}
+        \end{column}
+        \begin{column}{0.49\textwidth}
+            \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Why this is a problem]
+                \footnotesize
+                Data curation is decoupled from the physics model, so useful information can be deleted, the workflow is rarely fully automatic, and humans in the loop are prone to bias. We want the model of the thing we understand to inform the model of the thing we don't.
+            \end{tcolorbox}
+
+            \vspace{0.45cm}
+            \centering
+            {\large $\Longrightarrow$}\\[0.2em]
+            \small Put the data-quality model inside the fit.
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\small{What if the data contain contaminants?}}
+    \centering
+    \BaseDataPlot
+
+    \vspace{0.15cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,width=0.78\textwidth]
+        \scriptsize
+        Start with a model and two contaminants. We want to fit the line and flag the bad points in one go.
+    \end{tcolorbox}
+\end{frame}
+
+%% Slide 1: Introduce the idea of a binary mask %%
+\begin{frame}{\small{What if the mask is part of the model?}}
+    \centering
+    \MaskedDataPlot
+
+    \vspace{0.10cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,width=0.82\textwidth]
+        \scriptsize
+        Assign each data point a label: $\varepsilon_i = 0$ (nominal) or $\varepsilon_i = 1$ (anomalous). This mask becomes part of the parameter vector.
+    \end{tcolorbox}
+\end{frame}
+
+%% Bayesian approach: marginalise, but 2^N is intractable %%
+\begin{frame}{\small{How do we find the right mask?}}
+    \footnotesize
+    We take a Bayesian approach: marginalise over \textbf{all possible masks} to get a probability per point that it is contaminated.
+
+    \vspace{0.2cm}
+
+    Write the likelihood blending normal and anomaly terms:
+    \[
+    P(\mathcal{D}, \vec{\varepsilon}\mid\theta) = \prod_{i} \left[(1-p_i)\,\mathcal{L}_i(\theta)\right]^{1-\varepsilon_i} \left[\frac{p_i}{\Delta}\right]^{\varepsilon_i}
+    \]
+
+    In principle we sum over all $2^N$ mask configurations. This quickly becomes intractable.
+
+    \vspace{0.2cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Dominant mask approximation]
+        \scriptsize
+        Instead of summing, we \textbf{maximise}: at each step of the sampler, pick the best mask for the current $\theta$. Because the pixels factorise, this reduces to a per-point comparison:
+        \[
+        \varepsilon_i^\star = 1 \quad \text{if} \quad \frac{p_i}{\Delta} > (1-p_i)\,\mathcal{L}_i(\theta)
+        \]
+    \end{tcolorbox}
+
+    \centering
+    What does this look like in practice?
+\end{frame}
+
+%% Flipbook: what does this look like in practice? %%
+%% Each slide is identical layout, different theta/mask. Flip through like a gif. %%
+
+\newcommand{\IterationSlide}[5]{%
+% #1 = iteration number, #2 = line start y, #3 = line end y, #4 = line color, #5 = mask string (10 comma-separated 0/1)
+\begin{frame}{\small{What does this look like in practice?}}
+    \centering
+    \begin{tikzpicture}[x=0.70cm,y=0.70cm]
+        \draw[->,thick] (0,0) -- (9.8,0) node[right] {\scriptsize $x$};
+        \draw[->,thick] (0,0) -- (0,5.3) node[above] {\scriptsize $y$};
+        \draw[#4,very thick] (0.55,#2) -- (9.20,#3);
+        \node[anchor=south west,#4] at (0.2,5.0) {\scriptsize Iteration #1};
+
+        \fill[black!65]         (0.90,1.05) circle (2.4pt);
+        \fill[black!65]         (1.80,1.45) circle (2.4pt);
+        \fill[red!75!black]     (2.70,4.05) circle (3.0pt);
+        \fill[orange!85!black]  (3.55,2.35) circle (2.7pt);
+        \fill[black!65]         (4.30,2.42) circle (2.4pt);
+        \fill[black!65]         (5.20,2.82) circle (2.4pt);
+        \fill[black!65]         (6.10,3.12) circle (2.4pt);
+        \fill[red!75!black]     (7.20,1.08) circle (3.0pt);
+        \fill[black!65]         (8.20,4.02) circle (2.4pt);
+        \fill[black!65]         (9.00,4.33) circle (2.4pt);
+
+        % Draw mask boxes below
+        \foreach \x/\v [count=\n] in {#5} {
+            \ifnum\v=1
+                \node[draw=red!75!black,rounded corners=1pt,minimum width=0.5cm,minimum height=0.5cm,fill=red!10,font=\scriptsize\bfseries] at (\x,-1.1) {\v};
+            \else
+                \node[draw=black!40,rounded corners=1pt,minimum width=0.5cm,minimum height=0.5cm,fill=white,font=\scriptsize] at (\x,-1.1) {\v};
+            \fi
+        }
+
+        \node[anchor=west] at (0.2,-1.9) {\scriptsize mask $\vec{\varepsilon}$: compare $(1{-}p_i)\mathcal{L}_i(\theta)$ vs $p_i/\Delta$ for each point};
+    \end{tikzpicture}
 \end{frame}
 }
 
-% Slide 2: Method
-\begin{frame}{cNBRE: a classifier that outputs $\log K(\mathbf d\mid \alpha)$}
-\small
-\begin{columns}[T]
-\begin{column}{0.42\textwidth}
-\begin{itemize}\itemsep2pt
-\item Simulate training data under $M_1$ and $M_0$ across design space $\alpha$.
-\item Train $f_\phi(\mathbf d,\alpha)$ with exponential loss
-\[
-\ell = \mathbb E_{M_1}\!\left[e^{-f_\phi/2}\right]+\mathbb E_{M_0}\!\left[e^{+f_\phi/2}\right].
-\]
-\item Optimum: $f_\phi^*(\mathbf d,\alpha)=\log K(\mathbf d\mid \alpha)$ (with balanced classes).
-\item Cost: train once (4--10 A100 GPU-hours), then evaluate in ms for any $\alpha$.
-\end{itemize}
-\end{column}
-\begin{column}{0.55\textwidth}
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[
-    node distance=0.6cm and 1.0cm,
-    every node/.style={font=\footnotesize},
-    input/.style={circle, draw, minimum size=0.8cm, thick},
-    nn/.style={rectangle, rounded corners=6pt, draw, minimum width=2.2cm, minimum height=1.6cm, thick},
-    output/.style={circle, draw, minimum size=0.8cm, thick},
-    arr/.style={-{Stealth[length=2.5mm]}, thick},
-]
-    \node[input, fill=green!25, draw=green!60!black] (d) {$\mathbf{d}$};
-    \node[below=0.01cm of d, font=\scriptsize, green!60!black] {$M_0$ or $M_1$};
+% Iter 1: line way too high and flat. Flags low points incorrectly.
+\IterationSlide{1}{2.50}{3.50}{red!60!black}{0.90/1, 1.80/1, 2.70/0, 3.55/0, 4.30/0, 5.20/0, 6.10/0, 7.20/1, 8.20/0, 9.00/1}
 
-    \node[input, fill=orange!30, draw=orange!70!black, below=1.0cm of d] (alpha) {$\alpha$};
-    \node[below=0.01cm of alpha, font=\scriptsize, orange!70!black] {design};
+% Iter 2: line too steep and low. Over-flags.
+\IterationSlide{2}{-0.30}{4.80}{red!80!orange}{0.90/0, 1.80/0, 2.70/1, 3.55/0, 4.30/1, 5.20/0, 6.10/0, 7.20/1, 8.20/1, 9.00/1}
 
-    \node[nn, fill=blue!10, draw=blue!60!black, right=1.5cm of d, yshift=-0.5cm] (net) {$f_\phi$};
-    \node[above=0.01cm of net, font=\scriptsize, blue!60!black] {neural network};
+% Iter 3: getting closer but still off. Borderline point flagged.
+\IterationSlide{3}{0.40}{3.90}{orange!80!black}{0.90/0, 1.80/0, 2.70/1, 3.55/1, 4.30/0, 5.20/0, 6.10/0, 7.20/1, 8.20/0, 9.00/0}
 
-    \node[output, fill=red!20, draw=red!60!black, right=1.5cm of net] (out) {$\log K$};
-    \node[below=0.01cm of out, font=\scriptsize, red!60!black] {Bayes factor};
+% Iter 5: close. Borderline still flagged.
+\IterationSlide{5}{0.60}{4.20}{orange!60!black}{0.90/0, 1.80/0, 2.70/1, 3.55/1, 4.30/0, 5.20/0, 6.10/0, 7.20/1, 8.20/0, 9.00/0}
 
-    \draw[arr] (d) -- (net);
-    \draw[arr] (alpha) -- (net);
-    \draw[arr] (net) -- (out);
-\end{tikzpicture}}
+% Iter 7: very close. Borderline now clean.
+\IterationSlide{7}{0.70}{4.35}{blue!50!black}{0.90/0, 1.80/0, 2.70/1, 3.55/0, 4.30/0, 5.20/0, 6.10/0, 7.20/1, 8.20/0, 9.00/0}
 
-\vspace{4pt}
-{\scriptsize Data $\mathbf{d}$ (simulated under $M_0$ or $M_1$) and design parameters $\alpha$\\fed into neural network; optimised $f_\phi^*$ predicts $\log K$.}
-\end{column}
-\end{columns}
+% Iter 10: correct theta. Only true anomalies flagged.
+\IterationSlide{10}{0.80}{4.45}{blue!75!black}{0.90/0, 1.80/0, 2.70/1, 3.55/0, 4.30/0, 5.20/0, 6.10/0, 7.20/1, 8.20/0, 9.00/0}
+
+%% Weighted average over iterations gives probabilities %%
+\begin{frame}{\small{Weighted average over samples gives probabilities}}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \centering
+            {\tiny
+            \setlength{\tabcolsep}{3pt}
+            \begin{tabular}{r c c c c c c c c c c r}
+                & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & $x_7$ & $x_8$ & $x_9$ & $x_{10}$ & wt \\[0.1em]
+                \hline\\[-0.7em]
+                $\vec{\varepsilon}^{(1)}$: & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & \textcolor{red!75!black}{.02} \\[0.05em]
+                $\vec{\varepsilon}^{(3)}$: & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & \textcolor{orange!85!black}{.13} \\[0.05em]
+                $\vec{\varepsilon}^{(10)}$: & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & \textcolor{blue!75!black}{.85} \\[0.1em]
+                \hline\\[-0.7em]
+                $P_{\mathrm{anom}}$: & \textbf{.02} & \textbf{.02} & \textbf{.98} & \textbf{.13} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{.02} & \\
+            \end{tabular}
+            }
+
+            \vspace{0.15cm}
+
+            {\scriptsize The resulting log-likelihood with the dominant mask:}
+            {\small
+            \[
+            \log P = \sum_i \max\!\left\{\log\mathcal{L}_i + \log(1{-}p_i),\; \log p_i - \log\Delta\right\}
+            \]
+            }
+
+            \vspace{-0.2cm}
+            {\tiny \textbf{Note:} $\log\Delta$ acts as an \textbf{Occam penalty}. Flagging a point costs $\log\Delta$; the model only flags when the likelihood gain outweighs this cost. The threshold $p_i$ is \textbf{fit as a model parameter}, not set by hand.}
+        \end{column}
+        \begin{column}{0.40\textwidth}
+            \centering
+            \ProbabilityDataPlot
+        \end{column}
+    \end{columns}
 \end{frame}
 
-% Slide 4: REACH setup + tau plot
-\begin{frame}{REACH: detection vs observation time}
-\small
-\begin{columns}[T]
-\begin{column}{0.47\textwidth}
-\textbf{Forward models}
-\begin{align*}
-M_1:\ \mathbf d &= \mathbf d_{\mathrm{fg}} + \mathbf d_{21} + \mathbf n\\
-M_0:\ \mathbf d &= \mathbf d_{\mathrm{fg}} + \mathbf n
-\end{align*}
+%% Logit falls out of the likelihood %%
+\begin{frame}{\small{A familiar activation function}}
+    \scriptsize
+    Take logs of the per-point decision rule from our likelihood:
+    \[
+    \frac{p_i}{\Delta} > (1-p_i)\,\mathcal{L}_i
+    \qquad\Longrightarrow\qquad
+    \log p_i - \log(1-p_i) > \log\mathcal{L}_i + \log\Delta
+    \]
+    \[
+    \boxed{\;\mathrm{logit}(p_i) > \log\mathcal{L}_i + \log\Delta\;}
+    \]
 
-\textbf{Design parameters} $\alpha=(\tau,\psi)$.
+    Invert with the sigmoid $\sigma(x) = 1/(1+e^{-x})$ to get the posterior anomaly probability:
+    \[
+    P_{\mathrm{anom},i} = \sigma\!\big(\mathrm{logit}(p_i) - \log\mathcal{L}_i - \log\Delta\big)
+    \]
 
-\vspace{2pt}
-\textbf{Detection probability}
-\[
-P_{\mathrm{det}}(\alpha) = \Pr_{M_1,\alpha}\!\big[\log K(\mathbf d\mid\alpha)>\log K_{\mathrm{crit}}\big].
-\]
-
-\begin{itemize}\itemsep1pt
-\item $\log K_{\mathrm{crit}}$: $\sigma$-equivalent FPR under $M_0$.
-\item $P_{\mathrm{det}}$ plateaus after ${\sim}10\,\mathrm{min}$ due to a \textbf{systematics noise floor}.
-\end{itemize}
-\end{column}
-\begin{column}{0.51\textwidth}
-\centering
-\includegraphics[width=\textwidth]{images/tau_vs_detection_probs.png}
-
-\vspace{2pt}
-{\scriptsize $P_{\mathrm{det}}$ vs.\ observation time $\tau$ at $\sigma$-equivalent thresholds ($1\sigma$, $3\sigma$, $5\sigma$).}
-\end{column}
-\end{columns}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \scriptsize
+        The logit and sigmoid fall directly out of our likelihood. These are standard activation functions in machine learning. The same framework that works inside nested sampling can therefore be made differentiable and plugged into a neural network.
+    \end{tcolorbox}
 \end{frame}
 
-% Slide 5: Detection landscapes
-\begin{frame}{Detection landscapes}
-\begin{columns}[c]
-\begin{column}{0.52\textwidth}
-\centering
-\includegraphics[width=\textwidth, height=0.69\textheight, keepaspectratio]{images/amp_tau_detection_panels.png}
+\begin{frame}{\small{Hard vs.\ soft mixture models}}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.57\textwidth}
+            {\scriptsize
+            \textbf{Hard mixture: Bayesian inference}
+            \[
+            \log p(\mathcal{D}\mid\theta) = \sum_i \max\left\{\log \mathcal{L}_i + \log(1-p_i),\; \log p_i - \log \Delta_i\right\}
+            \]
 
-\vspace{2pt}
-{\scriptsize $P_{\mathrm{det}}$ over signal amplitude and observation time.}
-\end{column}
-\begin{column}{0.45\textwidth}
-\centering
-\includegraphics[width=\textwidth, height=0.69\textheight, keepaspectratio]{images/orientation_vs_sigma_polar_heatmap.png}
+            \vspace{0.15cm}
 
-\vspace{2pt}
-{\scriptsize $\sim$20pp variation in $P_{\mathrm{det}}$ with orientation ($3\sigma$, $\tau{=}10\,$h).\\Four-fold symmetry from dipole beam geometry.}
-\end{column}
-\end{columns}
+            \textbf{Soft mixture: machine learning}
+            \[
+            \log p(\mathcal{D}\mid\theta) = \sum_i \log\left[(1-p_i)\mathcal{L}_i + \frac{p_i}{\Delta_i}\right]
+            \]
+            }
+
+            \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+                \scriptsize
+                The hard $\max$ becomes a differentiable log-sum-exp. The corner between the flat floor and the likelihood has no gradient; the soft version smooths this, letting the same idea move into gradient-based machine learning.
+            \end{tcolorbox}
+        \end{column}
+        \begin{column}{0.39\textwidth}
+            \centering
+            \includegraphics[width=0.80\textwidth]{images/hard_mixture_model.png}
+
+            \vspace{0.18cm}
+
+            \includegraphics[width=0.80\textwidth]{images/soft_mixture_model.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-% Slide: A note on cost
-\begin{frame}{A note on cost}
-\small
-\begin{columns}[T]
-\begin{column}{0.55\textwidth}
-\begin{itemize}\itemsep4pt
-\item GPUs are not free --- but physical experiments cost \textit{far} more for comparable sensitivity gains.
-\item cNBRE training: \textbf{4--10 A100 GPU-hours} (one-time).
-\item Physical alternatives for similar $\Delta P_{\mathrm{det}}$:
-\begin{itemize}\itemsep1pt
-    \item New antenna design \& fabrication
-    \item Lower-loss cables \& connectors
-    \item Additional calibration hardware
-    \item Extended observation campaigns
-\end{itemize}
-\item SKA: ${\sim}$\texteuro2\,B. LHC: ${\sim}$\$9\,B.
-\item $\sim$20pp gain from antenna orientation costs \textbf{nothing} once identified.
-\end{itemize}
-\end{column}
-\begin{column}{0.40\textwidth}
-\centering
-\vspace{6pt}
-\begin{tikzpicture}[
-    every node/.style={font=\footnotesize},
-    box/.style={draw, rounded corners=4pt, minimum width=2.8cm, minimum height=0.7cm, align=center, thick},
-]
-    \node[box, fill=green!20, draw=green!60!black] (gpu) at (0,3) {cNBRE training\\[1pt]\scriptsize 4--10 GPU-hours};
-    \node[box, fill=orange!20, draw=orange!60!black] (hw) at (0,1.5) {New hardware\\[1pt]\scriptsize \$10k--\$1M+};
-    \node[box, fill=red!20, draw=red!60!black] (exp) at (0,0) {Major facility\\[1pt]\scriptsize \$1B+};
-
-    \draw[-{Stealth[length=2mm]}, thick, gray!60] (0,3.55) -- (0,4.0) node[above, font=\scriptsize, gray!60!black] {cost-effectiveness};
-    \draw[-{Stealth[length=2mm]}, thick, gray!60] (0,-0.55) -- (0,-1.0) node[below, font=\scriptsize, gray!60!black] {};
-\end{tikzpicture}
-\end{column}
-\end{columns}
+%% Paper references %%
+\begin{frame}{\small{Read the papers}}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \scriptsize
+        \textbf{Leeney, Handley, de Lera Acedo} (2023). A Bayesian approach to RFI mitigation. \href{https://arxiv.org/abs/2211.15448}{arxiv: 2211.15448}
+    \end{tcolorbox}
+    \vspace{0.1cm}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \scriptsize
+        \textbf{Anstey, Leeney, Handley, de Lera Acedo} (2024). Enhanced Bayesian RFI Mitigation and Transient Flagging. \href{https://arxiv.org/abs/2310.02146}{arxiv: 2310.02146}
+    \end{tcolorbox}
+    \vspace{0.1cm}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \scriptsize
+        \textbf{Leeney, Handley, Bevins, de Lera Acedo} (2025). Bayesian Anomaly Detection for Ia Cosmology: Automating SALT3 Data Curation. \href{https://arxiv.org/abs/2509.13394}{arxiv: 2509.13394}
+    \end{tcolorbox}
+    \vspace{0.1cm}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \scriptsize
+        \textbf{Leeney, Handley, Bevins, de Lera Acedo} (in prep). Automatic Data Curation for the Next Generation of Radio Science Experiments.
+    \end{tcolorbox}
 \end{frame}
 
-\section{Next steps}
+%% Simultaneous fitting %%
+\begin{frame}{\small{What is actually being fitted?}}
+    \begin{center}
+        \begin{tikzpicture}[node distance=1.4cm and 1.3cm]
+            \node[
+                draw=blue!75!black,
+                rounded corners=2pt,
+                fill=blue!5!white,
+                minimum width=2.6cm,
+                minimum height=0.85cm
+            ] (data) {data $\mathcal{D}$};
 
-% Slide 6: Instrument optimisation
-\begin{frame}{Instrument optimisation}
-\begin{columns}[T]
-\begin{column}{0.30\textwidth}
-\centering
-\begin{tikzpicture}[scale=0.85]
-    \draw[->, thick] (-0.2,0) -- (2.5,0) node[right] {\tiny $x$};
-    \draw[->, thick] (0,-0.2) -- (0,2.5) node[above] {\tiny $y$};
-    \fill[red!70!black] (1.4,1.6) circle (3pt);
-    \draw[dashed, gray!60] (1.4,0) -- (1.4,1.6);
-    \draw[dashed, gray!60] (0,1.6) -- (1.4,1.6);
-    \draw[thick, red!70!black] (1.2,2.1) -- (1.4,1.6) -- (1.6,2.1);
-\end{tikzpicture}
+            \node[
+                draw=blue!75!black,
+                rounded corners=2pt,
+                fill=blue!5!white,
+                minimum width=3.1cm,
+                minimum height=0.85cm,
+                below left=of data
+            ] (theta) {physics parameters $\theta$};
 
-\vspace{2pt}
-{\footnotesize \textbf{Antenna location}\\$\alpha = (x,y)$}
-\end{column}
-\begin{column}{0.30\textwidth}
-\centering
-\begin{tikzpicture}[scale=0.85]
-    \draw[thick, gray] (-1.2,0) -- (1.2,0);
-    \draw[thick] (0,0) -- (0,0.6);
-    \fill (0,0.6) circle (2pt);
-    \draw[thick, blue!60] (0,0.6) .. controls (-0.7,1.5) and (-0.2,2.2) .. (0,2.5)
-                           (0,0.6) .. controls (0.7,1.5) and (0.2,2.2) .. (0,2.5);
-    \draw[dashed, orange!70] (0,0.6) .. controls (-1.1,1.3) and (-0.4,2.0) .. (0,2.3)
-                              (0,0.6) .. controls (1.1,1.3) and (0.4,2.0) .. (0,2.3);
-\end{tikzpicture}
+            \node[
+                draw=blue!75!black,
+                rounded corners=2pt,
+                fill=blue!5!white,
+                minimum width=3.1cm,
+                minimum height=0.85cm,
+                below right=of data
+            ] (mask) {anomaly variables $\vec{\varepsilon}$};
 
-\vspace{2pt}
-{\footnotesize \textbf{Antenna geometry}\\$\alpha = $ beam params}
-\end{column}
-\begin{column}{0.30\textwidth}
-\centering
-\begin{tikzpicture}[scale=0.85]
-    \node[draw, fill=gray!20, minimum width=0.7cm, minimum height=0.5cm, font=\tiny, rounded corners] (rx) at (0,0) {Rx};
-    \node[draw, fill=gray!20, minimum width=0.7cm, minimum height=0.5cm, font=\tiny, rounded corners] (ant) at (3.2,0) {Ant};
-    \draw[thick, decorate, decoration={zigzag, amplitude=2pt, segment length=5pt}] (0.55,0) -- (2.65,0);
-    \draw[<->, thick] (0.55,-0.6) -- (2.65,-0.6) node[midway, below, font=\tiny] {$\ell$};
-\end{tikzpicture}
+            \draw[-{Latex[length=2.5mm]},very thick,blue!75!black] (data) -- (theta);
+            \draw[-{Latex[length=2.5mm]},very thick,blue!75!black] (data) -- (mask);
+            \draw[<->,very thick,blue!75!black] (theta) -- node[above,fill=white,inner sep=1pt] {\scriptsize fitted together} (mask);
+        \end{tikzpicture}
+    \end{center}
 
-\vspace{2pt}
-{\footnotesize \textbf{Calibration hardware}\\$\alpha = \ell$ (cable length)}
-\end{column}
-\end{columns}
-
-\vspace{8pt}
-
-\begin{columns}[T]
-\begin{column}{0.15\textwidth}\end{column}
-\begin{column}{0.30\textwidth}
-\centering
-\begin{tikzpicture}[scale=0.85]
-    \node[draw, rounded corners, fill=gray!20, font=\tiny, minimum width=1cm, minimum height=0.5cm] (vna) at (0,0) {VNA};
-    \node[font=\scriptsize, gray!60!black] at (0,-0.5) {$\pm\delta$};
-    \draw[-{Stealth[length=2mm]}, thick] (0.7,0) -- (2.0,0);
-    \node[draw, rounded corners, fill=red!15, font=\scriptsize, minimum width=1cm, minimum height=0.5cm] at (2.8,0) {$P_{\mathrm{det}}$};
-\end{tikzpicture}
-
-\vspace{2pt}
-{\footnotesize \textbf{Uncertainty propagation}\\$\alpha = \delta_{\mathrm{VNA}}, \delta_{\mathrm{LNA}}, \ldots$}
-\end{column}
-\begin{column}{0.30\textwidth}
-\centering
-\begin{tikzpicture}[scale=0.85]
-    \fill[gray!25] (0,0) circle (0.7);
-    \node[font=\tiny, gray!60!black] at (0,0) {Moon};
-    \draw[dashed, thick, gray!50] (0,0) ellipse (1.5 and 1.0);
-    \fill[blue!60] (1.45,-0.15) rectangle (1.65,0.05);
-    \draw[<->, thin, orange!70!black] (0,0) -- (1.5,0) node[midway, above, font=\tiny] {$a$};
-    \draw[<->, thin, orange!70!black] (0,0) -- (0,1.0) node[midway, left, font=\tiny] {$b$};
-\end{tikzpicture}
-
-\vspace{2pt}
-{\footnotesize \textbf{Lunar orbit location}\\$\alpha = (a,b,i,\ldots)$}
-\end{column}
-\begin{column}{0.15\textwidth}\end{column}
-\end{columns}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \scriptsize
+        This is the key point: the anomaly fit is done \textbf{simultaneously} with the model fit. Nothing is pre-flagged, and anomalous data are downweighted rather than thrown away. Can be implemented with 2 lines of code.
+    \end{tcolorbox}
 \end{frame}
 
-% Slide 7: Null testing
-\begin{frame}{Null testing}
-\small
-\begin{columns}[c]
-\begin{column}{0.56\textwidth}
-\centering
-\includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{images/cnbre_ns.png}
+\section{Results on REACH}
 
-\vspace{2pt}
-{\scriptsize cNBRE vs.\ nested sampling $\log K$ on held-out simulations.}
-\end{column}
-\begin{column}{0.40\textwidth}
-\begin{itemize}\itemsep2pt
-\item $f_\phi$ broadly tracks NS $\log K$ for $M_1$ (signal) data
-\item For $M_0$ (null), $f_\phi$ is strongly negative, conservative null tests
-\item With our NS settings, cNBRE produced fewer false positives
-\item Train once (4--10 A100 GPU-h); inference: ms vs.\ hours per NS run
-\end{itemize}
-\end{column}
-\end{columns}
+\begin{frame}{\small{What does the model see in a year of REACH data?}}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.58\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{images/figA06_mean_antenna_temperature_vs_channel_anomaly_probability.pdf}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \scriptsize
+            \begin{itemize}
+                \item A year of REACH data organised by LST: the galaxy moving overhead.
+                \item We jointly fit the whole year simultaneously.
+                \item Each observation gets a curation \textbf{score}, fit simultaneously with the physics.
+            \end{itemize}
+
+            \vspace{0.15cm}
+
+            \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+                \tiny
+                Fully automated: no manual curation pass. Bottom panel: score per frequency channel, marginalised over the year. Channels with $P_{\mathrm{anom}} \approx 1$ are excluded automatically.
+            \end{tcolorbox}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-% Slide 8: Discussion
-\begin{frame}{Discussion}
-\begin{columns}[T]
-\begin{column}{0.47\textwidth}
-\textbf{Null testing}
-\small
-\begin{itemize}\itemsep3pt
-\item $f_\phi$ broadly tracks NS $\log K$ for $M_1$ data
-\item For $M_0$, $f_\phi$ strongly negative, conservative null tests
-\item Fewer false positives than NS at comparable compute
-\item Train once (4--10 GPU-h); inference in ms
-\end{itemize}
-\end{column}
-\begin{column}{0.47\textwidth}
-\textbf{Instrument optimisation}
-\small
-\begin{itemize}\itemsep3pt
-\item $f_\phi$ smooth in $\alpha$ $\Rightarrow$ gradient-based optimisation
-\item Antenna location ($\alpha = x,y$), geometry, orientation
-\item Calibration hardware ($\alpha = \ell$)
-\item Component tolerance ($\alpha = \delta_{\mathrm{VNA}}, \ldots$) $\to P_{\mathrm{det}}$
-\item Lunar orbit location ($\alpha = a,b,i,\ldots$)
-\end{itemize}
-\end{column}
-\end{columns}
+\begin{frame}{\small{What if we slice the scores by month?}}
+    \centering
+    \includegraphics[width=0.90\textwidth,height=0.62\textheight,keepaspectratio]{images/fig05_anomaly_probability_vs_month.pdf}
+
+    \vspace{0.20cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,width=0.78\textwidth]
+        \scriptsize
+        Once the joint fit is done, we can examine the curation score along any axis of interest. Here the same automatic score is sliced by month.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\small{What if we slice by day of year?}}
+    \centering
+    \includegraphics[width=0.90\textwidth,height=0.62\textheight,keepaspectratio]{images/fig06_anomaly_probability_vs_day_of_year.pdf}
+
+    \vspace{0.20cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,width=0.84\textwidth]
+        \scriptsize
+        These observations were automatically downweighted during inference. There was no separate manual curation pass.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\small{Does the model find instrument problems by itself?}}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.58\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{images/fig09_tns_comparison.pdf}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+                \scriptsize
+                REACH is calibrated with internal noise sources. One important source, labelled TNS here, should sit near $1100\,\mathrm{K}$.
+            \end{tcolorbox}
+
+            \vspace{0.20cm}
+
+            \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+                \scriptsize
+                The flagger does not see TNS. It finds bad data, then after the fact we notice this correlates to the temperature of an internal component.
+            \end{tcolorbox}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\small{Does the model recover weather without weather inputs?}}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.58\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{images/figA09_anomaly_probability_vs_precipitation_summary.pdf}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+                \scriptsize
+                The anomaly model does not know anything about precipitation.
+            \end{tcolorbox}
+
+            \vspace{0.20cm}
+
+            \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+                \scriptsize
+                Even so, it assigns poor scores to wet days. Our telescope now doubles as a weather station. The interesting point is that the same model is also sensitive to subtler contamination patterns that a simple weather cut would miss.
+            \end{tcolorbox}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Results on Type Ia Supernovae}
+
+\begin{frame}{\small{Can the same model switch off broken filters?}}
+    \centering
+    \includegraphics[width=0.95\textwidth,height=0.55\textheight,keepaspectratio]{images/21hwx_light_curves_all_paper.png}
+
+    \vspace{0.1cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \scriptsize
+        SN 21hwx: on some days, we know certain filters were broken. The flagger automatically identifies that the entire ZTF g and j bands are problematic and flags them. Previously this would have been done by hand.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\small{Can it also save data that humans would discard?}}
+    \centering
+    \includegraphics[width=0.95\textwidth,height=0.55\textheight,keepaspectratio]{images/21lnf_light_curves_all_paper.png}
+
+    \vspace{0.1cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \scriptsize
+        SN 21lnf: rather than discarding an entire band, the flagger selectively removes individual outliers. The 1dj3 band is \textbf{saved}: a human would have thrown the whole band away, but the model keeps the good points.
+    \end{tcolorbox}
+\end{frame}
+
+\section{Results in Transient Searching}
+
+\begin{frame}{\small{Does this scale to transient searches?}}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,height=0.50\textheight,keepaspectratio]{images/real_pulsar.png}
+
+            \vspace{0.08cm}
+            {\scriptsize Real data}
+        \end{column}
+        \begin{column}{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,height=0.50\textheight,keepaspectratio]{images/real_pulsar_flagged.png}
+
+            \vspace{0.08cm}
+            {\scriptsize Posterior anomaly mask}
+        \end{column}
+    \end{columns}
+
+    \vspace{0.10cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,width=0.82\textwidth]
+        \scriptsize
+        The same method curates each pixel. In the marginalised plots we see it correctly identifies channels with RFI, without a separate hand-built curation stage.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\small{Summary}}
+    \begin{enumerate}
+        \item \textbf{Fully automated anomaly flagging} inside the fit
+        \item \textbf{Fully automated data curation} with no manual good/bad selection
+        \item \textbf{Fully automated data cleaning} that can also save data humans would have cut
+    \end{enumerate}
+
+    \vspace{0.30cm}
+
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \small
+        The same idea now runs across Bayesian inference, machine learning, REACH analysis, supernova light curves, and transient searching.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{\small{Thanks for listening!}}
+    \begin{columns}[c,onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \Large
+            \textbf{Questions?}
+
+            \vspace{0.35cm}
+            \normalsize
+            Slides and source:
+
+            \vspace{0.14cm}
+            \href{https://github.com/samleeney/Talks}{github.com/samleeney/Talks}
+
+            \vspace{0.26cm}
+            Email:
+
+            \vspace{0.14cm}
+            \href{mailto:sakl2@cam.ac.uk}{sakl2@cam.ac.uk}
+        \end{column}
+        \begin{column}{0.35\textwidth}
+            \centering
+            \qrcode[height=3cm]{https://github.com/samleeney/Talks}
+
+            \vspace{0.10cm}
+            {\small QR code to the talk repository}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\appendix
+\section{Appendix}
+
+\begin{frame}{\small{Full derivation: Bayesian anomaly detection}}
+    \scriptsize
+    \textbf{1.} Likelihood per data point under the model: $\mathcal{L}_i(\theta)$.
+
+    \vspace{0.1cm}
+    \textbf{2.} Introduce a Bernoulli mask $\varepsilon_i \in \{0,1\}$ with prior anomaly rate $p_i$ and anomaly scale $\Delta$:
+    \vspace{-0.15cm}
+    \[
+    P(\mathcal{D}, \vec{\varepsilon}\mid\theta) = \prod_{i} \left[(1-p_i)\,\mathcal{L}_i(\theta)\right]^{1-\varepsilon_i} \left[\frac{p_i}{\Delta}\right]^{\varepsilon_i}
+    \]
+    \vspace{-0.25cm}
+
+    \textbf{3.} Marginalise the mask. Pixels factorise, so the $2^N$ sum is tractable in principle:
+    \vspace{-0.15cm}
+    \[
+    P(\mathcal{D}\mid\theta) = \prod_{i} \left[(1-p_i)\,\mathcal{L}_i + \frac{p_i}{\Delta}\right]
+    \]
+    \vspace{-0.25cm}
+
+    \textbf{4.} Dominant mask approximation (maximise instead of sum):
+    \vspace{-0.15cm}
+    \[
+    \log P \approx \sum_i \max\!\left\{\log\mathcal{L}_i + \log(1{-}p_i),\;\; \log p_i - \log\Delta\right\}
+    \]
+    \vspace{-0.25cm}
+
+    \textbf{5.} Posterior anomaly probability per point (Bayes' rule on mask states):
+    \vspace{-0.15cm}
+    \[
+    P_{\mathrm{anom},i} = \frac{p_i/\Delta}{(1-p_i)\,\mathcal{L}_i + p_i/\Delta}
+    \]
+\end{frame}
+
+\begin{frame}{\small{Full derivation: logit and sigmoid}}
+    \scriptsize
+    \textbf{6.} Take logs of the per-point decision rule:
+    \vspace{-0.1cm}
+    \[
+    \frac{p_i}{\Delta} > (1-p_i)\,\mathcal{L}_i
+    \quad\Longrightarrow\quad
+    \log\frac{p_i}{1-p_i} > \log\mathcal{L}_i + \log\Delta
+    \quad\Longrightarrow\quad
+    \mathrm{logit}(p_i) > \log\mathcal{L}_i + \log\Delta
+    \]
+    \vspace{-0.1cm}
+
+    \textbf{7.} Rearrange $P_{\mathrm{anom},i}$ by dividing top and bottom by $p_i/\Delta$:
+    \vspace{-0.1cm}
+    \[
+    P_{\mathrm{anom},i} = \frac{1}{1 + \frac{(1-p_i)\,\mathcal{L}_i\,\Delta}{p_i}}
+    = \frac{1}{1 + \exp\!\big(\log\mathcal{L}_i + \log\Delta - \mathrm{logit}(p_i)\big)}
+    = \sigma\!\big(\mathrm{logit}(p_i) - \log\mathcal{L}_i - \log\Delta\big)
+    \]
+    \vspace{-0.1cm}
+
+    where $\sigma(x) = 1/(1 + e^{-x})$ is the sigmoid function.
+
+    \vspace{0.2cm}
+
+    \textbf{8.} Soft mixture (ML extension): replace $\max$ with $\mathrm{logsumexp}$:
+    \vspace{-0.1cm}
+    \[
+    \log P(\mathcal{D}\mid\theta) = \sum_i \log\left[(1-p_i)\,\mathcal{L}_i + \frac{p_i}{\Delta}\right]
+    \]
+
+    \vspace{0.1cm}
+    \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+        \tiny
+        \textbf{Leeney+23} \href{https://arxiv.org/abs/2211.15448}{2211.15448} $\cdot$
+        \textbf{Anstey+24} \href{https://arxiv.org/abs/2310.02146}{2310.02146} $\cdot$
+        \textbf{Leeney+25} \href{https://arxiv.org/abs/2509.13394}{2509.13394} $\cdot$
+        \textbf{Leeney+} (in prep)
+    \end{tcolorbox}
 \end{frame}
 
 \end{document}

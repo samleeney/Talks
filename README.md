@@ -3,6 +3,11 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Automatic Data Curation for the Next Generation of Radio Science Experiments
+	- [AI in Radio Astronomy Workshop, Royal Observatory Edinburgh, 20 March 2026](https://www.roe.ac.uk/)
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/data-curation-edinburgh-2026/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/data-curation-edinburgh-2026)
+
 - Machine Learning for Experimental Design Optimisation
 	- [AI in Radio Astronomy Workshop, Royal Observatory Edinburgh, 19 March 2026](https://www.roe.ac.uk/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cnbre_edi_2026/slides.pdf)
@@ -17,11 +22,6 @@
 	- [MPIFR Transients Group, 27 February 2026](https://www.mpifr-bonn.mpg.de/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/transient-searching/slides.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/transient-searching)
-
-- Conditional Neural Bayes Ratio Estimation (cNBRE)
-	- [Wednesday 11th February 2026]
-	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cnbre_2026/slides.pdf)
-	- [Source files](https://github.com/samleeney/Talks/tree/cnbre_2026)
 
 - A Marginalised GPU Optimised Bayesian Fast Radio Burst Searcher
 	- [Handley Lab Group Meeting, 09 December 2025](https://handley-lab.co.uk/)

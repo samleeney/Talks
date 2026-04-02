@@ -137,7 +137,7 @@ In sensitivity-limited experiments, these choices can determine whether the sign
 \begin{columns}[T,onlytextwidth]
 \begin{column}{0.58\textwidth}
 \small
-These are all \textbf{design parameters} -- they impact the effectiveness of our system:
+These are all \textbf{design parameters}: they impact the effectiveness of our system:
 
 \vspace{0.06cm}
 \begin{itemize}\itemsep1pt
@@ -151,7 +151,7 @@ These are all \textbf{design parameters} -- they impact the effectiveness of our
 \vspace{0.06cm}
 \begin{tcolorbox}[resultbox,title=Main teaser]
 \small
-\textbf{Antenna orientation alone} changes forecast detection probability by about \textbf{20 percentage points} --- and costs \textbf{nothing} to implement.
+\textbf{Antenna orientation alone} changes forecast detection probability by about \textbf{20 percentage points}, and costs \textbf{nothing} to implement.
 \end{tcolorbox}
 \end{column}
 \begin{column}{0.38\textwidth}
@@ -455,7 +455,7 @@ Given some range of \textbf{physical signal parameters}, what is our \pdet given
 \begin{itemize}
 \item Each pixel would have required a separate nested sampling run.
 \item The joint map shows how instrument choices and the underlying physics interact.
-\item Ask about amplitudes today, signal \textit{locations} tomorrow -- just re-slice.
+\item Ask about amplitudes today, signal \textit{locations} tomorrow, just re-slice.
 \end{itemize}
 \end{column}
 \end{columns}
@@ -791,8 +791,116 @@ Array layout, orbit parameters, and survey strategy all involve high-dimensional
 \vfill
 \begin{tcolorbox}[keybox]
 \small
-Operational parameters can be re-optimised throughout the lifetime of the experiment -- cNBRE amortises the cost of exploring new strategies.
+Operational parameters can be re-optimised throughout the lifetime of the experiment. cNBRE amortises the cost of exploring new strategies.
 \end{tcolorbox}
+\end{frame}
+
+% --- Theory applications ---
+\begin{frame}{\small{Beyond detection: distinguishing exotic physics}}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\footnotesize
+So far: \textit{is there a signal or not?}
+
+\vspace{0.10cm}
+But cNBRE generalises to \textbf{any two models}.
+
+\vspace{0.10cm}
+\begin{tcolorbox}[keybox]
+\footnotesize
+\textbf{New question:} if we see a signal, is it standard astrophysics or new physics?
+\end{tcolorbox}
+
+\vspace{0.10cm}
+\begin{itemize}\itemsep2pt
+\item $M_1$: standard 21-cm signal
+\item $M_0$: signal with exotic cooling\\(e.g.\ dark matter--baryon interactions)
+\item $\alpha$: frequency band, integration time, \ldots
+\end{itemize}
+
+\vspace{0.10cm}
+cNBRE tells you: \textbf{what experiment do you need to tell these apart?}
+\end{column}
+\begin{column}{0.48\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.85]
+    % Axes
+    \draw[->, thick] (0,0) -- (5.2,0) node[right, font=\scriptsize] {$\nu$ (MHz)};
+    \draw[->, thick] (0,-2.8) -- (0,0.6) node[above, font=\scriptsize] {$T_{21}$ (mK)};
+    % Standard signal (shallow trough)
+    \draw[thick, blue!70!black]
+        (0.3,0) .. controls (1.2,0) and (1.5,-0.6) ..
+        (2.5,-0.8) .. controls (3.5,-0.6) and (4.0,0) .. (4.8,0);
+    \node[font=\scriptsize, blue!70!black, right] at (4.0,-0.5) {$M_1$};
+    % Exotic signal (deep trough, like EDGES)
+    \draw[thick, red!70!black, dashed]
+        (0.3,0) .. controls (1.2,0) and (1.4,-1.5) ..
+        (2.5,-2.3) .. controls (3.6,-1.5) and (4.0,0) .. (4.8,0);
+    \node[font=\scriptsize, red!70!black, right] at (4.0,-1.8) {$M_0$};
+    % Annotation
+    \draw[<->, thin, gray] (2.5,-0.8) -- (2.5,-2.3);
+    \node[font=\tiny, gray, right] at (2.55,-1.55) {exotic};
+    \node[font=\tiny, gray, right] at (2.55,-1.8) {cooling?};
+    % Zero line
+    \draw[dotted, gray!50] (0.3,0) -- (4.8,0);
+\end{tikzpicture}
+
+\vspace{0.15cm}
+{\scriptsize Stylised global 21-cm absorption profiles.\\Standard astrophysics (solid) vs.\ exotic cooling (dashed).}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{\small{Where in parameter space can we detect the signal?}}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\footnotesize
+The design parameter $\alpha$ does not have to be instrumental. It can be a \textbf{physics parameter}.
+
+\vspace{0.10cm}
+\begin{itemize}\itemsep2pt
+\item $M_1$: 21-cm signal present
+\item $M_0$: no signal (foregrounds + noise)
+\item $\alpha$: dark matter mass $m_{\mathrm{DM}}$,\\X-ray heating efficiency $f_X$,\\star formation efficiency $f_*$, \ldots
+\end{itemize}
+
+\vspace{0.10cm}
+\begin{tcolorbox}[keybox]
+\footnotesize
+\textbf{Question:} for which regions of astrophysical parameter space can a given experiment actually detect the signal?
+\end{tcolorbox}
+
+\vspace{0.08cm}
+\footnotesize
+Maps out the \textbf{detection landscape} over theory parameter space from a single training run.
+\end{column}
+\begin{column}{0.48\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.85]
+    % Axes
+    \draw[->, thick] (0,0) -- (5.2,0) node[right, font=\scriptsize] {$m_{\mathrm{DM}}$};
+    \draw[->, thick] (0,0) -- (0,3.6) node[above, font=\scriptsize] {$f_X$};
+    % Shaded regions
+    \fill[green!20] (0.2,2.0) -- (1.5,1.2) -- (3.0,0.8) -- (4.8,0.7) -- (4.8,3.4) -- (0.2,3.4) -- cycle;
+    \fill[red!12] (0.2,2.0) -- (1.5,1.2) -- (3.0,0.8) -- (4.8,0.7) -- (4.8,0.15) -- (0.2,0.15) -- cycle;
+    % Boundary
+    \draw[thick, blue!70!black]
+        (0.2,2.0) .. controls (0.8,1.6) and (1.2,1.3) ..
+        (1.5,1.2) .. controls (2.2,0.95) and (2.8,0.85) ..
+        (3.0,0.8) .. controls (3.8,0.72) and (4.4,0.7) .. (4.8,0.7);
+    % Labels
+    \node[font=\scriptsize, green!50!black] at (2.5,2.6) {\textbf{detectable}};
+    \node[font=\tiny, green!50!black] at (2.5,2.2) {$P_{\mathrm{det}} > 0.95$};
+    \node[font=\scriptsize, red!60!black] at (2.5,0.4) {\textbf{undetectable}};
+    % Annotation arrow
+    \draw[-{Stealth[length=2mm]}, thick, gray!60] (4.5,1.8) -- (4.5,3.2);
+    \node[font=\tiny, gray!60!black, rotate=90] at (4.8,2.5) {easier};
+\end{tikzpicture}
+
+\vspace{0.15cm}
+{\scriptsize Stylised detection landscape over physics parameters.\\Green: signal detectable. Red: undetectable.}
+\end{column}
+\end{columns}
 \end{frame}
 
 % Change 2: Reworked key takeaways

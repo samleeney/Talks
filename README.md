@@ -3,6 +3,11 @@
 - [Linkdin](https://www.linkedin.com/in/sam-leeney-6a0514232/)
 
 # Talks:
+- Machine Learning for Experimental Design Optimisation
+	- [Cosmic Dawn Lab, 2 April 2026](https://cosmicdawnlab.com/)
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cnbre_cosmicdawn_2026/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/cnbre_cosmicdawn_2026)
+
 - Automatic Data Curation for the Next Generation of Radio Science Experiments
 	- [AI in Radio Astronomy Workshop, Royal Observatory Edinburgh, 20 March 2026](https://www.roe.ac.uk/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/data-curation-edinburgh-2026/slides.pdf)

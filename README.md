@@ -4,6 +4,11 @@
 
 # Talks:
 - Machine Learning for Experimental Design Optimisation
+	- [Handley Lab Group Meeting, 2 June 2026](https://handley-lab.co.uk/)
+	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/handley-lab-group-meeting-2026-06-02/slides.pdf)
+	- [Source files](https://github.com/samleeney/Talks/tree/handley-lab-group-meeting-2026-06-02)
+
+- Machine Learning for Experimental Design Optimisation
 	- [Cosmic Dawn Lab, 2 April 2026](https://cosmicdawnlab.com/)
 	- [Slides (.pdf)](https://github.com/samleeney/Talks/blob/cnbre_cosmicdawn_2026/slides.pdf)
 	- [Source files](https://github.com/samleeney/Talks/tree/cnbre_cosmicdawn_2026)
